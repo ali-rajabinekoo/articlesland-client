@@ -1,0 +1,45 @@
+
+@font-face {
+    font-family: 'IRANSansX-Thin';
+    src: url('woff/IRANSansX-Thin.woff');
+}
+
+@font-face {
+    font-family: 'IRANSansX-UltraLight';
+    src: url('woff/IRANSansX-UltraLight.woff');
+}
+
+@font-face {
+    font-family: 'IRANSansX-Light';
+    src: url('woff/IRANSansX-Light.woff');
+}
+
+@font-face {
+    font-family: 'IRANSansX';
+    src: url('woff/IRANSansX-Regular.woff');
+}
+
+@font-face {
+    font-family: 'IRANSansX-Medium';
+    src: url('woff/IRANSansX-Medium.woff');
+}
+
+@font-face {
+    font-family: 'IRANSansX-DemiBold';
+    src: url('woff/IRANSansX-DemiBold.woff');
+}
+
+@font-face {
+    font-family: 'IRANSansX-Bold';
+    src: url('woff/IRANSansX-Bold.woff');
+}
+
+@font-face {
+    font-family: 'IRANSansX-ExtraBold';
+    src: url('woff/IRANSansX-ExtraBold.woff');
+}
+
+@font-face {
+    font-family: 'IRANSansX-Black';
+    src: url('woff/IRANSansX-Black.woff');
+}
