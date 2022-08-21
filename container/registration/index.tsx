@@ -5,6 +5,9 @@ import {PrimaryBtn} from "../../component/buttons";
 import {ChevronLeftIcon} from '@heroicons/react/outline'
 import {useRegistrationFormStyle} from "./styles";
 import {useRouter} from "next/router";
+import {useFormik} from 'formik';
+import {SignupFormValues} from "../../utils/types";
+import {signupValidationForm, SignupValidationSchema} from "../../utils/validators";
 
 export const RegistrationFormTitle = () => {
     const {classes} = useRegistrationFormStyle()
@@ -34,38 +37,58 @@ export const RegistrationFormTitle = () => {
 
 export const RegistrationForm = () => {
     const {push} = useRouter()
+    const signupForm = useFormik({
+        initialValues: {
+            username: "",
+            phoneNumber: "",
+            password: "",
+            repeatPassword: ""
+        } as SignupFormValues,
+        validate: signupValidationForm,
+        validationSchema: SignupValidationSchema,
+        onSubmit: async (values) => {
+            console.log(values)
+        },
+    });
     const onClickLoginPage = async () => {
         await push("/login")
     }
     return (
-        <Box>
+        <form onSubmit={signupForm.handleSubmit}>
             <Stack align={"stretch"} justify={"center"} spacing={"sm"} mt={-30}>
                 <TextInput
-                    labeltitle="نام کاربری" color={"grey.3"} size="md"
+                    labeltitle="نام کاربری" color={"grey.3"}
                     placeholder="نام کاربری خود را وارد کنید"
-                    labelWeight={900}
+                    labelweight={900} size="md" name="username"
+                    onChange={signupForm.handleChange}
+                    value={signupForm.values.username}
+                    error={signupForm.errors.username}
                 />
                 <TextInput
-                    labeltitle="ایمیل" color={"grey.3"} size="md"
-                    placeholder="ایمیل خود را وارد کنید"
-                    labelWeight={900} weight={900}
-                />
-                <TextInput
-                    labeltitle="شماره موبایل" color={"grey.3"} size="md"
+                    labeltitle="شماره موبایل" color={"grey.3"}
                     placeholder="شماره موبایل خود را وارد کنید"
-                    labelWeight={900}
+                    labelweight={900} size="md" name="phoneNumber"
+                    onChange={signupForm.handleChange}
+                    value={signupForm.values.phoneNumber}
+                    error={signupForm.errors.phoneNumber}
                 />
                 <PasswordInput
-                    labeltitle="رمز عبور" color={"grey.3"} size="md"
+                    labeltitle="رمز عبور" color={"grey.3"}
                     placeholder="رمز عبور خود را وارد کنید"
-                    labelWeight={900}
+                    labelweight={900} size="md" name="password"
+                    onChange={signupForm.handleChange}
+                    value={signupForm.values.password}
+                    error={signupForm.errors.password}
                 />
                 <PasswordInput
-                    labeltitle="تکرار رمز عبور" color={"grey.3"} size="md"
+                    labeltitle="تکرار رمز عبور" color={"grey.3"}
                     placeholder="رمز عبور خود را دوباره وارد کنید"
-                    labelWeight={900}
+                    labelweight={900} size="md" name="repeatPassword"
+                    onChange={signupForm.handleChange}
+                    value={signupForm.values.repeatPassword}
+                    error={signupForm.errors.repeatPassword}
                 />
-                <PrimaryBtn text={'ثبت نام'}/>
+                <PrimaryBtn text={'ثبت نام'} type={"submit"}/>
             </Stack>
             <Text align="center" mt="lg" size="sm" color={"grey.3"}>
                 حساب کاربری دارید؟{' '}
@@ -73,6 +96,6 @@ export const RegistrationForm = () => {
                     وارد شوید
                 </Anchor>
             </Text>
-        </Box>
+        </form>
     )
 }

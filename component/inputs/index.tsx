@@ -15,8 +15,8 @@ const renderLabel = (props: TextInputProps | PasswordInputProps): ReactNode => {
     if (!!props.labelSX) {
         sx = {...sx, ...props.labelSX}
     }
-    if (!!props.labelWeight) {
-        weight = props.labelWeight
+    if (!!props.labelweight) {
+        weight = props.labelweight
     }
     return !!props.labeltitle ? <Text weight={weight} size={"sm"} sx={sx} color={"grey.3"}>
         {props.labeltitle}
@@ -26,7 +26,7 @@ const renderLabel = (props: TextInputProps | PasswordInputProps): ReactNode => {
 interface TextInputProps extends BasicTextInputProps {
     labeltitle?: string
     labelSX?: Sx
-    labelWeight?: React.CSSProperties['fontWeight']
+    labelweight?: React.CSSProperties['fontWeight']
     weight?: React.CSSProperties['fontWeight']
 }
 
@@ -44,7 +44,7 @@ export const TextInput = (props: TextInputProps) => {
 interface PasswordInputProps extends BasePasswordInputProps {
     labeltitle?: string
     labelSX?: Sx
-    labelWeight?: React.CSSProperties['fontWeight']
+    labelweight?: React.CSSProperties['fontWeight']
     weight?: React.CSSProperties['fontWeight']
 }
 
