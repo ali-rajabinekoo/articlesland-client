@@ -1,0 +1,10 @@
+export type fontWeightFamily =
+    'thin'
+    | 'ultraLight'
+    | 'light'
+    | 'regular'
+    | 'medium'
+    | 'demiBold'
+    | 'bold'
+    | 'extraBold'
+    | 'black'

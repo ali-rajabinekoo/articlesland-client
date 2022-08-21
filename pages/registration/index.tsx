@@ -1,16 +1,13 @@
+import React from "react";
 import type {NextPage} from 'next'
 import {AuthLayout} from "../../container/layout/authLayout";
-import {Text} from '@mantine/core';
+import {RegistrationForm, RegistrationFormTitle} from "../../container/registration";
 
 const Registration: NextPage = () => {
-    return (<AuthLayout>
-        <Text size={"xl"} color={"grey.2"}>
-            به
-            <Text mx={5} component={"span"} sx={{fontFamily: "Poppins"}}>
-                ArticleLand
-            </Text>
-            خوش آمدید
-        </Text>
+    return (<AuthLayout title={
+        <RegistrationFormTitle/>
+    }>
+        <RegistrationForm/>
     </AuthLayout>)
 }
 
