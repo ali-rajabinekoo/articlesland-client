@@ -24,11 +24,6 @@ export class UseRequestResult {
     getApis!: Function
 }
 
-export class UseTimer {
-    minutes!: number | undefined
-    seconds!: number | undefined
-}
-
 // formik
 
 export class SignupFormValues {
@@ -36,6 +31,15 @@ export class SignupFormValues {
     phoneNumber!: string;
     password!: string;
     repeatPassword!: string;
+}
+
+export class LoginFormValues {
+    username!: string;
+    password!: string;
+}
+
+export class SendLoginCodeValues {
+    phoneNumber!: string;
 }
 
 // apis
@@ -51,7 +55,7 @@ export class RequestParams {
     externalUrl?: boolean
 }
 
-export class SignUpResponse {
+export class VerificationResponse {
     key: string | undefined
 }
 
@@ -60,7 +64,7 @@ export class VerificationBody {
     code: string | undefined
 }
 
-export class VerificationResponse {
+export class UserAndTokenResponse {
     user: object | undefined
     token: string | undefined
 }

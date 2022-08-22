@@ -28,10 +28,8 @@ export const appTheme: MantineThemeOverride = {
     },
     primaryColor: 'primary',
     shadows: {
-        sm: '0px 2px 8px rgba(26, 26, 26, .12)',
-        md: '0px 8px 16px rgba(0, 0, 0, .16)',
-        lg: '0px 8px 34px rgba(0, 0, 0, .18)',
-        xl: '0px 16px 34px rgba(0, 0, 0, .18)',
+        xs: '0px 2px 8px rgba(26, 26, 26, 0.24)',
+        sm: '0px 8px 16px rgba(26, 26, 26, 0.16)',
     },
     spacing: {
         xs: 8,

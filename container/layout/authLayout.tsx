@@ -36,6 +36,8 @@ const useStyles = createStyles((theme) => ({
 
         [`@media (max-width: ${theme.breakpoints.sm}px)`]: {
             maxWidth: '100%',
+            borderTopLeftRadius: 0,
+            borderBottomLeftRadius: 0,
         },
     },
 
