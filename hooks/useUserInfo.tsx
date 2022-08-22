@@ -28,14 +28,14 @@ export default function useUserInfo(): UseUserInfoResult {
     }
 
     const setNewUser = (newUser: UserDto | null): void => {
-        if (!!newUser && !!accessTokenKey) {
-            window.localStorage.setItem(accessTokenKey, JSON.stringify(newUser));
+        if (!!newUser && !!userKey) {
+            window.localStorage.setItem(userKey, JSON.stringify(newUser));
         }
     }
 
     const setNewAccessToken = (newAccessToken: string | null): void => {
-        if (!!newAccessToken && !!userKey) {
-            window.localStorage.setItem(userKey, newAccessToken);
+        if (!!newAccessToken && !!accessTokenKey) {
+            window.localStorage.setItem(accessTokenKey, newAccessToken);
         }
     }
 

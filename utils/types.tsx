@@ -1,3 +1,7 @@
+import {Authentication} from "./apis/authentication";
+
+// hooks
+
 export class UserDto {
     id: number | undefined | null
     username: string | undefined | null
@@ -16,9 +20,47 @@ export class UseUserInfoResult {
     setNewUser!: Function
 }
 
+export class UseRequestResult {
+    getApis!: Function
+}
+
+export class UseTimer {
+    minutes!: number | undefined
+    seconds!: number | undefined
+}
+
+// formik
+
 export class SignupFormValues {
     username!: string;
     phoneNumber!: string;
     password!: string;
     repeatPassword!: string;
+}
+
+// apis
+
+export class APIS {
+    auth!: Authentication
+}
+
+export class RequestParams {
+    method!: string
+    url!: string
+    data?: object
+    externalUrl?: boolean
+}
+
+export class SignUpResponse {
+    key: string | undefined
+}
+
+export class VerificationBody {
+    key: string | undefined
+    code: string | undefined
+}
+
+export class VerificationResponse {
+    user: object | undefined
+    token: string | undefined
 }

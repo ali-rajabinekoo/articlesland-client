@@ -4,6 +4,7 @@ import {createEmotionCache, MantineProvider} from '@mantine/core';
 import rtlPlugin from 'stylis-plugin-rtl';
 import "../styles/globals.css";
 import {appTheme} from "./_app.style";
+import {NotificationsProvider} from "@mantine/notifications";
 
 const rtlCache = createEmotionCache({
     key: 'mantine-rtl',
@@ -27,7 +28,9 @@ export default function App(props: AppProps) {
                     emotionCache={rtlCache}
                     theme={appTheme}
                 >
-                    <Component {...pageProps} />
+                    <NotificationsProvider>
+                        <Component {...pageProps} />
+                    </NotificationsProvider>
                 </MantineProvider>
             </div>
         </>

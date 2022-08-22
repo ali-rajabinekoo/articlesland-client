@@ -1,24 +1,30 @@
-import React from "react";
-import {Anchor, Stack, Text, Box, Avatar} from "@mantine/core";
+import React, {useState} from "react";
+import {Anchor, Stack, Text, Box, Avatar, LoadingOverlay} from "@mantine/core";
 import {PasswordInput, TextInput} from "../../component/inputs";
 import {PrimaryBtn} from "../../component/buttons";
-import {ChevronLeftIcon} from '@heroicons/react/outline'
 import {useRegistrationFormStyle} from "./styles";
-import {useRouter} from "next/router";
+import {NextRouter, useRouter} from "next/router";
 import {useFormik} from 'formik';
-import {SignupFormValues} from "../../utils/types";
+import {APIS, SignupFormValues, SignUpResponse, UseRequestResult} from "../../utils/types";
 import {signupValidationForm, SignupValidationSchema} from "../../utils/validators";
+import useRequest from "../../hooks/useRequest";
+import {AxiosError, AxiosResponse} from "axios";
+import {errorHandler} from "../../utils/helpers";
+import {showNotification} from "@mantine/notifications";
+import {IconCheck, IconChevronLeft} from "@tabler/icons";
+import {appMessages} from "../../utils/messages";
+import {CountDown} from "../../component/countdown";
 
 export const RegistrationFormTitle = () => {
     const {classes} = useRegistrationFormStyle()
-    const {push} = useRouter()
-    const onClickBackIcon = async () => {
+    const {push}: NextRouter = useRouter()
+    const onClickBackIcon = async (): Promise<void> => {
         await push("/")
     }
     return (
         <Stack align={"center"} justify={"center"} spacing={"xs"} mt={-20} className={classes.formTitle}>
             <div className={classes.backIcon} onClick={onClickBackIcon}>
-                <ChevronLeftIcon/>
+                <IconChevronLeft/>
             </div>
             <Avatar src="/assets/images/icon.svg" size={225} alt="Articles Land"/>
             <Text size={"xl"} sx={{fontStyle: 'IRANSansX-Bold'}} color={"grey.3"} mt={-20}>
@@ -35,8 +41,15 @@ export const RegistrationFormTitle = () => {
     )
 }
 
-export const RegistrationForm = () => {
-    const {push} = useRouter()
+interface RegistrationFormProps {
+    onSubmitted?: Function
+}
+
+export const RegistrationForm = ({onSubmitted}:RegistrationFormProps) => {
+    const {push}: NextRouter = useRouter()
+    const {getApis}: UseRequestResult = useRequest()
+    const [visible, setVisible] = useState<boolean>(false);
+
     const signupForm = useFormik({
         initialValues: {
             username: "",
@@ -46,47 +59,80 @@ export const RegistrationForm = () => {
         } as SignupFormValues,
         validate: signupValidationForm,
         validationSchema: SignupValidationSchema,
-        onSubmit: async (values) => {
-            console.log(values)
+        onSubmit: async (body: SignupFormValues) => {
+            try {
+                setVisible(true)
+                const apis: APIS = getApis()
+                const response: AxiosResponse | undefined = await apis.auth.register(body)
+                const data: SignUpResponse = response?.data
+                if (!data?.key) throw new Error()
+                showNotification({
+                    message: appMessages.codeSent,
+                    autoClose: 2000,
+                    color: 'green',
+                    icon: <IconCheck size={20}/>
+                })
+                setTimeout(() => {
+                    if (!!onSubmitted) onSubmitted(data.key, body)
+                    setVisible(false)
+                }, 2100)
+            } catch (e: AxiosError | any) {
+                errorHandler(e)
+                setVisible(false)
+            }
         },
     });
-    const onClickLoginPage = async () => {
+
+    const onClickLoginPage = async (): Promise<void> => {
         await push("/login")
     }
+
     return (
         <form onSubmit={signupForm.handleSubmit}>
-            <Stack align={"stretch"} justify={"center"} spacing={"sm"} mt={-30}>
+            <Stack align={"stretch"} justify={"center"} spacing={"sm"} mt={-30} p={10}>
+                <LoadingOverlay
+                    visible={visible} overlayBlur={2}
+                    loaderProps={{size: 'md', color: 'primary.2', variant: 'dots'}}
+                />
                 <TextInput
                     labeltitle="نام کاربری" color={"grey.3"}
                     placeholder="نام کاربری خود را وارد کنید"
-                    labelweight={900} size="md" name="username"
+                    labelweight={700} size="md" name="username"
                     onChange={signupForm.handleChange}
                     value={signupForm.values.username}
-                    error={signupForm.errors.username}
+                    error={<Text size={"xs"} weight={500} color={"danger.3"}>
+                        {signupForm.errors.username}
+                    </Text>}
                 />
                 <TextInput
                     labeltitle="شماره موبایل" color={"grey.3"}
                     placeholder="شماره موبایل خود را وارد کنید"
-                    labelweight={900} size="md" name="phoneNumber"
+                    labelweight={700} size="md" name="phoneNumber"
                     onChange={signupForm.handleChange}
                     value={signupForm.values.phoneNumber}
-                    error={signupForm.errors.phoneNumber}
+                    error={<Text size={"xs"} weight={500} color={"danger.3"}>
+                        {signupForm.errors.phoneNumber}
+                    </Text>}
                 />
                 <PasswordInput
                     labeltitle="رمز عبور" color={"grey.3"}
                     placeholder="رمز عبور خود را وارد کنید"
-                    labelweight={900} size="md" name="password"
+                    labelweight={700} size="md" name="password"
                     onChange={signupForm.handleChange}
                     value={signupForm.values.password}
-                    error={signupForm.errors.password}
+                    error={<Text size={"xs"} weight={500} color={"danger.3"}>
+                        {signupForm.errors.password}
+                    </Text>}
                 />
                 <PasswordInput
                     labeltitle="تکرار رمز عبور" color={"grey.3"}
                     placeholder="رمز عبور خود را دوباره وارد کنید"
-                    labelweight={900} size="md" name="repeatPassword"
+                    labelweight={700} size="md" name="repeatPassword"
                     onChange={signupForm.handleChange}
                     value={signupForm.values.repeatPassword}
-                    error={signupForm.errors.repeatPassword}
+                    error={<Text size={"xs"} weight={500} color={"danger.3"}>
+                        {signupForm.errors.repeatPassword}
+                    </Text>}
                 />
                 <PrimaryBtn text={'ثبت نام'} type={"submit"}/>
             </Stack>
@@ -96,6 +142,7 @@ export const RegistrationForm = () => {
                     وارد شوید
                 </Anchor>
             </Text>
+            <CountDown/>
         </form>
     )
 }

@@ -1,13 +1,16 @@
 import {
     Text,
+    Grid,
     TextInput as BasicTextInput,
     TextInputProps as BasicTextInputProps,
     PasswordInput as BasicPasswordInput,
     PasswordInputProps as BasePasswordInputProps
 } from "@mantine/core";
-import React, {ReactNode, useMemo, useState} from "react";
+import React, {ReactNode, RefObject, useEffect, useRef, useState} from "react";
 import {Sx} from "@mantine/styles/lib/theme/types/DefaultProps";
-import {usePasswordInputStyle, useTextInputStyle} from "./styles";
+import {usePasswordInputStyle, useTextInputStyle, useVerificationInputs} from "./styles";
+import {Simulate} from "react-dom/test-utils";
+import VerificationInput from "react-verification-input";
 
 const renderLabel = (props: TextInputProps | PasswordInputProps): ReactNode => {
     let sx: Sx = {}
@@ -18,7 +21,7 @@ const renderLabel = (props: TextInputProps | PasswordInputProps): ReactNode => {
     if (!!props.labelweight) {
         weight = props.labelweight
     }
-    return !!props.labeltitle ? <Text weight={weight} size={"sm"} sx={sx} color={"grey.3"}>
+    return !!props.labeltitle ? <Text weight={weight} size={"sm"} sx={sx} mb={"xs"} color={"grey.3"}>
         {props.labeltitle}
     </Text> : props.label
 }
@@ -28,13 +31,14 @@ interface TextInputProps extends BasicTextInputProps {
     labelSX?: Sx
     labelweight?: React.CSSProperties['fontWeight']
     weight?: React.CSSProperties['fontWeight']
+    customref?: RefObject<any>
 }
 
-export const TextInput = (props: TextInputProps) => {
+export const TextInput = (props: TextInputProps): JSX.Element => {
     const {classes} = useTextInputStyle()
     return (
         <BasicTextInput
-            className={classes.input}
+            className={classes.input} ref={props.customref}
             label={renderLabel(props)} color={"grey.2"}
             placeholder={props.placeholder} {...props}
         />
@@ -48,7 +52,7 @@ interface PasswordInputProps extends BasePasswordInputProps {
     weight?: React.CSSProperties['fontWeight']
 }
 
-export const PasswordInput = ({...props}: PasswordInputProps) => {
+export const PasswordInput = ({...props}: PasswordInputProps): JSX.Element => {
     const {classes} = usePasswordInputStyle()
     return (
         <BasicPasswordInput
@@ -56,5 +60,28 @@ export const PasswordInput = ({...props}: PasswordInputProps) => {
             label={renderLabel(props)} color={"grey.2"}
             placeholder={props.placeholder} {...props}
         />
+    )
+}
+
+interface VerificationCodeInputsProps {
+    onChange?: ((value: string) => void) | undefined
+}
+
+export const VerificationCodeInputs = (props: VerificationCodeInputsProps): JSX.Element => {
+    return (
+        <div style={{display: 'flex', justifyContent: "center"}}>
+            <VerificationInput
+                length={6} placeholder={''}
+                inputProps={{
+                    autoComplete: "one-time-code"
+                }}
+                classNames={{
+                    character: 'verification-inputs',
+                    container: 'verification-inputs_container',
+                    characterSelected: 'verification-inputs_selected',
+                }}
+                onChange={props.onChange}
+            />
+        </div>
     )
 }

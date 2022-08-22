@@ -19,3 +19,10 @@ export const validationMessages = {
         repeatPassword: 'رمز عبور و تکرار آن با هم برار نیستند',
     },
 };
+
+export const appMessages = {
+    unauthorized: 'نشست از بین رفته است لطفا مجدد لاگین کنید',
+    somethingWentWrong: 'خطایی در سامانه رخ داده است',
+    codeSent: 'درخواست ثبت نام شما با موفقیت انجام شد و کد تایید برای شما ارسال گردید',
+    registrationVerified: 'ثبت نام با موفقیت انجام شد',
+}

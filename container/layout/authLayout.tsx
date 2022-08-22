@@ -64,7 +64,7 @@ export function AuthLayout({children, title}: AuthLayoutProps) {
         <Box className={classes.wrapper}>
             <Grid>
                 <Grid.Col lg={5.8} xl={3.8}>
-                    <Paper className={classes.formPaper} p={30} dir={"rtl"}>
+                    <Paper className={classes.formPaper} p={30} dir={"rtl"} sx={{overflowY: 'auto', overflowX: "hidden"}}>
                         <Title order={2} className={classes.title} align="center" mt="md" mb={50}>
                             {title}
                         </Title>
