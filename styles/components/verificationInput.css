@@ -1,0 +1,21 @@
+.verification-inputs {
+    font-family: Poppins, IRANSansX, sans-serif;
+    border-radius: 8px;
+    background-color: #F0F1F7;
+    border: 1px solid #F0F1F7;
+    font-size: 16px;
+    display: block;
+}
+.verification-inputs_container {
+    display: flex;
+    width: 100%;
+    max-width: 400px;
+}
+.verification-inputs_selected {
+    outline: 1px solid #B49820 !important;
+}
+.vi__wrapper {
+    display: flex;
+    width: 100%;
+    justify-content: center !important;
+}

@@ -1,8 +1,10 @@
 @import "fonts/IranSansX/IranSansX.css";
 @import "fonts/Poppins/Poppins.css";
+@import "components/verificationInput.css";
 
 * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
 }
+
