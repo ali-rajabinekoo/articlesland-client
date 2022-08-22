@@ -26,5 +26,9 @@ UI Framework:
 
 [https://ui.mantine.dev/](https://ui.mantine.dev/)
 
+Icons:
+
+https://tabler-icons.io/
+
 
 

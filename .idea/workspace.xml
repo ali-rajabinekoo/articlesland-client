@@ -1,68 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e06adea9-5fca-4f6c-9da5-80729234fd31" name="Changes" comment="AL-14 &lt;Start project and fix basic configs&gt;">
-      <change afterPath="$PROJECT_DIR$/.eslintrc.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/articlesland-client.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/container/layout/authLayout.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/next.config.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pages/_app.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pages/_document.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pages/index.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pages/registration/index.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/images/icon.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/images/icon.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/images/mountains.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/favicon.ico" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/vercel.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/styles/fonts/IranSansX/IranSansX.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/styles/fonts/IranSansX/woff/IRANSansX-Black.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/styles/fonts/IranSansX/woff/IRANSansX-Bold.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/styles/fonts/IranSansX/woff/IRANSansX-DemiBold.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/styles/fonts/IranSansX/woff/IRANSansX-ExtraBold.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/styles/fonts/IranSansX/woff/IRANSansX-Light.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/styles/fonts/IranSansX/woff/IRANSansX-Medium.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/styles/fonts/IranSansX/woff/IRANSansX-Regular.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/styles/fonts/IranSansX/woff/IRANSansX-Thin.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/styles/fonts/IranSansX/woff/IRANSansX-UltraLight.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/styles/fonts/IranSansX/woff2/IRANSansX-Black.woff2" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/styles/fonts/IranSansX/woff2/IRANSansX-Bold.woff2" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/styles/fonts/IranSansX/woff2/IRANSansX-DemiBold.woff2" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/styles/fonts/IranSansX/woff2/IRANSansX-ExtraBold.woff2" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/styles/fonts/IranSansX/woff2/IRANSansX-Light.woff2" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/styles/fonts/IranSansX/woff2/IRANSansX-Medium.woff2" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/styles/fonts/IranSansX/woff2/IRANSansX-Regular.woff2" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/styles/fonts/IranSansX/woff2/IRANSansX-Thin.woff2" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/styles/fonts/IranSansX/woff2/IRANSansX-UltraLight.woff2" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/styles/fonts/Poppins/Poppins-Black.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/styles/fonts/Poppins/Poppins-BlackItalic.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/styles/fonts/Poppins/Poppins-Bold.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/styles/fonts/Poppins/Poppins-BoldItalic.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/styles/fonts/Poppins/Poppins-ExtraBold.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/styles/fonts/Poppins/Poppins-ExtraBoldItalic.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/styles/fonts/Poppins/Poppins-ExtraLight.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/styles/fonts/Poppins/Poppins-ExtraLightItalic.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/styles/fonts/Poppins/Poppins-Italic.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/styles/fonts/Poppins/Poppins-Light.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/styles/fonts/Poppins/Poppins-LightItalic.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/styles/fonts/Poppins/Poppins-Medium.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/styles/fonts/Poppins/Poppins-MediumItalic.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/styles/fonts/Poppins/Poppins-Regular.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/styles/fonts/Poppins/Poppins-SemiBold.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/styles/fonts/Poppins/Poppins-SemiBoldItalic.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/styles/fonts/Poppins/Poppins-Thin.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/styles/fonts/Poppins/Poppins-ThinItalic.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/styles/fonts/Poppins/Poppins.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/styles/globals.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tsconfig.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
+    <list default="true" id="e06adea9-5fca-4f6c-9da5-80729234fd31" name="Changes" comment="AL-12 &lt;Start project and fix basic configs&gt;">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/component/buttons/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/component/buttons/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/component/inputs/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/component/inputs/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/component/texts/index.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/container/registration/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/container/registration/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/next.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/next.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/types.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -73,8 +21,9 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="JavaScript File" />
-        <option value="TypeScript JSX File" />
         <option value="CSS File" />
+        <option value="TypeScript File" />
+        <option value="TypeScript JSX File" />
       </list>
     </option>
   </component>
@@ -90,30 +39,42 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "Project.color": "2d1438",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "/home/rajabi/Projects/articlesland/articlesland-client",
-    "list.type.of.created.stylesheet": "CSS",
-    "node.js.detected.package.eslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "ts.external.directory.path": "/home/rajabi/Projects/articlesland/articlesland-client/node_modules/typescript/lib",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;Project.color&quot;: &quot;2d1438&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/rajabi/Projects/articlesland/articlesland-client&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;/home/rajabi/Projects/articlesland/articlesland-client/node_modules/typescript/lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$" />
-      <recent name="$PROJECT_DIR$/pages/styles" />
-      <recent name="$PROJECT_DIR$/public/assets/images" />
       <recent name="$PROJECT_DIR$/pages" />
-      <recent name="$PROJECT_DIR$/public" />
+      <recent name="$PROJECT_DIR$/pages/_app" />
+      <recent name="$PROJECT_DIR$/component/inputs" />
+      <recent name="$PROJECT_DIR$/component/buttons" />
+      <recent name="$PROJECT_DIR$" />
     </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="dev" type="js.build_tools.npm" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="dev" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -124,8 +85,26 @@
       <option name="presentableId" value="Default" />
       <updated>1660897416608</updated>
       <workItem from="1660897417729" duration="8397000" />
-      <workItem from="1660914663962" duration="7846000" />
+      <workItem from="1660914663962" duration="15367000" />
+      <workItem from="1660972906209" duration="1968000" />
+      <workItem from="1661011704625" duration="7760000" />
+      <workItem from="1661094070603" duration="4990000" />
     </task>
+    <task id="LOCAL-00001" summary="AL-14 &lt;Start project and fix basic configs&gt;">
+      <created>1660924360896</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1660924360896</updated>
+    </task>
+    <task id="LOCAL-00002" summary="AL-12 &lt;Start project and fix basic configs&gt;">
+      <created>1661095161051</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1661095161051</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -144,6 +123,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="AL-14 &lt;Start project and fix basic configs&gt;" />
-    <option name="LAST_COMMIT_MESSAGE" value="AL-14 &lt;Start project and fix basic configs&gt;" />
+    <MESSAGE value="AL-12 &lt;Start project and fix basic configs&gt;" />
+    <option name="LAST_COMMIT_MESSAGE" value="AL-12 &lt;Start project and fix basic configs&gt;" />
   </component>
 </project>
