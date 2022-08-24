@@ -19,7 +19,7 @@ export default function useUserInfo(): UseUserInfoResult {
     const getAccessToken = (): string | null => {
         let fetchedAccessToken: string | null = null
         if (!!accessTokenKey) {
-            fetchedAccessToken = window.localStorage.getItem(accessTokenKey);
+            fetchedAccessToken = window.sessionStorage.getItem(accessTokenKey);
         }
         if (!!fetchedAccessToken) {
             return fetchedAccessToken
@@ -35,7 +35,7 @@ export default function useUserInfo(): UseUserInfoResult {
 
     const setNewAccessToken = (newAccessToken: string | null): void => {
         if (!!newAccessToken && !!accessTokenKey) {
-            window.localStorage.setItem(accessTokenKey, newAccessToken);
+            window.sessionStorage.setItem(accessTokenKey, newAccessToken);
         }
     }
 

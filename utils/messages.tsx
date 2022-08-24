@@ -23,6 +23,7 @@ export const validationMessages = {
 export const appMessages = {
     unauthorized: 'نشست از بین رفته است لطفا مجدد لاگین کنید',
     somethingWentWrong: 'خطایی در سامانه رخ داده است',
-    codeSent: 'درخواست ثبت نام شما با موفقیت انجام شد و کد تایید برای شما ارسال گردید',
+    codeSent: 'کد تایید برای شماره موبایل مورد نظر ارسال گردید',
     registrationVerified: 'ثبت نام با موفقیت انجام شد',
+    loggedIn: 'با موفقیت وارد سامانه شدید',
 }

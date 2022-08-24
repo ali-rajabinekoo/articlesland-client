@@ -1,12 +1,18 @@
 import React, {useState} from "react";
-import {Anchor, Stack, Text, Box, Avatar} from "@mantine/core";
+import {Anchor, Stack, Box, Text, Avatar} from "@mantine/core";
 import {PasswordInput, TextInput} from "../../component/inputs";
-import {PrimaryBtn} from "../../component/buttons";
-import {useRegistrationFormStyle} from "./styles";
+import {PrimaryBtn, SecondaryBtn} from "../../component/buttons";
+import {useLoginFormStyle} from "./styles";
 import {NextRouter, useRouter} from "next/router";
 import {useFormik} from 'formik';
-import {APIS, SignupFormValues, VerificationResponse, UseRequestResult} from "../../utils/types";
-import {signupValidationForm, SignupValidationSchema} from "../../utils/validators";
+import {
+    APIS,
+    UserAndTokenResponse,
+    LoginFormValues,
+    UseRequestResult,
+    UseUserInfoResult
+} from "../../utils/types";
+import {LoginValidationSchema} from "../../utils/validators";
 import useRequest from "../../hooks/useRequest";
 import {AxiosError, AxiosResponse} from "axios";
 import {errorHandler} from "../../utils/helpers";
@@ -15,9 +21,10 @@ import {IconCheck, IconChevronLeft} from "@tabler/icons";
 import {appMessages} from "../../utils/messages";
 import {CountDown} from "../../component/auxiliary";
 import {LoadingOverlay} from "../../component/auxiliary/LoadingOverlay";
+import useUserInfo from "../../hooks/useUserInfo";
 
-export const RegistrationFormTitle = () => {
-    const {classes} = useRegistrationFormStyle()
+export const LoginFormTitle = () => {
+    const {classes} = useLoginFormStyle()
     const {push}: NextRouter = useRouter()
     const onClickBackIcon = async (): Promise<void> => {
         await push("/")
@@ -36,46 +43,48 @@ export const RegistrationFormTitle = () => {
                 خوش آمدید
             </Text>
             <Text size={"sm"} weight={400} color={"grey.3"}>
-                برای ثبت نام فرم زیر را تکمیل کنید
+                برای ورود نام کاربری و پسوورد خود را وارد کنید و یا از طریق کد یکبار مصرف وارد شوید
             </Text>
         </Stack>
     )
 }
 
-interface RegistrationFormProps {
+interface LoginFormProps {
     onSubmitted?: Function
+    showLoginByCodeForm?: Function
 }
 
-export const RegistrationForm = ({onSubmitted}:RegistrationFormProps) => {
+export const LoginForm = ({onSubmitted, showLoginByCodeForm}: LoginFormProps) => {
     const {push}: NextRouter = useRouter()
     const {getApis}: UseRequestResult = useRequest()
+    const {setNewAccessToken, setNewUser}: UseUserInfoResult = useUserInfo()
     const [visible, setVisible] = useState<boolean>(false);
 
-    const signupForm = useFormik({
+    const loginForm = useFormik({
         initialValues: {
             username: "",
-            phoneNumber: "",
             password: "",
-            repeatPassword: ""
-        } as SignupFormValues,
-        validate: signupValidationForm,
-        validationSchema: SignupValidationSchema,
-        onSubmit: async (body: SignupFormValues) => {
+        } as LoginFormValues,
+        validationSchema: LoginValidationSchema,
+        onSubmit: async (body: LoginFormValues) => {
             try {
                 setVisible(true)
                 const apis: APIS = getApis()
-                const response: AxiosResponse | undefined = await apis.auth.register(body)
-                const data: VerificationResponse = response?.data
-                if (!data?.key) throw new Error()
+                const response: AxiosResponse | undefined = await apis.auth.loginByCredentials(body)
+                const data: UserAndTokenResponse = response?.data
+                if (!data?.user) throw new Error()
+                if (!data?.token) throw new Error()
+                setNewUser(data.user)
+                setNewAccessToken(data.token)
                 showNotification({
-                    message: appMessages.codeSent,
+                    message: appMessages.loggedIn,
                     autoClose: 2000,
                     color: 'green',
                     icon: <IconCheck size={20}/>
                 })
                 setTimeout(() => {
-                    if (!!onSubmitted) onSubmitted(data.key, body)
                     setVisible(false)
+                    push("/")
                 }, 2100)
             } catch (e: AxiosError | any) {
                 errorHandler(e)
@@ -84,60 +93,49 @@ export const RegistrationForm = ({onSubmitted}:RegistrationFormProps) => {
         },
     });
 
-    const onClickLoginPage = async (): Promise<void> => {
-        await push("/login")
+    const onClickRegistrationPage = async (): Promise<void> => {
+        await push("/registration")
     }
 
+    
+    
     return (
-        <form onSubmit={signupForm.handleSubmit}>
+        <form onSubmit={loginForm.handleSubmit}>
             <Stack align={"stretch"} justify={"center"} spacing={"sm"} mt={-30} p={10}>
                 <LoadingOverlay visible={visible}/>
                 <TextInput
                     labeltitle="نام کاربری" color={"grey.3"}
                     placeholder="نام کاربری خود را وارد کنید"
                     labelweight={700} size="md" name="username"
-                    onChange={signupForm.handleChange}
-                    value={signupForm.values.username}
+                    onChange={loginForm.handleChange}
+                    value={loginForm.values.username}
                     error={<Text size={"xs"} weight={500} color={"danger.3"}>
-                        {signupForm.errors.username}
-                    </Text>}
-                />
-                <TextInput
-                    labeltitle="شماره موبایل" color={"grey.3"}
-                    placeholder="شماره موبایل خود را وارد کنید"
-                    labelweight={700} size="md" name="phoneNumber"
-                    onChange={signupForm.handleChange}
-                    value={signupForm.values.phoneNumber}
-                    error={<Text size={"xs"} weight={500} color={"danger.3"}>
-                        {signupForm.errors.phoneNumber}
+                        {loginForm.errors.username}
                     </Text>}
                 />
                 <PasswordInput
                     labeltitle="رمز عبور" color={"grey.3"}
                     placeholder="رمز عبور خود را وارد کنید"
                     labelweight={700} size="md" name="password"
-                    onChange={signupForm.handleChange}
-                    value={signupForm.values.password}
+                    onChange={loginForm.handleChange}
+                    value={loginForm.values.password}
                     error={<Text size={"xs"} weight={500} color={"danger.3"}>
-                        {signupForm.errors.password}
+                        {loginForm.errors.password}
                     </Text>}
                 />
-                <PasswordInput
-                    labeltitle="تکرار رمز عبور" color={"grey.3"}
-                    placeholder="رمز عبور خود را دوباره وارد کنید"
-                    labelweight={700} size="md" name="repeatPassword"
-                    onChange={signupForm.handleChange}
-                    value={signupForm.values.repeatPassword}
-                    error={<Text size={"xs"} weight={500} color={"danger.3"}>
-                        {signupForm.errors.repeatPassword}
-                    </Text>}
-                />
-                <PrimaryBtn text={'ثبت نام'} type={"submit"}/>
+
+                <Box>
+                    {/* @ts-ignore*/}
+                    <Box onClick={showLoginByCodeForm}>
+                        <SecondaryBtn text={'ورود با رمز یک بار مصرف'} type={"button"}/>
+                    </Box>
+                    <PrimaryBtn text={'ورود'} type={"submit"}/>
+                </Box>
             </Stack>
             <Text align="center" mt="sm" size="sm" color={"grey.3"}>
-                حساب کاربری دارید؟{' '}
-                <Anchor color={"info.2"} onClick={onClickLoginPage}>
-                    وارد شوید
+                حساب کاربری ندارید؟{' '}
+                <Anchor color={"info.2"} onClick={onClickRegistrationPage}>
+                    ثبت نام کنید
                 </Anchor>
             </Text>
             <CountDown/>
