@@ -26,4 +26,12 @@ export const useCategoriesList = createStyles((theme) => ({
             borderColor: theme.colorScheme === 'dark' ? theme.colors.dark[7] : theme.colors.grey[1],
         },
     },
+    
+    textEllipsis: {
+        width: "100%",
+        overflow: 'hidden',
+        textOverflow: "ellipsis",
+        textAlign: 'center',
+        whiteSpace: 'nowrap',
+    }
 }));

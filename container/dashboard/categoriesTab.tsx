@@ -1,7 +1,7 @@
 import {ScrollContainer} from "../../component/inputs";
 import {Container, Group, Tabs, Text} from "@mantine/core";
 import React, {useMemo} from "react";
-import {useCategoriesList} from "./style";
+import {useCategoriesList} from "./tabs.style";
 
 class TabsItemDto {
     displayValue!: string

@@ -7,11 +7,11 @@ const accessTokenKey: string | undefined = process.env.LOCAL_STORAGE_ACCESS_TOKE
 
 export default function useUserInfo(): UseUserInfoResult {
     const [userInfo, setUserInfo] = useLocalStorage<UserDto | null>({
-        key: process.env.LOCAL_STORAGE_USER as string, serialize: JSON.stringify,
+        key: userKey as string, serialize: JSON.stringify,
         deserialize: (str) => (str === undefined ? null : JSON.parse(str)),
     });
     const [accessToken, setAccessToken] = useLocalStorage<string>({
-        key: process.env.LOCAL_STORAGE_ACCESS_TOKEN as string,
+        key:accessTokenKey as string,
     });
 
     const setNewUser = (newUser: UserDto | null): void => {
@@ -26,10 +26,15 @@ export default function useUserInfo(): UseUserInfoResult {
         }
     }
 
+    const getAccessToken = () => {
+        return window.localStorage.getItem(accessTokenKey as string)
+    }
+    
     return {
         userInfo,
         accessToken,
         setNewUser,
-        setNewAccessToken
+        setNewAccessToken,
+        getAccessToken,
     }
 }
