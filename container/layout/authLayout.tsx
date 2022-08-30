@@ -2,14 +2,10 @@ import React, {ReactNode} from "react";
 import {
     Paper,
     createStyles,
-    TextInput,
-    PasswordInput,
-    Checkbox,
-    Button,
     Title,
     Text,
-    Anchor,
-    Box, Grid, Stack
+    Box,
+    Grid
 } from '@mantine/core';
 
 const useStyles = createStyles((theme) => ({

@@ -1,13 +1,21 @@
 import type {NextPage} from 'next'
-import { Text } from '@mantine/core';
+import {DashboardHeader} from "../container/layout/dashboard";
+import CategoriesTab from "../container/dashboard/categoriesTab";
+import useUserInfo from "../hooks/useUserInfo";
+import {UserDto, UseUserInfoResult} from "../utils/types";
 
 const Home: NextPage = () => {
+    const {userInfo}:UseUserInfoResult = useUserInfo()
     return (
         <div>
-            <p>سلام دنیا</p>
-            <div dir={'ltr'}>
-                <Text size="lg" sx={{fontFamily: "Poppins"}}>ArticleLand</Text>
-            </div>
+            <DashboardHeader user={userInfo as UserDto} headerTabs={
+                !!userInfo ? <CategoriesTab tabs={[
+                    {displayValue: "هوش مصنوعی", value: 'ai'},
+                    {displayValue: "هک و امنیت", value: 'security'},
+                    {displayValue: "برنامه نویسی", value: 'programming'},
+                    {displayValue: "پادکست", value: 'podcast'},
+                ]}/> : <></>
+            }/>
         </div>
     )
 }

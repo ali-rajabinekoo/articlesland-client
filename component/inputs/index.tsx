@@ -1,15 +1,13 @@
 import {
     Text,
-    Grid,
     TextInput as BasicTextInput,
     TextInputProps as BasicTextInputProps,
     PasswordInput as BasicPasswordInput,
     PasswordInputProps as BasePasswordInputProps
 } from "@mantine/core";
-import React, {ReactNode, RefObject, useEffect, useRef, useState} from "react";
+import React, {ReactNode, RefObject} from "react";
 import {Sx} from "@mantine/styles/lib/theme/types/DefaultProps";
-import {usePasswordInputStyle, useTextInputStyle, useVerificationInputs} from "./styles";
-import {Simulate} from "react-dom/test-utils";
+import {usePasswordInputStyle, useScrollContainer, useTextInputStyle} from "./styles";
 import VerificationInput from "react-verification-input";
 
 const renderLabel = (props: TextInputProps | PasswordInputProps): ReactNode => {
@@ -83,5 +81,22 @@ export const VerificationCodeInputs = (props: VerificationCodeInputsProps): JSX.
                 onChange={props.onChange}
             />
         </div>
+    )
+}
+
+interface ScrollContainerProps {
+    children?: React.ReactNode
+    scroll?: 'x' | 'y' | 'both'
+}
+
+export const ScrollContainer = (props: ScrollContainerProps) => {
+    const {classes} = useScrollContainer()
+    return (
+        <div className={classes.scrollbar} style={props.scroll === 'x' ?
+            {overflowX: "auto", overflowY: "hidden"} :
+            props.scroll === 'y' ?
+                {overflowY: "auto", overflowX: "hidden"} :
+                {overflow: "auto"}
+        }>{props.children}</div>
     )
 }
