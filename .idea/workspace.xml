@@ -3,6 +3,12 @@
   <component name="ChangeListManager">
     <list default="true" id="e06adea9-5fca-4f6c-9da5-80729234fd31" name="Changes" comment="AL-13 &lt;Login page implementation&gt;">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/component/inputs/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/component/inputs/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/component/inputs/styles.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/component/inputs/styles.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/container/layout/authLayout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/container/layout/authLayout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/pages/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -84,6 +90,9 @@
       <workItem from="1661094070603" duration="4990000" />
       <workItem from="1661145440690" duration="41552000" />
       <workItem from="1661326270907" duration="902000" />
+      <workItem from="1661329004332" duration="703000" />
+      <workItem from="1661343285731" duration="631000" />
+      <workItem from="1661785680335" duration="87000" />
     </task>
     <task id="LOCAL-00001" summary="AL-14 &lt;Start project and fix basic configs&gt;">
       <created>1660924360896</created>

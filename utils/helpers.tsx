@@ -64,3 +64,8 @@ export class Timer {
         }, 1000)
     }
 }
+
+export const changeUrlToServerRequest = (url: string): string => {
+    const domain: string | undefined = process.env.SERVER_DOMAIN
+    return `${domain as string}${url}`
+}

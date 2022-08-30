@@ -9,13 +9,14 @@ export class UserDto {
     email: string | undefined | null
     avatar: string | undefined | null
     bio: string | undefined | null
+    displayName: string | undefined | null
     created_at: string | undefined | null
     updated_at: string | undefined | null
 }
 
 export class UseUserInfoResult {
-    getUser!: Function
-    getAccessToken!: Function
+    userInfo!: UserDto | null
+    accessToken!: string
     setNewAccessToken!: Function
     setNewUser!: Function
 }
