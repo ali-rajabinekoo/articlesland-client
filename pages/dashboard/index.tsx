@@ -5,6 +5,7 @@ import {UserDto, UseUserInfoResult} from "../../utils/types";
 import ProfileTab from "../../container/dashboard/profileTab";
 import {useEffect} from "react";
 import {NextRouter, useRouter} from "next/router";
+import ArticlesList from "../../container/dashboard/articlesList";
 
 const Dashboard: NextPage = () => {
     const {userInfo, getAccessToken}:UseUserInfoResult = useUserInfo()
@@ -20,6 +21,7 @@ const Dashboard: NextPage = () => {
             <DashboardHeader user={userInfo as UserDto} headerTabs={
                 !!userInfo ? <ProfileTab user={userInfo as UserDto}/> : <></>
             }/>
+            <ArticlesList/>
         </div>
     )
 }

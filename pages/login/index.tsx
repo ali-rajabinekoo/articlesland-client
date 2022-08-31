@@ -19,14 +19,6 @@ const Login: NextPage = () => {
     const {getApis}: UseRequestResult = useRequest()
     const {push}: NextRouter = useRouter()
 
-    const onSubmitted = (newKey: string, body?: SignupFormValues) => {
-        setKey(newKey)
-        if (!!body) setValues(body)
-        setStep(2)
-        const time: any = !!process.env.TIMER ? Date.now() + process.env.TIMER : Date.now() + -1
-        setTimer(time)
-    }
-
     const onVerified = async () => {
         await push('/')
     }

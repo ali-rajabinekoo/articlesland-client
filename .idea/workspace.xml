@@ -3,11 +3,20 @@
   <component name="ChangeListManager">
     <list default="true" id="e06adea9-5fca-4f6c-9da5-80729234fd31" name="Changes" comment="AL-13 &lt;Login page implementation&gt;">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/component/inputs/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/component/inputs/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/component/inputs/styles.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/component/inputs/styles.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/container/layout/authLayout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/container/layout/authLayout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/component/auxiliary/LoadingOverlay.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/component/auxiliary/loadingOverlay.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/component/auxiliary/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/component/auxiliary/countDown.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/component/buttons/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/component/buttons/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/container/dashboard/profileTab.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/container/dashboard/profileTab.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/container/layout/dashboard.styles.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/container/layout/dashboard.styles.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/container/layout/dashboard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/container/layout/dashboard.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/container/login/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/container/login/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/container/registration/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/container/registration/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/container/verification/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/container/verification/index.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/pages/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/dashboard/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/pages/dashboard/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/login/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/pages/login/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/apis/authentication.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/utils/apis/authentication.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/helpers.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/utils/helpers.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -49,7 +58,7 @@
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.sourceCode.TypeScript&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;editor.preferences.fonts.default&quot;,
     &quot;ts.external.directory.path&quot;: &quot;/home/rajabi/Projects/articlesland/articlesland-client/node_modules/typescript/lib&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
@@ -93,6 +102,11 @@
       <workItem from="1661329004332" duration="703000" />
       <workItem from="1661343285731" duration="631000" />
       <workItem from="1661785680335" duration="87000" />
+      <workItem from="1661863519042" duration="1775000" />
+      <workItem from="1661928553110" duration="3104000" />
+      <workItem from="1661931663821" duration="119000" />
+      <workItem from="1661931788948" duration="1842000" />
+      <workItem from="1661933784070" duration="9176000" />
     </task>
     <task id="LOCAL-00001" summary="AL-14 &lt;Start project and fix basic configs&gt;">
       <created>1660924360896</created>

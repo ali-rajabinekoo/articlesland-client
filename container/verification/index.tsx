@@ -17,8 +17,8 @@ import {errorHandler, normalizePhoneNumber, Timer} from "../../utils/helpers";
 import useUserInfo from "../../hooks/useUserInfo";
 import {showNotification} from "@mantine/notifications";
 import {IconCheck, IconChevronLeft} from "@tabler/icons";
-import {CountDown} from "../../component/auxiliary";
-import {LoadingOverlay} from "../../component/auxiliary/LoadingOverlay";
+import {CountDown} from "../../component/auxiliary/countDown";
+import {LoadingOverlay} from "../../component/auxiliary/loadingOverlay";
 import {useFormik} from "formik";
 import {LoginValidationSchema, SendLoginCodeSchema} from "../../utils/validators";
 

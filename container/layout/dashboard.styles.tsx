@@ -4,7 +4,7 @@ export const useDashboardLayoutStyles = createStyles((theme) => ({
     header: {
         paddingTop: theme.spacing.sm,
         backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[6] : theme.colors.grey[0],
-        marginBottom: 120,
+        marginBottom: theme.spacing.xl,
     },
 
     mainSection: {

@@ -14,7 +14,7 @@ export default function ProfileTab({user}: ProfileProps) {
     const {classes} = useCategoriesList();
     return (
         <div>
-            <Group position={'center'} style={!!user ? {} : {display: 'none'}} mb={48 - 32} mt={58 - 32}>
+            <Group position={'center'} style={!!user ? {} : {display: 'none'}} mb={'sm'} mt={'lg'}>
                 <Stack align={'center'} spacing={'sm'} sx={{maxWidth: 1000}} p={'lg'}>
                     <Avatar radius={50} size={75} src={changeUrlToServerRequest(user?.avatar as string)}/>
                     <Text size={'lg'} weight={700} className={classes.textEllipsis}>
@@ -33,8 +33,8 @@ export default function ProfileTab({user}: ProfileProps) {
                         </Text>
                     </Group>
                     <Group position={'center'} spacing={'sm'}>
-                        <SecondaryBtn text={'تنظیمات حساب کاربری'} capsule={true}/>
-                        <PrimaryBtn text={'نوشتن پست جدید'} capsule={true}/>
+                        <SecondaryBtn text={'تنظیمات حساب کاربری'} capsule={"true"}/>
+                        <PrimaryBtn text={'نوشتن پست جدید'} capsule={"true"}/>
                     </Group>
                 </Stack>
             </Group>

@@ -23,6 +23,7 @@ export const errorHandler = (e: AxiosError | any) => {
             })
         }
     } else {
+        console.log(e)
         showNotification({
             message: appMessages.somethingWentWrong,
             title: 'خطا',
