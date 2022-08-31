@@ -13,8 +13,8 @@ import {errorHandler} from "../../utils/helpers";
 import {showNotification} from "@mantine/notifications";
 import {IconCheck, IconChevronLeft} from "@tabler/icons";
 import {appMessages} from "../../utils/messages";
-import {CountDown} from "../../component/auxiliary";
-import {LoadingOverlay} from "../../component/auxiliary/LoadingOverlay";
+import {CountDown} from "../../component/auxiliary/countDown";
+import {LoadingOverlay} from "../../component/auxiliary/loadingOverlay";
 
 export const RegistrationFormTitle = () => {
     const {classes} = useRegistrationFormStyle()

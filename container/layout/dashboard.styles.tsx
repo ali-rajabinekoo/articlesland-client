@@ -4,7 +4,7 @@ export const useDashboardLayoutStyles = createStyles((theme) => ({
     header: {
         paddingTop: theme.spacing.sm,
         backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[6] : theme.colors.grey[0],
-        marginBottom: 120,
+        marginBottom: theme.spacing.xl,
     },
 
     mainSection: {
@@ -20,9 +20,30 @@ export const useDashboardLayoutStyles = createStyles((theme) => ({
         '&:hover': {
             backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[8] : theme.white,
         },
-
+    },
+    
+    userInfo: {
         [theme.fn.smallerThan('xs')]: {
             display: 'none',
+        },  
+    },
+    
+    headerTitle: {
+        fontFamily: 'Poppins',
+        color: theme.colors.secondary[3],
+        fontWeight: 600,
+        fontSize: theme.fontSizes.xl,
+        [theme.fn.smallerThan('md')]: {
+            fontSize: theme.fontSizes.lg,
+        },
+        [theme.fn.smallerThan('xs')]: {
+            fontSize: theme.fontSizes.md,
+        },
+    },
+
+    headerTitleIcon: {
+        [theme.fn.smallerThan('xs')]: {
+            display: 'none'
         },
     },
 

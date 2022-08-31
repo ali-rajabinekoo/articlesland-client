@@ -19,6 +19,7 @@ export class UseUserInfoResult {
     accessToken!: string
     setNewAccessToken!: Function
     setNewUser!: Function
+    getAccessToken!: Function
 }
 
 export class UseRequestResult {
