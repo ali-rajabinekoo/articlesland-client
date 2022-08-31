@@ -1,23 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e06adea9-5fca-4f6c-9da5-80729234fd31" name="Changes" comment="AL-13 &lt;Login page implementation&gt;">
+    <list default="true" id="e06adea9-5fca-4f6c-9da5-80729234fd31" name="Changes" comment="AL-27 &lt;Add articles card and list&gt;">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/component/auxiliary/LoadingOverlay.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/component/auxiliary/loadingOverlay.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/component/auxiliary/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/component/auxiliary/countDown.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/component/buttons/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/component/buttons/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/container/dashboard/profileTab.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/container/dashboard/profileTab.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/container/layout/dashboard.styles.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/container/layout/dashboard.styles.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/container/layout/dashboard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/container/layout/dashboard.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/container/login/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/container/login/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/container/registration/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/container/registration/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/container/verification/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/container/verification/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/dashboard/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/pages/dashboard/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/login/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/pages/login/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/apis/authentication.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/utils/apis/authentication.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/helpers.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/utils/helpers.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -107,6 +92,7 @@
       <workItem from="1661931663821" duration="119000" />
       <workItem from="1661931788948" duration="1842000" />
       <workItem from="1661933784070" duration="9176000" />
+      <workItem from="1661943996083" duration="710000" />
     </task>
     <task id="LOCAL-00001" summary="AL-14 &lt;Start project and fix basic configs&gt;">
       <created>1660924360896</created>
@@ -136,7 +122,14 @@
       <option name="project" value="LOCAL" />
       <updated>1661192038441</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="AL-27 &lt;Add articles card and list&gt;">
+      <created>1661944101160</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1661944101160</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -158,6 +151,7 @@
     <MESSAGE value="AL-12 &lt;Start project and fix basic configs&gt;" />
     <MESSAGE value="AL-12 &lt;Connect APIs and verification code&gt;" />
     <MESSAGE value="AL-13 &lt;Login page implementation&gt;" />
-    <option name="LAST_COMMIT_MESSAGE" value="AL-13 &lt;Login page implementation&gt;" />
+    <MESSAGE value="AL-27 &lt;Add articles card and list&gt;" />
+    <option name="LAST_COMMIT_MESSAGE" value="AL-27 &lt;Add articles card and list&gt;" />
   </component>
 </project>
