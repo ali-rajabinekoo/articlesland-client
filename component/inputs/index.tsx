@@ -3,12 +3,13 @@ import {
     TextInput as BasicTextInput,
     TextInputProps as BasicTextInputProps,
     PasswordInput as BasicPasswordInput,
-    PasswordInputProps as BasePasswordInputProps
+    PasswordInputProps as BasePasswordInputProps, Box
 } from "@mantine/core";
-import React, {ReactNode, RefObject} from "react";
+import React, {ReactNode, RefObject, useEffect, useState} from "react";
 import {Sx} from "@mantine/styles/lib/theme/types/DefaultProps";
 import {usePasswordInputStyle, useScrollContainer, useTextInputStyle} from "./styles";
 import VerificationInput from "react-verification-input";
+import {useMutex} from "react-context-mutex";
 
 const renderLabel = (props: TextInputProps | PasswordInputProps): ReactNode => {
     let sx: Sx = {}
@@ -99,4 +100,45 @@ export const ScrollContainer = (props: ScrollContainerProps) => {
                 {overflow: "auto"}
         }>{props.children}</div>
     )
+}
+
+interface ArticlesLandEditorProps {
+    className?: string | undefined
+}
+
+export const ArticlesLandEditor = ({className}: ArticlesLandEditorProps): JSX.Element => {
+    const [counter, setCounter] = useState<number>(0)
+    const [editor, setEditor] = useState<any>(false)
+    const MutexRunner = useMutex();
+    const mutex = new MutexRunner('myUniqueKey1');
+
+    mutex.run(() => {
+        mutex.lock();
+        try {
+            // @ts-ignore
+            window?.ClassicEditor.create(document.querySelector(".articles-land-editor"), {
+                licenseKey: process.env.CKEDITOR_LICENSE,
+            })
+                .then((_editor: any) => {
+                    setEditor(_editor)
+                })
+                .catch((error: any) => {
+                    setCounter(counter + 1)
+                    if (counter < 5) mutex.unlock();
+                    else {
+                        console.error("Oops, something went wrong!");
+                        console.error(
+                            "Please, report the following error on https://github.com/ckeditor/ckeditor5/issues with the build id and the error stack trace:"
+                        );
+                        console.warn("Build id: e7bv9hmkfiph-a66fxojvt5nn");
+                        console.error(error);
+                    }
+                });
+        } catch (e) {
+        }
+    });
+
+    return (<div dir={"ltr"}>
+        <Box className={`articles-land-editor ${className}`}></Box>
+    </div>);
 }

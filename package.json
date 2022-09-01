@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "build:editor": "npm add file:./ckeditor5 --force"
   },
   "dependencies": {
     "@emotion/react": "^11.10.0",
@@ -32,6 +33,7 @@
     "formik": "^2.2.9",
     "next": "12.2.5",
     "react": "18.2.0",
+    "react-context-mutex": "^2.0.0",
     "react-countdown": "^2.3.2",
     "react-dom": "18.2.0",
     "react-verification-input": "^3.0.0",

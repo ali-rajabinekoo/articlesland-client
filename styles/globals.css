@@ -2,7 +2,7 @@
 @import "fonts/Poppins/Poppins.css";
 @import "components/verificationInput.css";
 
-* {
+* :not(.ck-editor__editable *) {
   padding: 0;
   margin: 0;
   box-sizing: border-box;

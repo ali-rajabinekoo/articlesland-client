@@ -32,19 +32,6 @@ export const usePasswordInputStyle = createStyles((theme) => ({
     }
 }));
 
-export const useVerificationInputs = createStyles((theme) => ({
-    input: {
-        '& .mantine-Input-input': {
-            backgroundColor: theme.colors.grey[0],
-            border: `1px solid ${theme.colors.grey[0]} !important`,
-            borderRadius: '8px',
-            textAlign: "center",
-            fontSize: theme.fontSizes.sm,
-            color: theme.colors.grey[3],
-        }
-    }
-}));
-
 export const useScrollContainer = createStyles((theme) => ({
     scrollbar: {
         '&::-webkit-scrollbar': {

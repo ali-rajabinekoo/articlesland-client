@@ -5,13 +5,14 @@ const getInitialProps = createGetInitialProps();
 
 export default class _Document extends Document {
     static getInitialProps: any = getInitialProps;
-
+    
     render() {
         return (
             <Html>
                 <Head>
                     <meta name="description" content="Programmed by Ali Rajabi Nekoo"/>
                     <link rel="icon" href="/assets/images/icon.png"/>
+                    <script async={false} src={"/scripts/ckeditor.js"}></script>
                 </Head>
                 <body>
                 <Main/>
