@@ -26,6 +26,11 @@ export class UseRequestResult {
     getApis!: Function
 }
 
+export class UseArticlesLandEditorDirectionResult {
+    init!: Function
+    direction!: 'rtl' | 'ltr'
+}
+
 // formik
 
 export class SignupFormValues {

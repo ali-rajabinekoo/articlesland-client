@@ -11,6 +11,10 @@ const rtlCache = createEmotionCache({
     stylisPlugins: [rtlPlugin],
 });
 
+declare global {
+    interface Window { editor: any; }
+}
+
 export default function App(props: AppProps) {
     const {Component, pageProps} = props;
 

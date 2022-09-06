@@ -1,0 +1,11 @@
+.ck-toolbar {
+    direction: rtl;
+}
+
+div.articles-land-editor-container.rtl > div.ck.ck-reset.ck-editor.ck-rounded-corners > div.ck.ck-editor__main > div {
+    direction: rtl;
+}
+
+div.articles-land-editor-container.ltr > div.ck.ck-reset.ck-editor.ck-rounded-corners > div.ck.ck-editor__main > div {
+    direction: ltr;
+}

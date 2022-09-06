@@ -7,9 +7,10 @@ import {
 } from "@mantine/core";
 import React, {ReactNode, RefObject, useEffect, useState} from "react";
 import {Sx} from "@mantine/styles/lib/theme/types/DefaultProps";
-import {usePasswordInputStyle, useScrollContainer, useTextInputStyle} from "./styles";
+import {useFloatingLabelInputStyle, usePasswordInputStyle, useScrollContainer, useTextInputStyle} from "./styles";
 import VerificationInput from "react-verification-input";
 import {useMutex} from "react-context-mutex";
+import useArticleLandEditorDirection from "../../hooks/editorDirection";
 
 const renderLabel = (props: TextInputProps | PasswordInputProps): ReactNode => {
     let sx: Sx = {}
@@ -106,39 +107,82 @@ interface ArticlesLandEditorProps {
     className?: string | undefined
 }
 
+let editor: any
+
 export const ArticlesLandEditor = ({className}: ArticlesLandEditorProps): JSX.Element => {
     const [counter, setCounter] = useState<number>(0)
-    const [editor, setEditor] = useState<any>(false)
+    const {direction, init} = useArticleLandEditorDirection()
     const MutexRunner = useMutex();
     const mutex = new MutexRunner('myUniqueKey1');
 
-    mutex.run(() => {
-        mutex.lock();
-        try {
-            // @ts-ignore
-            window?.ClassicEditor.create(document.querySelector(".articles-land-editor"), {
-                licenseKey: process.env.CKEDITOR_LICENSE,
-            })
-                .then((_editor: any) => {
-                    setEditor(_editor)
-                })
-                .catch((error: any) => {
-                    setCounter(counter + 1)
-                    if (counter < 5) mutex.unlock();
-                    else {
-                        console.error("Oops, something went wrong!");
-                        console.error(
-                            "Please, report the following error on https://github.com/ckeditor/ckeditor5/issues with the build id and the error stack trace:"
-                        );
-                        console.warn("Build id: e7bv9hmkfiph-a66fxojvt5nn");
-                        console.error(error);
-                    }
-                });
-        } catch (e) {
+    const createEditor = (_editor: any) => {
+        if (!window.editor) {
+            window.editor = {}
         }
-    });
+        window.editor = _editor
+    }
 
-    return (<div dir={"ltr"}>
-        <Box className={`articles-land-editor ${className}`}></Box>
+    useEffect(() => {
+        mutex.run(() => {
+            mutex.lock();
+            try {
+                // @ts-ignore
+                window?.ClassicEditor.create(document.querySelector(".articles-land-editor"), {
+                    licenseKey: process.env.CKEDITOR_LICENSE,
+                    config: {
+                        htmlEncodeOutput: true
+                    }
+                })
+                    .then((_editor: any) => {
+                        createEditor(_editor)
+                        init()
+                    })
+                    .catch((error: any) => {
+                        setCounter(counter + 1)
+                        if (counter < 5) mutex.unlock();
+                        else {
+                            console.error("Oops, something went wrong!");
+                            console.error(
+                                "Please, report the following error on https://github.com/ckeditor/ckeditor5/issues with the build id and the error stack trace:"
+                            );
+                            console.warn("Build id: e7bv9hmkfiph-a66fxojvt5nn");
+                            console.error(error);
+                        }
+                    });
+            } catch (e) {
+            }
+        });
+    }, [])
+
+    return (<div dir={"ltr"} className={`articles-land-editor-container ${direction} ${className ? className : ''}`}>
+        <div className={`articles-land-editor`}></div>
+        <button onClick={() => {
+            console.log(window.editor.getData())
+        }}>test
+        </button>
     </div>);
 }
+
+export function FloatingLabelInput(props: TextInputProps) {
+    const [focused, setFocused] = useState(false);
+    const {classes} = useFloatingLabelInputStyle({
+        floating: (props?.value as string)?.trim()?.length !== 0 || focused
+    });
+    const {classes: textInputClasses} = useTextInputStyle()
+
+    return (
+        <BasicTextInput
+            label={renderLabel(props)}
+            ref={props.customref}
+            classNames={classes}
+            className={textInputClasses.input}
+            onFocus={() => setFocused(true)}
+            onBlur={() => setFocused(false)}
+            mt="md"
+            autoComplete="nope"
+            color={"grey.2"}
+            {...props}
+        />
+    );
+}
+
