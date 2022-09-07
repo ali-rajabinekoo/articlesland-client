@@ -50,7 +50,7 @@ export default function ProfileTab({user}: ProfileProps) {
                                     <Text size={'sm'} weight={400}>لایک شده ها</Text>
                                 </Tabs.Tab>
                                 <Tabs.Tab value={'bookmarks'} className={classes.tab}>
-                                    <Text size={'sm'} weight={400}>دخیره شده ها</Text>
+                                    <Text size={'sm'} weight={400}>ذخیره شده ها</Text>
                                 </Tabs.Tab>
                             </Group>
                         </Container>

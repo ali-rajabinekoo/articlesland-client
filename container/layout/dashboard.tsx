@@ -15,7 +15,7 @@ import {changeUrlToServerRequest} from "../../utils/helpers";
 
 interface DashboardHeaderProps {
     user: UserDto | undefined;
-    headerTabs?: React.ReactNode | JSX.Element
+    headerTabs?: React.ReactNode | JSX.Element | undefined
 }
 
 export function DashboardHeader({user, headerTabs}: DashboardHeaderProps) {
@@ -23,7 +23,7 @@ export function DashboardHeader({user, headerTabs}: DashboardHeaderProps) {
     const [userMenuOpened, setUserMenuOpened] = useState(false);
 
     return (
-        <div className={classes.header}>
+        <div className={cx(classes.header, {[classes.headerBorder]: !headerTabs})}>
             <Container className={classes.mainSection} size={'xl'} dir={'ltr'}>
                 <Group position="apart" sx={{flexWrap: 'nowrap'}}>
                     <Group align={'center'} spacing={'xs'} sx={{flexWrap: 'nowrap'}}>

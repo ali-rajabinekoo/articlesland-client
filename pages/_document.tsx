@@ -5,7 +5,7 @@ const getInitialProps = createGetInitialProps();
 
 export default class _Document extends Document {
     static getInitialProps: any = getInitialProps;
-    
+
     render() {
         return (
             <Html>

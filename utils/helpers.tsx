@@ -1,6 +1,9 @@
 import {AxiosError} from "axios";
 import {showNotification} from "@mantine/notifications";
 import {appMessages} from "./messages";
+import moment from "moment/moment";
+import {IconAlertCircle} from "@tabler/icons";
+import React from "react";
 
 export const errorHandler = (e: AxiosError | any) => {
     if (e instanceof AxiosError) {
@@ -12,6 +15,7 @@ export const errorHandler = (e: AxiosError | any) => {
                     title: 'خطا',
                     autoClose: 1500,
                     color: 'red',
+                    icon: <IconAlertCircle size={20}/>
                 })
             }
         } else {
@@ -20,6 +24,7 @@ export const errorHandler = (e: AxiosError | any) => {
                 title: 'خطا',
                 autoClose: 1500,
                 color: 'red',
+                icon: <IconAlertCircle size={20}/>
             })
         }
     } else {
@@ -29,6 +34,7 @@ export const errorHandler = (e: AxiosError | any) => {
             title: 'خطا',
             autoClose: 3000,
             color: 'red',
+            icon: <IconAlertCircle size={20}/>
         })
     }
 }
@@ -40,30 +46,8 @@ export const normalizePhoneNumber = (mobile: string): string => {
     return newMobile;
 }
 
-export class Timer {
-    minutes: number = 0
-    seconds: number = 0
-    timeInterval: any
-
-    constructor() {
-        this.seconds = 0
-        this.minutes = 2
-        this.timeInterval = setInterval(() => {
-            if (this.seconds === 0) {
-                if (this.minutes - 1 !== -1) {
-                    this.minutes = this.minutes - 1
-                    this.seconds = 59
-                } else {
-                    clearInterval(this.timeInterval)
-                }
-            } else {
-                this.seconds = this.seconds - 1
-            }
-            if (this.minutes === 0 && this.seconds === 0) {
-                clearInterval(this.timeInterval)
-            }
-        }, 1000)
-    }
+export const articlesLandMoment = () => {
+    return moment()
 }
 
 export const changeUrlToServerRequest = (url: string): string => {

@@ -1,0 +1,15 @@
+.ck-toolbar {
+    direction: rtl;
+}
+
+div.articles-land-editor-container.rtl > div.ck.ck-reset.ck-editor.ck-rounded-corners > div.ck.ck-editor__main > div {
+    direction: rtl;
+}
+
+div.articles-land-editor-container.ltr > div.ck.ck-reset.ck-editor.ck-rounded-corners > div.ck.ck-editor__main > div {
+    direction: ltr;
+}
+
+div.articles-land-editor-container > div.ck.ck-reset.ck-editor.ck-rounded-corners > div.ck.ck-editor__top.ck-reset_all > div > div.ck.ck-sticky-panel__content > div > div > div.ck.ck-dropdown.ck-toolbar-dropdown.ck-alignment-dropdown > div > div > div > button:nth-child(2) {
+
+}

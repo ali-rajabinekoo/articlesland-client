@@ -1,4 +1,5 @@
 import {MantineThemeOverride} from "@mantine/styles/lib/theme/types";
+import '@djthoms/pretty-checkbox';
 
 export const appTheme: MantineThemeOverride = {
     dir: 'rtl',
@@ -20,7 +21,7 @@ export const appTheme: MantineThemeOverride = {
     colors: {
         primary: ['#FAF7EB', '#EDD983', '#C9AE39', '#B49820', '#8F7607'],
         secondary: ['#D6DCFF', '#8292F0', '#4522CF', '#361E98', '#302368'],
-        grey: ['#F0F1F7', '#C2C4C9', '#A3A3A3', '#7B7B7B', '#565656'],
+        grey: ['#F0F1F7', '#C2C4C9', '#A3A3A3', '#7B7B7B', '#565656', '#4B4B4B'],
         danger: ['#FFC0C6', '#EE6F7B', '#DC3545', '#C91223', '#A40010'],
         warning: ['#FFECB4', '#FFD559', '#FFC107', '#DCA501', '#C79500'],
         info: ['#E8EBFF', '#9AA7FF', '#0021FF', '#0019C2', '#001184'],

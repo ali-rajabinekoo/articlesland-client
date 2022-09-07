@@ -7,6 +7,10 @@ export const useDashboardLayoutStyles = createStyles((theme) => ({
         marginBottom: theme.spacing.xl,
     },
 
+    headerBorder: {
+        borderBottom: `1px solid ${theme.colors.grey[1]}`
+    },
+
     mainSection: {
         paddingBottom: theme.spacing.sm,
     },
@@ -21,13 +25,13 @@ export const useDashboardLayoutStyles = createStyles((theme) => ({
             backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[8] : theme.white,
         },
     },
-    
+
     userInfo: {
         [theme.fn.smallerThan('xs')]: {
             display: 'none',
-        },  
+        },
     },
-    
+
     headerTitle: {
         fontFamily: 'Poppins',
         color: theme.colors.secondary[3],

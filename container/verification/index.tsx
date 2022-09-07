@@ -5,7 +5,8 @@ import {TextInput, VerificationCodeInputs} from "../../component/inputs";
 import {PrimaryBtn} from "../../component/buttons";
 import {appMessages, validationMessages} from "../../utils/messages";
 import {
-    APIS, LoginFormValues, SendLoginCodeValues, SignupFormValues, VerificationResponse,
+    APIS,
+    SendLoginCodeValues,
     UseRequestResult,
     UseUserInfoResult,
     VerificationBody,
@@ -13,14 +14,14 @@ import {
 } from "../../utils/types";
 import useRequest from "../../hooks/useRequest";
 import {AxiosError, AxiosResponse} from "axios";
-import {errorHandler, normalizePhoneNumber, Timer} from "../../utils/helpers";
+import {errorHandler, normalizePhoneNumber} from "../../utils/helpers";
 import useUserInfo from "../../hooks/useUserInfo";
 import {showNotification} from "@mantine/notifications";
 import {IconCheck, IconChevronLeft} from "@tabler/icons";
 import {CountDown} from "../../component/auxiliary/countDown";
 import {LoadingOverlay} from "../../component/auxiliary/loadingOverlay";
 import {useFormik} from "formik";
-import {LoginValidationSchema, SendLoginCodeSchema} from "../../utils/validators";
+import {SendLoginCodeSchema} from "../../utils/validators";
 
 class VerificationFormTitleProps {
     back?: Function | undefined

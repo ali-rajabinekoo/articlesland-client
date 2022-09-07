@@ -1,19 +1,22 @@
 import {createStyles} from '@mantine/core';
 
-export const useTextInputStyle = createStyles((theme) => ({
-    input: {
-        '& .mantine-Input-input': {
-            border: `1px solid ${theme.colors.grey[0]} !important`,
-            borderRadius: '8px',
-            backgroundColor: "#FCFDFE",
-            fontSize: theme.fontSizes.sm,
-            color: theme.colors.grey[3]
-        },
-        '& .mantine-Input-input::placeholder': {
-            color: theme.colors.grey[3]
-        }
+export const useTextInputStyle = createStyles((theme, {darker}: { darker?: boolean | undefined }) => {
+        return ({
+            input: {
+                '& .mantine-Input-input': {
+                    border: `1px solid ${theme.colors.grey[0]} !important`,
+                    borderRadius: '8px',
+                    backgroundColor: "#FCFDFE",
+                    fontSize: theme.fontSizes.sm,
+                    color: !!darker ? theme.colors.grey[5] : theme.colors.grey[3]
+                },
+                '& .mantine-Input-input::placeholder': {
+                    color: !!darker ? theme.colors.grey[5] : theme.colors.grey[3]
+                }
+            }
+        })
     }
-}));
+);
 
 export const usePasswordInputStyle = createStyles((theme) => ({
     input: {
@@ -58,3 +61,52 @@ export const useScrollContainer = createStyles((theme) => ({
         },
     }
 }))
+
+export const useFloatingLabelInputStyle = createStyles((theme, {floating}: { floating: boolean }) => ({
+    root: {
+        position: 'relative',
+    },
+
+    label: {
+        position: 'absolute',
+        zIndex: 2,
+        top: 7,
+        left: theme.spacing.sm,
+        pointerEvents: 'none',
+        color: floating
+            ? theme.colorScheme === 'dark'
+                ? theme.white
+                : theme.colors.grey[4]
+            : theme.colorScheme === 'dark'
+                ? theme.colors.dark[3]
+                : theme.colors.grey[4],
+        transition: 'transform 150ms ease, color 150ms ease, font-size 150ms ease',
+        transform: floating ? `translate(-${theme.spacing.sm}px, -28px)` : 'none',
+        fontSize: floating ? theme.fontSizes.xs : theme.fontSizes.sm,
+        fontWeight: floating ? 500 : 400,
+    },
+
+    required: {
+        transition: 'opacity 150ms ease',
+        opacity: floating ? 1 : 0,
+    },
+
+    input: {
+        '& .mantine-Input-input': {
+            border: `1px solid ${theme.colors.grey[0]} !important`,
+            borderRadius: '8px',
+            backgroundColor: "#FCFDFE",
+            fontSize: theme.fontSizes.sm,
+            color: `${theme.colors.grey[3]} !important`
+        },
+        '& .mantine-Input-input::placeholder': {
+            color: theme.colors.grey[5]
+        }
+    }
+}));
+
+export const useCheckboxStyle = createStyles(() => ({
+    checkbox: {
+        borderRadius: "50%"
+    }
+}));

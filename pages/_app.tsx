@@ -5,17 +5,25 @@ import rtlPlugin from 'stylis-plugin-rtl';
 import "../styles/globals.css";
 import {appTheme} from "./_app.style";
 import {NotificationsProvider} from "@mantine/notifications";
+import {RecoilRoot} from 'recoil';
+import moment from "moment-jalaali";
+
+moment.loadPersian({dialect: 'persian-modern'})
 
 const rtlCache = createEmotionCache({
     key: 'mantine-rtl',
     stylisPlugins: [rtlPlugin],
 });
 
+declare global {
+    interface Window { editor: any; }
+}
+
 export default function App(props: AppProps) {
     const {Component, pageProps} = props;
 
     return (
-        <>
+        <RecoilRoot>
             <Head>
                 <title>Articles Land</title>
                 <meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width"/>
@@ -33,6 +41,6 @@ export default function App(props: AppProps) {
                     </NotificationsProvider>
                 </MantineProvider>
             </div>
-        </>
+        </RecoilRoot>
     );
 }
