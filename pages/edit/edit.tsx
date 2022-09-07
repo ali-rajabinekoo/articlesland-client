@@ -1,13 +1,15 @@
 import {APIS, GetArticleResponseDto, UserDto, UseRequestResult, UseUserInfoResult} from "../../utils/types";
 import {DashboardHeader} from "../../container/layout/dashboard";
 import useUserInfo from "../../hooks/useUserInfo";
-import EditContainer from "../../container/edit";
+import EditContainer from "../../container/edit/editContainer";
+import Posting from "../../container/edit/posting";
 import {NextRouter, useRouter} from "next/router";
-import {useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 import useRequest from "../../hooks/useRequest";
 import {AxiosError, AxiosResponse} from "axios";
 import {errorHandler} from "../../utils/helpers";
 import {showNotification} from "@mantine/notifications";
+import {IconAlertCircle} from "@tabler/icons";
 
 const EditPage = (): JSX.Element => {
     const {userInfo}: UseUserInfoResult = useUserInfo()
@@ -25,6 +27,7 @@ const EditPage = (): JSX.Element => {
                     title: 'خطا',
                     autoClose: 3000,
                     color: 'red',
+                    icon: <IconAlertCircle size={20}/>
                 })
                 return null
             } else {
@@ -52,7 +55,10 @@ const EditPage = (): JSX.Element => {
     return (
         <div>
             <DashboardHeader user={userInfo as UserDto}/>
-            <EditContainer article={article} onUpdateArticle={!!article ? onUpdateArticle : undefined}/>
+            {
+                query?.posting === "true" ? <Posting article={article as GetArticleResponseDto}/> :
+                    <EditContainer article={article} onUpdateArticle={!!article ? onUpdateArticle : undefined}/>
+            }
         </div>
     )
 }

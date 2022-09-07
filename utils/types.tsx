@@ -1,5 +1,6 @@
 import {Authentication} from "./apis/authentication";
 import {Article} from "./apis/article";
+import {Category} from "./apis/category";
 
 // DTOs
 
@@ -61,7 +62,19 @@ export class UseRequestResult {
 
 export class UseArticlesLandEditorDirectionResult {
     init!: Function
+    check!: Function
     direction!: 'rtl' | 'ltr'
+}
+
+export class UseFetchCategoriesResult {
+    categories!: SelectInputItem[]
+}
+
+// inputs
+
+export class SelectInputItem {
+    value!: string | number
+    label!: string
 }
 
 // formik
@@ -87,6 +100,12 @@ export class SendLoginCodeValues {
 export class APIS {
     auth!: Authentication
     article!: Article
+    category!: Category
+}
+
+export class PublicAPIS {
+    auth!: Authentication
+    category!: Category
 }
 
 export class RequestParams {
@@ -115,4 +134,10 @@ export class UserAndTokenResponse {
 export class CreateArticleValues {
     title!: string;
     body!: string;
+}
+
+// styles
+
+export class ReadArticleBannerProps {
+    src?: string | undefined
 }

@@ -2,6 +2,8 @@ import {RequestParams} from "./types";
 import axios, {AxiosError, AxiosRequestConfig, AxiosResponse} from "axios";
 import {showNotification} from "@mantine/notifications";
 import {appMessages} from "./messages";
+import {IconAlertCircle} from "@tabler/icons";
+import React from "react";
 
 export class Request {
     controller: AbortController | undefined
@@ -37,6 +39,7 @@ export class Request {
                     title: 'خطا',
                     autoClose: 2000,
                     color: 'red',
+                    icon: <IconAlertCircle size={20}/>
                 })
                 setTimeout(() => {
                     window.location.href = "/login";

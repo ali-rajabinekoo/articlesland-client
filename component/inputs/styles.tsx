@@ -104,3 +104,9 @@ export const useFloatingLabelInputStyle = createStyles((theme, {floating}: { flo
         }
     }
 }));
+
+export const useCheckboxStyle = createStyles(() => ({
+    checkbox: {
+        borderRadius: "50%"
+    }
+}));

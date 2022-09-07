@@ -3,15 +3,22 @@ import {
     TextInput as BasicTextInput,
     TextInputProps as BasicTextInputProps,
     PasswordInput as BasicPasswordInput,
-    PasswordInputProps as BasePasswordInputProps,
+    PasswordInputProps as BasePasswordInputProps, Select, SelectProps,
 } from "@mantine/core";
 import React, {ReactNode, RefObject, useEffect, useState} from "react";
 import {Sx} from "@mantine/styles/lib/theme/types/DefaultProps";
-import {useFloatingLabelInputStyle, usePasswordInputStyle, useScrollContainer, useTextInputStyle} from "./styles";
+import {
+    useCheckboxStyle,
+    useFloatingLabelInputStyle,
+    usePasswordInputStyle,
+    useScrollContainer,
+    useTextInputStyle
+} from "./styles";
 import VerificationInput from "react-verification-input";
 import {useMutex} from "react-context-mutex";
 import useArticleLandEditorDirection from "../../hooks/editorDirection";
 import {GetArticleResponseDto} from "../../utils/types";
+import {v4 as uuidV4} from 'uuid';
 
 const renderLabel = (props: TextInputProps | PasswordInputProps): ReactNode => {
     let sx: Sx = {}
@@ -111,9 +118,9 @@ interface ArticlesLandEditorProps {
 
 export const ArticlesLandEditor = ({className, data}: ArticlesLandEditorProps): JSX.Element => {
     const [counter, setCounter] = useState<number>(0)
-    const {direction, init} = useArticleLandEditorDirection()
+    const {direction, init, check} = useArticleLandEditorDirection()
     const MutexRunner = useMutex();
-    const mutex = new MutexRunner("uniqueKey");
+    const mutex = new MutexRunner(uuidV4());
 
     const createEditorInstance = (_editor: any) => {
         window.editor = _editor
@@ -130,6 +137,10 @@ export const ArticlesLandEditor = ({className, data}: ArticlesLandEditorProps): 
             .then((_editor: any) => {
                 createEditorInstance(_editor)
                 init()
+                if (!!data?.body) {
+                    // @ts-ignore
+                    window.editor.setData(data.body)
+                }
             })
             .catch((error: any) => {
                 setCounter(counter + 1)
@@ -146,6 +157,15 @@ export const ArticlesLandEditor = ({className, data}: ArticlesLandEditorProps): 
     }
 
     useEffect(() => {
+        if (!!window.editor) {
+            if (!check()) {
+                mutex.run(() => {
+                    mutex.lock();
+                    generateEditor(mutex);
+                });
+            }
+            return undefined
+        }
         mutex.run(() => {
             mutex.lock();
             generateEditor(mutex);
@@ -190,3 +210,33 @@ export function FloatingLabelInput(props: TextInputProps) {
     );
 }
 
+export function SelectInput(props: SelectProps) {
+    const {classes: textInputClasses} = useTextInputStyle({darker: true})
+
+    return (
+        <Select
+            nothingFound={<Text size={"md"} color={"grey.4"}>هیچ موردی پیدا نشد</Text>}
+            maxDropdownHeight={!!props.maxDropdownHeight ? props.maxDropdownHeight : 280}
+            className={textInputClasses.input}
+            styles={(theme) => ({
+                item: {
+                    // applies styles to selected item
+                    '&[data-selected]': {
+                        '&, &:hover': {
+                            backgroundColor:
+                                theme.colorScheme === 'dark' ? theme.colors.teal[9] : theme.colors.grey[0],
+                            color: theme.colorScheme === 'dark' ? theme.white : theme.colors.grey[5],
+                        },
+                    },
+
+                    // applies styles to hovered item (with mouse or keyboard)
+                    '&[data-hovered]': {},
+                    color: theme.colorScheme === 'dark' ? theme.white : theme.colors.grey[5],
+                },
+            })}
+            searchable={true}
+            clearable={true}
+            {...props}
+        />
+    )
+}

@@ -10,6 +10,7 @@ import useRequest from "../../hooks/useRequest";
 import {APIS, CreateArticleValues, GetArticleResponseDto, UseRequestResult} from "../../utils/types";
 import {NextRouter, useRouter} from "next/router";
 import {appMessages} from "../../utils/messages";
+import {IconAlertCircle} from "@tabler/icons";
 
 class EditContainerProps {
     article?: GetArticleResponseDto
@@ -23,6 +24,7 @@ class CheckDataResult {
 
 const EditContainer = ({article, onUpdateArticle}: EditContainerProps) => {
     const [title, setTitle] = useState<string>('');
+    const [loading, setLoading] = useState<boolean>(false);
     const {getApis}: UseRequestResult = useRequest();
     const {push}: NextRouter = useRouter()
 
@@ -40,6 +42,7 @@ const EditContainer = ({article, onUpdateArticle}: EditContainerProps) => {
                 title: 'خطا',
                 autoClose: 3000,
                 color: 'red',
+                icon: <IconAlertCircle size={20}/>
             })
             return null
         }
@@ -49,6 +52,7 @@ const EditContainer = ({article, onUpdateArticle}: EditContainerProps) => {
                 title: 'خطا',
                 autoClose: 3000,
                 color: 'red',
+                icon: <IconAlertCircle size={20}/>
             })
             return null
         }
@@ -58,7 +62,9 @@ const EditContainer = ({article, onUpdateArticle}: EditContainerProps) => {
         }
     }
 
-    const createArticle = async (): Promise<void> => {
+    type postingFunctionType = (posting?: boolean) => Promise<void>
+
+    const createArticle: postingFunctionType = async (posting: boolean = false): Promise<void> => {
         const data: CheckDataResult | null = checkData()
         if (!data) return undefined
         const apis: APIS = getApis()
@@ -67,18 +73,19 @@ const EditContainer = ({article, onUpdateArticle}: EditContainerProps) => {
             const id = response?.data?.id
             const updatedArticle: GetArticleResponseDto = response?.data as GetArticleResponseDto
             if (!!onUpdateArticle) onUpdateArticle(updatedArticle)
-            await push(`/edit/${id}`)
+            await push(`/edit/${id}${posting ? "?posting=true" : ""}`)
         } else {
             showNotification({
                 message: appMessages.somethingWentWrong,
                 title: 'خطا',
                 autoClose: 3000,
                 color: 'red',
+                icon: <IconAlertCircle size={20}/>
             })
         }
     }
 
-    const updateArticle = async (): Promise<void> => {
+    const updateArticle: postingFunctionType = async (posting: boolean = false): Promise<void> => {
         const data: CheckDataResult | null = checkData()
         if (!data) return undefined
         const apis: APIS = getApis()
@@ -88,22 +95,36 @@ const EditContainer = ({article, onUpdateArticle}: EditContainerProps) => {
         if (!!response?.data && !!onUpdateArticle) {
             const updatedArticle: GetArticleResponseDto = response?.data as GetArticleResponseDto
             onUpdateArticle(updatedArticle)
+            if (posting && !!updatedArticle?.id) {
+                const id: number = updatedArticle?.id
+                await push(`/edit/${id}?posting=true`)
+            }
         } else {
             showNotification({
                 message: appMessages.somethingWentWrong,
                 title: 'خطا',
                 autoClose: 3000,
                 color: 'red',
+                icon: <IconAlertCircle size={20}/>
             })
         }
     }
 
-    const onSave: MouseEventHandler | undefined = async (): Promise<void> => {
+    const onSave: postingFunctionType = async (posting: boolean = false): Promise<void> => {
         try {
-            if (!article) await createArticle()
-            else await updateArticle()
+            setLoading(true)
+            if (!article) await createArticle(posting)
+            else await updateArticle(posting)
+            setLoading(false)
+            if (!posting) showNotification({
+                message: 'پست مورد نظر با موفقیت ذخیره شد',
+                title: 'عملیات موفقیت آمیز بود',
+                autoClose: 3000,
+                color: 'green',
+            })
         } catch (e: AxiosError | any) {
             errorHandler(e)
+            setLoading(false)
         }
     }
 
@@ -129,10 +150,16 @@ const EditContainer = ({article, onUpdateArticle}: EditContainerProps) => {
                 <Grid.Col xs={12}>
                     <Grid dir={'ltr'} p={0}>
                         <Grid.Col xl={2} lg={2} md={2} sm={3} xs={12} pt={0}>
-                            <PrimaryBtn text={'انتشار پست'} capsule={"true"}/>
+                            <PrimaryBtn
+                                text={'انتشار پست'} capsule={"true"} loading={loading}
+                                onClick={(() => onSave(true)) as MouseEventHandler}
+                            />
                         </Grid.Col>
                         <Grid.Col xl={2} lg={2} md={2} sm={3} xs={12} pt={0}>
-                            <SecondaryBtn text={'ذخیره تغییرات'} capsule={"true"} onClick={onSave}/>
+                            <SecondaryBtn
+                                text={'ذخیره تغییرات'} capsule={"true"} loading={loading}
+                                onClick={(() => onSave()) as MouseEventHandler}
+                            />
                         </Grid.Col>
                     </Grid>
                 </Grid.Col>

@@ -27,4 +27,12 @@ export class Article {
             method: 'PUT', url: `/article/${id}`, data: body
         }, this.accessToken as string)
     }
+
+    async saveAndPublishArticle(id: number, body: FormData): Promise<AxiosResponse | undefined> {
+        console.log(id)
+        console.log(body.values())
+        return this.request.sendRequest({
+            method: 'PATCH', url: `/article/${id}`, data: body
+        }, this.accessToken as string)
+    }
 }

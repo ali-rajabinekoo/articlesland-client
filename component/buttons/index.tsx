@@ -31,7 +31,9 @@ export const PrimaryBtn = (props: PrimaryBtnProps) => {
             className={classes.btn} size="md" radius={props.capsule === 'true' ? 22 : 8}
             {...props}
         >
-            <Text size={'sm'} weight={600}>{props.text}</Text>
+            <Text mr={props.loading ? 10 : 0} size={'sm'} weight={600}>
+                {props.text}
+            </Text>
         </Button>
     </Container>)
 }
@@ -44,7 +46,9 @@ export const SecondaryBtn = (props: PrimaryBtnProps) => {
             fullWidth color={'primary.2'} type={props.type}
             size="md" radius={props.capsule ? 22 : 8} {...props}
         >
-            <Text size={'sm'} weight={600}>{props.text}</Text>
+            <Text mr={props.loading ? 10 : 0} size={'sm'} weight={600}>
+                {props.text}
+            </Text>
         </Button>
     </Container>)
 }

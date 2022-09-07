@@ -30,5 +30,9 @@ export default function useArticleLandEditorDirection(): UseArticlesLandEditorDi
         rtlDirectionBtn?.click()
     }
 
-    return {init, direction}
+    const check = (): boolean => {
+        return !!document.querySelector(rtlDirectionBtnClass)
+    }
+
+    return {init, direction, check}
 }

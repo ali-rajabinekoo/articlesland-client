@@ -6,8 +6,8 @@ export class Authentication {
     request: Request = new Request()
     private readonly accessToken: string | undefined
 
-    constructor(token: string) {
-        this.accessToken = token
+    constructor(token?: string | undefined) {
+        if (!!token) this.accessToken = token
     }
 
     async register(body: SignupFormValues): Promise<AxiosResponse | undefined> {
@@ -33,7 +33,7 @@ export class Authentication {
             method: 'POST', url: '/auth/login/mobile/send', data: body
         }, this.accessToken as string)
     }
-    
+
     async verifyLoginCode(body: VerificationBody): Promise<AxiosResponse | undefined> {
         return this.request.sendRequest({
             method: 'POST', url: '/auth/login/mobile/check', data: body

@@ -6,6 +6,9 @@ import "../styles/globals.css";
 import {appTheme} from "./_app.style";
 import {NotificationsProvider} from "@mantine/notifications";
 import {RecoilRoot} from 'recoil';
+import moment from "moment-jalaali";
+
+moment.loadPersian({dialect: 'persian-modern'})
 
 const rtlCache = createEmotionCache({
     key: 'mantine-rtl',
