@@ -1,16 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e06adea9-5fca-4f6c-9da5-80729234fd31" name="Changes" comment="AL-31 &lt;CKEditor Configured&gt;">
+    <list default="true" id="e06adea9-5fca-4f6c-9da5-80729234fd31" name="Changes" comment="AL-31 &lt;CKEditor directions fixed&gt;">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/component/buttons/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/component/buttons/index.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/component/inputs/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/component/inputs/index.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/component/inputs/styles.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/component/inputs/styles.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/container/layout/dashboard.styles.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/container/layout/dashboard.styles.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/container/layout/dashboard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/container/layout/dashboard.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/container/edit/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/container/edit/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hooks/editorDirection.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/hooks/editorDirection.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hooks/useRequest.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/hooks/useRequest.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/_app.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/pages/_app.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/_document.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/pages/_document.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/scripts/ckeditor.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/scripts/ckeditor.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/edit/edit.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/pages/edit/edit.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/styles/components/editor.css" beforeDir="false" afterPath="$PROJECT_DIR$/styles/components/editor.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/types.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/utils/types.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -21,8 +24,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="JavaScript File" />
         <option value="CSS File" />
+        <option value="JavaScript File" />
         <option value="TypeScript JSX File" />
         <option value="TypeScript File" />
       </list>
@@ -115,6 +118,8 @@
       <workItem from="1662017786757" duration="1488000" />
       <workItem from="1662303897427" duration="1338000" />
       <workItem from="1662442477528" duration="9491000" />
+      <workItem from="1662475840484" duration="8278000" />
+      <workItem from="1662528512906" duration="10416000" />
     </task>
     <task id="LOCAL-00001" summary="AL-14 &lt;Start project and fix basic configs&gt;">
       <created>1660924360896</created>
@@ -158,7 +163,14 @@
       <option name="project" value="LOCAL" />
       <updated>1662017886234</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="AL-31 &lt;CKEditor directions fixed&gt;">
+      <created>1662487991153</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1662487991153</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -182,6 +194,7 @@
     <MESSAGE value="AL-13 &lt;Login page implementation&gt;" />
     <MESSAGE value="AL-27 &lt;Add articles card and list&gt;" />
     <MESSAGE value="AL-31 &lt;CKEditor Configured&gt;" />
-    <option name="LAST_COMMIT_MESSAGE" value="AL-31 &lt;CKEditor Configured&gt;" />
+    <MESSAGE value="AL-31 &lt;CKEditor directions fixed&gt;" />
+    <option name="LAST_COMMIT_MESSAGE" value="AL-31 &lt;CKEditor directions fixed&gt;" />
   </component>
 </project>

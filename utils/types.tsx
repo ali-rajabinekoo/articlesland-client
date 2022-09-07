@@ -1,6 +1,7 @@
 import {Authentication} from "./apis/authentication";
+import {Article} from "./apis/article";
 
-// hooks
+// DTOs
 
 export class UserDto {
     id: number | undefined | null
@@ -13,6 +14,38 @@ export class UserDto {
     created_at: string | undefined | null
     updated_at: string | undefined | null
 }
+
+export class CategoryDto {
+    id: number | undefined | null
+    title: string | undefined | null
+    displayTitle: string | undefined | null;
+    avatar: string | undefined | null;
+    articles: ArticleDto[] | undefined | null;
+}
+
+export class ArticleDto {
+    id: number | undefined | null
+    title: string | undefined | null;
+    description: string | undefined | null;
+    bodyUrl: string | undefined | null;
+    bannerUrl: string | undefined | null;
+    published: boolean | undefined | null;
+    viewed: number | undefined | null;
+    created_at: string | undefined | null;
+    updated_at: string | undefined | null;
+    owner: UserDto | undefined | null;
+    category: CategoryDto | undefined | null;
+    // reports: Relation<Report[]>;
+    // likes: Relation<Like[]>;
+    // bookmarks: Relation<Bookmark[]>;
+    // comments: Relation<Comment[]>;
+}
+
+export class GetArticleResponseDto extends ArticleDto{
+    body: string | undefined | null;
+}
+
+// hooks
 
 export class UseUserInfoResult {
     userInfo!: UserDto | null
@@ -53,6 +86,7 @@ export class SendLoginCodeValues {
 
 export class APIS {
     auth!: Authentication
+    article!: Article
 }
 
 export class RequestParams {
@@ -74,4 +108,11 @@ export class VerificationBody {
 export class UserAndTokenResponse {
     user: object | undefined
     token: string | undefined
+}
+
+// APIS body
+
+export class CreateArticleValues {
+    title!: string;
+    body!: string;
 }

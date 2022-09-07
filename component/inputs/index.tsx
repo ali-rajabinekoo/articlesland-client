@@ -3,7 +3,7 @@ import {
     TextInput as BasicTextInput,
     TextInputProps as BasicTextInputProps,
     PasswordInput as BasicPasswordInput,
-    PasswordInputProps as BasePasswordInputProps, Box
+    PasswordInputProps as BasePasswordInputProps,
 } from "@mantine/core";
 import React, {ReactNode, RefObject, useEffect, useState} from "react";
 import {Sx} from "@mantine/styles/lib/theme/types/DefaultProps";
@@ -11,6 +11,7 @@ import {useFloatingLabelInputStyle, usePasswordInputStyle, useScrollContainer, u
 import VerificationInput from "react-verification-input";
 import {useMutex} from "react-context-mutex";
 import useArticleLandEditorDirection from "../../hooks/editorDirection";
+import {GetArticleResponseDto} from "../../utils/types";
 
 const renderLabel = (props: TextInputProps | PasswordInputProps): ReactNode => {
     let sx: Sx = {}
@@ -35,7 +36,7 @@ interface TextInputProps extends BasicTextInputProps {
 }
 
 export const TextInput = (props: TextInputProps): JSX.Element => {
-    const {classes} = useTextInputStyle()
+    const {classes} = useTextInputStyle({})
     return (
         <BasicTextInput
             className={classes.input} ref={props.customref}
@@ -105,62 +106,66 @@ export const ScrollContainer = (props: ScrollContainerProps) => {
 
 interface ArticlesLandEditorProps {
     className?: string | undefined
+    data?: GetArticleResponseDto | undefined
 }
 
-let editor: any
-
-export const ArticlesLandEditor = ({className}: ArticlesLandEditorProps): JSX.Element => {
+export const ArticlesLandEditor = ({className, data}: ArticlesLandEditorProps): JSX.Element => {
     const [counter, setCounter] = useState<number>(0)
     const {direction, init} = useArticleLandEditorDirection()
     const MutexRunner = useMutex();
-    const mutex = new MutexRunner('myUniqueKey1');
+    const mutex = new MutexRunner("uniqueKey");
 
-    const createEditor = (_editor: any) => {
-        if (!window.editor) {
-            window.editor = {}
-        }
+    const createEditorInstance = (_editor: any) => {
         window.editor = _editor
+    }
+
+    const generateEditor = (mutex: any) => {
+        // @ts-ignore
+        window?.ClassicEditor.create(document.querySelector(".articles-land-editor"), {
+            licenseKey: process.env.CKEDITOR_LICENSE,
+            config: {
+                htmlEncodeOutput: true
+            }
+        })
+            .then((_editor: any) => {
+                createEditorInstance(_editor)
+                init()
+            })
+            .catch((error: any) => {
+                setCounter(counter + 1)
+                if (counter < 5) mutex.unlock();
+                else {
+                    console.error("Oops, something went wrong!");
+                    console.error(
+                        "Please, report the following error on https://github.com/ckeditor/ckeditor5/issues with the build id and the error stack trace:"
+                    );
+                    console.warn("Build id: e7bv9hmkfiph-a66fxojvt5nn");
+                    console.error(error);
+                }
+            });
     }
 
     useEffect(() => {
         mutex.run(() => {
             mutex.lock();
-            try {
-                // @ts-ignore
-                window?.ClassicEditor.create(document.querySelector(".articles-land-editor"), {
-                    licenseKey: process.env.CKEDITOR_LICENSE,
-                    config: {
-                        htmlEncodeOutput: true
-                    }
-                })
-                    .then((_editor: any) => {
-                        createEditor(_editor)
-                        init()
-                    })
-                    .catch((error: any) => {
-                        setCounter(counter + 1)
-                        if (counter < 5) mutex.unlock();
-                        else {
-                            console.error("Oops, something went wrong!");
-                            console.error(
-                                "Please, report the following error on https://github.com/ckeditor/ckeditor5/issues with the build id and the error stack trace:"
-                            );
-                            console.warn("Build id: e7bv9hmkfiph-a66fxojvt5nn");
-                            console.error(error);
-                        }
-                    });
-            } catch (e) {
-            }
+            generateEditor(mutex);
         });
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
-    return (<div dir={"ltr"} className={`articles-land-editor-container ${direction} ${className ? className : ''}`}>
-        <div className={`articles-land-editor`}></div>
-        <button onClick={() => {
-            console.log(window.editor.getData())
-        }}>test
-        </button>
-    </div>);
+    useEffect(() => {
+        if (!!data?.body) {
+            // @ts-ignore
+            window.editor.setData(data.body)
+        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [data])
+
+    return (
+        <div dir={"ltr"} className={`articles-land-editor-container ${direction} ${className ? className : ''}`}>
+            <div className={`articles-land-editor`}></div>
+        </div>
+    );
 }
 
 export function FloatingLabelInput(props: TextInputProps) {
@@ -168,7 +173,7 @@ export function FloatingLabelInput(props: TextInputProps) {
     const {classes} = useFloatingLabelInputStyle({
         floating: (props?.value as string)?.trim()?.length !== 0 || focused
     });
-    const {classes: textInputClasses} = useTextInputStyle()
+    const {classes: textInputClasses} = useTextInputStyle({darker: true})
 
     return (
         <BasicTextInput
@@ -180,7 +185,6 @@ export function FloatingLabelInput(props: TextInputProps) {
             onBlur={() => setFocused(false)}
             mt="md"
             autoComplete="nope"
-            color={"grey.2"}
             {...props}
         />
     );

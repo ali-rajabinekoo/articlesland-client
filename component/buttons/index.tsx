@@ -1,11 +1,12 @@
 import {Button, Paper, Text, ButtonProps as BasicButtonProps} from "@mantine/core";
-import React, {ReactNode} from "react";
+import React, {MouseEventHandler, ReactNode} from "react";
 import {usePrimaryBtnStyle, useSecondaryBtnStyle} from "./styles";
 
 interface PrimaryBtnProps extends BasicButtonProps {
     text?: ReactNode | string
     type?: "button" | "submit" | "reset" | undefined
     capsule?: "true" | "false" | undefined
+    onClick?: MouseEventHandler | undefined
 }
 
 interface ContainerProps {

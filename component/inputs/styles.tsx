@@ -1,19 +1,22 @@
 import {createStyles} from '@mantine/core';
 
-export const useTextInputStyle = createStyles((theme) => ({
-    input: {
-        '& .mantine-Input-input': {
-            border: `1px solid ${theme.colors.grey[0]} !important`,
-            borderRadius: '8px',
-            backgroundColor: "#FCFDFE",
-            fontSize: theme.fontSizes.sm,
-            color: theme.colors.grey[3]
-        },
-        '& .mantine-Input-input::placeholder': {
-            color: theme.colors.grey[3]
-        }
+export const useTextInputStyle = createStyles((theme, {darker}: { darker?: boolean | undefined }) => {
+        return ({
+            input: {
+                '& .mantine-Input-input': {
+                    border: `1px solid ${theme.colors.grey[0]} !important`,
+                    borderRadius: '8px',
+                    backgroundColor: "#FCFDFE",
+                    fontSize: theme.fontSizes.sm,
+                    color: !!darker ? theme.colors.grey[5] : theme.colors.grey[3]
+                },
+                '& .mantine-Input-input::placeholder': {
+                    color: !!darker ? theme.colors.grey[5] : theme.colors.grey[3]
+                }
+            }
+        })
     }
-}));
+);
 
 export const usePasswordInputStyle = createStyles((theme) => ({
     input: {
@@ -59,7 +62,7 @@ export const useScrollContainer = createStyles((theme) => ({
     }
 }))
 
-export const useFloatingLabelInputStyle = createStyles((theme, { floating }: { floating: boolean }) => ({
+export const useFloatingLabelInputStyle = createStyles((theme, {floating}: { floating: boolean }) => ({
     root: {
         position: 'relative',
     },
@@ -87,4 +90,17 @@ export const useFloatingLabelInputStyle = createStyles((theme, { floating }: { f
         transition: 'opacity 150ms ease',
         opacity: floating ? 1 : 0,
     },
+
+    input: {
+        '& .mantine-Input-input': {
+            border: `1px solid ${theme.colors.grey[0]} !important`,
+            borderRadius: '8px',
+            backgroundColor: "#FCFDFE",
+            fontSize: theme.fontSizes.sm,
+            color: `${theme.colors.grey[3]} !important`
+        },
+        '& .mantine-Input-input::placeholder': {
+            color: theme.colors.grey[5]
+        }
+    }
 }));

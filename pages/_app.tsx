@@ -5,6 +5,7 @@ import rtlPlugin from 'stylis-plugin-rtl';
 import "../styles/globals.css";
 import {appTheme} from "./_app.style";
 import {NotificationsProvider} from "@mantine/notifications";
+import {RecoilRoot} from 'recoil';
 
 const rtlCache = createEmotionCache({
     key: 'mantine-rtl',
@@ -19,7 +20,7 @@ export default function App(props: AppProps) {
     const {Component, pageProps} = props;
 
     return (
-        <>
+        <RecoilRoot>
             <Head>
                 <title>Articles Land</title>
                 <meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width"/>
@@ -37,6 +38,6 @@ export default function App(props: AppProps) {
                     </NotificationsProvider>
                 </MantineProvider>
             </div>
-        </>
+        </RecoilRoot>
     );
 }
