@@ -49,7 +49,7 @@ const useStyles = createStyles((theme) => ({
 }));
 
 interface ArticleCardProps {
-    image: string;
+    image: string | undefined;
     link: string;
     title: string;
     description: string;

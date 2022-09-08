@@ -1,20 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e06adea9-5fca-4f6c-9da5-80729234fd31" name="Changes" comment="AL-31 &lt;CKEditor directions fixed&gt;">
+    <list default="true" id="e06adea9-5fca-4f6c-9da5-80729234fd31" name="Changes" comment="AL-31 &lt;Article creation implemented with publishing and preview post logic&gt;">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/component/buttons/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/component/buttons/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/component/inputs/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/component/inputs/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/component/inputs/styles.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/component/inputs/styles.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/container/edit/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/container/edit/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hooks/editorDirection.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/hooks/editorDirection.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/component/auxiliary/articleCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/component/auxiliary/articleCard.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/component/auxiliary/headerDropdown.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/component/auxiliary/headerDropdown.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/component/auxiliary/readArticleBanner.styles.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/component/auxiliary/readArticleBanner.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/component/auxiliary/readArticleBanner.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/container/dashboard/articlesList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/container/dashboard/articlesList.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/container/dashboard/profileTab.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/container/dashboard/profileTab.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/container/layout/readArticle.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/container/layout/readArticle.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hooks/useRequest.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/hooks/useRequest.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/_app.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/pages/_app.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hooks/useUserInfo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/hooks/useUserInfo.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/edit/edit.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/pages/edit/edit.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/styles/components/editor.css" beforeDir="false" afterPath="$PROJECT_DIR$/styles/components/editor.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/pages/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/apis/article.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/utils/apis/article.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/helpers.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/utils/helpers.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/messages.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/utils/messages.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/utils/types.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/utils/types.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,15 +29,15 @@
       <list>
         <option value="CSS File" />
         <option value="JavaScript File" />
-        <option value="TypeScript JSX File" />
         <option value="TypeScript File" />
+        <option value="TypeScript JSX File" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="AL-31-add-ck-editor" />
+        <entry key="$PROJECT_DIR$" value="AL-30-create-new-article-ui" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -72,11 +75,11 @@
       <recent name="$PROJECT_DIR$/public/scripts" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/pages/post/[username]/[id]" />
+      <recent name="$PROJECT_DIR$/component/buttons" />
       <recent name="$PROJECT_DIR$/component/auxiliary" />
       <recent name="$PROJECT_DIR$/utils/apis" />
       <recent name="$PROJECT_DIR$/pages" />
-      <recent name="$PROJECT_DIR$/pages/_app" />
-      <recent name="$PROJECT_DIR$/component/inputs" />
     </key>
   </component>
   <component name="RunManager">
@@ -120,6 +123,8 @@
       <workItem from="1662442477528" duration="9491000" />
       <workItem from="1662475840484" duration="8278000" />
       <workItem from="1662528512906" duration="10416000" />
+      <workItem from="1662539932451" duration="28303000" />
+      <workItem from="1662615264318" duration="10497000" />
     </task>
     <task id="LOCAL-00001" summary="AL-14 &lt;Start project and fix basic configs&gt;">
       <created>1660924360896</created>
@@ -170,7 +175,21 @@
       <option name="project" value="LOCAL" />
       <updated>1662487991153</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="AL-31 &lt;Fix save and create new article logic&gt;">
+      <created>1662540419195</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1662540419195</updated>
+    </task>
+    <task id="LOCAL-00009" summary="AL-31 &lt;Article creation implemented with publishing and preview post logic&gt;">
+      <created>1662574904703</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1662574904703</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -195,6 +214,8 @@
     <MESSAGE value="AL-27 &lt;Add articles card and list&gt;" />
     <MESSAGE value="AL-31 &lt;CKEditor Configured&gt;" />
     <MESSAGE value="AL-31 &lt;CKEditor directions fixed&gt;" />
-    <option name="LAST_COMMIT_MESSAGE" value="AL-31 &lt;CKEditor directions fixed&gt;" />
+    <MESSAGE value="AL-31 &lt;Fix save and create new article logic&gt;" />
+    <MESSAGE value="AL-31 &lt;Article creation implemented with publishing and preview post logic&gt;" />
+    <option name="LAST_COMMIT_MESSAGE" value="AL-31 &lt;Article creation implemented with publishing and preview post logic&gt;" />
   </component>
 </project>

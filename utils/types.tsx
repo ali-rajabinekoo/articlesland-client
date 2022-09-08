@@ -1,19 +1,21 @@
 import {Authentication} from "./apis/authentication";
 import {Article} from "./apis/article";
 import {Category} from "./apis/category";
+import {User} from "./apis/user";
 
 // DTOs
 
 export class UserDto {
     id: number | undefined | null
     username: string | undefined | null
+    displayName?: string | undefined | null
     phoneNumber: string | undefined | null
-    email: string | undefined | null
-    avatar: string | undefined | null
-    bio: string | undefined | null
-    displayName: string | undefined | null
+    email?: string | undefined | null
+    avatar?: string | undefined | null
+    bio?: string | undefined | null
     created_at: string | undefined | null
     updated_at: string | undefined | null
+    articles?: ArticleDto[] | undefined | null
 }
 
 export class CategoryDto {
@@ -54,6 +56,7 @@ export class UseUserInfoResult {
     setNewAccessToken!: Function
     setNewUser!: Function
     getAccessToken!: Function
+    logout!: Function
 }
 
 export class UseRequestResult {
@@ -101,6 +104,7 @@ export class APIS {
     auth!: Authentication
     article!: Article
     category!: Category
+    user!: User
 }
 
 export class PublicAPIS {
