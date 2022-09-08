@@ -2,17 +2,19 @@ import React from 'react';
 import {Authentication} from "../utils/apis/authentication";
 import {Article} from "../utils/apis/article";
 import {Category} from "../utils/apis/category";
+import {User} from "../utils/apis/user";
 import useUserInfo from "./useUserInfo";
 import {APIS, PublicAPIS, UseRequestResult, UseUserInfoResult} from "../utils/types";
 
 export default function useRequest(): UseRequestResult {
-    const {accessToken}: UseUserInfoResult = useUserInfo()
+    const {getAccessToken}: UseUserInfoResult = useUserInfo()
 
     const getApis = (): APIS => {
         return {
-            auth: new Authentication(accessToken as string),
-            article: new Article(accessToken as string),
-            category: new Category(accessToken as string),
+            auth: new Authentication(getAccessToken() as string),
+            article: new Article(getAccessToken() as string),
+            category: new Category(getAccessToken() as string),
+            user: new User(getAccessToken() as string)
         }
     }
 

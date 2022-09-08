@@ -1,9 +1,9 @@
-import {AxiosError} from "axios";
+import {AxiosError, AxiosResponse} from "axios";
 import {showNotification} from "@mantine/notifications";
 import {appMessages} from "./messages";
-import moment from "moment/moment";
 import {IconAlertCircle} from "@tabler/icons";
 import React from "react";
+import {APIS, GetArticleResponseDto} from "./types";
 
 export const errorHandler = (e: AxiosError | any) => {
     if (e instanceof AxiosError) {
@@ -46,11 +46,37 @@ export const normalizePhoneNumber = (mobile: string): string => {
     return newMobile;
 }
 
-export const articlesLandMoment = () => {
-    return moment()
-}
-
 export const changeUrlToServerRequest = (url: string): string => {
     const domain: string | undefined = process.env.SERVER_DOMAIN
     return `${domain as string}${url}`
+}
+
+export function isJson(str: string) {
+    try {
+        JSON.parse(str);
+    } catch (e) {
+        return false;
+    }
+    return true;
+}
+
+export const fetchArticle = async (apis: APIS, id: string): Promise<GetArticleResponseDto | null> => {
+    try {
+        const response: AxiosResponse | undefined = await apis.article.getArticle(id as string)
+        if (!response) {
+            showNotification({
+                message: 'عنوان پست الزامیست',
+                title: 'خطا',
+                autoClose: 3000,
+                color: 'red',
+                icon: <IconAlertCircle size={20}/>
+            })
+            return null
+        } else {
+            return response.data as GetArticleResponseDto
+        }
+    } catch (e: AxiosError | any) {
+        errorHandler(e)
+        return null
+    }
 }

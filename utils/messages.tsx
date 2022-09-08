@@ -26,4 +26,5 @@ export const appMessages = {
     codeSent: 'کد تایید برای شماره موبایل مورد نظر ارسال گردید',
     registrationVerified: 'ثبت نام با موفقیت انجام شد',
     loggedIn: 'با موفقیت وارد سامانه شدید',
+    loggedOut: 'از حساب خود خارج شدید'
 }

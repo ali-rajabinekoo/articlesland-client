@@ -5,6 +5,7 @@ import {useCategoriesList} from "./tabs.style";
 import {UserDto} from "../../utils/types";
 import {changeUrlToServerRequest} from "../../utils/helpers";
 import {PrimaryBtn, SecondaryBtn} from "../../component/buttons";
+import Link from "next/link";
 
 interface ProfileProps {
     user: UserDto
@@ -33,8 +34,12 @@ export default function ProfileTab({user}: ProfileProps) {
                         </Text>
                     </Group>
                     <Group position={'center'} spacing={'sm'}>
-                        <SecondaryBtn text={'تنظیمات حساب کاربری'} capsule={"true"}/>
-                        <PrimaryBtn text={'نوشتن پست جدید'} capsule={"true"}/>
+                        <Link href={'/profile'}>
+                            <SecondaryBtn text={'تنظیمات حساب کاربری'} capsule={"true"}/>
+                        </Link>
+                        <Link href={'/edit'}>
+                            <PrimaryBtn text={'نوشتن پست جدید'} capsule={"true"}/>
+                        </Link>
                     </Group>
                 </Stack>
             </Group>

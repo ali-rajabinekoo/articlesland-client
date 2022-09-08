@@ -2,7 +2,7 @@ import {Container, Group, Avatar, Stack, Text, ActionIcon, Box} from "@mantine/c
 import {GetArticleResponseDto, UserDto} from "../../utils/types";
 import IFrame from "../../component/auxiliary/iframe";
 import {changeUrlToServerRequest} from "../../utils/helpers";
-import {useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 import moment from "moment-jalaali";
 import {IconChevronLeft} from "@tabler/icons";
 import ReadArticleBanner from "../../component/auxiliary/readArticleBanner";
@@ -13,24 +13,28 @@ class ReadArticleProps {
     onBack?: Function | undefined
     article!: GetArticleResponseDto
     bannerFile?: File | undefined
+    action?: React.ReactNode | JSX.Element | undefined
 }
 
-const ReadArticle = ({user, article, onBack, bannerFile}: ReadArticleProps) => {
+const ReadArticle = ({user, article, onBack, bannerFile, action}: ReadArticleProps) => {
     const [fromNowDate, setFromNowDate] = useState<string>()
     const {classes} = useReadArticleBannerStyle()
 
     useEffect(() => {
-        if (!!article.created_at) {
-            setFromNowDate(moment(article.updated_at).fromNow())
+        if (!!article?.updated_at) {
+            setFromNowDate(moment(article?.updated_at).fromNow())
         }
     }, [article])
 
     return (
-        <Container size={'xl'}>
+        <Container size={'md'}>
             <Stack align={'stretch'}>
                 <Group position={'apart'} noWrap={true}>
                     <Group position={'left'}>
-                        <Avatar size={60} className={classes.avatar} src={changeUrlToServerRequest(user.avatar as string)} radius="xl"/>
+                        <Avatar
+                            size={60} className={classes.avatar} radius="xl"
+                            src={!!user?.avatar ? changeUrlToServerRequest(user?.avatar as string) : ''}
+                        />
                         <Stack spacing={'xs'}>
                             <Text color={'grey.5'} weight={700} size={'md'}>{user?.displayName || user?.username}</Text>
                             <Text color={'grey.5'}>{fromNowDate}</Text>
@@ -41,6 +45,9 @@ const ReadArticle = ({user, article, onBack, bannerFile}: ReadArticleProps) => {
                             <IconChevronLeft size={25} color={'black'}/>
                         </ActionIcon>
                     </div>}
+                    {Boolean(action) && <div>
+                            {action}
+                    </div>}
                 </Group>
                 <Text weight={700} size={'lg'} mt={'xl'} color={'grey.5'}>{article?.title}</Text>
                 {/*{!!bannerFile && <img src={URL.createObjectURL(bannerFile as File)}/>}*/}
@@ -49,7 +56,15 @@ const ReadArticle = ({user, article, onBack, bannerFile}: ReadArticleProps) => {
                         <ReadArticleBanner src={URL.createObjectURL(bannerFile as File)}/>
                     </Box>
                 </Group>}
-                <IFrame srcDoc={article.body as string} srcUrl={!!article.body ? undefined : article.bodyUrl as string}/>
+                {!!article?.bannerUrl && <Group position={'center'}>
+                    <Box>
+                        <ReadArticleBanner src={changeUrlToServerRequest(article.bannerUrl)}/>
+                    </Box>
+                </Group>}
+                <IFrame
+                    srcDoc={!!article?.body ? article?.body as string : undefined}
+                    srcUrl={!!article?.bodyUrl ? article.bodyUrl as string : undefined}
+                />
             </Stack>
         </Container>
     )
