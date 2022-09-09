@@ -97,12 +97,12 @@ export const LoginForm = ({onSubmitted, showLoginByCodeForm}: LoginFormProps) =>
         await push("/registration")
     }
 
-    
-    
+
+
     return (
         <form onSubmit={loginForm.handleSubmit}>
             <Stack align={"stretch"} justify={"center"} spacing={"sm"} mt={-30} p={10}>
-                <LoadingOverlay visible={visible}/>
+                {/*<LoadingOverlay visible={visible}/>*/}
                 <TextInput
                     labeltitle="نام کاربری" color={"grey.3"}
                     placeholder="نام کاربری خود را وارد کنید"
@@ -112,6 +112,7 @@ export const LoginForm = ({onSubmitted, showLoginByCodeForm}: LoginFormProps) =>
                     error={<Text size={"xs"} weight={500} color={"danger.3"}>
                         {loginForm.errors.username}
                     </Text>}
+                    disabled={visible}
                 />
                 <PasswordInput
                     labeltitle="رمز عبور" color={"grey.3"}
@@ -122,14 +123,15 @@ export const LoginForm = ({onSubmitted, showLoginByCodeForm}: LoginFormProps) =>
                     error={<Text size={"xs"} weight={500} color={"danger.3"}>
                         {loginForm.errors.password}
                     </Text>}
+                    disabled={visible}
                 />
 
                 <Box>
                     {/* @ts-ignore*/}
                     <Box onClick={showLoginByCodeForm}>
-                        <SecondaryBtn text={'ورود با رمز یک بار مصرف'} type={"button"}/>
+                        <SecondaryBtn text={'ورود با رمز یک بار مصرف'} type={"button"} loading={visible}/>
                     </Box>
-                    <PrimaryBtn text={'ورود'} type={"submit"}/>
+                    <PrimaryBtn text={'ورود'} type={"submit"} loading={visible}/>
                 </Box>
             </Stack>
             <Text align="center" mt="sm" size="sm" color={"grey.3"}>

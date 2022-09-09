@@ -2,23 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e06adea9-5fca-4f6c-9da5-80729234fd31" name="Changes" comment="AL-28 &lt;Categories list Implemented&gt;">
-      <change afterPath="$PROJECT_DIR$/component/cards/categoryCard.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/container/categories/list.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hooks/fetchReduxInitState.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hooks/redux.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pages/categories/index.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/reducers/categories.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/utils/app.store.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/utils/initStore.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/component/auxiliary/articleCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/component/cards/articleCard.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/container/dashboard/articlesList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/container/dashboard/articlesList.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hooks/fetchCategories.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/hooks/fetchCategories.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/_app.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/pages/_app.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/store/atoms/categories.ts" beforeDir="false" afterPath="$PROJECT_DIR$/reducers/atoms/categories.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/store/selectors/categories.ts" beforeDir="false" afterPath="$PROJECT_DIR$/reducers/selectors/categories.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/container/login/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/container/login/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/container/registration/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/container/registration/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/messages.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/utils/messages.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/validators.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/utils/validators.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -126,7 +114,7 @@
       <workItem from="1662528512906" duration="10416000" />
       <workItem from="1662539932451" duration="28303000" />
       <workItem from="1662615264318" duration="12803000" />
-      <workItem from="1662706247044" duration="7359000" />
+      <workItem from="1662706247044" duration="9228000" />
     </task>
     <task id="LOCAL-00001" summary="AL-14 &lt;Start project and fix basic configs&gt;">
       <created>1660924360896</created>
@@ -205,7 +193,14 @@
       <option name="project" value="LOCAL" />
       <updated>1662628034211</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="AL-28 &lt;Categories list Implemented&gt;">
+      <created>1662713653414</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1662713653414</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

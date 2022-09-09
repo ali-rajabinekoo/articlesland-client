@@ -91,7 +91,7 @@ export const RegistrationForm = ({onSubmitted}:RegistrationFormProps) => {
     return (
         <form onSubmit={signupForm.handleSubmit}>
             <Stack align={"stretch"} justify={"center"} spacing={"sm"} mt={-30} p={10}>
-                <LoadingOverlay visible={visible}/>
+                {/*<LoadingOverlay visible={visible}/>*/}
                 <TextInput
                     labeltitle="نام کاربری" color={"grey.3"}
                     placeholder="نام کاربری خود را وارد کنید"
@@ -101,6 +101,7 @@ export const RegistrationForm = ({onSubmitted}:RegistrationFormProps) => {
                     error={<Text size={"xs"} weight={500} color={"danger.3"}>
                         {signupForm.errors.username}
                     </Text>}
+                    disabled={visible}
                 />
                 <TextInput
                     labeltitle="شماره موبایل" color={"grey.3"}
@@ -111,6 +112,7 @@ export const RegistrationForm = ({onSubmitted}:RegistrationFormProps) => {
                     error={<Text size={"xs"} weight={500} color={"danger.3"}>
                         {signupForm.errors.phoneNumber}
                     </Text>}
+                    disabled={visible}
                 />
                 <PasswordInput
                     labeltitle="رمز عبور" color={"grey.3"}
@@ -121,6 +123,7 @@ export const RegistrationForm = ({onSubmitted}:RegistrationFormProps) => {
                     error={<Text size={"xs"} weight={500} color={"danger.3"}>
                         {signupForm.errors.password}
                     </Text>}
+                    disabled={visible}
                 />
                 <PasswordInput
                     labeltitle="تکرار رمز عبور" color={"grey.3"}
@@ -131,8 +134,9 @@ export const RegistrationForm = ({onSubmitted}:RegistrationFormProps) => {
                     error={<Text size={"xs"} weight={500} color={"danger.3"}>
                         {signupForm.errors.repeatPassword}
                     </Text>}
+                    disabled={visible}
                 />
-                <PrimaryBtn text={'ثبت نام'} type={"submit"}/>
+                <PrimaryBtn text={'ثبت نام'} type={"submit"} loading={visible}/>
             </Stack>
             <Text align="center" mt="sm" size="sm" color={"grey.3"}>
                 حساب کاربری دارید؟{' '}

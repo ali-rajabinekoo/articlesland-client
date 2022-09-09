@@ -9,13 +9,13 @@ export const SignupValidationSchema = Yup.object().shape({
         .matches(/^[a-zA-Z]*$/g, validationMessages.invalid.username)
         .required(validationMessages.empty.username),
     password: Yup.string()
-        .matches(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])(?=.{8,})/g, validationMessages.invalid.password)
+        .matches(/^(?=.*[a-zA-Z])(?=.*[0-9])(?=.{8,})/g, validationMessages.invalid.password)
         .required(validationMessages.empty.password),
     repeatPassword: Yup.string()
         .required(validationMessages.empty.repeatPassword),
     phoneNumber: Yup.string()
         .matches(/^(\+?98[\-\s]?|0)9[0-39]\d[\-\s]?\d{3}[\-\s]?\d{4}$/g, validationMessages.invalid.phoneNumber)
-        .required(validationMessages.empty.repeatPassword),
+        .required(validationMessages.empty.phoneNumber),
 });
 
 export const signupValidationForm = (values: SignupFormValues) => {
