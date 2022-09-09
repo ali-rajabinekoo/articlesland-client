@@ -1,23 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e06adea9-5fca-4f6c-9da5-80729234fd31" name="Changes" comment="AL-31 &lt;Article creation implemented with publishing and preview post logic&gt;">
+    <list default="true" id="e06adea9-5fca-4f6c-9da5-80729234fd31" name="Changes" comment="AL-28 &lt;Categories list Implemented&gt;">
+      <change afterPath="$PROJECT_DIR$/component/cards/categoryCard.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/container/categories/list.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hooks/fetchReduxInitState.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hooks/redux.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pages/categories/index.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/reducers/categories.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/utils/app.store.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/utils/initStore.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/component/auxiliary/articleCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/component/auxiliary/articleCard.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/component/auxiliary/headerDropdown.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/component/auxiliary/headerDropdown.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/component/auxiliary/readArticleBanner.styles.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/component/auxiliary/readArticleBanner.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/component/auxiliary/readArticleBanner.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/component/auxiliary/articleCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/component/cards/articleCard.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/container/dashboard/articlesList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/container/dashboard/articlesList.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/container/dashboard/profileTab.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/container/dashboard/profileTab.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/container/layout/readArticle.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/container/layout/readArticle.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hooks/useRequest.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/hooks/useRequest.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hooks/useUserInfo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/hooks/useUserInfo.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/edit/edit.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/pages/edit/edit.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/pages/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/apis/article.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/utils/apis/article.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/helpers.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/utils/helpers.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/messages.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/utils/messages.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/types.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/utils/types.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hooks/fetchCategories.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/hooks/fetchCategories.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/_app.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/pages/_app.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/atoms/categories.ts" beforeDir="false" afterPath="$PROJECT_DIR$/reducers/atoms/categories.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/selectors/categories.ts" beforeDir="false" afterPath="$PROJECT_DIR$/reducers/selectors/categories.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,7 +38,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="AL-30-create-new-article-ui" />
+        <entry key="$PROJECT_DIR$" value="AL-29-read-and-list-article-ui" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -75,11 +76,11 @@
       <recent name="$PROJECT_DIR$/public/scripts" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/pages/post/[username]/[id]" />
+      <recent name="$PROJECT_DIR$/utils" />
+      <recent name="$PROJECT_DIR$/component/cards" />
       <recent name="$PROJECT_DIR$/component/buttons" />
+      <recent name="$PROJECT_DIR$/pages/post/[username]/[id]" />
       <recent name="$PROJECT_DIR$/component/auxiliary" />
-      <recent name="$PROJECT_DIR$/utils/apis" />
-      <recent name="$PROJECT_DIR$/pages" />
     </key>
   </component>
   <component name="RunManager">
@@ -124,7 +125,8 @@
       <workItem from="1662475840484" duration="8278000" />
       <workItem from="1662528512906" duration="10416000" />
       <workItem from="1662539932451" duration="28303000" />
-      <workItem from="1662615264318" duration="10497000" />
+      <workItem from="1662615264318" duration="12803000" />
+      <workItem from="1662706247044" duration="7359000" />
     </task>
     <task id="LOCAL-00001" summary="AL-14 &lt;Start project and fix basic configs&gt;">
       <created>1660924360896</created>
@@ -189,7 +191,21 @@
       <option name="project" value="LOCAL" />
       <updated>1662574904703</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="AL-29 &lt;Read and List Article&gt;">
+      <created>1662627772127</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1662627772128</updated>
+    </task>
+    <task id="LOCAL-00011" summary="AL-bug-issue &lt;Remove Mantine-rte for quill fixing CSR bug&gt;">
+      <created>1662628034211</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1662628034211</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -216,6 +232,9 @@
     <MESSAGE value="AL-31 &lt;CKEditor directions fixed&gt;" />
     <MESSAGE value="AL-31 &lt;Fix save and create new article logic&gt;" />
     <MESSAGE value="AL-31 &lt;Article creation implemented with publishing and preview post logic&gt;" />
-    <option name="LAST_COMMIT_MESSAGE" value="AL-31 &lt;Article creation implemented with publishing and preview post logic&gt;" />
+    <MESSAGE value="AL-29 &lt;Read and List Article&gt;" />
+    <MESSAGE value="AL-bug-issue &lt;Remove Mantine-rte for quill fixing CSR bug&gt;" />
+    <MESSAGE value="AL-28 &lt;Categories list Implemented&gt;" />
+    <option name="LAST_COMMIT_MESSAGE" value="AL-28 &lt;Categories list Implemented&gt;" />
   </component>
 </project>
