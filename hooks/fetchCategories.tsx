@@ -4,11 +4,11 @@ import {
     SelectInputItem,
     UseFetchCategoriesResult,
 } from "../utils/types";
-import {useRecoilValue} from "recoil";
-import {getCategoriesSelector} from "../store/selectors/categories";
+import {useAppSelector} from "./redux";
+import {RootState} from "../utils/app.store";
 
 export default function useFetchCategories(): UseFetchCategoriesResult {
-    const categories = useRecoilValue(getCategoriesSelector);
+    const categories: CategoryDto[] = useAppSelector((state: RootState) => state.categories.list)
     const [formattedCategories, setFormattedCategories] = useState<SelectInputItem[]>([])
 
     useEffect(() => {

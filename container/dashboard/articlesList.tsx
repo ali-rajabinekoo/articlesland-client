@@ -1,4 +1,4 @@
-import {ArticleCard} from "../../component/auxiliary/articleCard";
+import {ArticleCard} from "../../component/cards/articleCard";
 import {changeUrlToServerRequest, errorHandler} from "../../utils/helpers";
 import {Container, Grid} from "@mantine/core";
 import useRequest from "../../hooks/useRequest";
