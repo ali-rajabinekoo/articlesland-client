@@ -48,6 +48,13 @@ export class GetArticleResponseDto extends ArticleDto{
     body: string | undefined | null;
 }
 
+export class NotificationDto {
+    user: UserDto | undefined | null;
+    type: 'liked' | 'comment' | 'followed' | string | undefined | null;
+    message?: string | undefined | null;
+    created_at: string | undefined | null;
+}
+
 // hooks
 
 export class UseUserInfoResult {

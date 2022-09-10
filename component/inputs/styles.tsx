@@ -8,10 +8,10 @@ export const useTextInputStyle = createStyles((theme, {darker}: { darker?: boole
                     borderRadius: '8px',
                     backgroundColor: "#FCFDFE",
                     fontSize: theme.fontSizes.sm,
-                    color: !!darker ? theme.colors.grey[5] : theme.colors.grey[3]
+                    color: !!darker ? theme.colors.grey[4] : theme.colors.grey[3]
                 },
                 '& .mantine-Input-input::placeholder': {
-                    color: !!darker ? theme.colors.grey[5] : theme.colors.grey[3]
+                    color: !!darker ? theme.colors.grey[4] : theme.colors.grey[3]
                 }
             }
         })
@@ -100,7 +100,7 @@ export const useFloatingLabelInputStyle = createStyles((theme, {floating}: { flo
             color: `${theme.colors.grey[3]} !important`
         },
         '& .mantine-Input-input::placeholder': {
-            color: theme.colors.grey[5]
+            color: theme.colors.grey[4]
         }
     }
 }));

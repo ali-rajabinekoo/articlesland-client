@@ -30,7 +30,7 @@ const ShowPost = (): JSX.Element => {
 
     return (
         <Box mb={100}>
-            <DashboardHeader user={userInfo as UserDto}/>
+            <DashboardHeader/>
             <ReadArticle
                 user={article?.owner as UserDto}
                 article={article as GetArticleResponseDto}

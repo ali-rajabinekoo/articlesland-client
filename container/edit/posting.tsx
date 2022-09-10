@@ -116,10 +116,10 @@ const Posting = ({article}: PostingProps) => {
                     </Group>
                     <Stack styles={60}>
                         <Box>
-                            <Text color={'grey.5'} size={'lg'} weight={700}>
+                            <Text color={'grey.4'} size={'lg'} weight={700}>
                                 برای پست خود بنر انتخاب کنید
                             </Text>
-                            <Text color={'grey.5'} mt={'sm'} size={'sm'} weight={400}>
+                            <Text color={'grey.4'} mt={'sm'} size={'sm'} weight={400}>
                                 برای نمایش پست شما در صفحات مختلف، عکسی را به عنوان بنر انتخاب کنید تا پست شما با این
                                 عکس دیده
                                 شود.
@@ -129,10 +129,10 @@ const Posting = ({article}: PostingProps) => {
                             </Box>
                         </Box>
                         <Box mb={'lg'}>
-                            <Text color={'grey.5'} size={'lg'} weight={700}>
+                            <Text color={'grey.4'} size={'lg'} weight={700}>
                                 پست خود را دسته بندی کنید
                             </Text>
-                            <Text color={'grey.5'} mt={'sm'} size={'sm'} weight={400}>
+                            <Text color={'grey.4'} mt={'sm'} size={'sm'} weight={400}>
                                 یک دسته بندی از موارد زیر، که مرتبط با نوشته ی شما می باشد را انتخاب کنید تا مقاله شما
                                 در ان
                                 دسته بندی دیده شود.
@@ -145,7 +145,7 @@ const Posting = ({article}: PostingProps) => {
                                 value={categoryId}
                             />
                             <Group position={"right"} mt={'md'} spacing={0} dir={'ltr'} noWrap={true}>
-                                <Text color={'grey.5'} size={14} weight={400} dir={'rtl'} ml={8}>
+                                <Text color={'grey.4'} size={14} weight={400} dir={'rtl'} ml={8}>
                                     <Text
                                         component={'span'} color={'primary.3'} mr={8}
                                         onClick={() => setOpenedModal(true)}
@@ -190,36 +190,36 @@ const Posting = ({article}: PostingProps) => {
                     >
                         <ul>
                             <Stack spacing={"xs"} px={18}>
-                                <li style={{color: colors.grey[5]}}>
-                                    <Text color={'grey.5'} size={'sm'} weight={400} sx={{lineHeight: '28.8px'}}>
+                                <li style={{color: colors.grey[4]}}>
+                                    <Text color={'grey.4'} size={'sm'} weight={400} sx={{lineHeight: '28.8px'}}>
                                         حقوق معنوی و مادیِ نوشتۀ شما در ArticlesLand، متعلق به شماست. با این حال، با
                                         انتشار نوشته
                                         های خود، به ما اجازه نشر نوشته های خود را می دهید.
                                     </Text>
                                 </li>
-                                <li style={{color: colors.grey[5]}}>
-                                    <Text color={'grey.5'} size={'sm'} weight={400} sx={{lineHeight: '28.8px'}}>
+                                <li style={{color: colors.grey[4]}}>
+                                    <Text color={'grey.4'} size={'sm'} weight={400} sx={{lineHeight: '28.8px'}}>
                                         ما خود را برابر حقوق معنوی و مادی نوشتۀ افراد مسئول می‌دانیم و برابرِ سرقت
                                         مطالبِ شما یا
                                         سرقتِ مطالبِ دیگران توسط کاربران دیگر از نویسندۀ اصلی حمایت می‌کنیم.
                                     </Text>
                                 </li>
-                                <li style={{color: colors.grey[5]}}>
-                                    <Text color={'grey.5'} size={'sm'} weight={400} sx={{lineHeight: '28.8px'}}>
+                                <li style={{color: colors.grey[4]}}>
+                                    <Text color={'grey.4'} size={'sm'} weight={400} sx={{lineHeight: '28.8px'}}>
                                         نقلِ مطالبِ دیگران از سوی کاربران، بدونِ ذکرِ منبع ممنوع است. در صورتِ اعتراضِ
                                         صاحبِ اصلیِ
                                         نوشته (منبعِ اصلی) ArticlesLand می‌تواند مطلبِ منتشرشده را حذف کند.
                                     </Text>
                                 </li>
-                                <li style={{color: colors.grey[5]}}>
-                                    <Text color={'grey.5'} size={'sm'} weight={400} sx={{lineHeight: '28.8px'}}>
+                                <li style={{color: colors.grey[4]}}>
+                                    <Text color={'grey.4'} size={'sm'} weight={400} sx={{lineHeight: '28.8px'}}>
                                         مسئولیت حقوقی مطالب هر کاربر بر عهدۀ خود او است و ArticlesLand به‌عنوان یک بستر
                                         نشر محتوا،
                                         هیچ دخالتی در نوشتۀ کاربرانش ندارد.
                                     </Text>
                                 </li>
-                                <li style={{color: colors.grey[5]}}>
-                                    <Text color={'grey.5'} size={'sm'} weight={400} sx={{lineHeight: '28.8px'}}>
+                                <li style={{color: colors.grey[4]}}>
+                                    <Text color={'grey.4'} size={'sm'} weight={400} sx={{lineHeight: '28.8px'}}>
                                         مسئولیت محتوایی که منتشر می‌کنید بر عهده‌ی شماست. بدین معنا که شما متوجه کلیه‌ی
                                         عواقب ناشی
                                         از آن، شامل اعتماد دیگران به صحت محتوا، مسائل مربوط به حقوق مالکیت فکری و سایر
@@ -227,21 +227,21 @@ const Posting = ({article}: PostingProps) => {
                                         قانونی هستید.
                                     </Text>
                                 </li>
-                                <li style={{color: colors.grey[5]}}>
-                                    <Text color={'grey.5'} size={'sm'} weight={400} sx={{lineHeight: '28.8px'}}>
+                                <li style={{color: colors.grey[4]}}>
+                                    <Text color={'grey.4'} size={'sm'} weight={400} sx={{lineHeight: '28.8px'}}>
                                         اهانت به سایر کاربران، شخصیت‌ها، افراد مشهور، مقدسات و قوانین جمهوری اسلامی
                                         ایران ممنوع است.
                                     </Text>
                                 </li>
-                                <li style={{color: colors.grey[5]}}>
-                                    <Text color={'grey.5'} size={'sm'} weight={400} sx={{lineHeight: '28.8px'}}>
+                                <li style={{color: colors.grey[4]}}>
+                                    <Text color={'grey.4'} size={'sm'} weight={400} sx={{lineHeight: '28.8px'}}>
                                         ArticlesLand بر اساس دریافت گزارش از سایر کاربران، برابر نشر محتوای
                                         حساسیت‌برانگیز یا
                                         توهین‌آمیز در نظرات یا پست‌ها، به مسدودسازی شناسه کاربری اقدام خواهد کرد.
                                     </Text>
                                 </li>
-                                <li style={{color: colors.grey[5]}}>
-                                    <Text color={'grey.5'} size={'sm'} weight={400} sx={{lineHeight: '28.8px'}}>
+                                <li style={{color: colors.grey[4]}}>
+                                    <Text color={'grey.4'} size={'sm'} weight={400} sx={{lineHeight: '28.8px'}}>
                                         انتشار مطالب مجرمانه در ArticlesLand ممنوع است. کلیۀ مسوولیت‌های مربوط به
                                         انتشارِ مطالبِ
                                         مجرمانه برعهدۀ کاربر است. ArticlesLand به محض اطلاع از انتشار مطالب مجرمانه،
@@ -249,15 +249,15 @@ const Posting = ({article}: PostingProps) => {
                                         آنها اقدام خواهد کرد.
                                     </Text>
                                 </li>
-                                <li style={{color: colors.grey[5]}}>
-                                    <Text color={'grey.5'} size={'sm'} weight={400} sx={{lineHeight: '28.8px'}}>
+                                <li style={{color: colors.grey[4]}}>
+                                    <Text color={'grey.4'} size={'sm'} weight={400} sx={{lineHeight: '28.8px'}}>
                                         ما هرگز محتوای شما و اطلاعات شما را بدون کسب اجازه‌ی معتبر از شما به شخص یا
                                         نهادی ثالث
                                         نمی‌فروشیم.
                                     </Text>
                                 </li>
-                                <li style={{color: colors.grey[5]}}>
-                                    <Text color={'grey.5'} size={'sm'} weight={400} sx={{lineHeight: '28.8px'}}>
+                                <li style={{color: colors.grey[4]}}>
+                                    <Text color={'grey.4'} size={'sm'} weight={400} sx={{lineHeight: '28.8px'}}>
                                         اطلاعات شخصیِ شما به امانت در اختیار ماست. ما این امانت را به هیچ‌وجه برای مقاصد
                                         تجاری
                                         استفاده نخواهیم کرد.

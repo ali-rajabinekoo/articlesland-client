@@ -3,12 +3,14 @@ import {
     TextInput as BasicTextInput,
     TextInputProps as BasicTextInputProps,
     PasswordInput as BasicPasswordInput,
-    PasswordInputProps as BasePasswordInputProps, Select, SelectProps,
+    PasswordInputProps as BasePasswordInputProps,
+    Select,
+    SelectProps,
+    useMantineTheme,
 } from "@mantine/core";
 import React, {ReactNode, RefObject, useEffect, useState} from "react";
 import {Sx} from "@mantine/styles/lib/theme/types/DefaultProps";
 import {
-    useCheckboxStyle,
     useFloatingLabelInputStyle,
     usePasswordInputStyle,
     useScrollContainer,
@@ -19,6 +21,7 @@ import {useMutex} from "react-context-mutex";
 import useArticleLandEditorDirection from "../../hooks/editorDirection";
 import {GetArticleResponseDto} from "../../utils/types";
 import {v4 as uuidV4} from 'uuid';
+import {IconSearch} from "@tabler/icons";
 
 const renderLabel = (props: TextInputProps | PasswordInputProps): ReactNode => {
     let sx: Sx = {}
@@ -105,7 +108,7 @@ export const ScrollContainer = (props: ScrollContainerProps) => {
         <div className={classes.scrollbar} style={props.scroll === 'x' ?
             {overflowX: "auto", overflowY: "hidden"} :
             props.scroll === 'y' ?
-                {overflowY: "auto", overflowX: "hidden"} :
+                {overflowY: "auto", height: '100%', overflowX: "hidden"} :
                 {overflow: "auto"}
         }>{props.children}</div>
     )
@@ -225,13 +228,13 @@ export function SelectInput(props: SelectProps) {
                         '&, &:hover': {
                             backgroundColor:
                                 theme.colorScheme === 'dark' ? theme.colors.teal[9] : theme.colors.grey[0],
-                            color: theme.colorScheme === 'dark' ? theme.white : theme.colors.grey[5],
+                            color: theme.colorScheme === 'dark' ? theme.white : theme.colors.grey[4],
                         },
                     },
 
                     // applies styles to hovered item (with mouse or keyboard)
                     '&[data-hovered]': {},
-                    color: theme.colorScheme === 'dark' ? theme.white : theme.colors.grey[5],
+                    color: theme.colorScheme === 'dark' ? theme.white : theme.colors.grey[4],
                 },
             })}
             searchable={true}
@@ -239,4 +242,19 @@ export function SelectInput(props: SelectProps) {
             {...props}
         />
     )
+}
+
+export function SearchInput(props: TextInputProps) {
+    const theme = useMantineTheme();
+
+    return (
+        <TextInput
+            rightSection={<IconSearch color={theme.colors.grey[4]} size={24} stroke={1.5} />}
+            radius="sm"
+            size="md"
+            placeholder="در بین مقالات جستجو کنید"
+            rightSectionWidth={42}
+            {...props}
+        />
+    );
 }

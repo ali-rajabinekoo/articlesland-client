@@ -19,8 +19,7 @@ import {errorHandler} from "../../utils/helpers";
 import {showNotification} from "@mantine/notifications";
 import {IconCheck, IconChevronLeft} from "@tabler/icons";
 import {appMessages} from "../../utils/messages";
-import {CountDown} from "../../component/auxiliary/countDown";
-import {LoadingOverlay} from "../../component/auxiliary/loadingOverlay";
+import {CountDown} from "../../component/countDown";
 import useUserInfo from "../../hooks/useUserInfo";
 
 export const LoginFormTitle = () => {
@@ -54,7 +53,7 @@ interface LoginFormProps {
     showLoginByCodeForm?: Function
 }
 
-export const LoginForm = ({onSubmitted, showLoginByCodeForm}: LoginFormProps) => {
+export const LoginForm = ({showLoginByCodeForm}: LoginFormProps) => {
     const {push}: NextRouter = useRouter()
     const {getApis}: UseRequestResult = useRequest()
     const {setNewAccessToken, setNewUser}: UseUserInfoResult = useUserInfo()
@@ -72,8 +71,8 @@ export const LoginForm = ({onSubmitted, showLoginByCodeForm}: LoginFormProps) =>
                 const apis: APIS = getApis()
                 const response: AxiosResponse | undefined = await apis.auth.loginByCredentials(body)
                 const data: UserAndTokenResponse = response?.data
-                if (!data?.user) throw new Error()
-                if (!data?.token) throw new Error()
+                if (!data?.user) return setVisible(false)
+                if (!data?.token) return setVisible(false)
                 setNewUser(data.user)
                 setNewAccessToken(data.token)
                 showNotification({

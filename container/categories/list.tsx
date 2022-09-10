@@ -14,10 +14,10 @@ const CategoriesList = (): JSX.Element => {
 
     return (
         <Container size={'xl'}>
-            <Text size={'md'} weight={700} color={'grey.5'}>
+            <Text size={'md'} weight={700} color={'grey.4'}>
                 حداقل 3 موضوع که به آن‌ها علاقه دارید را انتخاب کنید
             </Text>
-            <Text mt={'xs'} size={'md'} weight={400} color={'grey.5'}>
+            <Text mt={'xs'} size={'md'} weight={400} color={'grey.4'}>
                 به کمک این اطلاعات، پست‌هایی که بیشتر دوست دارید به شما پیشنهاد داده می‌شود.
             </Text>
             <Grid mt={'md'} gutter={'xs'} justify={"center"}>

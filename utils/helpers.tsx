@@ -80,3 +80,15 @@ export const fetchArticle = async (apis: APIS, id: string): Promise<GetArticleRe
         return null
     }
 }
+
+export type notificationValidTypes = 'liked' | 'comment' | 'followed'
+
+const notificationMessages = {
+    'liked': (name: string) => `${name} پست شما را لایک کرد`,
+    'comment': (name: string) => `${name} برای شما کامنت گذاشت:`,
+    'followed': (name: string) => `${name} پست شما را دنبال کرد`,
+}
+
+export const convertNotificationTypeToMessage = (type: notificationValidTypes, name: string) => {
+    return notificationMessages[type](name)
+}
