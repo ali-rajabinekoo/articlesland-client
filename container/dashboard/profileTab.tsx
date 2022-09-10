@@ -33,7 +33,7 @@ export default function ProfileTab({user}: ProfileProps) {
                             نفر را دنبال می کند
                         </Text>
                     </Group>
-                    <Group position={'center'} spacing={'sm'}>
+                    <Group position={'center'} spacing={'sm'} mt={"sm"}>
                         <Link href={'/profile'}>
                             <SecondaryBtn text={'تنظیمات حساب کاربری'} capsule={"true"}/>
                         </Link>

@@ -128,9 +128,9 @@ export const LoginForm = ({showLoginByCodeForm}: LoginFormProps) => {
                 <Box>
                     {/* @ts-ignore*/}
                     <Box onClick={showLoginByCodeForm}>
-                        <SecondaryBtn text={'ورود با رمز یک بار مصرف'} type={"button"} loading={visible}/>
+                        <SecondaryBtn mt={'sm'} text={'ورود با رمز یک بار مصرف'} type={"button"} loading={visible}/>
                     </Box>
-                    <PrimaryBtn text={'ورود'} type={"submit"} loading={visible}/>
+                    <PrimaryBtn mt={'sm'} text={'ورود'} type={"submit"} loading={visible}/>
                 </Box>
             </Stack>
             <Text align="center" mt="sm" size="sm" color={"grey.3"}>

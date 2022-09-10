@@ -162,7 +162,7 @@ const Posting = ({article}: PostingProps) => {
                                     </div>
                                 </div>
                             </Group>
-                            <Grid dir={'ltr'} p={0} mt={'sm'}>
+                            <Grid dir={'ltr'} p={0} mt={'md'}>
                                 <Grid.Col xs={4} pt={0}>
                                     <PrimaryBtn
                                         text={'انتشار پست'} capsule={"true"}

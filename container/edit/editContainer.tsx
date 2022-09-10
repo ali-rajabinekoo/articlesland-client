@@ -147,7 +147,7 @@ const EditContainer = ({article, onUpdateArticle}: EditContainerProps) => {
                 <Grid.Col xs={12}>
                     <ArticlesLandEditor data={article}/>
                 </Grid.Col>
-                <Grid.Col xs={12}>
+                <Grid.Col xs={12} mt={"sm"}>
                     <Grid dir={'ltr'} p={0}>
                         <Grid.Col xl={2} lg={2} md={2} sm={3} xs={12} pt={0}>
                             <PrimaryBtn

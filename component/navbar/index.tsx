@@ -9,7 +9,7 @@ import {
     Drawer,
     Burger,
     Divider,
-    Accordion
+    Accordion, Grid
 } from "@mantine/core";
 import {changeUrlToServerRequest} from "../../utils/helpers";
 import {IconBell, IconUserCircle} from "@tabler/icons";
@@ -20,6 +20,8 @@ import {SearchInput} from "../inputs";
 import NavbarProfileItems from "./navbar.profileItems";
 import {NavbarNotificationDropDown} from "./navbar.notificationDropDown";
 import {NavbarProfileDropdown} from "./navbar.profileDropdown";
+import {PrimaryBtn, SecondaryBtn} from "../buttons";
+import Link from "next/link";
 
 const useStyles = createStyles((theme) => ({
     header: {
@@ -113,7 +115,18 @@ const Navbar = () => {
                 <SearchInput sx={{color: theme.colors.grey[4]}}/>
             </Box>
 
-            <Box className={classes.desktopSize}>
+            <Box className={classes.desktopSize} sx={!!user ? {display: "none !important"} : {}}>
+                <Group align={'center'} spacing={'xs'} noWrap={true}>
+                    <Link href={'/login'}>
+                        <PrimaryBtn text={'ورود'}/>
+                    </Link>
+                    <Link href={'/registration'}>
+                        <SecondaryBtn text={'ثبت نام'}/>
+                    </Link>
+                </Group>
+            </Box>
+
+            <Box className={classes.desktopSize} sx={!user ? {display: "none !important"} : {}}>
                 <Group position={'left'} spacing={'xs'} align={'center'} noWrap={true}>
 
                     <Menu
@@ -195,36 +208,56 @@ const Navbar = () => {
                             <SearchInput/>
                         </Box>
                         <Divider mt={'sm'}/>
-                        <Box dir={'rtl'}>
-                            <Accordion>
-                                <Accordion.Item value="profileItems">
-                                    <Accordion.Control>
-                                        <Group spacing={'xs'}>
-                                            <IconUserCircle size={18} color={theme.colors.grey[4]}/>
-                                            <Text size={'sm'} color={'grey.4'} weight={600}>اطلاعات حساب کاربری</Text>
-                                        </Group>
-                                    </Accordion.Control>
-                                    <Accordion.Panel>
-                                        <Box mb={'xs'} mt={'sm'}>
-                                            <NavbarProfileItems/>
-                                        </Box>
-                                    </Accordion.Panel>
-                                </Accordion.Item>
+                        <Box p={'md'} sx={!!user ? {display: "none !important"} : {}}>
+                            <Grid align={'center'} gutter={'sm'}>
+                                <Grid.Col xs={6}>
+                                    <Link href={'/login'}>
+                                        <PrimaryBtn text={'ورود'}/>
+                                    </Link>
+                                </Grid.Col>
+                                <Grid.Col xs={6}>
+                                    <Link href={'/registration'}>
+                                        <SecondaryBtn text={'ثبت نام'}/>
+                                    </Link>
+                                </Grid.Col>
+                            </Grid>
+                        </Box>
+                        <Box sx={!user ? {display: "none !important"} : {}}>
+                            <Box dir={'rtl'}>
+                                <Accordion>
+                                    <Accordion.Item value="profileItems">
+                                        <Accordion.Control>
+                                            <Group spacing={'xs'}>
+                                                <IconUserCircle size={18} color={theme.colors.grey[4]}/>
+                                                <Text size={'sm'} color={'grey.4'} weight={600}>
+                                                    اطلاعات حساب کاربری
+                                                </Text>
+                                            </Group>
+                                        </Accordion.Control>
+                                        <Accordion.Panel>
+                                            <Box mb={'xs'} mt={'sm'}>
+                                                <NavbarProfileItems/>
+                                            </Box>
+                                        </Accordion.Panel>
+                                    </Accordion.Item>
 
-                                <Accordion.Item value="notifications">
-                                    <Accordion.Control>
-                                        <Group spacing={'xs'}>
-                                            <IconBell color={theme.colors.grey[4]} size={18}/>
-                                            <Text size={'sm'} color={'grey.4'} weight={600}>نوتیفیکیشن ها</Text>
-                                        </Group>
-                                    </Accordion.Control>
-                                    <Accordion.Panel px={0}>
-                                        <Box mb={'xs'} mt={'sm'} px={0}>
-                                            <NavbarNotificationDropDown/>
-                                        </Box>
-                                    </Accordion.Panel>
-                                </Accordion.Item>
-                            </Accordion>
+                                    <Accordion.Item value="notifications">
+                                        <Accordion.Control>
+                                            <Group spacing={'xs'}>
+                                                <IconBell color={theme.colors.grey[4]} size={18}/>
+                                                <Text size={'sm'} color={'grey.4'} weight={600}>
+                                                    نوتیفیکیشن ها
+                                                </Text>
+                                            </Group>
+                                        </Accordion.Control>
+                                        <Accordion.Panel px={0}>
+                                            <Box mb={'xs'} mt={'sm'} px={0}>
+                                                <NavbarNotificationDropDown/>
+                                            </Box>
+                                        </Accordion.Panel>
+                                    </Accordion.Item>
+                                </Accordion>
+                            </Box>
                         </Box>
                     </Box>
                 </Drawer>

@@ -10,8 +10,9 @@ import {Box} from "@mantine/core";
 import InfoBarBottom from "../../container/post/InfoBarBottom";
 import {SecondaryBtn} from "../../component/buttons";
 import Link from "next/link";
+import {NextPage} from "next";
 
-const ShowPost = (): JSX.Element => {
+const ShowPost: NextPage = (): JSX.Element => {
     const {query}: NextRouter = useRouter()
     const {userInfo}: UseUserInfoResult = useUserInfo()
     const [article, setArticle] = useState<ArticleDto>()
