@@ -18,7 +18,7 @@ const Dashboard: NextPage = () => {
     }, [])
     return (
         <div>
-            <DashboardHeader user={userInfo as UserDto} headerTabs={
+            <DashboardHeader headerTabs={
                 !!userInfo ? <ProfileTab user={userInfo as UserDto}/> : <></>
             }/>
             <ArticlesList/>

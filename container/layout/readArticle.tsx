@@ -1,11 +1,11 @@
 import {Container, Group, Avatar, Stack, Text, ActionIcon, Box} from "@mantine/core";
 import {GetArticleResponseDto, UserDto} from "../../utils/types";
-import IFrame from "../../component/auxiliary/iframe";
+import IFrame from "../../component/iframe";
 import {changeUrlToServerRequest} from "../../utils/helpers";
 import React, {useEffect, useState} from "react";
 import moment from "moment-jalaali";
 import {IconChevronLeft} from "@tabler/icons";
-import ReadArticleBanner from "../../component/auxiliary/readArticleBanner";
+import ReadArticleBanner from "../../component/readArticleBanner";
 import {useReadArticleBannerStyle} from "./readArticle.styles";
 
 class ReadArticleProps {
@@ -36,8 +36,8 @@ const ReadArticle = ({user, article, onBack, bannerFile, action}: ReadArticlePro
                             src={!!user?.avatar ? changeUrlToServerRequest(user?.avatar as string) : ''}
                         />
                         <Stack spacing={'xs'}>
-                            <Text color={'grey.5'} weight={700} size={'md'}>{user?.displayName || user?.username}</Text>
-                            <Text color={'grey.5'}>{fromNowDate}</Text>
+                            <Text color={'grey.4'} weight={700} size={'md'}>{user?.displayName || user?.username}</Text>
+                            <Text color={'grey.4'}>{fromNowDate}</Text>
                         </Stack>
                     </Group>
                     {!!onBack && <div>
@@ -49,7 +49,7 @@ const ReadArticle = ({user, article, onBack, bannerFile, action}: ReadArticlePro
                             {action}
                     </div>}
                 </Group>
-                <Text weight={700} size={'lg'} mt={'xl'} color={'grey.5'}>{article?.title}</Text>
+                <Text weight={700} size={'lg'} mt={'xl'} color={'grey.4'}>{article?.title}</Text>
                 {/*{!!bannerFile && <img src={URL.createObjectURL(bannerFile as File)}/>}*/}
                 {!!bannerFile && <Group position={'center'}>
                     <Box>

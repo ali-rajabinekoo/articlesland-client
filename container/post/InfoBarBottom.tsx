@@ -61,7 +61,7 @@ const InfoBarBottom = ({article}: InfoBarBottomProps) => {
 
                         <Menu.Dropdown>
                             <Menu.Item icon={<IconMessageReport color={theme.colors.grey[4]} size={18}/>}>
-                                <Text size={'xs'} color={'grey.5'}>گزارش تخلف</Text>
+                                <Text size={'xs'} color={'grey.4'}>گزارش تخلف</Text>
                             </Menu.Item>
                         </Menu.Dropdown>
                     </Menu>

@@ -2,7 +2,7 @@ import Countdown from "react-countdown";
 import {SetStateAction} from "react";
 import {CountdownTimeDeltaFn} from "react-countdown/dist/Countdown";
 
-const renderer = ({minutes, seconds, completed}: any) => {
+const renderer = ({minutes, seconds}: any) => {
     return (
         <span>ارسال مجدد کد تا {minutes}:{seconds} دقیقه دیگر</span>
     );

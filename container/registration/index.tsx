@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import {Anchor, Stack, Text, Box, Avatar} from "@mantine/core";
+import {Anchor, Stack, Text, Avatar} from "@mantine/core";
 import {PasswordInput, TextInput} from "../../component/inputs";
 import {PrimaryBtn} from "../../component/buttons";
 import {useRegistrationFormStyle} from "./styles";
@@ -11,10 +11,9 @@ import useRequest from "../../hooks/useRequest";
 import {AxiosError, AxiosResponse} from "axios";
 import {errorHandler} from "../../utils/helpers";
 import {showNotification} from "@mantine/notifications";
-import {IconCheck, IconChevronLeft} from "@tabler/icons";
+import {IconAlertCircle, IconCheck, IconChevronLeft} from "@tabler/icons";
 import {appMessages} from "../../utils/messages";
-import {CountDown} from "../../component/auxiliary/countDown";
-import {LoadingOverlay} from "../../component/auxiliary/loadingOverlay";
+import {CountDown} from "../../component/countDown";
 
 export const RegistrationFormTitle = () => {
     const {classes} = useRegistrationFormStyle()
@@ -66,7 +65,13 @@ export const RegistrationForm = ({onSubmitted}:RegistrationFormProps) => {
                 const apis: APIS = getApis()
                 const response: AxiosResponse | undefined = await apis.auth.register(body)
                 const data: VerificationResponse = response?.data
-                if (!data?.key) throw new Error()
+                if (!data?.key) return showNotification({
+                    message: appMessages.somethingWentWrong,
+                    title: 'خطا',
+                    autoClose: 2000,
+                    color: 'red',
+                    icon: <IconAlertCircle size={20}/>
+                })
                 showNotification({
                     message: appMessages.codeSent,
                     autoClose: 2000,

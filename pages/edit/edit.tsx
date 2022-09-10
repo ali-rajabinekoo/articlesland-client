@@ -1,6 +1,5 @@
-import {APIS, GetArticleResponseDto, UserDto, UseRequestResult, UseUserInfoResult} from "../../utils/types";
+import {APIS, GetArticleResponseDto, UseRequestResult} from "../../utils/types";
 import {DashboardHeader} from "../../container/layout/dashboard";
-import useUserInfo from "../../hooks/useUserInfo";
 import EditContainer from "../../container/edit/editContainer";
 import Posting from "../../container/edit/posting";
 import {NextRouter, useRouter} from "next/router";
@@ -9,7 +8,6 @@ import useRequest from "../../hooks/useRequest";
 import {fetchArticle} from "../../utils/helpers";
 
 const EditPage = (): JSX.Element => {
-    const {userInfo}: UseUserInfoResult = useUserInfo()
     const {query}: NextRouter = useRouter()
     const [article, setArticle] = useState<GetArticleResponseDto>()
     const {getApis}: UseRequestResult = useRequest()
@@ -31,7 +29,7 @@ const EditPage = (): JSX.Element => {
 
     return (
         <div>
-            <DashboardHeader user={userInfo as UserDto}/>
+            <DashboardHeader/>
             {
                 query?.posting === "true" ? <Posting article={article as GetArticleResponseDto}/> :
                     <EditContainer article={article} onUpdateArticle={!!article ? onUpdateArticle : undefined}/>

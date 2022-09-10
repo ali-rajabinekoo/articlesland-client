@@ -1,5 +1,5 @@
 import {createStyles, Paper} from "@mantine/core";
-import {ReadArticleBannerProps} from "../../utils/types";
+import {ReadArticleBannerProps} from "../utils/types";
 
 export const useReadArticleStyle = createStyles((theme, {src}: ReadArticleBannerProps) => ({
     banner: {

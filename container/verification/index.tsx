@@ -17,9 +17,9 @@ import {AxiosError, AxiosResponse} from "axios";
 import {errorHandler, normalizePhoneNumber} from "../../utils/helpers";
 import useUserInfo from "../../hooks/useUserInfo";
 import {showNotification} from "@mantine/notifications";
-import {IconCheck, IconChevronLeft} from "@tabler/icons";
-import {CountDown} from "../../component/auxiliary/countDown";
-import {LoadingOverlay} from "../../component/auxiliary/loadingOverlay";
+import {IconAlertCircle, IconCheck, IconChevronLeft} from "@tabler/icons";
+import {CountDown} from "../../component/countDown";
+import {LoadingOverlay} from "../../component/loadingOverlay";
 import {useFormik} from "formik";
 import {SendLoginCodeSchema} from "../../utils/validators";
 
@@ -66,7 +66,6 @@ export function VerificationForm({
     resendCode
 }: VerificationFormProps) {
     const [code, setCode] = useState<string>()
-    const [codeError, setCodeError] = useState<string>()
     const [loading, setLoading] = useState<boolean>(false)
     const [codeSent, setCodeSent] = useState<boolean>(false)
     const [timer, setTimer] = useState<any>()
@@ -81,7 +80,13 @@ export function VerificationForm({
     const onSubmit = async (e: any): Promise<any> => {
         e.preventDefault()
         if (code?.length !== 6) {
-            return setCodeError(validationMessages.invalid.code)
+            return showNotification({
+                message: validationMessages.invalid.code,
+                title: 'خطا',
+                autoClose: 2000,
+                color: 'red',
+                icon: <IconAlertCircle size={20}/>
+            });
         }
         try {
             const data: VerificationBody = new VerificationBody()
@@ -96,7 +101,13 @@ export function VerificationForm({
                 response = await apis.auth.verifyLoginCode(data)
             }
             const responseBody: UserAndTokenResponse = response?.data
-            if (!responseBody) throw new Error()
+            if (!responseBody) return showNotification({
+                message: appMessages.somethingWentWrong,
+                title: 'خطا',
+                autoClose: 3000,
+                color: 'red',
+                icon: <IconAlertCircle size={20}/>
+            })
             setNewAccessToken(responseBody.token)
             setNewUser(responseBody.user)
             showNotification({
