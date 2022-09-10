@@ -20,7 +20,7 @@ import {SearchInput} from "../inputs";
 import NavbarProfileItems from "./navbar.profileItems";
 import {NavbarNotificationDropDown} from "./navbar.notificationDropDown";
 import {NavbarProfileDropdown} from "./navbar.profileDropdown";
-import {PrimaryBtn, SecondaryBtn} from "../buttons";
+import {PrimaryBtn, PrimaryOutlineBtn} from "../buttons";
 import Link from "next/link";
 
 const useStyles = createStyles((theme) => ({
@@ -121,7 +121,7 @@ const Navbar = () => {
                         <PrimaryBtn text={'ورود'}/>
                     </Link>
                     <Link href={'/registration'}>
-                        <SecondaryBtn text={'ثبت نام'}/>
+                        <PrimaryOutlineBtn text={'ثبت نام'}/>
                     </Link>
                 </Group>
             </Box>
@@ -217,7 +217,7 @@ const Navbar = () => {
                                 </Grid.Col>
                                 <Grid.Col xs={6}>
                                     <Link href={'/registration'}>
-                                        <SecondaryBtn text={'ثبت نام'}/>
+                                        <PrimaryOutlineBtn text={'ثبت نام'}/>
                                     </Link>
                                 </Grid.Col>
                             </Grid>

@@ -1,6 +1,6 @@
 import {Button, Paper, Text, ButtonProps as BasicButtonProps} from "@mantine/core";
 import React, {MouseEventHandler, ReactNode} from "react";
-import {usePrimaryBtnStyle, useSecondaryBtnStyle} from "./styles";
+import {usePrimaryBtnStyle, usePrimaryOutlineBtnStyle} from "./styles";
 import {Sx} from "@mantine/styles/lib/theme/types/DefaultProps";
 
 interface PrimaryBtnProps extends BasicButtonProps {
@@ -8,7 +8,7 @@ interface PrimaryBtnProps extends BasicButtonProps {
     type?: "button" | "submit" | "reset" | undefined
     capsule?: "true" | "false" | undefined
     onClick?: MouseEventHandler | undefined
-    containerSx?: Sx | undefined
+    containersx?: Sx | undefined
 }
 
 interface ContainerProps {
@@ -33,7 +33,7 @@ const Container = ({children, capsule, sx = {}}: ContainerProps): JSX.Element =>
 
 export const PrimaryBtn = (props: PrimaryBtnProps) => {
     const {classes} = usePrimaryBtnStyle()
-    return (<Container sx={props.containerSx || {}} capsule={props.capsule}>
+    return (<Container sx={props.containersx || {}} capsule={props.capsule}>
         <Button
             fullWidth color={'primary.2'} type={props.type}
             className={classes.btn} size="md" radius={props.capsule === 'true' ? 22 : 8}
@@ -46,13 +46,28 @@ export const PrimaryBtn = (props: PrimaryBtnProps) => {
     </Container>)
 }
 
-export const SecondaryBtn = (props: PrimaryBtnProps) => {
-    const {classes} = useSecondaryBtnStyle()
-    return (<Container sx={props.containerSx || {}} capsule={props.capsule}>
+export const PrimaryOutlineBtn = (props: PrimaryBtnProps) => {
+    const {classes} = usePrimaryOutlineBtnStyle()
+    return (<Container sx={props.containersx || {}} capsule={props.capsule}>
         <Button
             className={classes.btn} variant={"outline"}
             fullWidth color={'primary.2'} type={props.type}
             size="md" radius={props.capsule ? 22 : 8} {...props}
+        >
+            <Text mr={props.loading ? 10 : 0} size={'sm'} weight={600}>
+                {props.text}
+            </Text>
+        </Button>
+    </Container>)
+}
+
+export const SecondaryBtn = (props: PrimaryBtnProps) => {
+    const {classes} = usePrimaryOutlineBtnStyle()
+    return (<Container sx={props.containersx || {}} capsule={props.capsule}>
+        <Button
+            fullWidth color={'secondary.1'} type={props.type}
+            className={classes.btn} size="md" radius={props.capsule === 'true' ? 22 : 8}
+            {...props}
         >
             <Text mr={props.loading ? 10 : 0} size={'sm'} weight={600}>
                 {props.text}

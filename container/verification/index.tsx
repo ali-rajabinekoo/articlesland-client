@@ -101,13 +101,16 @@ export function VerificationForm({
                 response = await apis.auth.verifyLoginCode(data)
             }
             const responseBody: UserAndTokenResponse = response?.data
-            if (!responseBody) return showNotification({
-                message: appMessages.somethingWentWrong,
-                title: 'خطا',
-                autoClose: 3000,
-                color: 'red',
-                icon: <IconAlertCircle size={20}/>
-            })
+            if (!responseBody) {
+                setLoading(false)
+                return showNotification({
+                    message: appMessages.somethingWentWrong,
+                    title: 'خطا',
+                    autoClose: 3000,
+                    color: 'red',
+                    icon: <IconAlertCircle size={20}/>
+                })
+            }
             setNewAccessToken(responseBody.token)
             setNewUser(responseBody.user)
             showNotification({

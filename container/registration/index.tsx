@@ -65,13 +65,16 @@ export const RegistrationForm = ({onSubmitted}:RegistrationFormProps) => {
                 const apis: APIS = getApis()
                 const response: AxiosResponse | undefined = await apis.auth.register(body)
                 const data: VerificationResponse = response?.data
-                if (!data?.key) return showNotification({
-                    message: appMessages.somethingWentWrong,
-                    title: 'خطا',
-                    autoClose: 2000,
-                    color: 'red',
-                    icon: <IconAlertCircle size={20}/>
-                })
+                if (!data?.key) {
+                    setVisible(false)
+                    return showNotification({
+                        message: appMessages.somethingWentWrong,
+                        title: 'خطا',
+                        autoClose: 2000,
+                        color: 'red',
+                        icon: <IconAlertCircle size={20}/>
+                    })
+                }
                 showNotification({
                     message: appMessages.codeSent,
                     autoClose: 2000,
@@ -107,6 +110,7 @@ export const RegistrationForm = ({onSubmitted}:RegistrationFormProps) => {
                         {signupForm.errors.username}
                     </Text>}
                     disabled={visible}
+                    withAsterisk={true}
                 />
                 <TextInput
                     labeltitle="شماره موبایل" color={"grey.3"}
@@ -118,6 +122,7 @@ export const RegistrationForm = ({onSubmitted}:RegistrationFormProps) => {
                         {signupForm.errors.phoneNumber}
                     </Text>}
                     disabled={visible}
+                    withAsterisk={true}
                 />
                 <PasswordInput
                     labeltitle="رمز عبور" color={"grey.3"}
@@ -129,6 +134,7 @@ export const RegistrationForm = ({onSubmitted}:RegistrationFormProps) => {
                         {signupForm.errors.password}
                     </Text>}
                     disabled={visible}
+                    withAsterisk={true}
                 />
                 <PasswordInput
                     labeltitle="تکرار رمز عبور" color={"grey.3"}
@@ -140,6 +146,7 @@ export const RegistrationForm = ({onSubmitted}:RegistrationFormProps) => {
                         {signupForm.errors.repeatPassword}
                     </Text>}
                     disabled={visible}
+                    withAsterisk={true}
                 />
                 <PrimaryBtn text={'ثبت نام'} type={"submit"} loading={visible}/>
             </Stack>

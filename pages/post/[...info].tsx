@@ -8,7 +8,7 @@ import useRequest from "../../hooks/useRequest";
 import ReadArticle from "../../container/layout/readArticle";
 import {Box} from "@mantine/core";
 import InfoBarBottom from "../../container/post/InfoBarBottom";
-import {SecondaryBtn} from "../../component/buttons";
+import {PrimaryOutlineBtn} from "../../component/buttons";
 import Link from "next/link";
 import {NextPage} from "next";
 
@@ -38,7 +38,7 @@ const ShowPost: NextPage = (): JSX.Element => {
                 action={
                     String(userInfo?.id) === String(article?.owner?.id) ?
                         <Link href={`/edit/${article?.id}`}>
-                            <SecondaryBtn text={'ویرایش'} capsule={"true"}/>
+                            <PrimaryOutlineBtn text={'ویرایش'} capsule={"true"}/>
                         </Link> :
                         <></>
                 }

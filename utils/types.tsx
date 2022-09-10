@@ -105,6 +105,14 @@ export class SendLoginCodeValues {
     phoneNumber!: string;
 }
 
+export class ProfileInfoFormValues {
+    username?: string | undefined;
+    displayName?: string | undefined;
+    bio?: string | undefined;
+    password?: string | undefined;
+    repeatPassword?: string | undefined;
+}
+
 // apis
 
 export class APIS {

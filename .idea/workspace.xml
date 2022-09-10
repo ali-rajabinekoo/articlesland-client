@@ -1,19 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e06adea9-5fca-4f6c-9da5-80729234fd31" name="Changes" comment="AL-35 &lt;Header refactoring&gt;">
+    <list default="true" id="e06adea9-5fca-4f6c-9da5-80729234fd31" name="Changes" comment="AL-36 &lt;Fix something in header&gt;">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/component/buttons/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/component/buttons/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/component/buttons/styles.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/component/buttons/styles.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/component/buttons/upload.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/component/buttons/upload.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/component/inputs/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/component/inputs/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/component/inputs/styles.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/component/inputs/styles.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/component/navbar/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/component/navbar/index.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/container/dashboard/profileTab.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/container/dashboard/profileTab.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/container/edit/editContainer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/container/edit/editContainer.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/container/edit/posting.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/container/edit/posting.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/container/login/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/container/login/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hooks/useUserInfo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/hooks/useUserInfo.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/categories/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/pages/categories/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/edit/edit.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/pages/edit/edit.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/container/registration/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/container/registration/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/container/verification/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/container/verification/index.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/post/[...info].tsx" beforeDir="false" afterPath="$PROJECT_DIR$/pages/post/[...info].tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/axios.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/utils/axios.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/profile/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/pages/profile/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/apis/user.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/utils/apis/user.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/types.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/utils/types.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/validators.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/utils/validators.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -122,7 +128,7 @@
       <workItem from="1662539932451" duration="28303000" />
       <workItem from="1662615264318" duration="12803000" />
       <workItem from="1662706247044" duration="19503000" />
-      <workItem from="1662796798900" duration="12643000" />
+      <workItem from="1662796798900" duration="23133000" />
     </task>
     <task id="LOCAL-00001" summary="AL-14 &lt;Start project and fix basic configs&gt;">
       <created>1660924360896</created>
@@ -222,7 +228,14 @@
       <option name="project" value="LOCAL" />
       <updated>1662809428091</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="AL-36 &lt;Fix something in header&gt;">
+      <created>1662812292693</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1662812292693</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -254,6 +267,7 @@
     <MESSAGE value="AL-28 &lt;Categories list Implemented&gt;" />
     <MESSAGE value="AL-21 &lt;Fix login and registration&gt;" />
     <MESSAGE value="AL-35 &lt;Header refactoring&gt;" />
-    <option name="LAST_COMMIT_MESSAGE" value="AL-35 &lt;Header refactoring&gt;" />
+    <MESSAGE value="AL-36 &lt;Fix something in header&gt;" />
+    <option name="LAST_COMMIT_MESSAGE" value="AL-36 &lt;Fix something in header&gt;" />
   </component>
 </project>
