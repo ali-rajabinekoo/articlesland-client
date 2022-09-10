@@ -1,8 +1,8 @@
 import React from "react";
 import {Container, Text, Accordion} from "@mantine/core";
-import ProfileInformation from "../../pages/profile/information";
-import {useProfileStyles} from "../../pages/profile/index.styles";
-import ProfileAvatar from "../../pages/profile/avatar";
+import ProfileInformation from "./information";
+import {useProfileStyles} from "./index.styles";
+import ProfileAvatar from "./avatar";
 
 const ProfileContainer = () => {
     const {classes} = useProfileStyles()
