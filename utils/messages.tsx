@@ -4,6 +4,7 @@ export const validationMessages = {
         password: 'رمز عبور الزامیست',
         repeatPassword: 'تکرار رمز عبور الزامیست',
         phoneNumber: 'شماره موبایل الزامیست',
+        email: 'آدرس ایمیل الزامیست',
         code: 'کد یکبار مصرف الزامیست',
         articleTitle: 'عنوان برای پست الزامیست',
         articleBody: 'متن بدنه برای پست الزامیست',
@@ -22,6 +23,7 @@ export const validationMessages = {
     invalid: {
         username: 'نام کاربری شامل حروف انگلیسی و اعداد می باشد',
         phoneNumber: 'شماره موبایل وارد شده معتبر نیست',
+        email: 'آدرس ایمیل وارد شده معتبر نیست',
         code: 'کد یکبار مصرف معتبر نیست',
         password: 'رمزعبور باید حداقل شامل حروف و عدد به طول ۸ کاراکتر باشد',
         repeatPassword: 'رمز عبور و تکرار آن با هم برار نیستند',
@@ -32,7 +34,9 @@ export const appMessages = {
     unauthorized: 'نشست از بین رفته است لطفا مجدد لاگین کنید',
     somethingWentWrong: 'خطایی در سامانه رخ داده است',
     codeSent: 'کد تایید برای شماره موبایل مورد نظر ارسال گردید',
+    codeSentEmail: 'کد تایید برای ایمیل مورد نظر ارسال گردید',
     registrationVerified: 'ثبت نام با موفقیت انجام شد',
     loggedIn: 'با موفقیت وارد سامانه شدید',
-    loggedOut: 'از حساب خود خارج شدید'
+    loggedOut: 'از حساب خود خارج شدید',
+    updatedSuccessfully: 'تغییرات با موفقیت اعمال شد',
 }

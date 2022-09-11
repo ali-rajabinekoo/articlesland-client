@@ -105,10 +105,10 @@ const ProfileInformation = (): JSX.Element => {
             <Stack spacing={'sm'}>
                 <TextInput
                     labeltitle="نام کاربری"
-                    textColor={theme.colors.grey[4]}
+                    textcolor={theme.colors.grey[4]}
                     placeholder="نام کاربری خود را وارد کنید"
                     labelweight={700} size="md" name="username"
-                    labelSX={{fontWeight: 500}}
+                    labelsx={{fontWeight: 500}}
                     onChange={profileInfoForm.handleChange}
                     value={profileInfoForm.values.username}
                     error={<Text size={"xs"} weight={500} color={"danger.3"}>
@@ -118,10 +118,10 @@ const ProfileInformation = (): JSX.Element => {
                 />
                 <TextInput
                     labeltitle="نام نمایشی در سایت"
-                    textColor={theme.colors.grey[4]}
+                    textcolor={theme.colors.grey[4]}
                     placeholder="نام نمایشی خود را وارد کنید"
                     labelweight={700} size="md" name="displayName"
-                    labelSX={{fontWeight: 500}}
+                    labelsx={{fontWeight: 500}}
                     onChange={profileInfoForm.handleChange}
                     value={profileInfoForm.values.displayName}
                     error={<Text size={"xs"} weight={500} color={"danger.3"}>
@@ -131,11 +131,11 @@ const ProfileInformation = (): JSX.Element => {
                 />
                 <TextAreaInput
                     labeltitle="توضیحات پروفایل"
-                    textColor={theme.colors.grey[4]}
+                    textcolor={theme.colors.grey[4]}
                     placeholder="توضیحات پروفایل خود را وارد بنویسید"
                     labelweight={700}
                     name="bio" size="md"
-                    labelSX={{fontWeight: 500}}
+                    labelsx={{fontWeight: 500}}
                     onChange={profileInfoForm.handleChange}
                     value={profileInfoForm.values.bio}
                     error={!!profileInfoForm?.errors?.bio ? <Text size={"xs"} weight={500} color={"danger.3"}>
@@ -145,10 +145,10 @@ const ProfileInformation = (): JSX.Element => {
                 />
                 <PasswordInput
                     labeltitle="رمز عبور جدید"
-                    textColor={theme.colors.grey[4]}
+                    textcolor={theme.colors.grey[4]}
                     placeholder="رمز عبور جدید خود را وارد کنید"
                     labelweight={700} size="md" name="password"
-                    labelSX={{fontWeight: 500}}
+                    labelsx={{fontWeight: 500}}
                     onChange={profileInfoForm.handleChange}
                     value={profileInfoForm.values.password}
                     error={<Text size={"xs"} weight={500} color={"danger.3"}>
@@ -158,10 +158,10 @@ const ProfileInformation = (): JSX.Element => {
                 />
                 <PasswordInput
                     labeltitle="تکرار رمز عبور"
-                    textColor={theme.colors.grey[4]}
+                    textcolor={theme.colors.grey[4]}
                     placeholder="تکرار رمز عبور را وارد کنید"
                     labelweight={700} size="md" name="repeatPassword"
-                    labelSX={{fontWeight: 500}}
+                    labelsx={{fontWeight: 500}}
                     onChange={profileInfoForm.handleChange}
                     value={profileInfoForm.values.repeatPassword}
                     error={<Text size={"xs"} weight={500} color={"danger.3"}>

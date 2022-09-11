@@ -3,6 +3,8 @@ import {Container, Text, Accordion} from "@mantine/core";
 import ProfileInformation from "./information";
 import {useProfileStyles} from "./index.styles";
 import ProfileAvatar from "./avatar";
+import ProfileMobile from "./mobile";
+import ProfileEmail from "./email";
 
 const ProfileContainer = () => {
     const {classes} = useProfileStyles()
@@ -39,16 +41,22 @@ const ProfileContainer = () => {
                     <Accordion.Control>
                         <Text color={'grey.4'} weight={500}>شماره موبایل</Text>
                     </Accordion.Control>
-                    <Accordion.Panel>With new :focus-visible pseudo-class focus ring appears only when user navigates
-                        with keyboard</Accordion.Panel>
+                    <Accordion.Panel>
+                        <div className={classes.container}>
+                            <ProfileMobile/>
+                        </div>
+                    </Accordion.Panel>
                 </Accordion.Item>
 
                 <Accordion.Item value="emailAddress">
                     <Accordion.Control>
                         <Text color={'grey.4'} weight={500}>ایمیل</Text>
                     </Accordion.Control>
-                    <Accordion.Panel>With new :focus-visible pseudo-class focus ring appears only when user navigates
-                        with keyboard</Accordion.Panel>
+                    <Accordion.Panel>
+                        <div className={classes.container}>
+                            <ProfileEmail/>
+                        </div>
+                    </Accordion.Panel>
                 </Accordion.Item>
             </Accordion>
         </Container>

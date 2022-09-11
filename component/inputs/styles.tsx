@@ -2,10 +2,10 @@ import {createStyles} from '@mantine/core';
 
 interface useTextInputStyleProps {
     darker?: boolean | undefined,
-    textColor?: string | undefined
+    textcolor?: string | undefined
 }
 
-export const useTextInputStyle = createStyles((theme, {darker, textColor}: useTextInputStyleProps) => {
+export const useTextInputStyle = createStyles((theme, {darker, textcolor}: useTextInputStyleProps) => {
         return ({
             input: {
                 '& .mantine-Input-input': {
@@ -13,10 +13,10 @@ export const useTextInputStyle = createStyles((theme, {darker, textColor}: useTe
                     borderRadius: '8px',
                     backgroundColor: "#FCFDFE",
                     fontSize: theme.fontSizes.sm,
-                    color: !!textColor ? textColor : !!darker ? theme.colors.grey[4] : theme.colors.grey[3]
+                    color: !!textcolor ? textcolor : !!darker ? theme.colors.grey[4] : theme.colors.grey[3]
                 },
                 '& .mantine-Input-input::placeholder': {
-                    color: !!textColor ? textColor : !!darker ? theme.colors.grey[4] : theme.colors.grey[3]
+                    color: !!textcolor ? textcolor : !!darker ? theme.colors.grey[4] : theme.colors.grey[3]
                 }
             }
         })
@@ -25,10 +25,10 @@ export const useTextInputStyle = createStyles((theme, {darker, textColor}: useTe
 
 interface usePasswordInputStyleProps extends useTextInputStyleProps {
     darker?: boolean | undefined,
-    textColor?: string | undefined
+    textcolor?: string | undefined
 }
 
-export const usePasswordInputStyle = createStyles((theme, {textColor}: usePasswordInputStyleProps) => ({
+export const usePasswordInputStyle = createStyles((theme, {textcolor}: usePasswordInputStyleProps) => ({
     input: {
         '& .mantine-Input-input': {
             borderRadius: '8px',
@@ -36,11 +36,11 @@ export const usePasswordInputStyle = createStyles((theme, {textColor}: usePasswo
             backgroundColor: "#FCFDFE",
         },
         '& .mantine-PasswordInput-innerInput::placeholder': {
-            color: !!textColor ? textColor : theme.colors.grey[3]
+            color: !!textcolor ? textcolor : theme.colors.grey[3]
         },
         '& .mantine-PasswordInput-innerInput': {
             fontSize: theme.fontSizes.sm,
-            color: !!textColor ? textColor : theme.colors.grey[3]
+            color: !!textcolor ? textcolor : theme.colors.grey[3]
         }
     }
 }));

@@ -28,33 +28,33 @@ import {IconSearch} from "@tabler/icons";
 const renderLabel = (props: TextInputProps | PasswordInputProps | TextAreaInputProps): ReactNode => {
     let sx: Sx = {}
     let weight: React.CSSProperties['fontWeight'] = "normal"
-    if (!!props.labelSX) {
-        sx = {...sx, ...props.labelSX}
+    if (!!props.labelsx) {
+        sx = {...sx, ...props.labelsx}
     }
     if (!!props.labelweight) {
         weight = props.labelweight
     }
     return !!props.labeltitle ?
         <Text component={'span'} weight={weight} size={"sm"} sx={sx} mb={"xs"}
-              color={!!props?.textColor ? props.textColor : "grey.3"}>
+              color={!!props?.textcolor ? props.textcolor : "grey.3"}>
             {props.labeltitle}
         </Text> : props.label
 }
 
 interface TextInputProps extends BasicTextInputProps {
     labeltitle?: string
-    labelSX?: Sx
+    labelsx?: Sx
     labelweight?: React.CSSProperties['fontWeight']
     weight?: React.CSSProperties['fontWeight']
     customref?: RefObject<any>
     darker?: true | false
-    textColor?: string | undefined
+    textcolor?: string | undefined
 }
 
 export const TextInput = (props: TextInputProps): JSX.Element => {
     const {classes} = useTextInputStyle({
         darker: props.darker || false,
-        textColor: props.textColor,
+        textcolor: props.textcolor,
     })
     return (
         <BasicTextInput
@@ -67,17 +67,17 @@ export const TextInput = (props: TextInputProps): JSX.Element => {
 
 interface PasswordInputProps extends BasePasswordInputProps {
     labeltitle?: string
-    labelSX?: Sx
+    labelsx?: Sx
     labelweight?: React.CSSProperties['fontWeight']
     weight?: React.CSSProperties['fontWeight']
     darker?: true | false
-    textColor?: string | undefined
+    textcolor?: string | undefined
 }
 
 export const PasswordInput = ({...props}: PasswordInputProps): JSX.Element => {
     const {classes} = usePasswordInputStyle({
         darker: props.darker || false,
-        textColor: props.textColor,
+        textcolor: props.textcolor,
     })
     return (
         <BasicPasswordInput
@@ -275,16 +275,16 @@ export function SearchInput(props: TextInputProps) {
 
 interface TextAreaInputProps extends TextareaProps {
     darker?: true | false
-    textColor?: string | undefined
+    textcolor?: string | undefined
     labeltitle?: string
-    labelSX?: Sx
+    labelsx?: Sx
     labelweight?: React.CSSProperties['fontWeight']
 }
 
 export function TextAreaInput(props: TextAreaInputProps) {
     const {classes} = useTextInputStyle({
         darker: props.darker || false,
-        textColor: props.textColor,
+        textcolor: props.textcolor,
     })
 
     return (

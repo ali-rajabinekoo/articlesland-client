@@ -43,6 +43,12 @@ export const SendLoginCodeSchema = Yup.object().shape({
         .required(validationMessages.empty.phoneNumber),
 });
 
+export const SendEmailCodeSchema = Yup.object().shape({
+    email: Yup.string()
+        .email(validationMessages.invalid.email)
+        .required(validationMessages.empty.email),
+});
+
 export const profileInformationValidationForm = (values: ProfileInfoFormValues) => {
     const errors: ProfileInfoFormValues = new ProfileInfoFormValues();
 

@@ -105,6 +105,10 @@ export class SendLoginCodeValues {
     phoneNumber!: string;
 }
 
+export class SendEmailCodeValues {
+    email!: string;
+}
+
 export class ProfileInfoFormValues {
     username?: string | undefined;
     displayName?: string | undefined;
@@ -140,6 +144,10 @@ export class VerificationResponse {
 
 export class VerificationBody {
     key: string | undefined
+    code: string | undefined
+}
+
+export class PureVerificationBody {
     code: string | undefined
 }
 
