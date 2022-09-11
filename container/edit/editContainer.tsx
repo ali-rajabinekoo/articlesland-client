@@ -1,7 +1,7 @@
 import {Container, Grid} from "@mantine/core";
 import {ArticlesLandEditor, FloatingLabelInput} from "../../component/inputs";
 import React, {MouseEventHandler, useEffect, useState} from "react";
-import {PrimaryBtn, SecondaryBtn} from "../../component/buttons";
+import {PrimaryBtn, PrimaryOutlineBtn} from "../../component/buttons";
 import {errorHandler} from "../../utils/helpers";
 import {AxiosError, AxiosResponse} from "axios";
 import {htmlToText} from 'html-to-text';
@@ -147,7 +147,7 @@ const EditContainer = ({article, onUpdateArticle}: EditContainerProps) => {
                 <Grid.Col xs={12}>
                     <ArticlesLandEditor data={article}/>
                 </Grid.Col>
-                <Grid.Col xs={12}>
+                <Grid.Col xs={12} mt={"sm"}>
                     <Grid dir={'ltr'} p={0}>
                         <Grid.Col xl={2} lg={2} md={2} sm={3} xs={12} pt={0}>
                             <PrimaryBtn
@@ -156,7 +156,7 @@ const EditContainer = ({article, onUpdateArticle}: EditContainerProps) => {
                             />
                         </Grid.Col>
                         <Grid.Col xl={2} lg={2} md={2} sm={3} xs={12} pt={0}>
-                            <SecondaryBtn
+                            <PrimaryOutlineBtn
                                 text={'ذخیره تغییرات'} capsule={"true"} loading={loading}
                                 onClick={(() => onSave()) as MouseEventHandler}
                             />

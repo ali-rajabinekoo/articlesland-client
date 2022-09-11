@@ -6,8 +6,9 @@ import {NextRouter, useRouter} from "next/router";
 import React, {useEffect, useState} from "react";
 import useRequest from "../../hooks/useRequest";
 import {fetchArticle} from "../../utils/helpers";
+import {NextPage} from "next";
 
-const EditPage = (): JSX.Element => {
+const EditPage: NextPage = (): JSX.Element => {
     const {query}: NextRouter = useRouter()
     const [article, setArticle] = useState<GetArticleResponseDto>()
     const {getApis}: UseRequestResult = useRequest()

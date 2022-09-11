@@ -1,5 +1,5 @@
 import React, {useEffect, useRef, useState} from 'react';
-import {Text, Group, FileButton} from '@mantine/core';
+import {Text, Group, FileButton, Avatar} from '@mantine/core';
 import {Dropzone, MIME_TYPES} from '@mantine/dropzone';
 import {IconCloudUpload, IconX, IconDownload} from '@tabler/icons';
 import {useUploadInput} from "./upload.styles";
@@ -7,9 +7,11 @@ import {PrimaryBtn} from "./index";
 
 class DropzoneButtonProps {
     onChange?: Function | undefined
+    isAvatar?: true | false
+    disabled?: true | false
 }
 
-export function DropzoneButton({onChange}: DropzoneButtonProps) {
+export function DropzoneButton({onChange, isAvatar = false, disabled = false}: DropzoneButtonProps) {
     const {classes, theme} = useUploadInput();
     const openRef = useRef<() => void>(null);
     const [file, setFile] = useState<File | null>(null);
@@ -31,9 +33,15 @@ export function DropzoneButton({onChange}: DropzoneButtonProps) {
                 accept={[MIME_TYPES.png, MIME_TYPES.jpeg]}
                 maxSize={3 * 1024 ** 2} // 3MB
                 maxFiles={1}
-                sx={!!file ? {backgroundImage: `url(${URL.createObjectURL(file)})`} : {}}
+                sx={!!file && !isAvatar ? {backgroundImage: `url(${URL.createObjectURL(file)})`} : {}}
+                disabled={disabled}
             >
                 <div style={{pointerEvents: 'none'}}>
+                    <div style={!file || !isAvatar ? {display: "none"} : {}}>
+                        <Group position={'center'} mt={12}>
+                            <Avatar src={!!file ? URL.createObjectURL(file) : ''} size={164} radius={150}/>
+                        </Group>
+                    </div>
                     <div style={!!file ? {display: "none"} : {}}>
                         <Group position="center">
                             <Dropzone.Accept>

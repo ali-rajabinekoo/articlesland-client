@@ -8,7 +8,7 @@ export const usePrimaryBtnStyle = createStyles((theme) => ({
     }
 }));
 
-export const useSecondaryBtnStyle = createStyles((theme) => ({
+export const usePrimaryOutlineBtnStyle = createStyles((theme) => ({
     btn: {
         '&:hover' : {
             backgroundColor: theme.colors.primary[0]

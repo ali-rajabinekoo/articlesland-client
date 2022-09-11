@@ -1,37 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e06adea9-5fca-4f6c-9da5-80729234fd31" name="Changes" comment="AL-35 &lt;Header refactoring&gt;">
-      <change afterPath="$PROJECT_DIR$/component/navbar/index.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/component/navbar/navbar.notificationDropDown.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/component/navbar/navbar.notificationTable.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/component/navbar/navbar.profileDropdown.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/component/navbar/navbar.profileItems.tsx" afterDir="false" />
+    <list default="true" id="e06adea9-5fca-4f6c-9da5-80729234fd31" name="Changes" comment="AL-36 &lt;Fix containers&gt;">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/component/auxiliary/countDown.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/component/countDown.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/component/auxiliary/headerDropdown.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/component/auxiliary/iframe.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/component/iframe.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/component/auxiliary/loadingOverlay.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/component/loadingOverlay.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/component/auxiliary/readArticleBanner.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/component/readArticleBanner.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/component/inputs/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/component/inputs/index.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/component/inputs/styles.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/component/inputs/styles.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/container/categories/list.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/container/categories/list.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/container/edit/posting.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/container/edit/posting.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/container/layout/dashboard.styles.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/container/layout/dashboard.styles.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/container/layout/dashboard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/container/layout/dashboard.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/container/layout/readArticle.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/container/layout/readArticle.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/container/login/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/container/login/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/container/post/InfoBarBottom.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/container/post/InfoBarBottom.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/container/registration/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/container/registration/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/container/verification/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/container/verification/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/_app.style.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/pages/_app.style.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/categories/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/pages/categories/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/dashboard/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/pages/dashboard/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/edit/edit.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/pages/edit/edit.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/pages/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/post/[...info].tsx" beforeDir="false" afterPath="$PROJECT_DIR$/pages/post/[...info].tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/helpers.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/utils/helpers.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/container/profile/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/container/profile/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/container/profile/information.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/container/profile/information.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/apis/user.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/utils/apis/user.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/messages.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/utils/messages.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/utils/types.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/utils/types.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/validators.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/utils/validators.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,9 +20,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="CSS File" />
         <option value="JavaScript File" />
         <option value="TypeScript File" />
+        <option value="CSS File" />
         <option value="TypeScript JSX File" />
       </list>
     </option>
@@ -51,7 +30,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="AL-21-fix-login-and-registration" />
+        <entry key="$PROJECT_DIR$" value="AL-35-header-refactoring" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -89,11 +68,11 @@
       <recent name="$PROJECT_DIR$/public/scripts" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/container/profile" />
       <recent name="$PROJECT_DIR$/component/navbar" />
       <recent name="$PROJECT_DIR$/component/lists" />
       <recent name="$PROJECT_DIR$/component" />
       <recent name="$PROJECT_DIR$/utils" />
-      <recent name="$PROJECT_DIR$/component/cards" />
     </key>
   </component>
   <component name="RunManager">
@@ -140,7 +119,8 @@
       <workItem from="1662539932451" duration="28303000" />
       <workItem from="1662615264318" duration="12803000" />
       <workItem from="1662706247044" duration="19503000" />
-      <workItem from="1662796798900" duration="9606000" />
+      <workItem from="1662796798900" duration="32751000" />
+      <workItem from="1662875634658" duration="3667000" />
     </task>
     <task id="LOCAL-00001" summary="AL-14 &lt;Start project and fix basic configs&gt;">
       <created>1660924360896</created>
@@ -233,7 +213,35 @@
       <option name="project" value="LOCAL" />
       <updated>1662718836659</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="AL-35 &lt;Header refactoring&gt;">
+      <created>1662809428091</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1662809428091</updated>
+    </task>
+    <task id="LOCAL-00015" summary="AL-36 &lt;Fix something in header&gt;">
+      <created>1662812292693</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1662812292693</updated>
+    </task>
+    <task id="LOCAL-00016" summary="AL-36 &lt;Update profile information and avatar implemented&gt;">
+      <created>1662824409520</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1662824409520</updated>
+    </task>
+    <task id="LOCAL-00017" summary="AL-36 &lt;Fix containers&gt;">
+      <created>1662824551674</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1662824551674</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -265,6 +273,9 @@
     <MESSAGE value="AL-28 &lt;Categories list Implemented&gt;" />
     <MESSAGE value="AL-21 &lt;Fix login and registration&gt;" />
     <MESSAGE value="AL-35 &lt;Header refactoring&gt;" />
-    <option name="LAST_COMMIT_MESSAGE" value="AL-35 &lt;Header refactoring&gt;" />
+    <MESSAGE value="AL-36 &lt;Fix something in header&gt;" />
+    <MESSAGE value="AL-36 &lt;Update profile information and avatar implemented&gt;" />
+    <MESSAGE value="AL-36 &lt;Fix containers&gt;" />
+    <option name="LAST_COMMIT_MESSAGE" value="AL-36 &lt;Fix containers&gt;" />
   </component>
 </project>

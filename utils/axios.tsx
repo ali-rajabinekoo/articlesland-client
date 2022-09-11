@@ -4,6 +4,7 @@ import {showNotification} from "@mantine/notifications";
 import {appMessages} from "./messages";
 import {IconAlertCircle} from "@tabler/icons";
 import React from "react";
+import {logout} from "../hooks/useUserInfo";
 
 export class Request {
     controller: AbortController | undefined
@@ -41,6 +42,7 @@ export class Request {
                     color: 'red',
                     icon: <IconAlertCircle size={20}/>
                 })
+                logout()
                 setTimeout(() => {
                     window.location.href = "/login";
                 }, 2000)

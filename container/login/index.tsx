@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import {Anchor, Stack, Box, Text, Avatar} from "@mantine/core";
 import {PasswordInput, TextInput} from "../../component/inputs";
-import {PrimaryBtn, SecondaryBtn} from "../../component/buttons";
+import {PrimaryBtn, PrimaryOutlineBtn} from "../../component/buttons";
 import {useLoginFormStyle} from "./styles";
 import {NextRouter, useRouter} from "next/router";
 import {useFormik} from 'formik';
@@ -112,6 +112,7 @@ export const LoginForm = ({showLoginByCodeForm}: LoginFormProps) => {
                         {loginForm.errors.username}
                     </Text>}
                     disabled={visible}
+                    withAsterisk={true}
                 />
                 <PasswordInput
                     labeltitle="رمز عبور" color={"grey.3"}
@@ -123,14 +124,15 @@ export const LoginForm = ({showLoginByCodeForm}: LoginFormProps) => {
                         {loginForm.errors.password}
                     </Text>}
                     disabled={visible}
+                    withAsterisk={true}
                 />
 
                 <Box>
                     {/* @ts-ignore*/}
                     <Box onClick={showLoginByCodeForm}>
-                        <SecondaryBtn text={'ورود با رمز یک بار مصرف'} type={"button"} loading={visible}/>
+                        <PrimaryOutlineBtn mt={'sm'} text={'ورود با رمز یک بار مصرف'} type={"button"} loading={visible}/>
                     </Box>
-                    <PrimaryBtn text={'ورود'} type={"submit"} loading={visible}/>
+                    <PrimaryBtn mt={'sm'} text={'ورود'} type={"submit"} loading={visible}/>
                 </Box>
             </Stack>
             <Text align="center" mt="sm" size="sm" color={"grey.3"}>

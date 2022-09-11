@@ -7,6 +7,8 @@ import {
     Select,
     SelectProps,
     useMantineTheme,
+    Textarea,
+    TextareaProps,
 } from "@mantine/core";
 import React, {ReactNode, RefObject, useEffect, useState} from "react";
 import {Sx} from "@mantine/styles/lib/theme/types/DefaultProps";
@@ -23,30 +25,37 @@ import {GetArticleResponseDto} from "../../utils/types";
 import {v4 as uuidV4} from 'uuid';
 import {IconSearch} from "@tabler/icons";
 
-const renderLabel = (props: TextInputProps | PasswordInputProps): ReactNode => {
+const renderLabel = (props: TextInputProps | PasswordInputProps | TextAreaInputProps): ReactNode => {
     let sx: Sx = {}
     let weight: React.CSSProperties['fontWeight'] = "normal"
-    if (!!props.labelSX) {
-        sx = {...sx, ...props.labelSX}
+    if (!!props.labelsx) {
+        sx = {...sx, ...props.labelsx}
     }
     if (!!props.labelweight) {
         weight = props.labelweight
     }
-    return !!props.labeltitle ? <Text weight={weight} size={"sm"} sx={sx} mb={"xs"} color={"grey.3"}>
-        {props.labeltitle}
-    </Text> : props.label
+    return !!props.labeltitle ?
+        <Text component={'span'} weight={weight} size={"sm"} sx={sx} mb={"xs"}
+              color={!!props?.textcolor ? props.textcolor : "grey.3"}>
+            {props.labeltitle}
+        </Text> : props.label
 }
 
 interface TextInputProps extends BasicTextInputProps {
     labeltitle?: string
-    labelSX?: Sx
+    labelsx?: Sx
     labelweight?: React.CSSProperties['fontWeight']
     weight?: React.CSSProperties['fontWeight']
     customref?: RefObject<any>
+    darker?: true | false
+    textcolor?: string | undefined
 }
 
 export const TextInput = (props: TextInputProps): JSX.Element => {
-    const {classes} = useTextInputStyle({})
+    const {classes} = useTextInputStyle({
+        darker: props.darker || false,
+        textcolor: props.textcolor,
+    })
     return (
         <BasicTextInput
             className={classes.input} ref={props.customref}
@@ -58,13 +67,18 @@ export const TextInput = (props: TextInputProps): JSX.Element => {
 
 interface PasswordInputProps extends BasePasswordInputProps {
     labeltitle?: string
-    labelSX?: Sx
+    labelsx?: Sx
     labelweight?: React.CSSProperties['fontWeight']
     weight?: React.CSSProperties['fontWeight']
+    darker?: true | false
+    textcolor?: string | undefined
 }
 
 export const PasswordInput = ({...props}: PasswordInputProps): JSX.Element => {
-    const {classes} = usePasswordInputStyle()
+    const {classes} = usePasswordInputStyle({
+        darker: props.darker || false,
+        textcolor: props.textcolor,
+    })
     return (
         <BasicPasswordInput
             className={classes.input}
@@ -249,7 +263,7 @@ export function SearchInput(props: TextInputProps) {
 
     return (
         <TextInput
-            rightSection={<IconSearch color={theme.colors.grey[4]} size={24} stroke={1.5} />}
+            rightSection={<IconSearch color={theme.colors.grey[4]} size={24} stroke={1.5}/>}
             radius="sm"
             size="md"
             placeholder="در بین مقالات جستجو کنید"
@@ -257,4 +271,36 @@ export function SearchInput(props: TextInputProps) {
             {...props}
         />
     );
+}
+
+interface TextAreaInputProps extends TextareaProps {
+    darker?: true | false
+    textcolor?: string | undefined
+    labeltitle?: string
+    labelsx?: Sx
+    labelweight?: React.CSSProperties['fontWeight']
+}
+
+export function TextAreaInput(props: TextAreaInputProps) {
+    const {classes} = useTextInputStyle({
+        darker: props.darker || false,
+        textcolor: props.textcolor,
+    })
+
+    return (
+        <>
+            <Textarea
+                placeholder="Autosize with no rows limit"
+                label={renderLabel(props)}
+                autosize
+                minRows={2}
+                name={props.name}
+                onChange={props.onChange}
+                value={props.value}
+                className={classes.input}
+                error={props.error}
+                {...props}
+            />
+        </>
+    )
 }

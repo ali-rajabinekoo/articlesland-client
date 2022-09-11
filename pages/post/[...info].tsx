@@ -8,10 +8,11 @@ import useRequest from "../../hooks/useRequest";
 import ReadArticle from "../../container/layout/readArticle";
 import {Box} from "@mantine/core";
 import InfoBarBottom from "../../container/post/InfoBarBottom";
-import {SecondaryBtn} from "../../component/buttons";
+import {PrimaryOutlineBtn} from "../../component/buttons";
 import Link from "next/link";
+import {NextPage} from "next";
 
-const ShowPost = (): JSX.Element => {
+const ShowPost: NextPage = (): JSX.Element => {
     const {query}: NextRouter = useRouter()
     const {userInfo}: UseUserInfoResult = useUserInfo()
     const [article, setArticle] = useState<ArticleDto>()
@@ -37,7 +38,7 @@ const ShowPost = (): JSX.Element => {
                 action={
                     String(userInfo?.id) === String(article?.owner?.id) ?
                         <Link href={`/edit/${article?.id}`}>
-                            <SecondaryBtn text={'ویرایش'} capsule={"true"}/>
+                            <PrimaryOutlineBtn text={'ویرایش'} capsule={"true"}/>
                         </Link> :
                         <></>
                 }

@@ -22,7 +22,7 @@ import {
 } from "../../utils/types";
 import useFetchCategories from "../../hooks/fetchCategories";
 import React, {useState} from "react";
-import {PrimaryBtn, SecondaryBtn} from "../../component/buttons";
+import {PrimaryBtn, PrimaryOutlineBtn} from "../../component/buttons";
 import ReadArticle from "../layout/readArticle";
 import useUserInfo from "../../hooks/useUserInfo";
 import {IconAlertCircle, IconCheck, IconChevronLeft} from "@tabler/icons";
@@ -162,7 +162,7 @@ const Posting = ({article}: PostingProps) => {
                                     </div>
                                 </div>
                             </Group>
-                            <Grid dir={'ltr'} p={0} mt={'sm'}>
+                            <Grid dir={'ltr'} p={0} mt={'md'}>
                                 <Grid.Col xs={4} pt={0}>
                                     <PrimaryBtn
                                         text={'انتشار پست'} capsule={"true"}
@@ -171,7 +171,7 @@ const Posting = ({article}: PostingProps) => {
                                     />
                                 </Grid.Col>
                                 <Grid.Col xs={4} pt={0}>
-                                    <SecondaryBtn
+                                    <PrimaryOutlineBtn
                                         text={'پیش نمایش'} capsule={"true"}
                                         onClick={() => setIsPreview(true)}
                                         loading={loading}

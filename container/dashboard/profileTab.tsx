@@ -4,7 +4,7 @@ import React from "react";
 import {useCategoriesList} from "./tabs.style";
 import {UserDto} from "../../utils/types";
 import {changeUrlToServerRequest} from "../../utils/helpers";
-import {PrimaryBtn, SecondaryBtn} from "../../component/buttons";
+import {PrimaryBtn, PrimaryOutlineBtn} from "../../component/buttons";
 import Link from "next/link";
 
 interface ProfileProps {
@@ -33,9 +33,9 @@ export default function ProfileTab({user}: ProfileProps) {
                             نفر را دنبال می کند
                         </Text>
                     </Group>
-                    <Group position={'center'} spacing={'sm'}>
+                    <Group position={'center'} spacing={'sm'} mt={"sm"}>
                         <Link href={'/profile'}>
-                            <SecondaryBtn text={'تنظیمات حساب کاربری'} capsule={"true"}/>
+                            <PrimaryOutlineBtn text={'تنظیمات حساب کاربری'} capsule={"true"}/>
                         </Link>
                         <Link href={'/edit'}>
                             <PrimaryBtn text={'نوشتن پست جدید'} capsule={"true"}/>

@@ -1,6 +1,11 @@
 import {createStyles} from '@mantine/core';
 
-export const useTextInputStyle = createStyles((theme, {darker}: { darker?: boolean | undefined }) => {
+interface useTextInputStyleProps {
+    darker?: boolean | undefined,
+    textcolor?: string | undefined
+}
+
+export const useTextInputStyle = createStyles((theme, {darker, textcolor}: useTextInputStyleProps) => {
         return ({
             input: {
                 '& .mantine-Input-input': {
@@ -8,17 +13,22 @@ export const useTextInputStyle = createStyles((theme, {darker}: { darker?: boole
                     borderRadius: '8px',
                     backgroundColor: "#FCFDFE",
                     fontSize: theme.fontSizes.sm,
-                    color: !!darker ? theme.colors.grey[4] : theme.colors.grey[3]
+                    color: !!textcolor ? textcolor : !!darker ? theme.colors.grey[4] : theme.colors.grey[3]
                 },
                 '& .mantine-Input-input::placeholder': {
-                    color: !!darker ? theme.colors.grey[4] : theme.colors.grey[3]
+                    color: !!textcolor ? textcolor : !!darker ? theme.colors.grey[4] : theme.colors.grey[3]
                 }
             }
         })
     }
 );
 
-export const usePasswordInputStyle = createStyles((theme) => ({
+interface usePasswordInputStyleProps extends useTextInputStyleProps {
+    darker?: boolean | undefined,
+    textcolor?: string | undefined
+}
+
+export const usePasswordInputStyle = createStyles((theme, {textcolor}: usePasswordInputStyleProps) => ({
     input: {
         '& .mantine-Input-input': {
             borderRadius: '8px',
@@ -26,11 +36,11 @@ export const usePasswordInputStyle = createStyles((theme) => ({
             backgroundColor: "#FCFDFE",
         },
         '& .mantine-PasswordInput-innerInput::placeholder': {
-            color: theme.colors.grey[3]
+            color: !!textcolor ? textcolor : theme.colors.grey[3]
         },
         '& .mantine-PasswordInput-innerInput': {
             fontSize: theme.fontSizes.sm,
-            color: theme.colors.grey[3]
+            color: !!textcolor ? textcolor : theme.colors.grey[3]
         }
     }
 }));
