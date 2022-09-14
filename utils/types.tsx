@@ -2,6 +2,7 @@ import {Authentication} from "./apis/authentication";
 import {Article} from "./apis/article";
 import {Category} from "./apis/category";
 import {User} from "./apis/user";
+import {Draft} from "./apis/draft";
 
 // DTOs
 
@@ -53,6 +54,16 @@ export class NotificationDto {
     type: 'liked' | 'comment' | 'followed' | string | undefined | null;
     message?: string | undefined | null;
     created_at: string | undefined | null;
+}
+
+export class DraftResponseDto {
+    id?: string | undefined | null;
+    body?: string | undefined | null;
+    title?: string | undefined | null;
+    userId?: number | undefined | null;
+    createdAt?: string | undefined | null;
+    description?: string | undefined | null;
+    articleId?: number | undefined | null;
 }
 
 // hooks
@@ -124,6 +135,7 @@ export class APIS {
     article!: Article
     category!: Category
     user!: User
+    draft!: Draft
 }
 
 export class PublicAPIS {
@@ -160,6 +172,11 @@ export class UserAndTokenResponse {
 
 export class CreateArticleValues {
     title!: string;
+    body!: string;
+}
+
+export class SaveDraftValues {
+    title?: string | undefined;
     body!: string;
 }
 
