@@ -1,18 +1,27 @@
-import {Container, Grid} from "@mantine/core";
+import {Container, Grid, Box} from "@mantine/core";
 import {ArticlesLandEditor, FloatingLabelInput} from "../../component/inputs";
-import React, {MouseEventHandler, useEffect, useState} from "react";
+import React, {MouseEventHandler, MutableRefObject, useEffect, useRef, useState} from "react";
 import {PrimaryBtn, PrimaryOutlineBtn} from "../../component/buttons";
 import {errorHandler} from "../../utils/helpers";
 import {AxiosError, AxiosResponse} from "axios";
 import {htmlToText} from 'html-to-text';
 import {showNotification} from "@mantine/notifications";
 import useRequest from "../../hooks/useRequest";
-import {APIS, CreateArticleValues, GetArticleResponseDto, UseRequestResult} from "../../utils/types";
+import {APIS, CreateArticleValues, DraftResponseDto, GetArticleResponseDto, UseRequestResult} from "../../utils/types";
 import {NextRouter, useRouter} from "next/router";
 import {appMessages} from "../../utils/messages";
 import {IconAlertCircle} from "@tabler/icons";
+import DraftProvider from "../../providers/draftProvider";
+import Drafts from "./drafts";
 
 class EditContainerProps {
+    article?: GetArticleResponseDto
+    onUpdateArticle?: (article: GetArticleResponseDto) => void | undefined
+    drafts?: DraftResponseDto[] | undefined
+    titleRef?: MutableRefObject<any> | undefined
+}
+
+class EditContainerPropsHOC {
     article?: GetArticleResponseDto
     onUpdateArticle?: (article: GetArticleResponseDto) => void | undefined
 }
@@ -22,7 +31,30 @@ class CheckDataResult {
     body?: string | undefined
 }
 
-const EditContainer = ({article, onUpdateArticle}: EditContainerProps) => {
+const EditContainerHOC = ({article, onUpdateArticle}: EditContainerPropsHOC): JSX.Element => {
+    const [drafts, setDrafts] = useState<DraftResponseDto[]>([]);
+    const ref = useRef();
+    const onGetDrafts = (drafts: DraftResponseDto[]): void => {
+        console.log(drafts)
+        if (!!drafts) setDrafts(drafts)
+    }
+
+    return (
+        <>
+            {
+                !!article ? <DraftProvider
+                    titleRef={ref} setDrafts={onGetDrafts}
+                    mainArticle={article}
+                >
+                    <EditContainer drafts={drafts} titleRef={ref}/>
+                </DraftProvider> :
+                    <EditContainer drafts={drafts} titleRef={ref}/>
+            }
+        </>
+    )
+}
+
+const EditContainer = ({article, onUpdateArticle, titleRef, drafts = []}: EditContainerProps) => {
     const [title, setTitle] = useState<string>('');
     const [loading, setLoading] = useState<boolean>(false);
     const {getApis}: UseRequestResult = useRequest();
@@ -128,6 +160,8 @@ const EditContainer = ({article, onUpdateArticle}: EditContainerProps) => {
         }
     }
 
+
+
     useEffect(() => {
         if (!!article?.title) {
             setTitle(article.title)
@@ -135,17 +169,21 @@ const EditContainer = ({article, onUpdateArticle}: EditContainerProps) => {
     }, [article])
 
     return (
-        <Container size={'xl'}>
+        <Container size={'xl'} mb={50}>
             <Grid>
                 <Grid.Col xl={6} lg={7} md={8} xs={12}>
                     <FloatingLabelInput
                         label={'عنوان مقاله خود را وارد کنید'}
                         onChange={onChangeTitle}
                         value={title}
+                        customref={titleRef}
                     />
                 </Grid.Col>
                 <Grid.Col xs={12}>
                     <ArticlesLandEditor data={article}/>
+                </Grid.Col>
+                <Grid.Col xs={12}>
+                    <Drafts draftsList={drafts}/>
                 </Grid.Col>
                 <Grid.Col xs={12} mt={"sm"}>
                     <Grid dir={'ltr'} p={0}>
@@ -168,4 +206,4 @@ const EditContainer = ({article, onUpdateArticle}: EditContainerProps) => {
     )
 }
 
-export default EditContainer
+export default EditContainerHOC

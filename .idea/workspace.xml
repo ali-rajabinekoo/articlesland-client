@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e06adea9-5fca-4f6c-9da5-80729234fd31" name="Changes" comment="AL-36 &lt;Fix containers&gt;">
+    <list default="true" id="e06adea9-5fca-4f6c-9da5-80729234fd31" name="Changes" comment="AL-36 &lt;Email and mobile updating implemented&gt;">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/component/inputs/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/component/inputs/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/component/inputs/styles.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/component/inputs/styles.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/container/profile/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/container/profile/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/container/profile/information.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/container/profile/information.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/apis/user.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/utils/apis/user.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/messages.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/utils/messages.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/container/edit/editContainer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/container/edit/editContainer.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hooks/fetchReduxInitState.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/providers/fetchReduxInitState.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hooks/useRequest.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/hooks/useRequest.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/next.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/next.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/_app.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/pages/_app.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/reducers/atoms/categories.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/reducers/selectors/categories.ts" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/utils/types.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/utils/types.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/validators.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/utils/validators.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,8 +21,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="JavaScript File" />
-        <option value="TypeScript File" />
         <option value="CSS File" />
+        <option value="TypeScript File" />
         <option value="TypeScript JSX File" />
       </list>
     </option>
@@ -68,11 +68,11 @@
       <recent name="$PROJECT_DIR$/public/scripts" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/providers" />
       <recent name="$PROJECT_DIR$/container/profile" />
       <recent name="$PROJECT_DIR$/component/navbar" />
       <recent name="$PROJECT_DIR$/component/lists" />
       <recent name="$PROJECT_DIR$/component" />
-      <recent name="$PROJECT_DIR$/utils" />
     </key>
   </component>
   <component name="RunManager">
@@ -120,7 +120,8 @@
       <workItem from="1662615264318" duration="12803000" />
       <workItem from="1662706247044" duration="19503000" />
       <workItem from="1662796798900" duration="32751000" />
-      <workItem from="1662875634658" duration="3667000" />
+      <workItem from="1662875634658" duration="5394000" />
+      <workItem from="1663146271287" duration="11488000" />
     </task>
     <task id="LOCAL-00001" summary="AL-14 &lt;Start project and fix basic configs&gt;">
       <created>1660924360896</created>
@@ -241,7 +242,14 @@
       <option name="project" value="LOCAL" />
       <updated>1662824551674</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="AL-36 &lt;Email and mobile updating implemented&gt;">
+      <created>1662879515563</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1662879515563</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -276,6 +284,7 @@
     <MESSAGE value="AL-36 &lt;Fix something in header&gt;" />
     <MESSAGE value="AL-36 &lt;Update profile information and avatar implemented&gt;" />
     <MESSAGE value="AL-36 &lt;Fix containers&gt;" />
-    <option name="LAST_COMMIT_MESSAGE" value="AL-36 &lt;Fix containers&gt;" />
+    <MESSAGE value="AL-36 &lt;Email and mobile updating implemented&gt;" />
+    <option name="LAST_COMMIT_MESSAGE" value="AL-36 &lt;Email and mobile updating implemented&gt;" />
   </component>
 </project>
