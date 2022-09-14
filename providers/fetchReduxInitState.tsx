@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {CategoryDto} from "../utils/types";
 import {fetchCategories} from "../utils/initStore";
 import {AppDispatch, RootState} from "../utils/app.store";
-import {useAppDispatch, useAppSelector} from "./redux";
+import {useAppDispatch, useAppSelector} from "../hooks/redux";
 import {setCategories} from "../reducers/categories";
 import {showNotification} from "@mantine/notifications";
 import {appMessages} from "../utils/messages";

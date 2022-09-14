@@ -8,7 +8,7 @@ import {NotificationsProvider} from "@mantine/notifications";
 import moment from "moment-jalaali";
 import {Provider} from "react-redux";
 import store from '../utils/app.store'
-import FetchReduxInitStates from "../hooks/fetchReduxInitState";
+import FetchReduxInitStates from "../providers/fetchReduxInitState";
 
 moment.loadPersian({dialect: 'persian-modern'})
 

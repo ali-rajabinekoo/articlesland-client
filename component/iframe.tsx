@@ -5,7 +5,7 @@ const useStyles = createStyles(() => ({
     frame: {
         width: "100%",
         border: "none",
-        overflow: "auto",
+        overflowY: "auto",
     },
 }));
 
@@ -15,7 +15,7 @@ class IFrameProps {
 }
 
 const IFrame = ({srcDoc, srcUrl}: IFrameProps) => {
-    const {classes} = useStyles()
+    const {classes, cx} = useStyles()
     const ref = useRef()
     const [height, setHeight] = React.useState("0px");
 
@@ -29,8 +29,8 @@ const IFrame = ({srcDoc, srcUrl}: IFrameProps) => {
             <iframe
                 onLoad={onLoad}
                 height={height}
-                className={classes.frame}
-                srcDoc={srcDoc}
+                className={cx(classes.frame, 'showArticle')}
+                srcDoc={`<body style="padding: 0 30px; box-sizing: border-box">${srcDoc}</body>`}
                 src={srcUrl}
                 ref={ref as any}
                 scrolling="no"
