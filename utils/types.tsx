@@ -17,6 +17,8 @@ export class UserDto {
     created_at: string | undefined | null
     updated_at: string | undefined | null
     articles?: ArticleDto[] | undefined | null
+    likes?: ArticleDto[] | undefined | null
+    bookmarks?: ArticleDto[] | undefined | null
 }
 
 export class CategoryDto {

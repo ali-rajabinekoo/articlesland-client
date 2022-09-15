@@ -82,15 +82,15 @@ export function ArticleCard({
             <Card.Section>
                 <a {...linkProps}>
                     {/* eslint-disable-next-line jsx-a11y/alt-text */}
-                    <Image src={image} height={180}/>
+                    <Image src={!!image ? image: '/assets/images/bannerless.png'} height={180}/>
                 </a>
             </Card.Section>
             <Stack p={'sm'} spacing={'xs'}>
-                <Group position={"right"}>
+                {!!category && <Group position={"right"}>
                     <Badge color="secondary.0" size="md">
                         <Text color="secondary.3" weight={400} size={'xs'}>{category}</Text>
                     </Badge>
-                </Group>
+                </Group>}
 
                 <Text className={classes.title} component="a" {...linkProps}>
                     {title}

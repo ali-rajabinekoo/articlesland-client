@@ -1,16 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e06adea9-5fca-4f6c-9da5-80729234fd31" name="Changes" comment="AL-36 &lt;Email and mobile updating implemented&gt;">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="e06adea9-5fca-4f6c-9da5-80729234fd31" name="Changes" comment="AL-43 &lt;Draft provider implemented and apis connected&gt;">
+      <change beforePath="$PROJECT_DIR$/component/cards/articleCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/component/cards/articleCard.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/container/dashboard/articlesList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/container/dashboard/articlesList.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/container/dashboard/profileTab.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/container/dashboard/profileTab.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/container/edit/editContainer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/container/edit/editContainer.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hooks/fetchReduxInitState.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/providers/fetchReduxInitState.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hooks/useRequest.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/hooks/useRequest.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/next.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/next.config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/_app.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/pages/_app.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/reducers/atoms/categories.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/reducers/selectors/categories.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/types.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/utils/types.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/container/post/InfoBarBottom.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/container/post/InfoBarBottom.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,7 +26,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="AL-35-header-refactoring" />
+        <entry key="$PROJECT_DIR$" value="AL-43-cache-drafts-microservice" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -122,6 +118,7 @@
       <workItem from="1662796798900" duration="32751000" />
       <workItem from="1662875634658" duration="5394000" />
       <workItem from="1663146271287" duration="11488000" />
+      <workItem from="1663175831578" duration="8284000" />
     </task>
     <task id="LOCAL-00001" summary="AL-14 &lt;Start project and fix basic configs&gt;">
       <created>1660924360896</created>
@@ -249,7 +246,21 @@
       <option name="project" value="LOCAL" />
       <updated>1662879515563</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="AL-43 &lt;Draft provider implemented and apis connected&gt;">
+      <created>1663179975545</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1663179975545</updated>
+    </task>
+    <task id="LOCAL-00020" summary="AL-43 &lt;Draft provider implemented and apis connected&gt;">
+      <created>1663180124385</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1663180124385</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -285,6 +296,7 @@
     <MESSAGE value="AL-36 &lt;Update profile information and avatar implemented&gt;" />
     <MESSAGE value="AL-36 &lt;Fix containers&gt;" />
     <MESSAGE value="AL-36 &lt;Email and mobile updating implemented&gt;" />
-    <option name="LAST_COMMIT_MESSAGE" value="AL-36 &lt;Email and mobile updating implemented&gt;" />
+    <MESSAGE value="AL-43 &lt;Draft provider implemented and apis connected&gt;" />
+    <option name="LAST_COMMIT_MESSAGE" value="AL-43 &lt;Draft provider implemented and apis connected&gt;" />
   </component>
 </project>

@@ -4,14 +4,16 @@ import {Dropzone, MIME_TYPES} from '@mantine/dropzone';
 import {IconCloudUpload, IconX, IconDownload} from '@tabler/icons';
 import {useUploadInput} from "./upload.styles";
 import {PrimaryBtn} from "./index";
+import {changeUrlToServerRequest} from "../../utils/helpers";
 
 class DropzoneButtonProps {
     onChange?: Function | undefined
     isAvatar?: true | false
     disabled?: true | false
+    defaultImageSrc?: string | undefined
 }
 
-export function DropzoneButton({onChange, isAvatar = false, disabled = false}: DropzoneButtonProps) {
+export function DropzoneButton({onChange, isAvatar = false, disabled = false, defaultImageSrc}: DropzoneButtonProps) {
     const {classes, theme} = useUploadInput();
     const openRef = useRef<() => void>(null);
     const [file, setFile] = useState<File | null>(null);
@@ -33,7 +35,10 @@ export function DropzoneButton({onChange, isAvatar = false, disabled = false}: D
                 accept={[MIME_TYPES.png, MIME_TYPES.jpeg]}
                 maxSize={3 * 1024 ** 2} // 3MB
                 maxFiles={1}
-                sx={!!file && !isAvatar ? {backgroundImage: `url(${URL.createObjectURL(file)})`} : {}}
+                sx={!!file && !isAvatar ?
+                    {backgroundImage: `url(${URL.createObjectURL(file)})`} :
+                    !!defaultImageSrc ? {backgroundImage: `url(${changeUrlToServerRequest(defaultImageSrc)})`} : {}
+                }
                 disabled={disabled}
             >
                 <div style={{pointerEvents: 'none'}}>
@@ -42,7 +47,7 @@ export function DropzoneButton({onChange, isAvatar = false, disabled = false}: D
                             <Avatar src={!!file ? URL.createObjectURL(file) : ''} size={164} radius={150}/>
                         </Group>
                     </div>
-                    <div style={!!file ? {display: "none"} : {}}>
+                    <div style={!!file || !!defaultImageSrc ? {display: "none"} : {}}>
                         <Group position="center">
                             <Dropzone.Accept>
                                 <IconDownload size={50} color={theme.colors[theme.primaryColor][6]} stroke={1.5}/>
