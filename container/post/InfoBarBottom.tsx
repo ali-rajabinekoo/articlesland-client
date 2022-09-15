@@ -15,9 +15,9 @@ const InfoBarBottom = ({article}: InfoBarBottomProps) => {
         <Container size={'md'} my={'md'}>
             <Group position={'apart'}>
                 <Box>
-                    <Chip variant="filled" radius="sm" size={'sm'} color={'grey.0'} checked={false}>
+                    {!!article?.category?.displayTitle && <Chip variant="filled" radius="sm" size={'sm'} color={'grey.0'} checked={false}>
                         {article?.category?.displayTitle}
-                    </Chip>
+                    </Chip>}
                 </Box>
                 <Group spacing={8} mr={0}>
                     <Badge size="sm" radius="xs" className={classes.action} py={3.5} sx={{height: "100%"}}>

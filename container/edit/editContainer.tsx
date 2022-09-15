@@ -31,11 +31,10 @@ class CheckDataResult {
     body?: string | undefined
 }
 
-const EditContainerHOC = ({article}: EditContainerPropsHOC): JSX.Element => {
+const EditContainerHOC = ({article, onUpdateArticle}: EditContainerPropsHOC): JSX.Element => {
     const [drafts, setDrafts] = useState<DraftResponseDto[]>([]);
     const ref = useRef();
     const onGetDrafts = (drafts: DraftResponseDto[]): void => {
-        console.log(drafts)
         if (!!drafts) setDrafts(drafts)
     }
 
@@ -46,9 +45,9 @@ const EditContainerHOC = ({article}: EditContainerPropsHOC): JSX.Element => {
                     titleRef={ref} setDrafts={onGetDrafts}
                     mainArticle={article}
                 >
-                    <EditContainer drafts={drafts} titleRef={ref}/>
+                    <EditContainer drafts={drafts} titleRef={ref} article={article} onUpdateArticle={onUpdateArticle}/>
                 </DraftProvider> :
-                    <EditContainer drafts={drafts} titleRef={ref}/>
+                    <EditContainer drafts={drafts} titleRef={ref} article={article} onUpdateArticle={onUpdateArticle}/>
             }
         </>
     )

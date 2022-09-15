@@ -125,7 +125,10 @@ const Posting = ({article}: PostingProps) => {
                                 شود.
                             </Text>
                             <Box mt={'sm'}>
-                                <DropzoneButton onChange={onChangeBanner}/>
+                                <DropzoneButton
+                                    defaultImageSrc={!!article?.bannerUrl ? article?.bannerUrl : undefined}
+                                    onChange={onChangeBanner}
+                                />
                             </Box>
                         </Box>
                         <Box mb={'lg'}>
