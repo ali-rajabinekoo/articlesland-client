@@ -36,4 +36,10 @@ export class Article {
             method: 'PATCH', url: `/article/${id}`, data: body
         }, this.accessToken as string)
     }
+
+    async removeArticle(id: number): Promise<AxiosResponse | undefined> {
+        return this.request.sendRequest({
+            method: 'DELETE', url: `/article/${id}`
+        }, this.accessToken as string)
+    }
 }

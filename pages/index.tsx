@@ -26,7 +26,7 @@ const Home: NextPage = () => {
     return (
         <div>
             <DashboardHeader headerTabs={
-                !!userInfo ? <CategoriesTab tabs={tabs}/> : undefined
+                !!userInfo && tabs?.length !== 0 ? <CategoriesTab tabs={tabs}/> : undefined
             }/>
         </div>
     )
