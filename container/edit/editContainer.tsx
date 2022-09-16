@@ -42,12 +42,17 @@ const EditContainerHOC = ({article, onUpdateArticle}: EditContainerPropsHOC): JS
         <>
             {
                 !!article ? <DraftProvider
-                    titleRef={ref} setDrafts={onGetDrafts}
-                    mainArticle={article}
-                >
-                    <EditContainer drafts={drafts} titleRef={ref} article={article} onUpdateArticle={onUpdateArticle}/>
-                </DraftProvider> :
-                    <EditContainer drafts={drafts} titleRef={ref} article={article} onUpdateArticle={onUpdateArticle}/>
+                        titleRef={ref} setDrafts={onGetDrafts}
+                        mainArticle={article}
+                    >
+                        <EditContainer drafts={drafts} titleRef={ref} article={article} onUpdateArticle={onUpdateArticle}/>
+                    </DraftProvider> :
+                    <DraftProvider
+                        titleRef={ref} setDrafts={onGetDrafts}
+                    >
+                        <EditContainer drafts={drafts} titleRef={ref} article={article}
+                                       onUpdateArticle={onUpdateArticle}/>
+                    </DraftProvider>
             }
         </>
     )
@@ -158,7 +163,6 @@ const EditContainer = ({article, onUpdateArticle, titleRef, drafts = []}: EditCo
             setLoading(false)
         }
     }
-
 
 
     useEffect(() => {

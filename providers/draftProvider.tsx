@@ -9,7 +9,7 @@ import {IconAlertCircle} from "@tabler/icons";
 
 class DraftProviderProps {
     titleRef?: MutableRefObject<any>
-    mainArticle!: GetArticleResponseDto
+    mainArticle?: GetArticleResponseDto | undefined
     children?: JSX.Element | React.ReactNode | undefined
     setDrafts?: (drafts: DraftResponseDto[]) => void | undefined
 }
@@ -20,7 +20,7 @@ export default function DraftProvider({children, titleRef, setDrafts, mainArticl
     const {getApis} = useRequest()
     const interval = useInterval(() => {
         saveDraft().catch()
-    }, Number(timer as string));
+    }, Number(timer));
 
     const saveDraft = async () => {
         const apis: APIS = getApis()
