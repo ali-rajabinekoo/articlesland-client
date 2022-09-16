@@ -8,6 +8,14 @@ export const usePrimaryBtnStyle = createStyles((theme) => ({
     }
 }));
 
+export const usePrimaryDangerBtnStyle = createStyles((theme) => ({
+    btn: {
+        '&:hover' : {
+            backgroundColor: theme.colors.danger[4]
+        },
+    }
+}));
+
 export const usePrimaryOutlineBtnStyle = createStyles((theme) => ({
     btn: {
         '&:hover' : {

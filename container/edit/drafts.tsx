@@ -67,7 +67,7 @@ const Drafts = ({draftsList = []}: DraftsProps): JSX.Element => {
                         <Grid className={classes.cardsWrapper}>
                             {drafts.map((el, index: number) => {
                                 return (
-                                    <Grid.Col xs={4} key={index}>
+                                    <Grid.Col xs={12} sm={6} lg={4} key={index}>
                                         <DraftCard
                                             {...el}
                                             showContent={onSelectShowContent.bind({}, index)}
