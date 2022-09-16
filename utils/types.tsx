@@ -100,7 +100,7 @@ export class UseFetchSelectedCategoriesResult {
     error?: AxiosError | true | null | undefined
 }
 
-// inputs
+// components
 
 export class SelectInputItem {
     value!: string | number
@@ -112,6 +112,12 @@ export class CategoriesTab {
     value!: string
 }
 
+export class LinkedItemDto {
+    label!: string;
+    href!: string;
+    icon?: JSX.Element;
+    value?: string;
+}
 
 // formik
 

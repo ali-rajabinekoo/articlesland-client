@@ -2,8 +2,8 @@ import {ScrollContainer} from "../../component/inputs";
 import {Container, Group, Tabs, Text, Avatar, Stack} from "@mantine/core";
 import React from "react";
 import {useCategoriesList} from "./tabs.style";
-import {UserDto} from "../../utils/types";
-import {changeUrlToServerRequest} from "../../utils/helpers";
+import {LinkedItemDto, UserDto} from "../../utils/types";
+import {changeUrlToServerRequest, defaultProfileCategoryItem} from "../../utils/helpers";
 import {PrimaryBtn, PrimaryOutlineBtn} from "../../component/buttons";
 import Link from "next/link";
 import {IconUserCircle} from "@tabler/icons";
@@ -50,27 +50,16 @@ export default function ProfileTab({user}: ProfileProps) {
                 <Tabs className={classes.tabs} variant="outline" radius="xs" defaultValue="posts" sx={{width: "100%"}}>
                     <Tabs.List className={classes.tabsList} sx={{width: "100%"}}>
                         <Container size={'xl'}>
-                            <Group position="left" spacing={0}>
-                                <Link href={'/dashboard'}>
-                                    <Tabs.Tab value={'posts'} className={classes.tab}>
-                                        <Text size={'sm'} weight={400}>پست ها</Text>
-                                    </Tabs.Tab>
-                                </Link>
-                                <Link href={'/dashboard?tab=likes'}>
-                                    <Tabs.Tab value={'likes'} className={classes.tab}>
-                                        <Text size={'sm'} weight={400}>لایک شده ها</Text>
-                                    </Tabs.Tab>
-                                </Link>
-                                <Link href={'/dashboard?tab=bookmarks'}>
-                                    <Tabs.Tab value={'bookmarks'} className={classes.tab}>
-                                        <Text size={'sm'} weight={400}>ذخیره شده ها</Text>
-                                    </Tabs.Tab>
-                                </Link>
-                                <Link href={'/dashboard?tab=unpublished'}>
-                                    <Tabs.Tab value={'unpublished'} className={classes.tab}>
-                                        <Text size={'sm'} weight={400}>پیش نویس ها</Text>
-                                    </Tabs.Tab>
-                                </Link>
+                            <Group position="center" spacing={0}>
+                                {defaultProfileCategoryItem.map((el: LinkedItemDto, index: number) => {
+                                    return (
+                                        <Link href={el.href} key={index}>
+                                            <Tabs.Tab value={el.value as string} className={classes.tab}>
+                                                <Text size={'sm'} weight={400}>{el.label}</Text>
+                                            </Tabs.Tab>
+                                        </Link>
+                                    )
+                                })}
                             </Group>
                         </Container>
                     </Tabs.List>

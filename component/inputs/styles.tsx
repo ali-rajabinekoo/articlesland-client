@@ -59,6 +59,10 @@ export const useScrollContainer = createStyles((theme, props:UseScrollContainerP
             overflowX: props.scroll === 'x' ? "auto" : 'hidden',
             overflowY: props.scroll === 'y' ? "hidden" : 'auto',
         },
+        '&:active':{
+            overflowX: props.scroll === 'x' ? "auto" : 'hidden',
+            overflowY: props.scroll === 'y' ? "hidden" : 'auto',
+        },
         '&::-webkit-scrollbar': {
             backgroundColor: 'rgba(0, 0, 0, 0)',
             width: theme.spacing.sm,

@@ -1,10 +1,38 @@
 import {createStyles} from "@mantine/core";
 
 export const useCategoriesList = createStyles((theme) => ({
+    wrapper: {
+        display: 'flex',
+        alignItems: 'end',
+    },
+
+    container:{
+        transform: 'rotateX(180deg)',
+        overflowX: 'auto',
+        minWidth: '100%',
+        padding: 0,
+    },
+
     tabs: {
-        [theme.fn.smallerThan('sm')]: {
+        [theme.fn.smallerThan('xs')]: {
             display: 'none',
         },
+    },
+
+    flexBoxes: {
+        width: '100%',
+        borderBottom: `1px solid ${theme.colors.grey[1]}`
+    },
+
+    mainFlexBoxes: {
+        width: '100%',
+    },
+
+    mobileContainer:{
+        [theme.fn.largerThan('xs')]: {
+            display: 'none',
+        },
+        borderBottom: `1px solid ${theme.colors.grey[1]}`
     },
 
     tabsList: {
