@@ -6,8 +6,11 @@ export class Article {
     request: Request = new Request()
     private readonly accessToken: string | undefined
 
-    constructor(token: string) {
+    constructor(token: string | undefined, requiredToken?: boolean | undefined) {
         this.accessToken = token
+        if (requiredToken !== undefined) {
+            this.request = new Request(requiredToken)
+        }
     }
 
     async getArticle(id: string): Promise<AxiosResponse | undefined> {

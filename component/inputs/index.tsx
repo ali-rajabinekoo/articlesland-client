@@ -114,17 +114,14 @@ export const VerificationCodeInputs = (props: VerificationCodeInputsProps): JSX.
 interface ScrollContainerProps {
     children?: React.ReactNode
     scroll?: 'x' | 'y' | 'both'
+    bgColor?: string | undefined
+    hover?: true | false
 }
 
 export const ScrollContainer = (props: ScrollContainerProps) => {
-    const {classes} = useScrollContainer()
+    const {classes} = useScrollContainer(props)
     return (
-        <div className={classes.scrollbar} style={props.scroll === 'x' ?
-            {overflowX: "auto", overflowY: "hidden"} :
-            props.scroll === 'y' ?
-                {overflowY: "auto", height: '100%', overflowX: "hidden"} :
-                {overflow: "auto"}
-        }>{props.children}</div>
+        <div className={classes.scrollbar}>{props.children}</div>
     )
 }
 

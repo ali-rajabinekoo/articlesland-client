@@ -104,12 +104,15 @@ const Navbar = () => {
 
     return (
         <Group position="apart" noWrap={true}>
-            <Group align={'center'} spacing={'xs'} noWrap={true}>
-                <Avatar src={'/assets/images/icon.png'} size={40} radius={50}/>
-                <Text className={classes.headerTitle}>
-                    ArticlesLand
-                </Text>
-            </Group>
+            <Link href={'/'}>
+                <Group align={'center'} spacing={'xs'} noWrap={true} sx={{cursor: "pointer"}}>
+                    <Avatar src={'/assets/images/icon.png'} size={40} radius={50}/>
+                    <Text className={classes.headerTitle}>
+                        ArticlesLand
+                    </Text>
+                </Group>
+            </Link>
+
 
             <Box className={classes.desktopSize} sx={{width: '500px'}} dir={'rtl'}>
                 <SearchInput sx={{color: theme.colors.grey[4]}}/>
@@ -193,12 +196,17 @@ const Navbar = () => {
                     dir={'ltr'}
                     styles={{title: {marginRight: 0}, closeButton: {marginLeft: 18}, drawer: {overflowY: 'auto'}}}
                     title={
-                        <Group align={'center'} p={'md'} spacing={'xs'} sx={{flexWrap: 'nowrap'}}>
-                            <Avatar src={'/assets/images/icon.png'} size={40} radius={50}/>
-                            <Text className={classes.drawerHeaderTitle}>
-                                ArticlesLand
-                            </Text>
-                        </Group>
+                        <Link href={'/'}>
+                            <Group
+                                align={'center'} p={'md'} spacing={'xs'}
+                                sx={{flexWrap: 'nowrap', cursor: "pointer"}}
+                            >
+                                <Avatar src={'/assets/images/icon.png'} size={40} radius={50}/>
+                                <Text className={classes.drawerHeaderTitle}>
+                                    ArticlesLand
+                                </Text>
+                            </Group>
+                        </Link>
                     }
                     padding={0}
                     size="xl"
