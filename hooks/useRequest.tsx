@@ -7,16 +7,16 @@ import {Draft} from "../utils/apis/draft";
 import useUserInfo from "./useUserInfo";
 import {APIS, PublicAPIS, UseRequestResult, UseUserInfoResult} from "../utils/types";
 
-export default function useRequest(): UseRequestResult {
+export default function useRequest(requiredToken?: boolean | undefined): UseRequestResult {
     const {getAccessToken}: UseUserInfoResult = useUserInfo()
 
     const getApis = (): APIS => {
         return {
-            auth: new Authentication(getAccessToken() as string),
-            category: new Category(getAccessToken() as string),
-            article: new Article(getAccessToken() as string),
-            draft: new Draft(getAccessToken() as string),
-            user: new User(getAccessToken() as string),
+            auth: new Authentication(getAccessToken() as string, requiredToken),
+            category: new Category(getAccessToken() as string, requiredToken),
+            article: new Article(getAccessToken() as string, requiredToken),
+            draft: new Draft(getAccessToken() as string, requiredToken),
+            user: new User(getAccessToken() as string, requiredToken),
         }
     }
 

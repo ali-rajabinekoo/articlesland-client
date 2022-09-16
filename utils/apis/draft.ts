@@ -6,8 +6,11 @@ export class Draft {
     request: Request = new Request()
     private readonly accessToken: string | undefined
 
-    constructor(token: string) {
+    constructor(token: string, requiredToken?: boolean | undefined) {
         this.accessToken = token
+        if (requiredToken !== undefined) {
+            this.request = new Request(requiredToken)
+        }
     }
 
     async getArticleDrafts(id?: number | undefined): Promise<AxiosResponse | undefined> {

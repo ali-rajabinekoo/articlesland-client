@@ -45,8 +45,20 @@ export const usePasswordInputStyle = createStyles((theme, {textcolor}: usePasswo
     }
 }));
 
-export const useScrollContainer = createStyles((theme) => ({
+class UseScrollContainerProps {
+    bgColor?: string | undefined
+    scroll?: 'x' | 'y' | 'both'
+    hover?: false | true
+}
+
+export const useScrollContainer = createStyles((theme, props:UseScrollContainerProps) => ({
     scrollbar: {
+        overflowX: props.hover ? 'hidden' : props.scroll === 'x' ? "auto" : 'hidden',
+        overflowY: props.hover ? 'hidden' : props.scroll === 'y' ? "hidden" : 'auto',
+        '&:hover':{
+            overflowX: props.scroll === 'x' ? "auto" : 'hidden',
+            overflowY: props.scroll === 'y' ? "hidden" : 'auto',
+        },
         '&::-webkit-scrollbar': {
             backgroundColor: 'rgba(0, 0, 0, 0)',
             width: theme.spacing.sm,
@@ -60,7 +72,7 @@ export const useScrollContainer = createStyles((theme) => ({
         '&::-webkit-scrollbar-thumb': {
             backgroundColor: '#babac0',
             borderRadius: '16px',
-            border: '5px solid #fff',
+            border: `5px solid ${!!props?.bgColor ? props.bgColor : '#fff'}`,
         },
         '&::-webkit-scrollbar-thumb:hover': {
             backgroundColor: '#a0a0a5',

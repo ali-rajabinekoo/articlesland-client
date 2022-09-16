@@ -6,8 +6,11 @@ export class Authentication {
     request: Request = new Request()
     private readonly accessToken: string | undefined
 
-    constructor(token?: string | undefined) {
+    constructor(token?: string | undefined, requiredToken?: boolean | undefined) {
         if (!!token) this.accessToken = token
+        if (requiredToken !== undefined) {
+            this.request = new Request(requiredToken)
+        }
     }
 
     async register(body: SignupFormValues): Promise<AxiosResponse | undefined> {

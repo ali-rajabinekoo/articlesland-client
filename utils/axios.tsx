@@ -8,6 +8,11 @@ import {logout} from "../hooks/useUserInfo";
 
 export class Request {
     controller: AbortController | undefined
+    requiredToken: boolean = true
+
+    constructor(requiredToken: boolean = true) {
+        this.requiredToken = requiredToken
+    }
 
     async sendRequest({
         method,
@@ -34,7 +39,7 @@ export class Request {
             }
             return await axios(configs);
         } catch (e: AxiosError | any) {
-            if (e instanceof AxiosError && e?.response?.status === 401) {
+            if (e instanceof AxiosError && e?.response?.status === 401 && this.requiredToken) {
                 showNotification({
                     message: appMessages.unauthorized,
                     title: 'خطا',

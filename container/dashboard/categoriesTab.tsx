@@ -1,19 +1,15 @@
 import {ScrollContainer} from "../../component/inputs";
-import {Container, Group, Tabs, Text} from "@mantine/core";
+import {Container, Group, Tabs, Text, Box} from "@mantine/core";
 import React, {useMemo} from "react";
 import {useCategoriesList} from "./tabs.style";
-
-class TabsItemDto {
-    displayValue!: string
-    value!: string
-}
+import {CategoriesTab as CategoriesTabType} from "../../utils/types";
 
 interface CategoriesListProps {
-    tabs: TabsItemDto[] | undefined;
+    tabs: CategoriesTabType[] | undefined;
 }
 
 export default function CategoriesTab({tabs}: CategoriesListProps) {
-    const {classes} = useCategoriesList();
+    const {classes, theme} = useCategoriesList();
     const items = useMemo(() => {
         return !!tabs ? tabs.map((tab, index) => (
             <Tabs.Tab value={tab.value} key={index} className={classes.tab}>
@@ -22,16 +18,22 @@ export default function CategoriesTab({tabs}: CategoriesListProps) {
         )) : [];
     }, [tabs, classes.tab])
     return (
-        <ScrollContainer scroll={'x'}>
-            <Tabs className={classes.tabs} variant="outline" radius="xs" defaultValue="gallery" sx={{width: "100%"}}>
-                <Tabs.List className={classes.tabsList} sx={{width: "100%"}}>
-                    <Container sx={{width: "100%"}} size={'xl'}>
-                        <Group position="left" spacing={0}>
-                            {items}
-                        </Group>
-                    </Container>
-                </Tabs.List>
-            </Tabs>
-        </ScrollContainer>
+        <Box sx={{display: 'flex', alignItems: 'end'}}>
+            <Box sx={{width: '100%', borderBottom: '1px solid #C2C4C9'}}></Box>
+            <Container p={0} size={'xl'} sx={{transform: 'rotateX(180deg)'}}>
+                <ScrollContainer scroll={'x'} bgColor={theme.colors.grey[0]} hover={true}>
+                    <Box sx={{transform: 'rotateX(180deg)'}}>
+                        <Tabs className={classes.tabs} variant="outline" radius="xs" defaultValue="gallery">
+                            <Tabs.List className={classes.tabsList}>
+                                <Group position="left" spacing={0} px={'sm'} noWrap={true}>
+                                    {items}
+                                </Group>
+                            </Tabs.List>
+                        </Tabs>
+                    </Box>
+                </ScrollContainer>
+            </Container>
+            <Box sx={{width: '100%', borderBottom: '1px solid #C2C4C9'}}></Box>
+        </Box>
     )
 }

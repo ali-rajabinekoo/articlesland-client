@@ -7,7 +7,7 @@ const nextConfig = {
     LOCAL_STORAGE_ACCESS_TOKEN: "ACCESS_TOKEN",
     SERVER_DOMAIN: "http://localhost:8080",
     TIMER: 120000,
-    CACHE_TIMER: 1000 * 60 * 3 + 100, // 1 minutes and 100 second
+    CACHE_TIMER: 1000 * 60 * 1 + 100, // 1 minutes and 100 second
     CKEDITOR_LICENSE: "MVQRBU737.KJA526AFJ710"
   }
 }

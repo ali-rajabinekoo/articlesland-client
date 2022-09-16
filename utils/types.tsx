@@ -3,6 +3,7 @@ import {Article} from "./apis/article";
 import {Category} from "./apis/category";
 import {User} from "./apis/user";
 import {Draft} from "./apis/draft";
+import {AxiosError} from "axios";
 
 // DTOs
 
@@ -19,6 +20,7 @@ export class UserDto {
     articles?: ArticleDto[] | undefined | null
     likes?: ArticleDto[] | undefined | null
     bookmarks?: ArticleDto[] | undefined | null
+    selectedCategories?: CategoryDto[] | undefined | null
 }
 
 export class CategoryDto {
@@ -93,12 +95,23 @@ export class UseFetchCategoriesResult {
     categories!: SelectInputItem[]
 }
 
+export class UseFetchSelectedCategoriesResult {
+    selectedCategories!: CategoryDto[]
+    error?: AxiosError | true | null | undefined
+}
+
 // inputs
 
 export class SelectInputItem {
     value!: string | number
     label!: string
 }
+
+export class CategoriesTab {
+    displayValue!: string
+    value!: string
+}
+
 
 // formik
 
@@ -180,6 +193,10 @@ export class CreateArticleValues {
 export class SaveDraftValues {
     title?: string | undefined;
     body!: string;
+}
+
+export class SetSelectedCategories {
+    list!: string[] | number[]
 }
 
 // styles

@@ -1,6 +1,15 @@
 import {Box, Group, UnstyledButton, Text, createStyles} from "@mantine/core";
 import React from "react";
-import {IconBookmarks, IconChartLine, IconHeart, IconLogout, IconPencil, IconSettings, IconUser} from "@tabler/icons";
+import {
+    IconBookmarks,
+    IconChartLine,
+    IconHeart,
+    IconList,
+    IconLogout,
+    IconPencil,
+    IconSettings,
+    IconUser
+} from "@tabler/icons";
 import Link from "next/link";
 import {UseUserInfoResult} from "../../utils/types";
 import useUserInfo from "../../hooks/useUserInfo";
@@ -50,12 +59,16 @@ const NavbarProfileItems = () => {
                 icon={<IconPencil color={theme.colors.grey[4]} size={20} stroke={1.5}/>}
             />
             <Item
-                label={'پست های مورد علاقه'} href={'/dashboard'}
+                label={'پست های مورد علاقه'} href={'/dashboard?tab=likes'}
                 icon={<IconHeart color={theme.colors.grey[4]} size={20} stroke={1.5}/>}
             />
             <Item
-                label={'پست های ذخیره شده'} href={'/dashboard'}
+                label={'پست های ذخیره شده'} href={'/dashboard?tab=bookmarks'}
                 icon={<IconBookmarks color={theme.colors.grey[4]} size={20} stroke={1.5}/>}
+            />
+            <Item
+                label={'لیست ها'} href={'/categories'}
+                icon={<IconList color={theme.colors.grey[4]} size={20} stroke={1.5}/>}
             />
             <Item
                 label={'مشاهده آمار'} href={'/stats'}

@@ -6,7 +6,7 @@ import {
     IconUser,
     IconPencil,
     IconChartLine,
-    IconBookmarks
+    IconBookmarks, IconList
 } from "@tabler/icons";
 import React from "react";
 import Link from "next/link";
@@ -26,12 +26,21 @@ export const NavbarProfileDropdown = () => {
                     <Text color={'grey.4'}>نوشتن پست جدید</Text>
                 </Menu.Item>
             </Link>
-            <Menu.Item icon={<IconHeart color={theme.colors.grey[4]} size={20} stroke={1.5}/>}>
-                <Text color={'grey.4'}>پست های مورد علاقه</Text>
-            </Menu.Item>
-            <Menu.Item icon={<IconBookmarks color={theme.colors.grey[4]} size={20} stroke={1.5}/>}>
-                <Text color={'grey.4'}>پست های ذخیره شده</Text>
-            </Menu.Item>
+            <Link href={'/dashboard?tab=likes'}>
+                <Menu.Item icon={<IconHeart color={theme.colors.grey[4]} size={20} stroke={1.5}/>}>
+                    <Text color={'grey.4'}>پست های مورد علاقه</Text>
+                </Menu.Item>
+            </Link>
+            <Link href={'/dashboard?tab=bookmarks'}>
+                <Menu.Item icon={<IconBookmarks color={theme.colors.grey[4]} size={20} stroke={1.5}/>}>
+                    <Text color={'grey.4'}>پست های ذخیره شده</Text>
+                </Menu.Item>
+            </Link>
+            <Link href={'/categories'}>
+                <Menu.Item icon={<IconList color={theme.colors.grey[4]} size={20} stroke={1.5}/>}>
+                    <Text color={'grey.4'}>لیست ها</Text>
+                </Menu.Item>
+            </Link>
             <Menu.Item icon={<IconChartLine color={theme.colors.grey[4]} size={20} stroke={1.5}/>}>
                 <Text color={'grey.4'}>مشاهده آمار</Text>
             </Menu.Item>
