@@ -11,17 +11,21 @@ import {
     Divider,
     Accordion, Grid
 } from "@mantine/core";
-import {changeUrlToServerRequest} from "../../utils/helpers";
-import {IconBell, IconUserCircle} from "@tabler/icons";
-import React, {useState} from "react";
+import {changeUrlToServerRequest, defaultProfileCategoryItem} from "../../utils/helpers";
+import {IconBell, IconList, IconUserCircle} from "@tabler/icons";
+import React, {useEffect, useState} from "react";
 import useUserInfo from "../../hooks/useUserInfo";
-import {UseUserInfoResult} from "../../utils/types";
+import {CategoryDto, LinkedItemDto, UseUserInfoResult} from "../../utils/types";
 import {SearchInput} from "../inputs";
 import NavbarProfileItems from "./navbar.profileItems";
 import {NavbarNotificationDropDown} from "./navbar.notificationDropDown";
 import {NavbarProfileDropdown} from "./navbar.profileDropdown";
 import {PrimaryBtn, PrimaryOutlineBtn} from "../buttons";
 import Link from "next/link";
+import {useAppSelector} from "../../hooks/redux";
+import {RootState} from "../../utils/app.store";
+import {NextRouter, useRouter} from "next/router";
+import NavbarListItems from "./navbar.list";
 
 const useStyles = createStyles((theme) => ({
     header: {
@@ -96,11 +100,38 @@ const useStyles = createStyles((theme) => ({
 }));
 
 const Navbar = () => {
+    const userCategories: CategoryDto[] = useAppSelector((state: RootState) => state.userCategories.list)
     const {userInfo: user}: UseUserInfoResult = useUserInfo()
     const {classes, cx, theme} = useStyles()
+    const [userCategoryItem, setUserCategoryItems] = useState<LinkedItemDto[]>([]);
+    const [profileItem, setProfileItems] = useState<LinkedItemDto[]>([]);
     const [mobileMenuOpened, setMobileMenuOpened] = useState<boolean>(false);
     const [userMenuOpened, setUserMenuOpened] = useState<boolean>(false);
     const [notificationOpened, setNotificationOpened] = useState<boolean>(false);
+    const {pathname}: NextRouter = useRouter()
+
+    useEffect(() => {
+        if (!!pathname) {
+            switch (pathname) {
+                case '/':
+                    setUserCategoryItems(userCategories.map((category: CategoryDto) => {
+                        return {
+                            label: category.displayTitle,
+                            href: `/?list=${category.title}`,
+                        } as LinkedItemDto
+                    }))
+                    break;
+                case '/dashboard':
+                    setProfileItems(defaultProfileCategoryItem)
+                    break;
+                default:
+                    setUserCategoryItems([])
+                    setProfileItems([])
+                    break;
+            }
+        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [pathname])
 
     return (
         <Group position="apart" noWrap={true}>
@@ -264,6 +295,50 @@ const Navbar = () => {
                                             </Box>
                                         </Accordion.Panel>
                                     </Accordion.Item>
+
+                                    {
+                                        userCategoryItem.length !== 0 &&
+                                        <Accordion.Item value="categories">
+                                            <Accordion.Control>
+                                                <Group spacing={'xs'}>
+                                                    <IconList color={theme.colors.grey[4]} size={18}/>
+                                                    <Text size={'sm'} color={'grey.4'} weight={600}>
+                                                        لیست ها
+                                                    </Text>
+                                                </Group>
+                                            </Accordion.Control>
+                                            <Accordion.Panel px={0}>
+                                                <Box mb={'xs'} mt={'sm'} px={0}>
+                                                    <NavbarListItems
+                                                        items={userCategoryItem}
+                                                        onClickClose={() => setMobileMenuOpened(false)}
+                                                    />
+                                                </Box>
+                                            </Accordion.Panel>
+                                        </Accordion.Item>
+                                    }
+
+                                    {
+                                        profileItem.length !== 0 &&
+                                        <Accordion.Item value="categories">
+                                            <Accordion.Control>
+                                                <Group spacing={'xs'}>
+                                                    <IconList color={theme.colors.grey[4]} size={18}/>
+                                                    <Text size={'sm'} color={'grey.4'} weight={600}>
+                                                        گزینه ها
+                                                    </Text>
+                                                </Group>
+                                            </Accordion.Control>
+                                            <Accordion.Panel px={0}>
+                                                <Box mb={'xs'} mt={'sm'} px={0}>
+                                                    <NavbarListItems
+                                                        items={profileItem}
+                                                        onClickClose={() => setMobileMenuOpened(false)}
+                                                    />
+                                                </Box>
+                                            </Accordion.Panel>
+                                        </Accordion.Item>
+                                    }
                                 </Accordion>
                             </Box>
                         </Box>

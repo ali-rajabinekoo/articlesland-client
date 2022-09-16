@@ -11,7 +11,7 @@ import {
     IconUser
 } from "@tabler/icons";
 import Link from "next/link";
-import {UseUserInfoResult} from "../../utils/types";
+import {LinkedItemDto, UseUserInfoResult} from "../../utils/types";
 import useUserInfo from "../../hooks/useUserInfo";
 
 const useStyles = createStyles(() => ({
@@ -23,13 +23,7 @@ const useStyles = createStyles(() => ({
     }
 }))
 
-class ItemProps {
-    label!: string;
-    icon!: JSX.Element;
-    href!: string;
-}
-
-const Item = ({label, icon, href}: ItemProps) => {
+const Item = ({label, icon, href}: LinkedItemDto) => {
     const {classes} = useStyles()
     return (
         <Box>

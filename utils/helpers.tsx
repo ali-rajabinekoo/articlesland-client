@@ -3,7 +3,7 @@ import {showNotification} from "@mantine/notifications";
 import {appMessages} from "./messages";
 import {IconAlertCircle} from "@tabler/icons";
 import React from "react";
-import {APIS, GetArticleResponseDto} from "./types";
+import {APIS, GetArticleResponseDto, LinkedItemDto} from "./types";
 
 export const errorHandler = (e: AxiosError | any) => {
     if (e instanceof AxiosError) {
@@ -92,3 +92,26 @@ const notificationMessages = {
 export const convertNotificationTypeToMessage = (type: notificationValidTypes, name: string) => {
     return notificationMessages[type](name)
 }
+
+export const defaultProfileCategoryItem: LinkedItemDto[] = [
+    {
+        label: 'پست ها',
+        href: '/dashboard',
+        value: 'posts'
+    } as LinkedItemDto,
+    {
+        label: 'لایک شده ها',
+        href: '/dashboard?tab=likes',
+        value: 'likes'
+    } as LinkedItemDto,
+    {
+        label: 'ذخیره شده ها',
+        href: '/dashboard?tab=bookmarks',
+        value: 'bookmarks'
+    } as LinkedItemDto,
+    {
+        label: 'پیش نویس ها',
+        href: '/dashboard?tab=unpublished',
+        value: 'unpublished'
+    } as LinkedItemDto,
+]
