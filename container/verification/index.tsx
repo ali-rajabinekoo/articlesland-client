@@ -10,7 +10,7 @@ import {
     UseRequestResult,
     UseUserInfoResult,
     VerificationBody,
-    UserAndTokenResponse
+    UserAndTokenResponse, UserDto
 } from "../../utils/types";
 import useRequest from "../../hooks/useRequest";
 import {AxiosError, AxiosResponse} from "axios";
@@ -71,7 +71,7 @@ export function VerificationForm({
     const [timer, setTimer] = useState<any>()
     const [isActiveResend, setIsActiveResend] = useState<boolean>(false)
     const {getApis}: UseRequestResult = useRequest()
-    const {setNewUser, setNewAccessToken}: UseUserInfoResult = useUserInfo()
+    const {setNewUser, setNewAccessToken, setNewRefreshToken}: UseUserInfoResult = useUserInfo()
 
     const onChange = (newCode: string) => {
         setCode(newCode)
@@ -111,8 +111,9 @@ export function VerificationForm({
                     icon: <IconAlertCircle size={20}/>
                 })
             }
-            setNewAccessToken(responseBody.token)
             setNewUser(responseBody.user)
+            setNewAccessToken(responseBody.token)
+            setNewRefreshToken((responseBody.user as UserDto).refreshToken)
             showNotification({
                 message: !!defaultMobile ? appMessages.registrationVerified : appMessages.loggedIn,
                 autoClose: 2000,

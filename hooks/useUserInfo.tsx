@@ -8,19 +8,43 @@ import {IconCheck} from "@tabler/icons";
 
 const userKey: string | undefined = process.env.LOCAL_STORAGE_USER
 const accessTokenKey: string | undefined = process.env.LOCAL_STORAGE_ACCESS_TOKEN
+const refreshTokenKey: string | undefined = process.env.LOCAL_STORAGE_REFRESH_TOKEN
 
-export const logout = (): void => {
+class logoutProps {
+    disableMessage?: boolean
+    disableRedirect?: boolean
+}
+
+export const logout = ({disableMessage = false, disableRedirect = false}: logoutProps): void => {
+    window.localStorage.removeItem(refreshTokenKey as string)
     window.localStorage.removeItem(accessTokenKey as string)
     window.localStorage.removeItem(userKey as string)
-    setTimeout(() => {
+    if (!disableRedirect) setTimeout(() => {
         window.location.href = "/login";
     }, 2000)
-    showNotification({
+    if (!disableMessage) showNotification({
         message: appMessages.loggedOut,
         autoClose: 2000,
         color: 'green',
         icon: <IconCheck size={20}/>
     })
+}
+
+export const getRefreshToken = (): string => {
+    const refresh_token: string = window.localStorage.getItem(refreshTokenKey as string) as string
+    return isJson(refresh_token) ? JSON.parse(refresh_token) : refresh_token
+}
+
+export const setAccessToken = (newAccessToken: string | null): void => {
+    if (!!newAccessToken && !!accessTokenKey) {
+        window.localStorage.setItem(accessTokenKey as string, newAccessToken as string)
+    }
+}
+
+export const setUserInfo = (user: UserDto | undefined): void => {
+    if (!!UserDto && !!userKey) {
+        window.localStorage.setItem(userKey as string, JSON.stringify(user) as string)
+    }
 }
 
 export default function useUserInfo(): UseUserInfoResult {
@@ -30,6 +54,9 @@ export default function useUserInfo(): UseUserInfoResult {
     });
     const [accessToken, setAccessToken] = useLocalStorage<string>({
         key: accessTokenKey as string
+    });
+    const [refreshToken, setRefreshToken] = useLocalStorage<string>({
+        key: refreshTokenKey as string
     });
 
     const setNewUser = (newUser: UserDto | null): void => {
@@ -44,6 +71,12 @@ export default function useUserInfo(): UseUserInfoResult {
         }
     }
 
+    const setNewRefreshToken = (newRefreshToken: string | null): void => {
+        if (!!newRefreshToken && !!refreshTokenKey) {
+            setRefreshToken(newRefreshToken as string);
+        }
+    }
+
     const getAccessToken = (): string => {
         const access_token: string = window.localStorage.getItem(accessTokenKey as string) as string
         return isJson(access_token) ? JSON.parse(access_token) : access_token
@@ -52,8 +85,10 @@ export default function useUserInfo(): UseUserInfoResult {
     return {
         userInfo,
         accessToken,
+        refreshToken,
         setNewUser,
         setNewAccessToken,
+        setNewRefreshToken,
         getAccessToken,
         logout,
     }

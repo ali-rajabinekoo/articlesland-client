@@ -3,7 +3,7 @@ import {Article} from "./apis/article";
 import {Category} from "./apis/category";
 import {User} from "./apis/user";
 import {Draft} from "./apis/draft";
-import {AxiosError} from "axios";
+import {AxiosError, AxiosResponse} from "axios";
 
 // DTOs
 
@@ -12,6 +12,7 @@ export class UserDto {
     username: string | undefined | null
     displayName?: string | undefined | null
     phoneNumber: string | undefined | null
+    refreshToken: string | undefined | null
     email?: string | undefined | null
     avatar?: string | undefined | null
     bio?: string | undefined | null
@@ -75,7 +76,9 @@ export class DraftResponseDto {
 export class UseUserInfoResult {
     userInfo!: UserDto | null
     accessToken!: string
+    refreshToken!: string
     setNewAccessToken!: Function
+    setNewRefreshToken!: Function
     setNewUser!: Function
     getAccessToken!: Function
     logout!: Function
@@ -151,6 +154,11 @@ export class ProfileInfoFormValues {
 
 // apis
 
+export class RefreshTokenResponse {
+    response: AxiosResponse | undefined
+    refreshTokenResponse: UserAndTokenResponse | undefined
+}
+
 export class APIS {
     auth!: Authentication
     article!: Article
@@ -188,6 +196,8 @@ export class UserAndTokenResponse {
     user: object | undefined
     token: string | undefined
 }
+
+export type refreshTokenHandler = (data: UserAndTokenResponse) => void
 
 // APIS body
 

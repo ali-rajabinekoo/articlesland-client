@@ -3,7 +3,14 @@ import {showNotification} from "@mantine/notifications";
 import {appMessages} from "./messages";
 import {IconAlertCircle} from "@tabler/icons";
 import React from "react";
-import {APIS, GetArticleResponseDto, LinkedItemDto} from "./types";
+import {
+    APIS,
+    GetArticleResponseDto,
+    LinkedItemDto,
+    refreshTokenHandler,
+    RefreshTokenResponse,
+    UserAndTokenResponse
+} from "./types";
 
 export const errorHandler = (e: AxiosError | any) => {
     if (e instanceof AxiosError) {
@@ -115,3 +122,15 @@ export const defaultProfileCategoryItem: LinkedItemDto[] = [
         value: 'unpublished'
     } as LinkedItemDto,
 ]
+
+export const responseHandler = (
+    result: AxiosResponse | RefreshTokenResponse | undefined,
+    onRefreshToken: refreshTokenHandler
+): AxiosResponse | undefined => {
+    if (!!(result as RefreshTokenResponse)?.refreshTokenResponse) {
+        onRefreshToken((result as RefreshTokenResponse).refreshTokenResponse as UserAndTokenResponse)
+        return (result as RefreshTokenResponse).response as AxiosResponse | undefined
+    } else {
+        return result as AxiosResponse | undefined
+    }
+}

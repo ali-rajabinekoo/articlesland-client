@@ -30,7 +30,7 @@ export default function useFetchSelectedCategories(requiredToken?: undefined | b
             const response: AxiosResponse | undefined = await apis.user.userInfo()
             if (!response) {
                 setError(true)
-                return showNotification({
+                if (requiredToken) return showNotification({
                     message: appMessages.somethingWentWrong,
                     title: 'خطا',
                     autoClose: 3000,
@@ -44,7 +44,7 @@ export default function useFetchSelectedCategories(requiredToken?: undefined | b
         } catch (e: AxiosError | any) {
             setError(e as AxiosError)
             if (e instanceof AxiosError && e?.response?.status === 401 && !requiredToken) {
-                logout()
+                logout({})
             }
             errorHandler(e)
         }
@@ -57,7 +57,7 @@ export default function useFetchSelectedCategories(requiredToken?: undefined | b
             fetchSelectedCategories().catch()
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [userCategories])
+    }, [])
 
     return {selectedCategories: categories, error}
 }
