@@ -10,7 +10,7 @@ import {
     UserAndTokenResponse,
     LoginFormValues,
     UseRequestResult,
-    UseUserInfoResult
+    UseUserInfoResult, UserDto
 } from "../../utils/types";
 import {LoginValidationSchema} from "../../utils/validators";
 import useRequest from "../../hooks/useRequest";
@@ -56,7 +56,7 @@ interface LoginFormProps {
 export const LoginForm = ({showLoginByCodeForm}: LoginFormProps) => {
     const {push}: NextRouter = useRouter()
     const {getApis}: UseRequestResult = useRequest()
-    const {setNewAccessToken, setNewUser}: UseUserInfoResult = useUserInfo()
+    const {setNewAccessToken, setNewRefreshToken, setNewUser}: UseUserInfoResult = useUserInfo()
     const [visible, setVisible] = useState<boolean>(false);
 
     const loginForm = useFormik({
@@ -73,8 +73,9 @@ export const LoginForm = ({showLoginByCodeForm}: LoginFormProps) => {
                 const data: UserAndTokenResponse = response?.data
                 if (!data?.user) return setVisible(false)
                 if (!data?.token) return setVisible(false)
-                setNewUser(data.user)
-                setNewAccessToken(data.token)
+                setNewUser(data.user as UserDto)
+                setNewAccessToken(data.token as string)
+                setNewRefreshToken((data.user as UserDto).refreshToken)
                 showNotification({
                     message: appMessages.loggedIn,
                     autoClose: 2000,

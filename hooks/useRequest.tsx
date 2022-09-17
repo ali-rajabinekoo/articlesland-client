@@ -5,18 +5,23 @@ import {Category} from "../utils/apis/category";
 import {User} from "../utils/apis/user";
 import {Draft} from "../utils/apis/draft";
 import useUserInfo from "./useUserInfo";
-import {APIS, PublicAPIS, UseRequestResult, UseUserInfoResult} from "../utils/types";
+import {APIS, PublicAPIS, UserAndTokenResponse, UseRequestResult, UseUserInfoResult} from "../utils/types";
 
 export default function useRequest(requiredToken?: boolean | undefined): UseRequestResult {
-    const {getAccessToken}: UseUserInfoResult = useUserInfo()
+    const {getAccessToken, setNewAccessToken, setNewUser}: UseUserInfoResult = useUserInfo()
+
+    const handleOnRefreshToken = (result: UserAndTokenResponse) => {
+        setNewAccessToken(result.token)
+        setNewUser(result.user)
+    }
 
     const getApis = (): APIS => {
         return {
-            auth: new Authentication(getAccessToken() as string, requiredToken),
-            category: new Category(getAccessToken() as string, requiredToken),
-            article: new Article(getAccessToken() as string, requiredToken),
-            draft: new Draft(getAccessToken() as string, requiredToken),
-            user: new User(getAccessToken() as string, requiredToken),
+            auth: new Authentication(getAccessToken() as string, handleOnRefreshToken, requiredToken),
+            category: new Category(getAccessToken() as string, handleOnRefreshToken, requiredToken),
+            article: new Article(getAccessToken() as string, handleOnRefreshToken, requiredToken),
+            draft: new Draft(getAccessToken() as string, handleOnRefreshToken, requiredToken),
+            user: new User(getAccessToken() as string, handleOnRefreshToken, requiredToken),
         }
     }
 

@@ -30,7 +30,7 @@ export default function useFetchSelectedCategories(requiredToken?: undefined | b
             const response: AxiosResponse | undefined = await apis.user.userInfo()
             if (!response) {
                 setError(true)
-                return showNotification({
+                if (requiredToken) return showNotification({
                     message: appMessages.somethingWentWrong,
                     title: 'خطا',
                     autoClose: 3000,

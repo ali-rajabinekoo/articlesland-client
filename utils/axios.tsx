@@ -1,7 +1,7 @@
 import React from "react";
-import {RequestParams} from "./types";
+import {RefreshTokenResponse, RequestParams, UserAndTokenResponse, UserDto} from "./types";
 import axios, {AxiosError, AxiosRequestConfig, AxiosResponse} from "axios";
-import {getRefreshToken, setAccessToken, setUserInfo} from "../hooks/useUserInfo";
+import {getRefreshToken, logout, setAccessToken, setUserInfo} from "../hooks/useUserInfo";
 
 export class Request {
     controller: AbortController | undefined
@@ -11,7 +11,7 @@ export class Request {
         this.requiredToken = requiredToken
     }
 
-    async reLoginWithRefreshToken(refreshToken: string): Promise<string | null> {
+    async reLoginWithRefreshToken(refreshToken: string): Promise<UserAndTokenResponse | null> {
         try {
             const domain: string | undefined = process.env.SERVER_DOMAIN
             const configs: AxiosRequestConfig = {
@@ -22,9 +22,10 @@ export class Request {
             };
             const response: AxiosResponse | undefined = await axios(configs);
             if (!!response?.data?.token && !!response?.data?.user) {
-                setAccessToken(response.data.token)
-                setUserInfo(response.data.user)
-                return response.data.token
+                const data: UserAndTokenResponse = response.data
+                setAccessToken(data.token as string)
+                setUserInfo(data.user as UserDto)
+                return response.data as UserAndTokenResponse
             } else {
                 return null
             }
@@ -58,7 +59,11 @@ export class Request {
         return axios(configs);
     }
 
-    async sendRequest(props: RequestParams, accessToken: string | undefined): Promise<AxiosResponse | undefined> {
+    async sendRequest(
+        props: RequestParams,
+        accessToken: string | undefined
+    ): Promise<AxiosResponse | RefreshTokenResponse | undefined> {
+        console.log(props)
         try {
             this.controller = new AbortController();
             return await this.requestClient(props, accessToken);
@@ -66,26 +71,25 @@ export class Request {
             if (e instanceof AxiosError && e?.response?.status === 401) {
                 const refreshToken: string = getRefreshToken()
                 if (!!refreshToken) {
-                    const newAccessToken: string | null = await this.reLoginWithRefreshToken(refreshToken)
-                    if (!!newAccessToken) {
+                    const refreshTokenResponse: UserAndTokenResponse | null =
+                        await this.reLoginWithRefreshToken(refreshToken)
+                    if (!!refreshTokenResponse) {
                         try {
-                            return await this.requestClient(props, newAccessToken);
+                            const response = await this.requestClient(props, refreshTokenResponse.token);
+                            return {
+                                response,
+                                refreshTokenResponse,
+                            } as RefreshTokenResponse
                         } catch (error) {
                             throw error;
                         }
                     }
                 }
-                // showNotification({
-                //     message: appMessages.unauthorized,
-                //     title: 'خطا',
-                //     autoClose: 2000,
-                //     color: 'red',
-                //     icon: <IconAlertCircle size={20}/>
-                // })
-                // logout()
-                // setTimeout(() => {
-                //     window.location.href = "/login";
-                // }, 2000)
+                logout(
+                    this.requiredToken ?
+                        {disableMessage: false, disableRedirect: false} :
+                        {disableMessage: true, disableRedirect: true}
+                )
             } else {
                 throw e;
             }
