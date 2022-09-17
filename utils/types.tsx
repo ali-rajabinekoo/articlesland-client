@@ -12,6 +12,7 @@ export class UserDto {
     username: string | undefined | null
     displayName?: string | undefined | null
     phoneNumber: string | undefined | null
+    refreshToken: string | undefined | null
     email?: string | undefined | null
     avatar?: string | undefined | null
     bio?: string | undefined | null
@@ -49,7 +50,7 @@ export class ArticleDto {
     // comments: Relation<Comment[]>;
 }
 
-export class GetArticleResponseDto extends ArticleDto{
+export class GetArticleResponseDto extends ArticleDto {
     body: string | undefined | null;
 }
 
@@ -75,11 +76,21 @@ export class DraftResponseDto {
 export class UseUserInfoResult {
     userInfo!: UserDto | null
     accessToken!: string
-    setNewAccessToken!: Function
-    setNewUser!: Function
-    getAccessToken!: Function
-    logout!: Function
+    refreshToken!: string
 }
+
+// export class UseUserInfoResult{
+//     userInfo!: UserDto | null
+//     accessToken!: string
+//     refreshToken!: string
+//     getUserInfo!: () => UserDto;
+//     getAccessToken!: () => string;
+//     getRefreshToken!: () => string;
+//     setNewUser!: (user: UserDto) => void;
+//     setAccessToken!: (access_token: string) => void;
+//     setRefreshToken!: (refresh_token: string) => void;
+//     logout!: () => void;
+// }
 
 export class UseRequestResult {
     getApis!: Function
@@ -101,6 +112,16 @@ export class UseFetchSelectedCategoriesResult {
 }
 
 // components
+
+export interface userStorageInterface {
+    getUserInfo: () => UserDto;
+    getAccessToken: () => string;
+    getRefreshToken: () => string;
+    setNewUser: (user: UserDto) => void;
+    setAccessToken: (access_token: string) => void;
+    setRefreshToken: (refresh_token: string) => void;
+    logout: () => void;
+}
 
 export class SelectInputItem {
     value!: string | number
@@ -151,12 +172,12 @@ export class ProfileInfoFormValues {
 
 // apis
 
-export class APIS {
-    auth!: Authentication
-    article!: Article
-    category!: Category
-    user!: User
-    draft!: Draft
+export interface APIS {
+    auth: Authentication
+    article: Article
+    category: Category
+    user: User
+    draft: Draft
 }
 
 export class PublicAPIS {

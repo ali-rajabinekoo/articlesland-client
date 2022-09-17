@@ -1,8 +1,7 @@
 import {ArticleCard} from "../../component/cards/articleCard";
 import {changeUrlToServerRequest, errorHandler} from "../../utils/helpers";
 import {Container, Grid} from "@mantine/core";
-import useRequest from "../../hooks/useRequest";
-import {APIS, ArticleDto, UserDto, UseRequestResult} from "../../utils/types";
+import {ArticleDto, UserDto} from "../../utils/types";
 import {AxiosResponse} from "axios";
 import React, {useEffect, useState} from "react";
 import {showNotification} from "@mantine/notifications";
@@ -10,9 +9,9 @@ import {appMessages} from "../../utils/messages";
 import {IconAlertCircle} from "@tabler/icons";
 import {EmptyContent} from "../errors/empty";
 import {NextRouter, useRouter} from "next/router";
+import {Apis} from "../../utils/apis";
 
 export default function ArticlesList() {
-    const {getApis}: UseRequestResult = useRequest()
     const {query}: NextRouter = useRouter()
     const [loading, setLoading] = useState<boolean>(true)
     const [list, setList] = useState<ArticleDto[]>([])
@@ -26,7 +25,7 @@ export default function ArticlesList() {
 
     const fetchUserInfo = async () => {
         try {
-            const apis: APIS = getApis()
+            const apis: Apis = new Apis()
             const response: AxiosResponse | undefined = await apis.user.userInfo()
             const user: UserDto = response?.data as UserDto
             if (!!user) {

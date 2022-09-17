@@ -1,11 +1,11 @@
 import React, {MutableRefObject, useEffect} from "react";
 import {useInterval} from "@mantine/hooks";
-import useRequest from "../hooks/useRequest";
-import {APIS, DraftResponseDto, GetArticleResponseDto, SaveDraftValues} from "../utils/types";
+import {DraftResponseDto, GetArticleResponseDto, SaveDraftValues} from "../utils/types";
 import {AxiosResponse} from "axios";
 import {showNotification} from "@mantine/notifications";
 import {appMessages} from "../utils/messages";
 import {IconAlertCircle} from "@tabler/icons";
+import {Apis} from "../utils/apis";
 
 class DraftProviderProps {
     titleRef?: MutableRefObject<any>
@@ -17,13 +17,12 @@ class DraftProviderProps {
 const timer: string | undefined = process.env.CACHE_TIMER
 
 export default function DraftProvider({children, titleRef, setDrafts, mainArticle}: DraftProviderProps) {
-    const {getApis} = useRequest()
     const interval = useInterval(() => {
         saveDraft().catch()
     }, Number(timer));
 
     const saveDraft = async () => {
-        const apis: APIS = getApis()
+        const apis: Apis = new Apis()
         try {
             const reqBody: SaveDraftValues = new SaveDraftValues()
             reqBody.body = window.editor?.getData()?.trim()
@@ -43,7 +42,7 @@ export default function DraftProvider({children, titleRef, setDrafts, mainArticl
     }
 
     const fetchDrafts = async () => {
-        const apis: APIS = getApis()
+        const apis: Apis = new Apis()
         try {
             const response: AxiosResponse | undefined = await apis.draft.getArticleDrafts(mainArticle?.id as number)
             if (!response) {

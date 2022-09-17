@@ -3,7 +3,7 @@ import {Group, Stack, Text, useMantineTheme} from "@mantine/core";
 import {PasswordInput, TextAreaInput, TextInput} from "../../component/inputs";
 import {SecondaryBtn} from "../../component/buttons";
 import useUserInfo from "../../hooks/useUserInfo";
-import {APIS, ProfileInfoFormValues, UserDto, UseRequestResult, UseUserInfoResult} from "../../utils/types";
+import {ProfileInfoFormValues, UserDto, UseUserInfoResult} from "../../utils/types";
 import {useFormik} from "formik";
 import {
     profileInformationValidationForm,
@@ -11,15 +11,15 @@ import {
 } from "../../utils/validators";
 import {AxiosError, AxiosResponse} from "axios";
 import {errorHandler} from "../../utils/helpers";
-import useRequest from "../../hooks/useRequest";
 import {showNotification} from "@mantine/notifications";
 import {appMessages} from "../../utils/messages";
 import {IconAlertCircle, IconCheck} from "@tabler/icons";
+import {Apis} from "../../utils/apis";
+import userStorage from "../../utils/userStorage";
 
 const ProfileInformation = (): JSX.Element => {
     const theme = useMantineTheme()
-    const {userInfo, setNewUser}: UseUserInfoResult = useUserInfo()
-    const {getApis}: UseRequestResult = useRequest()
+    const {userInfo}: UseUserInfoResult = useUserInfo()
     const [loading, setLoading] = useState<true | false>(false)
 
     const profileInfoForm = useFormik({
@@ -35,7 +35,7 @@ const ProfileInformation = (): JSX.Element => {
         onSubmit: async (body: ProfileInfoFormValues) => {
             try {
                 setLoading(true)
-                const apis: APIS = getApis()
+                const apis: Apis = new Apis()
                 if (!body.password) {
                     delete body.password
                     delete body.repeatPassword
@@ -60,7 +60,7 @@ const ProfileInformation = (): JSX.Element => {
                         icon: <IconAlertCircle size={20}/>
                     })
                 }
-                setNewUser(response.data as UserDto)
+                userStorage.setNewUser(response.data as UserDto)
                 showNotification({
                     message: appMessages.loggedIn,
                     autoClose: 2000,

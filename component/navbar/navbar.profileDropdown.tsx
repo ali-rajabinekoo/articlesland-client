@@ -10,11 +10,9 @@ import {
 } from "@tabler/icons";
 import React from "react";
 import Link from "next/link";
-import useUserInfo from "../../hooks/useUserInfo";
-import {UseUserInfoResult} from "../../utils/types";
+import userStorage from "../../utils/userStorage";
 
 export const NavbarProfileDropdown = () => {
-    const {logout}: UseUserInfoResult = useUserInfo()
     const theme = useMantineTheme();
     return (
         <Menu.Dropdown dir={'rtl'}>
@@ -61,7 +59,7 @@ export const NavbarProfileDropdown = () => {
 
             <Menu.Divider/>
 
-            <Menu.Item onClick={() => logout()}
+            <Menu.Item onClick={() => userStorage.logout()}
                        icon={<IconLogout color={theme.colors.grey[4]} size={20} stroke={1.5}/>}>
                 <Text color={'grey.4'}>خروج</Text>
             </Menu.Item>

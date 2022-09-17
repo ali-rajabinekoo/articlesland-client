@@ -2,17 +2,14 @@ import {Container, Grid, Text} from "@mantine/core";
 import {CategoryCard} from "../../component/cards/categoryCard";
 import {changeUrlToServerRequest, errorHandler} from "../../utils/helpers";
 import {
-    APIS,
     CategoryDto,
     SetSelectedCategories,
     UseFetchSelectedCategoriesResult,
     UserDto,
-    UseRequestResult
 } from "../../utils/types";
 import {useAppDispatch, useAppSelector} from "../../hooks/redux";
 import {AppDispatch, RootState} from "../../utils/app.store";
 import React, {useEffect, useState} from "react";
-import useRequest from "../../hooks/useRequest";
 import {AxiosError, AxiosResponse} from "axios";
 import {showNotification} from "@mantine/notifications";
 import {appMessages} from "../../utils/messages";
@@ -20,11 +17,11 @@ import {IconAlertCircle, IconCheck} from "@tabler/icons";
 import {PrimaryBtn} from "../../component/buttons";
 import {setUserCategories} from "../../reducers/userCategories";
 import useFetchSelectedCategories from "../../hooks/useFetchSelectedCategories";
+import {Apis} from "../../utils/apis";
 
 const CategoriesList = (): JSX.Element => {
     const categories: CategoryDto[] = useAppSelector((state: RootState) => state.categories.list)
     const dispatch: AppDispatch = useAppDispatch()
-    const {getApis}: UseRequestResult = useRequest()
     const [selectedCategories, setSelectedCategories] = useState<number[]>([])
     const {selectedCategories: userCategories}: UseFetchSelectedCategoriesResult = useFetchSelectedCategories()
 
@@ -40,7 +37,7 @@ const CategoriesList = (): JSX.Element => {
     }
 
     const submitNewCategories = async () => {
-        const apis: APIS = getApis()
+        const apis: Apis = new Apis()
         try {
             const body: SetSelectedCategories = new SetSelectedCategories()
             body.list = [...selectedCategories]

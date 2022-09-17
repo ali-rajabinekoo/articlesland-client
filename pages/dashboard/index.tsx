@@ -6,12 +6,13 @@ import ProfileTab from "../../container/dashboard/profileTab";
 import {useEffect} from "react";
 import {NextRouter, useRouter} from "next/router";
 import ArticlesList from "../../container/dashboard/articlesList";
+import userStorage from "../../utils/userStorage";
 
 const Dashboard: NextPage = () => {
-    const {userInfo, getAccessToken}:UseUserInfoResult = useUserInfo()
+    const {userInfo}:UseUserInfoResult = useUserInfo()
     const {push} :NextRouter= useRouter()
     useEffect(() => {
-        if (!getAccessToken()) {
+        if (!userStorage.getAccessToken()) {
             push('/login').catch()
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps

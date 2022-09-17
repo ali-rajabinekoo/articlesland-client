@@ -2,14 +2,12 @@ import React, {useEffect, useState} from "react";
 import {Text, useMantineTheme, Group, Box} from "@mantine/core";
 import {TextInput} from "../../component/inputs";
 import {
-    APIS, PureVerificationBody,
+    PureVerificationBody,
     SendLoginCodeValues,
     UserDto,
-    UseRequestResult,
     UseUserInfoResult
 } from "../../utils/types";
 import useUserInfo from "../../hooks/useUserInfo";
-import useRequest from "../../hooks/useRequest";
 import {useFormik} from "formik";
 import {SendLoginCodeSchema} from "../../utils/validators";
 import {AxiosError, AxiosResponse} from "axios";
@@ -19,11 +17,12 @@ import {IconAlertCircle, IconCheck} from "@tabler/icons";
 import {errorHandler} from "../../utils/helpers";
 import {PrimaryOutlineBtn, SecondaryBtn} from "../../component/buttons";
 import ProfileVerification from "./verification";
+import {Apis} from "../../utils/apis";
+import userStorage from "../../utils/userStorage";
 
 const ProfileMobile = (): JSX.Element => {
     const theme = useMantineTheme()
-    const {userInfo, setNewUser}: UseUserInfoResult = useUserInfo()
-    const {getApis}: UseRequestResult = useRequest()
+    const {userInfo}: UseUserInfoResult = useUserInfo()
     const [loading, setLoading] = useState<true | false>(false)
     const [changed, setChanged] = useState<true | false>(false)
     const [code, setCode] = useState<string>()
@@ -43,7 +42,7 @@ const ProfileMobile = (): JSX.Element => {
     const sendCode = async (body: SendLoginCodeValues) => {
         try {
             setLoading(true)
-            const apis: APIS = getApis()
+            const apis: Apis = new Apis()
             await apis.user.sendMobileUpdateCode(body)
             showNotification({
                 message: appMessages.codeSent,
@@ -65,7 +64,7 @@ const ProfileMobile = (): JSX.Element => {
             setLoading(true)
             const body: PureVerificationBody = new PureVerificationBody()
             body.code = code;
-            const apis: APIS = getApis()
+            const apis: Apis = new Apis()
             const response: AxiosResponse | undefined = await apis.user.verifyMobileUpdateCode(body)
             if (!response) {
                 setLoading(false)
@@ -78,7 +77,7 @@ const ProfileMobile = (): JSX.Element => {
                 })
             }
             editMobileForm.resetForm()
-            setNewUser(response.data as UserDto)
+            userStorage.setNewUser(response.data as UserDto)
             showNotification({
                 message: appMessages.updatedSuccessfully,
                 autoClose: 2000,

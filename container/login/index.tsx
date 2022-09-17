@@ -6,21 +6,19 @@ import {useLoginFormStyle} from "./styles";
 import {NextRouter, useRouter} from "next/router";
 import {useFormik} from 'formik';
 import {
-    APIS,
     UserAndTokenResponse,
     LoginFormValues,
-    UseRequestResult,
-    UseUserInfoResult
+    UserDto
 } from "../../utils/types";
 import {LoginValidationSchema} from "../../utils/validators";
-import useRequest from "../../hooks/useRequest";
 import {AxiosError, AxiosResponse} from "axios";
 import {errorHandler} from "../../utils/helpers";
 import {showNotification} from "@mantine/notifications";
 import {IconCheck, IconChevronLeft} from "@tabler/icons";
 import {appMessages} from "../../utils/messages";
 import {CountDown} from "../../component/countDown";
-import useUserInfo from "../../hooks/useUserInfo";
+import {Apis} from "../../utils/apis";
+import userStorage from "../../utils/userStorage";
 
 export const LoginFormTitle = () => {
     const {classes} = useLoginFormStyle()
@@ -55,8 +53,6 @@ interface LoginFormProps {
 
 export const LoginForm = ({showLoginByCodeForm}: LoginFormProps) => {
     const {push}: NextRouter = useRouter()
-    const {getApis}: UseRequestResult = useRequest()
-    const {setNewAccessToken, setNewUser}: UseUserInfoResult = useUserInfo()
     const [visible, setVisible] = useState<boolean>(false);
 
     const loginForm = useFormik({
@@ -68,13 +64,14 @@ export const LoginForm = ({showLoginByCodeForm}: LoginFormProps) => {
         onSubmit: async (body: LoginFormValues) => {
             try {
                 setVisible(true)
-                const apis: APIS = getApis()
+                const apis: Apis = new Apis()
                 const response: AxiosResponse | undefined = await apis.auth.loginByCredentials(body)
                 const data: UserAndTokenResponse = response?.data
                 if (!data?.user) return setVisible(false)
                 if (!data?.token) return setVisible(false)
-                setNewUser(data.user)
-                setNewAccessToken(data.token)
+                userStorage.setAccessToken(data.token)
+                userStorage.setNewUser(data.user as UserDto)
+                userStorage.setRefreshToken((data.user as UserDto).refreshToken as string)
                 showNotification({
                     message: appMessages.loggedIn,
                     autoClose: 2000,

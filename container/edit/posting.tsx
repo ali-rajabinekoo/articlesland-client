@@ -14,10 +14,8 @@ import {
 import {DropzoneButton} from "../../component/buttons/upload";
 import {SelectInput} from "../../component/inputs";
 import {
-    APIS,
     GetArticleResponseDto,
     UseFetchCategoriesResult,
-    UseRequestResult,
     UseUserInfoResult
 } from "../../utils/types";
 import useFetchCategories from "../../hooks/fetchCategories";
@@ -29,7 +27,7 @@ import {IconAlertCircle, IconCheck, IconChevronLeft} from "@tabler/icons";
 import {NextRouter, useRouter} from "next/router";
 import {showNotification} from "@mantine/notifications";
 import {errorHandler} from "../../utils/helpers";
-import useRequest from "../../hooks/useRequest";
+import {Apis} from "../../utils/apis";
 
 class PostingProps {
     article!: GetArticleResponseDto
@@ -37,7 +35,6 @@ class PostingProps {
 
 const Posting = ({article}: PostingProps) => {
     const {push}: NextRouter = useRouter()
-    const {getApis}: UseRequestResult = useRequest()
     const {userInfo}: UseUserInfoResult = useUserInfo()
     const {categories}: UseFetchCategoriesResult = useFetchCategories();
     const {colors}: MantineTheme = useMantineTheme()
@@ -86,7 +83,7 @@ const Posting = ({article}: PostingProps) => {
                 icon: <IconAlertCircle size={20}/>
             });
         }
-        const apis: APIS = getApis()
+        const apis: Apis = new Apis()
         try {
             setLoading(true)
             await apis.article.saveAndPublishArticle(article.id as number, formData)

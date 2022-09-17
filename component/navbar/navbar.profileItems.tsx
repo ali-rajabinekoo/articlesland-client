@@ -11,8 +11,8 @@ import {
     IconUser
 } from "@tabler/icons";
 import Link from "next/link";
-import {LinkedItemDto, UseUserInfoResult} from "../../utils/types";
-import useUserInfo from "../../hooks/useUserInfo";
+import {LinkedItemDto} from "../../utils/types";
+import userStorage from "../../utils/userStorage";
 
 const useStyles = createStyles(() => ({
     btn: {
@@ -43,7 +43,6 @@ const Item = ({label, icon, href}: LinkedItemDto) => {
 
 // this component is same with headerProfileDropdown but this component does not have menu component
 const NavbarProfileItems = () => {
-    const {logout}: UseUserInfoResult = useUserInfo()
     const {classes, theme} = useStyles()
     return (
         <Box>
@@ -77,7 +76,7 @@ const NavbarProfileItems = () => {
                 label={'تنظیمات حساب کاربری'} href={'/settings'}
                 icon={<IconSettings color={theme.colors.grey[4]} size={20} stroke={1.5}/>}
             />
-            <UnstyledButton className={classes.btn} onClick={() => logout()}>
+            <UnstyledButton className={classes.btn} onClick={() => userStorage.logout()}>
                 <Group spacing={'xs'} p={'xs'}>
                     <IconLogout color={theme.colors.grey[4]} size={20} stroke={1.5}/>
                     <Text color={'grey.4'}>

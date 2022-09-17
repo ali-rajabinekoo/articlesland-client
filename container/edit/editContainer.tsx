@@ -11,19 +11,17 @@ import {errorHandler} from "../../utils/helpers";
 import {AxiosError, AxiosResponse} from "axios";
 import {htmlToText} from 'html-to-text';
 import {showNotification} from "@mantine/notifications";
-import useRequest from "../../hooks/useRequest";
 import {
-    APIS,
     CreateArticleValues,
     DraftResponseDto,
     GetArticleResponseDto,
-    UseRequestResult
 } from "../../utils/types";
 import {NextRouter, useRouter} from "next/router";
 import {appMessages} from "../../utils/messages";
 import {IconAlertCircle} from "@tabler/icons";
 import DraftProvider from "../../providers/draftProvider";
 import Drafts from "./drafts";
+import {Apis} from "../../utils/apis";
 
 class EditContainerProps {
     article?: GetArticleResponseDto
@@ -73,7 +71,6 @@ const EditContainer = ({article, onUpdateArticle, titleRef, drafts = []}: EditCo
     const [removeDialogOpened, setRemoveDialogOpened] = useState<boolean>(false);
     const [title, setTitle] = useState<string>('');
     const [loading, setLoading] = useState<boolean>(false);
-    const {getApis}: UseRequestResult = useRequest();
     const {push}: NextRouter = useRouter()
 
     const onChangeTitle = (e: any): void => {
@@ -115,7 +112,7 @@ const EditContainer = ({article, onUpdateArticle, titleRef, drafts = []}: EditCo
     const createArticle: postingFunctionType = async (posting: boolean = false): Promise<void> => {
         const data: CheckDataResult | null = checkData()
         if (!data) throw undefined
-        const apis: APIS = getApis()
+        const apis: Apis = new Apis()
         const response: AxiosResponse | undefined = await apis.article.createArticle(data as CreateArticleValues)
         if (!!response?.data?.id) {
             const id = response?.data?.id
@@ -136,7 +133,7 @@ const EditContainer = ({article, onUpdateArticle, titleRef, drafts = []}: EditCo
     const updateArticle: postingFunctionType = async (posting: boolean = false): Promise<void> => {
         const data: CheckDataResult | null = checkData()
         if (!data) throw undefined
-        const apis: APIS = getApis()
+        const apis: Apis = new Apis()
         const response: AxiosResponse | undefined = await apis.article.updateArticle(
             article?.id as number, data as CreateArticleValues
         )
@@ -180,7 +177,7 @@ const EditContainer = ({article, onUpdateArticle, titleRef, drafts = []}: EditCo
     const onRemove = async () => {
         try {
             setLoading(true)
-            const apis: APIS = getApis()
+            const apis: Apis = new Apis()
             await apis.article.removeArticle(article?.id as number)
             setLoading(false)
             showNotification({

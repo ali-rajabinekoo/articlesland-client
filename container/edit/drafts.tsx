@@ -1,13 +1,13 @@
 import {Accordion, Grid, Text, Modal} from "@mantine/core";
 import {useDraftsStyles} from "./drafts.styles";
 import DraftCard from "../../component/cards/draftCard";
-import {APIS, DraftResponseDto, UseRequestResult} from "../../utils/types";
+import {DraftResponseDto} from "../../utils/types";
 import React, {useEffect, useState} from "react";
 import IFrame from "../../component/iframe";
-import useRequest from "../../hooks/useRequest";
 import {showNotification} from "@mantine/notifications";
 import {appMessages} from "../../utils/messages";
 import {IconAlertCircle} from "@tabler/icons";
+import {Apis} from "../../utils/apis";
 
 class DraftsProps {
     draftsList?: DraftResponseDto[] | undefined
@@ -15,7 +15,6 @@ class DraftsProps {
 
 const Drafts = ({draftsList = []}: DraftsProps): JSX.Element => {
     const {classes} = useDraftsStyles()
-    const {getApis}: UseRequestResult = useRequest()
     const [drafts, setDrafts] = useState<DraftResponseDto[]>([])
     const [selectedDraft, setSelectedDraft] = useState<DraftResponseDto | null>(null)
     const [openedModal, setOpenedModal] = useState<true | false>(false)
@@ -26,7 +25,7 @@ const Drafts = ({draftsList = []}: DraftsProps): JSX.Element => {
     }
 
     const onRemoveDraft = async (index: number) => {
-        const apis: APIS = getApis()
+        const apis: Apis = new Apis()
         const id: string = drafts[index]?.id as string
         try {
             if (!id) {

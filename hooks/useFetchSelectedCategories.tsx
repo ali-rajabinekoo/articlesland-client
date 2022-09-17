@@ -1,10 +1,8 @@
 import React, {useEffect, useState} from 'react';
 import {
-    APIS,
     CategoryDto,
     UseFetchSelectedCategoriesResult,
     UserDto,
-    UseRequestResult,
 } from "../utils/types";
 import {useAppDispatch, useAppSelector} from "./redux";
 import {AppDispatch, RootState} from "../utils/app.store";
@@ -14,20 +12,21 @@ import {appMessages} from "../utils/messages";
 import {IconAlertCircle} from "@tabler/icons";
 import {setUserCategories} from "../reducers/userCategories";
 import {errorHandler} from "../utils/helpers";
-import useRequest from "./useRequest";
-import {logout} from "./useUserInfo";
+import userStorage from "../utils/userStorage";
+import {Apis} from "../utils/apis";
 
 export default function useFetchSelectedCategories(requiredToken?: undefined | boolean): UseFetchSelectedCategoriesResult {
     const userCategories: CategoryDto[] = useAppSelector((state: RootState) => state.userCategories.list)
     const dispatch: AppDispatch = useAppDispatch()
-    const {getApis}: UseRequestResult = useRequest(requiredToken)
     const [categories, setCategories] = useState<CategoryDto[]>([])
     const [error, setError] = useState<AxiosError | null | true>(null)
+    const [isLoaded, setIsLoaded] = useState<false | true>(false)
 
     const fetchSelectedCategories = async () => {
-        const apis: APIS = getApis()
+        const apis: Apis = new Apis()
         try {
             const response: AxiosResponse | undefined = await apis.user.userInfo()
+            setIsLoaded(true)
             if (!response) {
                 setError(true)
                 return showNotification({
@@ -44,15 +43,17 @@ export default function useFetchSelectedCategories(requiredToken?: undefined | b
         } catch (e: AxiosError | any) {
             setError(e as AxiosError)
             if (e instanceof AxiosError && e?.response?.status === 401 && !requiredToken) {
-                logout()
+                userStorage.logout()
             }
             errorHandler(e)
         }
     }
 
     useEffect(() => {
+        if (isLoaded) return undefined
         if (userCategories.length !== 0) {
             setCategories([...userCategories] as CategoryDto[])
+            setIsLoaded(true)
         } else {
             fetchSelectedCategories().catch()
         }

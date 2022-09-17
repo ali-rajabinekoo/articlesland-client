@@ -1,26 +1,25 @@
 import {NextRouter, useRouter} from "next/router";
 import React, {useEffect, useState} from "react";
-import {APIS, ArticleDto, GetArticleResponseDto, UserDto, UseRequestResult, UseUserInfoResult} from "../../utils/types";
+import {ArticleDto, GetArticleResponseDto, UserDto, UseUserInfoResult} from "../../utils/types";
 import {DashboardHeader} from "../../container/layout/dashboard";
 import useUserInfo from "../../hooks/useUserInfo";
 import {fetchArticle} from "../../utils/helpers";
-import useRequest from "../../hooks/useRequest";
 import ReadArticle from "../../container/layout/readArticle";
 import {Box} from "@mantine/core";
 import InfoBarBottom from "../../container/post/InfoBarBottom";
 import {PrimaryOutlineBtn} from "../../component/buttons";
 import Link from "next/link";
 import {NextPage} from "next";
+import {Apis} from "../../utils/apis";
 
 const ShowPost: NextPage = (): JSX.Element => {
     const {query}: NextRouter = useRouter()
     const {userInfo}: UseUserInfoResult = useUserInfo()
     const [article, setArticle] = useState<ArticleDto>()
-    const {getApis}: UseRequestResult = useRequest()
 
     useEffect(() => {
         if (query?.info instanceof Array) {
-            const apis: APIS = getApis()
+            const apis: Apis = new Apis()
             const id = query?.info[1] as string
             fetchArticle(apis, id).then((result: ArticleDto | null) => {
                 if (!!result) setArticle(result)

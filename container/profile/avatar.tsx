@@ -4,16 +4,14 @@ import {SecondaryBtn} from "../../component/buttons";
 import React, {useState} from "react";
 import {errorHandler} from "../../utils/helpers";
 import {AxiosError, AxiosResponse} from "axios";
-import useRequest from "../../hooks/useRequest";
-import {APIS, UserDto, UseRequestResult, UseUserInfoResult} from "../../utils/types";
+import {UserDto} from "../../utils/types";
 import {showNotification} from "@mantine/notifications";
 import {appMessages} from "../../utils/messages";
 import {IconAlertCircle, IconCheck} from "@tabler/icons";
-import useUserInfo from "../../hooks/useUserInfo";
+import {Apis} from "../../utils/apis";
+import userStorage from "../../utils/userStorage";
 
 const ProfileAvatar = (): JSX.Element => {
-    const {getApis}: UseRequestResult = useRequest();
-    const {setNewUser}: UseUserInfoResult = useUserInfo();
     const [newAvatar, setNewAvatar] = useState<File>();
     const [loading, setLoading] = useState<true | false>();
     const onChangeNewAvatar = (file: File) => {
@@ -22,7 +20,7 @@ const ProfileAvatar = (): JSX.Element => {
     const onSubmit = async (): Promise<void> => {
         try {
             setLoading(true)
-            const apis: APIS = getApis()
+            const apis: Apis = new Apis()
             const formData: FormData = new FormData();
             if (!!newAvatar) {
                 formData.append("image", newAvatar as File);
@@ -38,7 +36,7 @@ const ProfileAvatar = (): JSX.Element => {
                     icon: <IconAlertCircle size={20}/>
                 })
             }
-            setNewUser(response.data as UserDto)
+            userStorage.setNewUser(response.data as UserDto)
             showNotification({
                 message: appMessages.loggedIn,
                 autoClose: 2000,

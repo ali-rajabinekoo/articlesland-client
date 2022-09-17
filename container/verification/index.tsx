@@ -5,23 +5,20 @@ import {TextInput, VerificationCodeInputs} from "../../component/inputs";
 import {PrimaryBtn} from "../../component/buttons";
 import {appMessages, validationMessages} from "../../utils/messages";
 import {
-    APIS,
     SendLoginCodeValues,
-    UseRequestResult,
-    UseUserInfoResult,
     VerificationBody,
-    UserAndTokenResponse
+    UserAndTokenResponse, UserDto
 } from "../../utils/types";
-import useRequest from "../../hooks/useRequest";
 import {AxiosError, AxiosResponse} from "axios";
 import {errorHandler, normalizePhoneNumber} from "../../utils/helpers";
-import useUserInfo from "../../hooks/useUserInfo";
 import {showNotification} from "@mantine/notifications";
 import {IconAlertCircle, IconCheck, IconChevronLeft} from "@tabler/icons";
 import {CountDown} from "../../component/countDown";
 import {LoadingOverlay} from "../../component/loadingOverlay";
 import {useFormik} from "formik";
 import {SendLoginCodeSchema} from "../../utils/validators";
+import {Apis} from "../../utils/apis";
+import userStorage from "../../utils/userStorage";
 
 class VerificationFormTitleProps {
     back?: Function | undefined
@@ -70,8 +67,6 @@ export function VerificationForm({
     const [codeSent, setCodeSent] = useState<boolean>(false)
     const [timer, setTimer] = useState<any>()
     const [isActiveResend, setIsActiveResend] = useState<boolean>(false)
-    const {getApis}: UseRequestResult = useRequest()
-    const {setNewUser, setNewAccessToken}: UseUserInfoResult = useUserInfo()
 
     const onChange = (newCode: string) => {
         setCode(newCode)
@@ -92,7 +87,7 @@ export function VerificationForm({
             const data: VerificationBody = new VerificationBody()
             data.code = code
             data.key = verificationKey
-            const apis: APIS = getApis()
+            const apis: Apis = new Apis()
             setLoading(true)
             let response: AxiosResponse | undefined
             if (!!defaultMobile) {
@@ -111,8 +106,8 @@ export function VerificationForm({
                     icon: <IconAlertCircle size={20}/>
                 })
             }
-            setNewAccessToken(responseBody.token)
-            setNewUser(responseBody.user)
+            userStorage.setAccessToken(responseBody.token as string)
+            userStorage.setNewUser(responseBody.user as UserDto)
             showNotification({
                 message: !!defaultMobile ? appMessages.registrationVerified : appMessages.loggedIn,
                 autoClose: 2000,

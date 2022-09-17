@@ -5,15 +5,15 @@ import {PrimaryBtn} from "../../component/buttons";
 import {useRegistrationFormStyle} from "./styles";
 import {NextRouter, useRouter} from "next/router";
 import {useFormik} from 'formik';
-import {APIS, SignupFormValues, VerificationResponse, UseRequestResult} from "../../utils/types";
+import {SignupFormValues, VerificationResponse} from "../../utils/types";
 import {signupValidationForm, SignupValidationSchema} from "../../utils/validators";
-import useRequest from "../../hooks/useRequest";
 import {AxiosError, AxiosResponse} from "axios";
 import {errorHandler} from "../../utils/helpers";
 import {showNotification} from "@mantine/notifications";
 import {IconAlertCircle, IconCheck, IconChevronLeft} from "@tabler/icons";
 import {appMessages} from "../../utils/messages";
 import {CountDown} from "../../component/countDown";
+import {Apis} from "../../utils/apis";
 
 export const RegistrationFormTitle = () => {
     const {classes} = useRegistrationFormStyle()
@@ -47,7 +47,6 @@ interface RegistrationFormProps {
 
 export const RegistrationForm = ({onSubmitted}:RegistrationFormProps) => {
     const {push}: NextRouter = useRouter()
-    const {getApis}: UseRequestResult = useRequest()
     const [visible, setVisible] = useState<boolean>(false);
 
     const signupForm = useFormik({
@@ -62,7 +61,7 @@ export const RegistrationForm = ({onSubmitted}:RegistrationFormProps) => {
         onSubmit: async (body: SignupFormValues) => {
             try {
                 setVisible(true)
-                const apis: APIS = getApis()
+                const apis: Apis = new Apis()
                 const response: AxiosResponse | undefined = await apis.auth.register(body)
                 const data: VerificationResponse = response?.data
                 if (!data?.key) {
