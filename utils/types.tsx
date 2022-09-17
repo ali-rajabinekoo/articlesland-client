@@ -75,7 +75,9 @@ export class DraftResponseDto {
 export class UseUserInfoResult {
     userInfo!: UserDto | null
     accessToken!: string
+    refreshToken!: string
     setNewAccessToken!: Function
+    setNewRefreshToken!: Function
     setNewUser!: Function
     getAccessToken!: Function
     logout!: Function

@@ -3,9 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="e06adea9-5fca-4f6c-9da5-80729234fd31" name="Changes" comment="AL-37 &lt;Unpublished and published posts list rendering&gt;">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/container/edit/editContainer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/container/edit/editContainer.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hooks/useFetchSelectedCategories.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/hooks/useFetchSelectedCategories.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hooks/useUserInfo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/hooks/useUserInfo.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/next.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/next.config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/providers/draftProvider.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/providers/draftProvider.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/axios.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/utils/axios.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/types.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/utils/types.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -308,6 +310,7 @@
     <MESSAGE value="AL-36 &lt;Email and mobile updating implemented&gt;" />
     <MESSAGE value="AL-43 &lt;Draft provider implemented and apis connected&gt;" />
     <MESSAGE value="AL-37 &lt;Unpublished and published posts list rendering&gt;" />
-    <option name="LAST_COMMIT_MESSAGE" value="AL-37 &lt;Unpublished and published posts list rendering&gt;" />
+    <MESSAGE value="AL-bug-issue &lt;Fix&gt;" />
+    <option name="LAST_COMMIT_MESSAGE" value="AL-bug-issue &lt;Fix&gt;" />
   </component>
 </project>
