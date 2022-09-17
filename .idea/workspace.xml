@@ -2,39 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e06adea9-5fca-4f6c-9da5-80729234fd31" name="Changes" comment="AL-37 &lt;Unpublished and published posts list rendering&gt;">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/component/navbar/navbar.profileDropdown.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/component/navbar/navbar.profileDropdown.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/component/navbar/navbar.profileItems.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/component/navbar/navbar.profileItems.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/container/categories/list.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/container/categories/list.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/container/dashboard/articlesList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/container/dashboard/articlesList.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/container/edit/drafts.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/container/edit/drafts.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/container/edit/editContainer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/container/edit/editContainer.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/container/edit/posting.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/container/edit/posting.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/container/login/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/container/login/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/container/profile/avatar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/container/profile/avatar.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/container/profile/email.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/container/profile/email.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/container/profile/information.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/container/profile/information.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/container/profile/mobile.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/container/profile/mobile.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/container/registration/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/container/registration/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/container/verification/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/container/verification/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hooks/useFetchSelectedCategories.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/hooks/useFetchSelectedCategories.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hooks/useRequest.tsx" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/hooks/useUserInfo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/hooks/useUserInfo.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/next.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/next.config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/dashboard/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/pages/dashboard/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/edit/edit.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/pages/edit/edit.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/login/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/pages/login/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/post/[...info].tsx" beforeDir="false" afterPath="$PROJECT_DIR$/pages/post/[...info].tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/registration/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/pages/registration/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/providers/draftProvider.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/providers/draftProvider.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/apis/article.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/utils/apis/article.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/apis/authentication.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/utils/apis/authentication.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/apis/category.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/utils/apis/category.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/apis/draft.ts" beforeDir="false" afterPath="$PROJECT_DIR$/utils/apis/draft.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/apis/user.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/utils/apis/user.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/axios.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/utils/axios.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/initStore.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/utils/initStore.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/types.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/utils/types.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/userStorage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/utils/userStorage.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,7 +23,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="AL-43-cache-drafts-microservice" />
+        <entry key="$PROJECT_DIR$" value="AL-46-refactoring-authentication-with-refresh-token-logic" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />

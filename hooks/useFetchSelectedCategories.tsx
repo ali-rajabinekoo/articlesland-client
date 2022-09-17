@@ -20,13 +20,11 @@ export default function useFetchSelectedCategories(requiredToken?: undefined | b
     const dispatch: AppDispatch = useAppDispatch()
     const [categories, setCategories] = useState<CategoryDto[]>([])
     const [error, setError] = useState<AxiosError | null | true>(null)
-    const [isLoaded, setIsLoaded] = useState<false | true>(false)
 
     const fetchSelectedCategories = async () => {
         const apis: Apis = new Apis()
         try {
             const response: AxiosResponse | undefined = await apis.user.userInfo()
-            setIsLoaded(true)
             if (!response) {
                 setError(true)
                 return showNotification({
@@ -50,15 +48,13 @@ export default function useFetchSelectedCategories(requiredToken?: undefined | b
     }
 
     useEffect(() => {
-        if (isLoaded) return undefined
         if (userCategories.length !== 0) {
             setCategories([...userCategories] as CategoryDto[])
-            setIsLoaded(true)
         } else {
             fetchSelectedCategories().catch()
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [userCategories])
+    }, [])
 
     return {selectedCategories: categories, error}
 }

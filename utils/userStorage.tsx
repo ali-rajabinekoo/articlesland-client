@@ -5,9 +5,9 @@ import {appMessages} from "./messages";
 import {UserDto, userStorageInterface} from "./types";
 import {isJson} from "./helpers";
 
-const userKey: string | undefined = process.env.LOCAL_STORAGE_USER
-const accessTokenKey: string | undefined = process.env.LOCAL_STORAGE_ACCESS_TOKEN
-const refreshTokenKey: string | undefined = process.env.LOCAL_STORAGE_REFRESH_TOKEN
+export const userKey: string | undefined = process.env.LOCAL_STORAGE_USER
+export const accessTokenKey: string | undefined = process.env.LOCAL_STORAGE_ACCESS_TOKEN
+export const refreshTokenKey: string | undefined = process.env.LOCAL_STORAGE_REFRESH_TOKEN
 
 class UserStorage implements userStorageInterface {
     getUserInfo(): UserDto {
