@@ -1,4 +1,4 @@
-import {IconBookmark, IconEye, IconHeart, IconShare} from '@tabler/icons';
+import {IconBookmark, IconHeart, IconShare} from '@tabler/icons';
 import {
     createStyles,
     Card,
@@ -9,7 +9,6 @@ import {
     Group,
     Center,
     Avatar,
-    Box,
     Divider,
     Stack,
 } from '@mantine/core';
@@ -112,15 +111,15 @@ export function ArticleCard({
                 </Center>
 
                 <Group spacing={8} mr={0}>
-                    <Badge size="sm" radius="xs" className={classes.action} py={3.5} sx={{height: "100%"}}>
-                        <Box sx={{display: 'flex', alignItems: 'center'}}>
-                            <IconEye size={16} color={theme.colors.grey[4]}/>
-                            <Text component={'span'} sx={{fontFamily: "Poppins"}} ml={5} mt={2.2} size={12}
-                                  color={theme.colors.grey[4]}>
-                                26
-                            </Text>
-                        </Box>
-                    </Badge>
+                    {/*<Badge size="sm" radius="xs" className={classes.action} py={3.5} sx={{height: "100%"}}>*/}
+                    {/*    <Box sx={{display: 'flex', alignItems: 'center'}}>*/}
+                    {/*        <IconEye size={16} color={theme.colors.grey[4]}/>*/}
+                    {/*        <Text component={'span'} sx={{fontFamily: "Poppins"}} ml={5} mt={2.2} size={12}*/}
+                    {/*              color={theme.colors.grey[4]}>*/}
+                    {/*            26*/}
+                    {/*        </Text>*/}
+                    {/*    </Box>*/}
+                    {/*</Badge>*/}
                     <ActionIcon className={classes.action}>
                         {
                             liked ?

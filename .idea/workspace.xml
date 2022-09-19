@@ -1,20 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e06adea9-5fca-4f6c-9da5-80729234fd31" name="Changes" comment="AL-37 &lt;Unpublished and published posts list rendering&gt;">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/container/login/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/container/login/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/container/verification/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/container/verification/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hooks/useRequest.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/hooks/useRequest.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/apis/article.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/utils/apis/article.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/apis/authentication.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/utils/apis/authentication.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/apis/category.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/utils/apis/category.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/apis/draft.ts" beforeDir="false" afterPath="$PROJECT_DIR$/utils/apis/draft.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/apis/user.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/utils/apis/user.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/axios.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/utils/axios.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/helpers.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/utils/helpers.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/types.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/utils/types.tsx" afterDir="false" />
-    </list>
+    <list default="true" id="e06adea9-5fca-4f6c-9da5-80729234fd31" name="Changes" comment="AL-46 &lt;Refactoring get article API and frontend permission&gt;" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -130,6 +117,8 @@
       <workItem from="1663242329131" duration="181000" />
       <workItem from="1663242516679" duration="666000" />
       <workItem from="1663243199996" duration="12000" />
+      <workItem from="1663481278270" duration="3777000" />
+      <workItem from="1663566416360" duration="10962000" />
     </task>
     <task id="LOCAL-00001" summary="AL-14 &lt;Start project and fix basic configs&gt;">
       <created>1660924360896</created>
@@ -278,7 +267,14 @@
       <option name="project" value="LOCAL" />
       <updated>1663238572338</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="AL-46 &lt;Refactoring get article API and frontend permission&gt;">
+      <created>1663582968621</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1663582968622</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -317,6 +313,7 @@
     <MESSAGE value="AL-43 &lt;Draft provider implemented and apis connected&gt;" />
     <MESSAGE value="AL-37 &lt;Unpublished and published posts list rendering&gt;" />
     <MESSAGE value="AL-bug-issue &lt;Fix&gt;" />
-    <option name="LAST_COMMIT_MESSAGE" value="AL-bug-issue &lt;Fix&gt;" />
+    <MESSAGE value="AL-46 &lt;Refactoring get article API and frontend permission&gt;" />
+    <option name="LAST_COMMIT_MESSAGE" value="AL-46 &lt;Refactoring get article API and frontend permission&gt;" />
   </component>
 </project>

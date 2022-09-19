@@ -4,8 +4,6 @@ import {appMessages} from "./messages";
 import {IconAlertCircle} from "@tabler/icons";
 import React from "react";
 import {
-    APIS,
-    GetArticleResponseDto,
     LinkedItemDto,
     refreshTokenHandler,
     RefreshTokenResponse,
@@ -67,27 +65,6 @@ export function isJson(str: string) {
     return true;
 }
 
-export const fetchArticle = async (apis: APIS, id: string): Promise<GetArticleResponseDto | null> => {
-    try {
-        const response: AxiosResponse | undefined = await apis.article.getArticle(id as string)
-        if (!response) {
-            showNotification({
-                message: 'عنوان پست الزامیست',
-                title: 'خطا',
-                autoClose: 3000,
-                color: 'red',
-                icon: <IconAlertCircle size={20}/>
-            })
-            return null
-        } else {
-            return response.data as GetArticleResponseDto
-        }
-    } catch (e: AxiosError | any) {
-        errorHandler(e)
-        return null
-    }
-}
-
 export type notificationValidTypes = 'liked' | 'comment' | 'followed'
 
 const notificationMessages = {
@@ -122,6 +99,8 @@ export const defaultProfileCategoryItem: LinkedItemDto[] = [
         value: 'unpublished'
     } as LinkedItemDto,
 ]
+
+export const defaultProfileCategoryValues = ['posts', 'likes', 'bookmarks', 'unpublished']
 
 export const responseHandler = (
     result: AxiosResponse | RefreshTokenResponse | undefined,

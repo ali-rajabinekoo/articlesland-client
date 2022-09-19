@@ -29,6 +29,13 @@ export class Article {
         return responseHandler(result, this.onRefreshToken)
     }
 
+    async getPublicArticle(id: string, username: string): Promise<AxiosResponse | undefined> {
+        const result = await this.request.sendRequest({
+            method: 'GET', url: `/article/public/${username}/${id}`
+        }, this.accessToken as string)
+        return responseHandler(result, this.onRefreshToken)
+    }
+
     async createArticle(body: CreateArticleValues): Promise<AxiosResponse | undefined> {
         const result = await this.request.sendRequest({
             method: 'POST', url: '/article', data: body
@@ -46,6 +53,13 @@ export class Article {
     async saveAndPublishArticle(id: number, body: FormData): Promise<AxiosResponse | undefined> {
         const result = await this.request.sendRequest({
             method: 'PATCH', url: `/article/${id}`, data: body
+        }, this.accessToken as string)
+        return responseHandler(result, this.onRefreshToken)
+    }
+
+    async dropArticle(id: number): Promise<AxiosResponse | undefined> {
+        const result = await this.request.sendRequest({
+            method: 'POST', url: `/article/drop/${id}`
         }, this.accessToken as string)
         return responseHandler(result, this.onRefreshToken)
     }

@@ -12,7 +12,7 @@ const InfoBarBottom = ({article}: InfoBarBottomProps) => {
     const {classes, theme} = useInfoBarBottomStyle()
 
     return (
-        <Container size={'md'} my={'md'}>
+        <Container size={'md'} my={'md'} px={0}>
             <Group position={'apart'}>
                 <Box>
                     {!!article?.category?.displayTitle && <Chip variant="filled" radius="sm" size={'sm'} color={'grey.0'} checked={false}>

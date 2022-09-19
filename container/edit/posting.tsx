@@ -21,7 +21,7 @@ import {
     UseUserInfoResult
 } from "../../utils/types";
 import useFetchCategories from "../../hooks/fetchCategories";
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import {PrimaryBtn, PrimaryOutlineBtn} from "../../component/buttons";
 import ReadArticle from "../layout/readArticle";
 import useUserInfo from "../../hooks/useUserInfo";
@@ -104,6 +104,12 @@ const Posting = ({article}: PostingProps) => {
             setLoading(false)
         }
     }
+
+    useEffect(() => {
+        if (!!article.category?.id) {
+            setCategoryId(String(article.category.id) as string)
+        }
+    } , [article])
 
     return (
         <div>

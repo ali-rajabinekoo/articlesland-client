@@ -3,9 +3,9 @@ import {ArticlesLandEditor, FloatingLabelInput} from "../../component/inputs";
 import React, {MouseEventHandler, MutableRefObject, useEffect, useRef, useState} from "react";
 import {
     PrimaryBtn,
-    PrimaryDangerBtn,
+    DangerBtn,
     PrimaryOutlineBtn,
-    SecondaryOutlineBtn
+    SecondaryOutlineBtn, SecondaryBtn
 } from "../../component/buttons";
 import {errorHandler} from "../../utils/helpers";
 import {AxiosError, AxiosResponse} from "axios";
@@ -198,6 +198,27 @@ const EditContainer = ({article, onUpdateArticle, titleRef, drafts = []}: EditCo
         }
     }
 
+    const disablePublished = async () => {
+        try {
+            setLoading(true)
+            const apis: APIS = getApis()
+            await apis.article.dropArticle(article?.id as number)
+            setLoading(false)
+            showNotification({
+                message: 'پست مورد نظر با موفقیت لغو شد',
+                title: 'عملیات موفقیت آمیز بود',
+                autoClose: 2000,
+                color: 'green',
+            })
+            setTimeout(() => {
+                push('/dashboard?tab=unpublished')
+            }, 2100)
+        } catch (e: AxiosError | any) {
+            errorHandler(e)
+            setLoading(false)
+        }
+    }
+
     useEffect(() => {
         if (!!article?.title) {
             setTitle(article.title)
@@ -228,10 +249,15 @@ const EditContainer = ({article, onUpdateArticle, titleRef, drafts = []}: EditCo
                             <Grid.Col xl={10} lg={9} md={9} sm={8} xs={12} pt={0}>
                                 <Grid p={0} align={'end'} gutter={'sm'}>
                                     <Grid.Col xl={3} lg={3} md={4} sm={6} xs={12} pt={"xs"}>
-                                        <PrimaryBtn
-                                            text={'انتشار پست'} capsule={"true"} loading={loading}
-                                            onClick={(() => onSave(true)) as MouseEventHandler}
-                                        />
+                                        {
+                                            article?.published ? <SecondaryBtn
+                                                text={'لغو انتشار'} capsule={"true"} loading={loading}
+                                                onClick={(() => disablePublished()) as MouseEventHandler}
+                                            /> : <PrimaryBtn
+                                                text={'انتشار پست'} capsule={"true"} loading={loading}
+                                                onClick={(() => onSave(true)) as MouseEventHandler}
+                                            />
+                                        }
                                     </Grid.Col>
                                     <Grid.Col xl={3} lg={3} md={4} sm={6} xs={12} pt={'xs'}>
                                         <PrimaryOutlineBtn
@@ -243,7 +269,7 @@ const EditContainer = ({article, onUpdateArticle, titleRef, drafts = []}: EditCo
                             </Grid.Col>
                             {
                                 !!article?.id && <Grid.Col xl={2} lg={3} md={3} sm={4} xs={12} py={0} mb={13} mt={'sm'}>
-                                    <PrimaryDangerBtn
+                                    <DangerBtn
                                         text={'حذف پست'} capsule={"true"} loading={loading}
                                         onClick={(() => setRemoveDialogOpened(true)) as MouseEventHandler}
                                     />
