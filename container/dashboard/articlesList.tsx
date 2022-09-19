@@ -91,7 +91,7 @@ export default function ArticlesList() {
                         <ArticleCard
                             image={!!el?.bannerUrl ? changeUrlToServerRequest(el?.bannerUrl) : undefined}
                             title={el?.title as string || ""}
-                            link={`/post/${owner?.username}/${el.id}`}
+                            link={el.published ? `/post/${owner?.username}/${el.id}` : `/edit/${el.id}`}
                             description={el?.description as string || ""}
                             category={el?.category?.displayTitle as string || ""}
                             author={{

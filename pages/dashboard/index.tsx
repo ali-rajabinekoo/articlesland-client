@@ -6,11 +6,28 @@ import ProfileTab from "../../container/dashboard/profileTab";
 import {useEffect} from "react";
 import {NextRouter, useRouter} from "next/router";
 import ArticlesList from "../../container/dashboard/articlesList";
+import {defaultProfileCategoryValues} from "../../utils/helpers";
 
-const Dashboard: NextPage = () => {
-    const {userInfo, getAccessToken}:UseUserInfoResult = useUserInfo()
-    const {push} :NextRouter= useRouter()
+export async function getServerSideProps(ctx: any) {
+    if (!!ctx?.query?.tab) {
+        if (!defaultProfileCategoryValues.includes(ctx.query.tab)) {
+            return {props: {valid: false}}
+        }
+    }
+    return {props: {valid: true}}
+}
+
+class DashboardProps {
+    valid?: boolean
+}
+
+const Dashboard: NextPage = ({valid}: DashboardProps) => {
+    const {userInfo, getAccessToken}: UseUserInfoResult = useUserInfo()
+    const {push}: NextRouter = useRouter()
     useEffect(() => {
+        if (!valid) {
+            push('/404').catch()
+        }
         if (!getAccessToken()) {
             push('/login').catch()
         }

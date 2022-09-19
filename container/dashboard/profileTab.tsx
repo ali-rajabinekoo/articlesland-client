@@ -7,6 +7,7 @@ import {changeUrlToServerRequest, defaultProfileCategoryItem} from "../../utils/
 import {PrimaryBtn, PrimaryOutlineBtn} from "../../component/buttons";
 import Link from "next/link";
 import {IconUserCircle} from "@tabler/icons";
+import {NextRouter, useRouter} from "next/router";
 
 interface ProfileProps {
     user: UserDto
@@ -14,6 +15,7 @@ interface ProfileProps {
 
 export default function ProfileTab({user}: ProfileProps) {
     const {classes, theme} = useCategoriesList();
+    const {query}: NextRouter = useRouter();
     return (
         <div>
             <Group position={'center'} style={!!user ? {} : {display: 'none'}} mb={'sm'} mt={'lg'}>
@@ -47,7 +49,10 @@ export default function ProfileTab({user}: ProfileProps) {
                 </Stack>
             </Group>
             <ScrollContainer scroll={'x'}>
-                <Tabs className={classes.tabs} variant="outline" radius="xs" defaultValue="posts" sx={{width: "100%"}}>
+                <Tabs
+                    className={classes.tabs} variant="outline" radius="xs"
+                    value={query?.tab as string || 'posts'} sx={{width: "100%"}}
+                >
                     <Tabs.List className={classes.tabsList} sx={{width: "100%"}}>
                         <Container size={'xl'}>
                             <Group position="center" spacing={0}>

@@ -36,7 +36,7 @@ export class ArticleDto {
     id: number | undefined | null
     title: string | undefined | null;
     description: string | undefined | null;
-    bodyUrl: string | undefined | null;
+    uid: string | undefined | null;
     bannerUrl: string | undefined | null;
     published: boolean | undefined | null;
     viewed: number | undefined | null;
@@ -170,6 +170,7 @@ export class APIS {
 export class PublicAPIS {
     auth!: Authentication
     category!: Category
+    article!: Article
 }
 
 export class RequestParams {

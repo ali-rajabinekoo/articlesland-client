@@ -1,6 +1,12 @@
 import {Button, Paper, Text, ButtonProps as BasicButtonProps} from "@mantine/core";
 import React, {MouseEventHandler, ReactNode} from "react";
-import {usePrimaryBtnStyle, usePrimaryDangerBtnStyle, usePrimaryOutlineBtnStyle} from "./styles";
+import {
+    useDangerBtnStyle,
+    usePrimaryBtnStyle,
+    usePrimaryOutlineBtnStyle,
+    useSecondaryBtnStyle,
+    useSecondaryOutlineBtnStyle
+} from "./styles";
 import {Sx} from "@mantine/styles/lib/theme/types/DefaultProps";
 
 interface PrimaryBtnProps extends BasicButtonProps {
@@ -46,8 +52,8 @@ export const PrimaryBtn = (props: PrimaryBtnProps) => {
     </Container>)
 }
 
-export const PrimaryDangerBtn = (props: PrimaryBtnProps) => {
-    const {classes} = usePrimaryDangerBtnStyle()
+export const DangerBtn = (props: PrimaryBtnProps) => {
+    const {classes} = useDangerBtnStyle()
     return (<Container sx={props.containersx || {}} capsule={props.capsule}>
         <Button
             fullWidth color={'danger.3'} type={props.type}
@@ -77,7 +83,7 @@ export const PrimaryOutlineBtn = (props: PrimaryBtnProps) => {
 }
 
 export const SecondaryBtn = (props: PrimaryBtnProps) => {
-    const {classes} = usePrimaryOutlineBtnStyle()
+    const {classes} = useSecondaryBtnStyle()
     return (<Container sx={props.containersx || {}} capsule={props.capsule}>
         <Button
             fullWidth color={'secondary.1'} type={props.type}
@@ -92,7 +98,7 @@ export const SecondaryBtn = (props: PrimaryBtnProps) => {
 }
 
 export const SecondaryOutlineBtn = (props: PrimaryBtnProps) => {
-    const {classes} = usePrimaryOutlineBtnStyle()
+    const {classes} = useSecondaryOutlineBtnStyle()
     return (<Container sx={props.containersx || {}} capsule={props.capsule}>
         <Button
             fullWidth color={'secondary.1'} type={props.type} variant={"outline"}

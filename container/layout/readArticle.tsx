@@ -46,10 +46,10 @@ const ReadArticle = ({user, article, onBack, bannerFile, action}: ReadArticlePro
                         </ActionIcon>
                     </div>}
                     {Boolean(action) && <div>
-                            {action}
+                        {action}
                     </div>}
                 </Group>
-                <Text weight={700} size={'lg'} mt={'xl'} color={'grey.4'}>{article?.title}</Text>
+                <Text weight={700} size={'lg'} mt={'xl'} mb={'md'} color={'grey.4'}>{article?.title}</Text>
                 {/*{!!bannerFile && <img src={URL.createObjectURL(bannerFile as File)}/>}*/}
                 {!!bannerFile && <Group position={'center'}>
                     <Box>
@@ -61,10 +61,7 @@ const ReadArticle = ({user, article, onBack, bannerFile, action}: ReadArticlePro
                         <ReadArticleBanner src={changeUrlToServerRequest(article.bannerUrl)}/>
                     </Box>
                 </Group>}
-                <IFrame
-                    srcDoc={!!article?.body ? article?.body as string : undefined}
-                    srcUrl={!!article?.bodyUrl ? article.bodyUrl as string : undefined}
-                />
+                <IFrame srcDoc={!!article?.body ? article?.body as string : undefined}/>
             </Stack>
         </Container>
     )

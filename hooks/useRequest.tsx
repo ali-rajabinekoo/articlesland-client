@@ -32,5 +32,6 @@ export const publicApis = (): PublicAPIS => {
     return {
         auth: new Authentication(),
         category: new Category(),
+        article: new Article(),
     }
 }
