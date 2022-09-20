@@ -54,6 +54,10 @@ export class GetArticleResponseDto extends ArticleDto{
     body: string | undefined | null;
 }
 
+export class ViewedArticleResponseDto extends ArticleDto{
+    todayViews: number | undefined | null;
+}
+
 export class NotificationDto {
     user: UserDto | undefined | null;
     type: 'liked' | 'comment' | 'followed' | string | undefined | null;
@@ -120,6 +124,13 @@ export class LinkedItemDto {
     href!: string;
     icon?: JSX.Element;
     value?: string;
+}
+
+export interface StatsTableRowData {
+    id: number;
+    title: string;
+    viewed: number;
+    todayView: number;
 }
 
 // formik

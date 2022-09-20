@@ -63,7 +63,7 @@ export class Request {
         props: RequestParams,
         accessToken: string | undefined
     ): Promise<AxiosResponse | RefreshTokenResponse | undefined> {
-        console.log(props)
+        if (process.env.NODE_ENV === 'development') console.log(props)
         try {
             this.controller = new AbortController();
             return await this.requestClient(props, accessToken);

@@ -116,12 +116,13 @@ interface ScrollContainerProps {
     scroll?: 'x' | 'y' | 'both'
     bgColor?: string | undefined
     hover?: true | false
+    sx?: object | undefined
 }
 
 export const ScrollContainer = (props: ScrollContainerProps) => {
     const {classes} = useScrollContainer(props)
     return (
-        <div className={classes.scrollbar}>{props.children}</div>
+        <div style={props.sx} className={classes.scrollbar}>{props.children}</div>
     )
 }
 
