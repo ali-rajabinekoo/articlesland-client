@@ -41,9 +41,11 @@ export const NavbarProfileDropdown = () => {
                     <Text color={'grey.4'}>لیست ها</Text>
                 </Menu.Item>
             </Link>
-            <Menu.Item icon={<IconChartLine color={theme.colors.grey[4]} size={20} stroke={1.5}/>}>
-                <Text color={'grey.4'}>مشاهده آمار</Text>
-            </Menu.Item>
+            <Link href={'/stats'}>
+                <Menu.Item icon={<IconChartLine color={theme.colors.grey[4]} size={20} stroke={1.5}/>}>
+                    <Text color={'grey.4'}>مشاهده آمار</Text>
+                </Menu.Item>
+            </Link>
 
             <Menu.Label>
                 <Text color={'grey.4'} size={'xs'}> حساب کاربری</Text>

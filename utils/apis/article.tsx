@@ -22,6 +22,13 @@ export class Article {
         }
     }
 
+    async getMyArticle(): Promise<AxiosResponse | undefined> {
+        const result = await this.request.sendRequest({
+            method: 'GET', url: `/article/mine`
+        }, this.accessToken as string)
+        return responseHandler(result, this.onRefreshToken)
+    }
+
     async getArticle(id: string): Promise<AxiosResponse | undefined> {
         const result = await this.request.sendRequest({
             method: 'GET', url: `/article/${id}`
