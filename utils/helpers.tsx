@@ -9,6 +9,7 @@ import {
     RefreshTokenResponse,
     UserAndTokenResponse
 } from "./types";
+import moment from "moment-jalaali";
 
 export const errorHandler = (e: AxiosError | any) => {
     if (e instanceof AxiosError) {
@@ -112,4 +113,18 @@ export const responseHandler = (
     } else {
         return result as AxiosResponse | undefined
     }
+}
+
+export const formatFullDate = (date: string): string => {
+    const time: string = new Intl.DateTimeFormat('fa-IR', {
+        hour: 'numeric',
+        minute: 'numeric',
+        hourCycle: 'h23'
+    }).format(new Date(date))
+    const newDate: string = new Intl.DateTimeFormat('fa-IR').format(new Date(date))
+    return `${time} - ${newDate}`;
+}
+
+export const formatDateFromNow = (date: string): string => {
+    return moment((new Date(date)).toISOString()).fromNow()
 }

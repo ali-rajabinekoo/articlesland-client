@@ -1,9 +1,11 @@
+import userCategoriesReducer from '../reducers/userCategories'
 import {configureStore} from '@reduxjs/toolkit'
 import categoriesReducer from '../reducers/categories'
-import userCategoriesReducer from '../reducers/userCategories'
+import commentsReducer from '../reducers/comments'
 
 const store = configureStore({
     reducer: {
+        comments: commentsReducer,
         categories: categoriesReducer,
         userCategories: userCategoriesReducer,
     }

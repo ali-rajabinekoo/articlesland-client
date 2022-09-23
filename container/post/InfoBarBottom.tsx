@@ -13,13 +13,13 @@ const InfoBarBottom = ({article}: InfoBarBottomProps) => {
 
     return (
         <Container size={'md'} my={'md'} px={0}>
-            <Group position={'apart'}>
+            <Group position={'apart'} className={classes.articleInfoFooter}>
                 <Box>
                     {!!article?.category?.displayTitle && <Chip variant="filled" radius="sm" size={'sm'} color={'grey.0'} checked={false}>
                         {article?.category?.displayTitle}
                     </Chip>}
                 </Box>
-                <Group spacing={8} mr={0}>
+                <Group spacing={8} m={0}>
                     <Badge size="sm" radius="xs" className={classes.action} py={3.5} sx={{height: "100%"}}>
                         <Box sx={{display: 'flex', alignItems: 'center'}}>
                             <IconEye size={16} color={theme.colors.grey[4]}/>

@@ -1,9 +1,10 @@
 import React from 'react';
-import {Authentication} from "../utils/apis/authentication";
-import {Article} from "../utils/apis/article";
-import {Category} from "../utils/apis/category";
 import {User} from "../utils/apis/user";
 import {Draft} from "../utils/apis/draft";
+import {Comment} from "../utils/apis/comment";
+import {Article} from "../utils/apis/article";
+import {Category} from "../utils/apis/category";
+import {Authentication} from "../utils/apis/authentication";
 import useUserInfo from "./useUserInfo";
 import {APIS, PublicAPIS, UserAndTokenResponse, UseRequestResult, UseUserInfoResult} from "../utils/types";
 
@@ -19,6 +20,7 @@ export default function useRequest(requiredToken?: boolean | undefined): UseRequ
         return {
             auth: new Authentication(getAccessToken() as string, handleOnRefreshToken, requiredToken),
             category: new Category(getAccessToken() as string, handleOnRefreshToken, requiredToken),
+            comment: new Comment(getAccessToken() as string, handleOnRefreshToken, requiredToken),
             article: new Article(getAccessToken() as string, handleOnRefreshToken, requiredToken),
             draft: new Draft(getAccessToken() as string, handleOnRefreshToken, requiredToken),
             user: new User(getAccessToken() as string, handleOnRefreshToken, requiredToken),

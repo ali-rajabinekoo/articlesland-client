@@ -2,6 +2,7 @@ import {Card, Text, Box, Divider, UnstyledButton, Menu, Group, createStyles} fro
 import {IconDotsVertical, IconEye, IconFileUpload, IconTrash} from "@tabler/icons";
 import {DraftResponseDto} from "../../utils/types";
 import {MouseEventHandler} from "react";
+import {formatFullDate} from "../../utils/helpers";
 
 const useStyles = createStyles((theme) => ({
     card: {
@@ -41,16 +42,6 @@ const useStyles = createStyles((theme) => ({
     }
 }));
 
-const formatDate = (createdAt: string): string => {
-    const time: string = new Intl.DateTimeFormat('fa-IR', {
-        hour: 'numeric',
-        minute: 'numeric',
-        hourCycle: 'h23'
-    }).format(new Date(createdAt))
-    const date: string = new Intl.DateTimeFormat('fa-IR').format(new Date(createdAt))
-    return `${time} - ${date}`;
-}
-
 class DraftCardProps extends DraftResponseDto {
     showContent?: Function | undefined
     removeDraft?: Function | undefined
@@ -79,7 +70,7 @@ const DraftCard = (props: DraftCardProps) => {
             <Group p="xs" position={'apart'} align={'center'} noWrap={true}>
                 <Box px={'xs'}>
                     <Text sx={{lineHeight: '21.6px'}} color={'grey.3'} size={'xs'} mt={'xs'}>
-                        {!!props.createdAt && <>{formatDate(props.createdAt)}</>}
+                        {!!props.createdAt && <>{formatFullDate(props.createdAt)}</>}
                         {/*09/04/2022 - 8:20*/}
                     </Text>
                 </Box>

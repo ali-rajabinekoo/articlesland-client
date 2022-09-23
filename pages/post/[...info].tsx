@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from "react";
 import {
     ArticleDto,
+    CommentDto,
     GetArticleResponseDto,
     PublicAPIS,
     UserDto,
@@ -17,13 +18,18 @@ import Link from "next/link";
 import {NextPage} from "next";
 import {AxiosResponse} from "axios";
 import {NextRouter, useRouter} from "next/router";
+import PostComments from "../../container/post/comments";
+import {useAppDispatch} from "../../hooks/redux";
+import {AppDispatch} from "../../utils/app.store";
+import {initComments} from "../../reducers/comments";
 
 export async function getStaticProps({params}: any) {
     try {
         const apis: PublicAPIS = publicApis();
         const username: string = params.info[0];
         const id: string = params.info[1];
-        const response: AxiosResponse | undefined = await apis.article.getPublicArticle(id as string, username as string)
+        const response: AxiosResponse | undefined = 
+            await apis.article.getPublicArticle(id as string, username as string)
         if (!!response?.data) {
             return {
                 props: {articles: response?.data as GetArticleResponseDto},
@@ -51,6 +57,7 @@ class ShowPostProps {
 }
 
 const ShowPost: NextPage = ({articles}: ShowPostProps): JSX.Element => {
+    const dispatch: AppDispatch = useAppDispatch()
     const {userInfo}: UseUserInfoResult = useUserInfo()
     const [article, setArticle] = useState<ArticleDto>()
     const {push} : NextRouter= useRouter()
@@ -58,6 +65,7 @@ const ShowPost: NextPage = ({articles}: ShowPostProps): JSX.Element => {
     useEffect(() => {
         if (!!articles) {
             setArticle(articles)
+            dispatch(initComments(articles.comments as CommentDto[]))
         } else if (articles === null) {
             push('/404').catch()
         }
@@ -65,7 +73,7 @@ const ShowPost: NextPage = ({articles}: ShowPostProps): JSX.Element => {
     }, [articles])
 
     return (
-        <Box mb={100}>
+        <Box>
             <DashboardHeader/>
             <ReadArticle
                 user={article?.owner as UserDto}
@@ -79,6 +87,7 @@ const ShowPost: NextPage = ({articles}: ShowPostProps): JSX.Element => {
                 }
             />
             <InfoBarBottom article={article as ArticleDto}/>
+            <PostComments articleId={article?.id as number}/>
         </Box>
     )
 }
