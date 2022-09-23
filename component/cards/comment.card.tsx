@@ -1,8 +1,9 @@
 import {Avatar, Card, Group, Stack, Text, UnstyledButton, Box, Menu, useMantineTheme, Divider} from "@mantine/core";
-import {changeUrlToServerRequest, formatDateFromNow} from "../../utils/helpers";
-import {CommentDto, UserDto} from "../../utils/types";
+import {changeUrlToServerRequest, errorHandler, formatDateFromNow} from "../../utils/helpers";
+import {APIS, CommentDto, UserDto, UseRequestResult, UseUserInfoResult} from "../../utils/types";
 import {
-    IconArrowBackUp,
+    IconAlertCircle,
+    IconArrowBackUp, IconCheck,
     IconChevronDown,
     IconDots,
     IconMessageCircle2,
@@ -10,10 +11,15 @@ import {
     IconTrash
 } from "@tabler/icons";
 import useUserInfo from "../../hooks/useUserInfo";
-import {MouseEventHandler, useEffect, useState} from "react";
+import React, {MouseEventHandler, useEffect, useState} from "react";
 import NewComment from "../../container/post/newComment";
-import {useAppSelector} from "../../hooks/redux";
-import {RootState} from "../../utils/app.store";
+import {useAppDispatch, useAppSelector} from "../../hooks/redux";
+import {AppDispatch, RootState} from "../../utils/app.store";
+import useRequest from "../../hooks/useRequest";
+import {showNotification} from "@mantine/notifications";
+import {AxiosResponse} from "axios";
+import {appMessages} from "../../utils/messages";
+import {initComments} from "../../reducers/comments";
 
 class CommentCardProps {
     user!: UserDto;
@@ -27,18 +33,44 @@ const CommentCardContent = ({
     comment: defaultComment,
 }: CommentCardProps) => {
     const theme = useMantineTheme()
-    const {userInfo} = useUserInfo()
+    const {userInfo}: UseUserInfoResult = useUserInfo()
+    const {getApis}: UseRequestResult = useRequest()
     const [isReply, setIsReply] = useState<boolean>(false)
     const [showChildren, setShowChildren] = useState<boolean>(false)
     const [comment, setComment] = useState<CommentDto>(defaultComment)
     const comments: CommentDto[] | undefined = useAppSelector(
         (state: RootState) => state.comments.list
     )
+    const dispatch: AppDispatch = useAppDispatch()
     const onClick = () => {
         setShowChildren(!showChildren)
     }
     const onClickClose = () => {
         setIsReply(false);
+    }
+    const onRemove = async () => {
+        const apis: APIS = getApis()
+        try {
+            const response: AxiosResponse | undefined =
+                await apis.comment.removeComment(Number(articleId), Number(comment.id))
+            if (!response) return showNotification({
+                message: appMessages.somethingWentWrong,
+                title: 'خطا',
+                autoClose: 3000,
+                color: 'red',
+                icon: <IconAlertCircle size={20}/>
+            })
+            const data: CommentDto[] = response.data as CommentDto[]
+            dispatch(initComments(data))
+            showNotification({
+                message: 'نظر شما با موفقیت حذف شد',
+                autoClose: 3000,
+                color: 'green',
+                icon: <IconCheck size={20}/>
+            })
+        } catch (e) {
+            errorHandler(e)
+        }
     }
     useEffect(() => {
         const targetComment = comments?.find(el => el.id === comment.id)
@@ -103,7 +135,8 @@ const CommentCardContent = ({
                             </Menu.Item>
                             {
                                 userInfo?.id === user.id ?
-                                    <Menu.Item icon={<IconTrash color={theme.colors.grey[4]} size={16}/>}>
+                                    <Menu.Item onClick={onRemove}
+                                               icon={<IconTrash color={theme.colors.grey[4]} size={16}/>}>
                                         <Text color={'grey.4'} size={'xs'} weight={500}>حذف</Text>
                                     </Menu.Item> :
                                     <Menu.Item icon={<IconMessageReport color={theme.colors.grey[4]} size={16}/>}>

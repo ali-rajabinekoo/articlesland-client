@@ -8,7 +8,7 @@ import {errorHandler} from "../../utils/helpers";
 import {AxiosResponse} from "axios";
 import {showNotification} from "@mantine/notifications";
 import {validationMessages} from "../../utils/messages";
-import {IconAlertCircle} from "@tabler/icons";
+import {IconAlertCircle, IconCheck} from "@tabler/icons";
 import {AppDispatch} from "../../utils/app.store";
 import {useAppDispatch} from "../../hooks/redux";
 import {addNewComment} from "../../reducers/comments";
@@ -77,6 +77,12 @@ const NewComment = ({
                 await apis.comment.addNewComment(articleId, body);
             const data: CommentDto = response?.data
             dispatch(addNewComment(data as CommentDto))
+            showNotification({
+                message: 'نظر شما با موفقیت ثبت شد',
+                autoClose: 3000,
+                color: 'green',
+                icon: <IconCheck size={20}/>
+            })
             setLoading(false)
         } catch (e) {
             errorHandler(e)
