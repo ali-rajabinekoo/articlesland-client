@@ -28,4 +28,11 @@ export class Comment {
         }, this.accessToken as string)
         return responseHandler(result, this.onRefreshToken)
     }
+
+    async removeComment(articleId: number, commentId: number): Promise<AxiosResponse | undefined> {
+        const result = await this.request.sendRequest({
+            method: 'DELETE', url: `/comment/${articleId}/${commentId}`
+        }, this.accessToken as string)
+        return responseHandler(result, this.onRefreshToken)
+    }
 }
