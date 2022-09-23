@@ -1,9 +1,8 @@
 import {Container, Group, Avatar, Stack, Text, ActionIcon, Box} from "@mantine/core";
 import {GetArticleResponseDto, UserDto} from "../../utils/types";
 import IFrame from "../../component/iframe";
-import {changeUrlToServerRequest} from "../../utils/helpers";
+import {changeUrlToServerRequest, formatDateFromNow} from "../../utils/helpers";
 import React, {useEffect, useState} from "react";
-import moment from "moment-jalaali";
 import {IconChevronLeft} from "@tabler/icons";
 import ReadArticleBanner from "../../component/readArticleBanner";
 import {useReadArticleBannerStyle} from "./readArticle.styles";
@@ -22,7 +21,7 @@ const ReadArticle = ({user, article, onBack, bannerFile, action}: ReadArticlePro
 
     useEffect(() => {
         if (!!article?.updated_at) {
-            setFromNowDate(moment(article?.updated_at).fromNow())
+            setFromNowDate(formatDateFromNow(article?.updated_at))
         }
     }, [article])
 

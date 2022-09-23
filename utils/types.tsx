@@ -4,6 +4,7 @@ import {Category} from "./apis/category";
 import {User} from "./apis/user";
 import {Draft} from "./apis/draft";
 import {AxiosError, AxiosResponse} from "axios";
+import {Comment} from "./apis/comment";
 
 // DTOs
 
@@ -44,10 +45,10 @@ export class ArticleDto {
     updated_at: string | undefined | null;
     owner: UserDto | undefined | null;
     category: CategoryDto | undefined | null;
+    comments: CommentDto[] | undefined | null;
     // reports: Relation<Report[]>;
     // likes: Relation<Like[]>;
     // bookmarks: Relation<Bookmark[]>;
-    // comments: Relation<Comment[]>;
 }
 
 export class GetArticleResponseDto extends ArticleDto{
@@ -73,6 +74,18 @@ export class DraftResponseDto {
     createdAt?: string | undefined | null;
     description?: string | undefined | null;
     articleId?: number | undefined | null;
+}
+
+export class CommentDto {
+    id: number | undefined | null;
+    body: string | undefined | null;
+    created_at: string | undefined | null;
+    childNumber: number | undefined | null;
+    owner: UserDto | undefined | null;
+    parent: CommentDto  | undefined | null;
+    children: CommentDto[]  | undefined | null;
+    article?: ArticleDto  | undefined | null;
+    // reports: Relation<Report[]>;
 }
 
 // hooks
@@ -171,11 +184,12 @@ export class RefreshTokenResponse {
 }
 
 export class APIS {
-    auth!: Authentication
-    article!: Article
-    category!: Category
-    user!: User
-    draft!: Draft
+    auth!: Authentication;
+    category!: Category;
+    comment!: Comment;
+    article!: Article;
+    draft!: Draft;
+    user!: User;
 }
 
 export class PublicAPIS {
@@ -225,6 +239,11 @@ export class SaveDraftValues {
 
 export class SetSelectedCategories {
     list!: string[] | number[]
+}
+
+export class NewCommentBody {
+    body!: string;
+    parentId?: number | undefined;
 }
 
 // styles

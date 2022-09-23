@@ -7,4 +7,11 @@ export const useInfoBarBottomStyle = createStyles((theme) => ({
             backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[5] : theme.colors.gray[1],
         }),
     },
+    articleInfoFooter: {
+        [theme.fn.smallerThan('md')]: {
+            paddingRight: theme.spacing.sm,
+            paddingLeft: theme.spacing.sm,
+        },
+        
+    },
 }));
