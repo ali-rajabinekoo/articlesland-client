@@ -252,13 +252,13 @@
   dependencies:
     "@mantine/utils" "5.2.0"
 
-"@mantine/dropzone@^5.2.0":
-  version "5.2.0"
-  resolved "https://registry.yarnpkg.com/@mantine/dropzone/-/dropzone-5.2.0.tgz#4097d7c8dc62cdc0563e1c28f0086703284bcc02"
-  integrity sha512-xogJ2/QsHWL93r7uOPx0qsgOO4gbHzvprCXoqxQKn6TAjkFaFz7oZ6OHg2wll29ONKCFTq3LqKbGFuEXrOsKfQ==
+"@mantine/dropzone@^5.2.5":
+  version "5.4.1"
+  resolved "https://registry.yarnpkg.com/@mantine/dropzone/-/dropzone-5.4.1.tgz#ad69aaca1ea9824b904209dd293f7778a990fa26"
+  integrity sha512-LibT4IRtIfqZU/7frteohiIce1Agf46nXxreb/Ve+98GpRw6CC0c2VswKEcfOBu7M3qbtSS8j92xCHx2AzTWXA==
   dependencies:
-    "@mantine/utils" "5.2.0"
-    react-dropzone "14.2.1"
+    "@mantine/utils" "5.4.1"
+    react-dropzone "14.2.2"
 
 "@mantine/form@^5.2.0":
   version "5.2.0"
@@ -347,6 +347,11 @@
   version "5.2.0"
   resolved "https://registry.yarnpkg.com/@mantine/utils/-/utils-5.2.0.tgz#7b0488a96198bd06bfdf16ce088b61b3afd2bd9b"
   integrity sha512-wDJKbW5EYboTSNkWhIXKdyDgBVxGLmdkGL4O94iNtZbRy5zoouGaEP3sW88GgIhyFmeVlnu+Mdzzsd76IsX/NA==
+
+"@mantine/utils@5.4.1":
+  version "5.4.1"
+  resolved "https://registry.yarnpkg.com/@mantine/utils/-/utils-5.4.1.tgz#06242925933faeca619b28e74d58a63ce94567c8"
+  integrity sha512-yaZ7gv9dkr98L65EjaAniZmJpVEPzHbe5aDDljIePLgcU5hVCdUls2v31YXslTf1/CJ5yZp/L7LPYLN86EXlEA==
 
 "@next/env@12.2.5":
   version "12.2.5"
@@ -2230,10 +2235,10 @@ react-dom@18.2.0:
     loose-envify "^1.1.0"
     scheduler "^0.23.0"
 
-react-dropzone@14.2.1:
-  version "14.2.1"
-  resolved "https://registry.yarnpkg.com/react-dropzone/-/react-dropzone-14.2.1.tgz#aad17e06290723358398a7be76fb38ecf6d77c1a"
-  integrity sha512-jzX6wDtAjlfwZ+Fbg+G17EszWUkQVxhMTWMfAC9qSUq7II2pKglHA8aarbFKl0mLpRPDaNUcy+HD/Sf4gkf76Q==
+react-dropzone@14.2.2:
+  version "14.2.2"
+  resolved "https://registry.yarnpkg.com/react-dropzone/-/react-dropzone-14.2.2.tgz#a75a0676055fe9e2cb78578df4dedb4c42b54f98"
+  integrity sha512-5oyGN/B5rNhop2ggUnxztXBQ6q6zii+OMEftPzsxAR2hhpVWz0nAV+3Ktxo2h5bZzdcCKrpd8bfWAVsveIBM+w==
   dependencies:
     attr-accept "^2.2.2"
     file-selector "^0.6.0"
