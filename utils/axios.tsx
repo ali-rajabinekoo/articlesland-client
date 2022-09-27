@@ -40,7 +40,7 @@ export class Request {
         url,
         data,
         externalUrl = false
-    }: RequestParams, accessToken: string | undefined): Promise<AxiosResponse | undefined> {
+    }: RequestParams, accessToken?: string | undefined): Promise<AxiosResponse | undefined> {
         const domain: string | undefined = process.env.SERVER_DOMAIN
         const configs: AxiosRequestConfig = {
             method: method.toUpperCase(),
@@ -61,7 +61,7 @@ export class Request {
 
     async sendRequest(
         props: RequestParams,
-        accessToken: string | undefined
+        accessToken?: string | undefined
     ): Promise<AxiosResponse | RefreshTokenResponse | undefined> {
         if (process.env.NODE_ENV === 'development') console.log(props)
         try {

@@ -1,7 +1,7 @@
 import React from "react";
 import {Anchor, Box, Text} from "@mantine/core";
 import {VerificationCodeInputs} from "../../component/inputs";
-import {CountDown} from "../../component/countDown";
+import {CountDown} from "../../component/wrappers/countDown";
 import {CountdownTimeDeltaFn} from "react-countdown/dist/Countdown";
 
 class ProfileVerificationProps {

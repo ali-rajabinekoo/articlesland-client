@@ -18,8 +18,8 @@ import {errorHandler, normalizePhoneNumber} from "../../utils/helpers";
 import useUserInfo from "../../hooks/useUserInfo";
 import {showNotification} from "@mantine/notifications";
 import {IconAlertCircle, IconCheck, IconChevronLeft} from "@tabler/icons";
-import {CountDown} from "../../component/countDown";
-import {LoadingOverlay} from "../../component/loadingOverlay";
+import {CountDown} from "../../component/wrappers/countDown";
+import {LoadingOverlay} from "../../component/wrappers/loadingOverlay";
 import {useFormik} from "formik";
 import {SendLoginCodeSchema} from "../../utils/validators";
 

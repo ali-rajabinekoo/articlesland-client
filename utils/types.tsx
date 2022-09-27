@@ -1,7 +1,7 @@
 import {Authentication} from "./apis/authentication";
 import {Article} from "./apis/article";
 import {Category} from "./apis/category";
-import {User} from "./apis/user";
+import {PublicUserApi, User} from "./apis/user";
 import {Draft} from "./apis/draft";
 import {AxiosError, AxiosResponse} from "axios";
 import {Comment} from "./apis/comment";
@@ -23,6 +23,8 @@ export class UserDto {
     likes?: ArticleDto[] | undefined | null
     bookmarks?: ArticleDto[] | undefined | null
     selectedCategories?: CategoryDto[] | undefined | null
+    followers?: UserDto[] | undefined | null
+    followings?: UserDto[] | undefined | null
 }
 
 export class CategoryDto {
@@ -146,6 +148,13 @@ export interface StatsTableRowData {
     todayView: number;
 }
 
+export interface FollowedUserDto {
+    id: number;
+    avatar: string; 
+    displayName: string; 
+    username: string;
+}
+
 // formik
 
 export class SignupFormValues {
@@ -196,6 +205,7 @@ export class PublicAPIS {
     auth!: Authentication
     category!: Category
     article!: Article
+    user!: PublicUserApi
 }
 
 export class RequestParams {
@@ -221,6 +231,10 @@ export class PureVerificationBody {
 export class UserAndTokenResponse {
     user: object | undefined
     token: string | undefined
+}
+
+export class FollowBody {
+    newFollowingUserId!: number
 }
 
 export type refreshTokenHandler = (data: UserAndTokenResponse) => void

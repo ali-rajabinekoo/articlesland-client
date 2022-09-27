@@ -19,7 +19,7 @@ import {errorHandler} from "../../utils/helpers";
 import {showNotification} from "@mantine/notifications";
 import {IconCheck, IconChevronLeft} from "@tabler/icons";
 import {appMessages} from "../../utils/messages";
-import {CountDown} from "../../component/countDown";
+import {CountDown} from "../../component/wrappers/countDown";
 import useUserInfo from "../../hooks/useUserInfo";
 
 export const LoginFormTitle = () => {

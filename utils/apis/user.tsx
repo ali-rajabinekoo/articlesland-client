@@ -1,6 +1,7 @@
 import {Request} from "../axios";
 import {AxiosResponse} from "axios";
 import {
+    FollowBody,
     ProfileInfoFormValues,
     PureVerificationBody,
     refreshTokenHandler,
@@ -26,6 +27,13 @@ export class User {
         if (requiredToken !== undefined) {
             this.request = new Request(requiredToken)
         }
+    }
+
+    async getUserInfo(username: string): Promise<AxiosResponse | undefined> {
+        const result = await this.request.sendRequest({
+            method: 'GET', url: `/user/${username}`
+        })
+        return responseHandler(result, this.onRefreshToken)
     }
 
     async userInfo(): Promise<AxiosResponse | undefined> {
@@ -75,5 +83,39 @@ export class User {
             method: 'PATCH', url: `/user/email/verify`, data: body,
         }, this.accessToken as string)
         return responseHandler(result, this.onRefreshToken)
+    }
+
+    async follow(body: FollowBody): Promise<AxiosResponse | undefined> {
+        const result = await this.request.sendRequest({
+            method: 'POST', url: `/user/follow`, data: body,
+        }, this.accessToken as string)
+        return responseHandler(result, this.onRefreshToken)
+    }
+
+    async unfollow(body: FollowBody): Promise<AxiosResponse | undefined> {
+        const result = await this.request.sendRequest({
+            method: 'POST', url: `/user/unfollow`, data: body,
+        }, this.accessToken as string)
+        return responseHandler(result, this.onRefreshToken)
+    }
+}
+
+export class PublicUserApi {
+    request: Request = new Request()
+
+    constructor(
+        token?: string | undefined,
+        handleOnRefreshToken?: Function | undefined,
+        requiredToken?: boolean | undefined,
+    ) {
+        this.request = new Request(requiredToken)
+    }
+
+    async getUserInfo(username: string): Promise<AxiosResponse | undefined> {
+        const result = await this.request.sendRequest({
+            method: 'GET', url: `/user/${username}`
+        })
+        console.log(result)
+        return result as AxiosResponse | undefined
     }
 }

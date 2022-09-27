@@ -1,7 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e06adea9-5fca-4f6c-9da5-80729234fd31" name="Changes" comment="AL-48 &lt;Comment creation and listing them with replies&gt;" />
+    <list default="true" id="e06adea9-5fca-4f6c-9da5-80729234fd31" name="Changes" comment="AL-48 &lt;Comment creation and listing them with replies&gt;">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/component/countDown.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/component/wrappers/countDown.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/component/iframe.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/component/wrappers/iframe.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/component/loadingOverlay.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/component/wrappers/loadingOverlay.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/component/readArticleBanner.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/component/wrappers/readArticleBanner.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/container/dashboard/profileTab.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/container/dashboard/profileTab.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/container/edit/drafts.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/container/edit/drafts.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/container/errors/empty.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/container/errors/empty.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/container/layout/readArticle.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/container/layout/readArticle.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/container/login/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/container/login/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/container/profile/verification.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/container/profile/verification.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/container/registration/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/container/registration/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/container/verification/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/container/verification/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hooks/useRequest.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/hooks/useRequest.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/apis/user.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/utils/apis/user.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/axios.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/utils/axios.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/messages.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/utils/messages.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/types.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/utils/types.tsx" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -43,7 +62,7 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/rajabinekoo/Workspace/ArticlesLand/articlesland-client&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/rajabinekoo/Workspace/ArticlesLand/articlesland-server&quot;,
     &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -58,11 +77,11 @@
       <recent name="$PROJECT_DIR$/public/scripts" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/component/wrappers" />
       <recent name="$PROJECT_DIR$/providers" />
       <recent name="$PROJECT_DIR$/container/profile" />
       <recent name="$PROJECT_DIR$/component/navbar" />
       <recent name="$PROJECT_DIR$/component/lists" />
-      <recent name="$PROJECT_DIR$/component" />
     </key>
   </component>
   <component name="RunManager">
@@ -126,6 +145,16 @@
       <workItem from="1663875953897" duration="1970000" />
       <workItem from="1663878793134" duration="3606000" />
       <workItem from="1663917535773" duration="599000" />
+      <workItem from="1663965899240" duration="139000" />
+      <workItem from="1664000765935" duration="599000" />
+      <workItem from="1664019903918" duration="268000" />
+      <workItem from="1664020286684" duration="173000" />
+      <workItem from="1664020860106" duration="236000" />
+      <workItem from="1664021097361" duration="10000" />
+      <workItem from="1664021340734" duration="2665000" />
+      <workItem from="1664024385814" duration="5767000" />
+      <workItem from="1664089585717" duration="1292000" />
+      <workItem from="1664275674413" duration="4546000" />
     </task>
     <task id="LOCAL-00001" summary="AL-14 &lt;Start project and fix basic configs&gt;">
       <created>1660924360896</created>
@@ -288,7 +317,14 @@
       <option name="project" value="LOCAL" />
       <updated>1663936576693</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="AL-48 &lt;Comment creation and listing them with replies&gt;">
+      <created>1663965906571</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1663965906571</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -330,6 +366,7 @@
     <MESSAGE value="AL-46 &lt;Refactoring get article API and frontend permission&gt;" />
     <MESSAGE value="AL-50 &lt;Stats table implemented&gt;" />
     <MESSAGE value="AL-48 &lt;Comment deletion logic&gt;" />
-    <option name="LAST_COMMIT_MESSAGE" value="AL-48 &lt;Comment deletion logic&gt;" />
+    <MESSAGE value="AL-48 &lt;Comment creation and listing them with replies&gt;" />
+    <option name="LAST_COMMIT_MESSAGE" value="AL-48 &lt;Comment creation and listing them with replies&gt;" />
   </component>
 </project>
