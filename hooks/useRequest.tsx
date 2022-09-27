@@ -1,5 +1,5 @@
 import React from 'react';
-import {User} from "../utils/apis/user";
+import {PublicUserApi, User} from "../utils/apis/user";
 import {Draft} from "../utils/apis/draft";
 import {Comment} from "../utils/apis/comment";
 import {Article} from "../utils/apis/article";
@@ -35,5 +35,6 @@ export const publicApis = (): PublicAPIS => {
         auth: new Authentication(),
         category: new Category(),
         article: new Article(),
+        user: new PublicUserApi(),
     }
 }

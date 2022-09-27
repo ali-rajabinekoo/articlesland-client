@@ -1,10 +1,10 @@
 import {Container, Group, Avatar, Stack, Text, ActionIcon, Box} from "@mantine/core";
 import {GetArticleResponseDto, UserDto} from "../../utils/types";
-import IFrame from "../../component/iframe";
+import IFrame from "../../component/wrappers/iframe";
 import {changeUrlToServerRequest, formatDateFromNow} from "../../utils/helpers";
 import React, {useEffect, useState} from "react";
 import {IconChevronLeft} from "@tabler/icons";
-import ReadArticleBanner from "../../component/readArticleBanner";
+import ReadArticleBanner from "../../component/wrappers/readArticleBanner";
 import {useReadArticleBannerStyle} from "./readArticle.styles";
 
 class ReadArticleProps {

@@ -3,7 +3,7 @@ import {useDraftsStyles} from "./drafts.styles";
 import DraftCard from "../../component/cards/draftCard";
 import {APIS, DraftResponseDto, UseRequestResult} from "../../utils/types";
 import React, {useEffect, useState} from "react";
-import IFrame from "../../component/iframe";
+import IFrame from "../../component/wrappers/iframe";
 import useRequest from "../../hooks/useRequest";
 import {showNotification} from "@mantine/notifications";
 import {appMessages} from "../../utils/messages";

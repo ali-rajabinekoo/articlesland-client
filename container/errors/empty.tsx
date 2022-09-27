@@ -20,19 +20,24 @@ const useStyles = createStyles((theme) => ({
 class EmptyContentProps {
     title?: string | undefined;
     btnText?: string | undefined;
+    disableBtn?: boolean
 }
 
 const noContentTitle = 'محتوایی برای نمایش وجود ندارد'
 const noContentBtnText = 'ایجاد پست جدید'
 
-export function EmptyContent({title = noContentTitle, btnText = noContentBtnText}: EmptyContentProps) {
+export function EmptyContent({
+    title = noContentTitle,
+    btnText = noContentBtnText, 
+    disableBtn = false
+}: EmptyContentProps) {
     const { classes } = useStyles();
 
     return (
         <Container mt={'lg'}>
             <Image src={"/assets/images/nocontent.svg"} width={'400px'} alt={"/assets/images/nocontent.svg"}/>
             <Title className={classes.title}>{title}</Title>
-            {!!btnText && <Group position="center" mt={'lg'}>
+            {!!btnText && !disableBtn && <Group position="center" mt={'lg'}>
                 <Link href={'/edit'}>
                     <PrimaryBtn size="md" text={btnText}/>
                 </Link>

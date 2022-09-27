@@ -13,7 +13,7 @@ import {errorHandler} from "../../utils/helpers";
 import {showNotification} from "@mantine/notifications";
 import {IconAlertCircle, IconCheck, IconChevronLeft} from "@tabler/icons";
 import {appMessages} from "../../utils/messages";
-import {CountDown} from "../../component/countDown";
+import {CountDown} from "../../component/wrappers/countDown";
 
 export const RegistrationFormTitle = () => {
     const {classes} = useRegistrationFormStyle()

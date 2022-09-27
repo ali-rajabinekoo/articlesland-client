@@ -36,6 +36,8 @@ export const validationMessages = {
 };
 
 export const appMessages = {
+    followed: 'کاربر فالو شد',
+    unfollowed: 'کاربر از لیست فالو شوندگان حذف شد',
     unauthorized: 'نشست از بین رفته است لطفا مجدد لاگین کنید',
     somethingWentWrong: 'خطایی در سامانه رخ داده است',
     codeSent: 'کد تایید برای شماره موبایل مورد نظر ارسال گردید',
