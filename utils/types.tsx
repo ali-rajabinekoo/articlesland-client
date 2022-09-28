@@ -50,6 +50,7 @@ export class ArticleDto {
     comments: CommentDto[] | undefined | null;
     // client fields
     bookmarked: boolean | undefined | null;
+    liked: boolean | undefined | null;
     // reports: Relation<Report[]>;
     // likes: Relation<Like[]>;
 }
@@ -129,6 +130,10 @@ export class UseBookmark {
 
 export class UseFollow {
     follow!: Function
+}
+
+export class UseLike {
+    like!: Function
 }
 
 // components

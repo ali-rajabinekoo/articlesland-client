@@ -106,7 +106,7 @@ const Posting = ({article}: PostingProps) => {
     }
 
     useEffect(() => {
-        if (!!article.category?.id) {
+        if (!!article?.category?.id) {
             setCategoryId(String(article.category.id) as string)
         }
     } , [article])

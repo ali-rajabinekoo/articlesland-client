@@ -91,4 +91,18 @@ export class Article {
         }, this.accessToken as string)
         return responseHandler(result, this.onRefreshToken)
     }
+
+    async addLike(articleId: number): Promise<AxiosResponse | undefined> {
+        const result = await this.request.sendRequest({
+            method: 'POST', url: `/article/like/${articleId}`
+        }, this.accessToken as string)
+        return responseHandler(result, this.onRefreshToken)
+    }
+
+    async removeLike(articleId: number): Promise<AxiosResponse | undefined> {
+        const result = await this.request.sendRequest({
+            method: 'DELETE', url: `/article/like/${articleId}`
+        }, this.accessToken as string)
+        return responseHandler(result, this.onRefreshToken)
+    }
 }

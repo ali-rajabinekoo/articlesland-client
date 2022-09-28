@@ -154,7 +154,8 @@ export default function ProfileTab({user}: ProfileProps) {
                 title="لیست دنبال کنندگان"
                 centered={true}
                 size={'lg'}
-                overflow={'inside'}
+                overflow={'outside'}
+                styles={{body: {minHeight: 300}}}
             >
                 <FollowedUser
                     isFollowersList={true}
@@ -168,7 +169,8 @@ export default function ProfileTab({user}: ProfileProps) {
                 title="لیست دنبال شوندگان"
                 centered={true}
                 size={'lg'}
-                overflow={'inside'}
+                overflow={'outside'}
+                styles={{body: {minHeight: 300}}}
             >
                 <FollowedUser
                     isFollowersList={false}

@@ -2,7 +2,7 @@ import {ArticleCard} from "../../component/cards/articleCard";
 import {changeUrlToServerRequest, errorHandler} from "../../utils/helpers";
 import {Container, Grid} from "@mantine/core";
 import useRequest from "../../hooks/useRequest";
-import {APIS, ArticleDto, UseBookmark, UserDto, UseRequestResult} from "../../utils/types";
+import {APIS, ArticleDto, UseBookmark, UseLike, UserDto, UseRequestResult} from "../../utils/types";
 import {AxiosResponse} from "axios";
 import React, {useEffect, useState} from "react";
 import {showNotification} from "@mantine/notifications";
@@ -12,12 +12,14 @@ import {EmptyContent} from "../errors/empty";
 import {NextRouter, useRouter} from "next/router";
 import useBookmark from "../../hooks/useBookmark";
 import useUserInfo from "../../hooks/useUserInfo";
+import useLike from "../../hooks/useLike";
 
 export default function ArticlesList() {
     const {getApis}: UseRequestResult = useRequest()
     const {userInfo} = useUserInfo()
     const {query}: NextRouter = useRouter()
     const {bookmark}: UseBookmark = useBookmark()
+    const {like}: UseLike = useLike()
     const [loading, setLoading] = useState<boolean>(true)
     const [list, setList] = useState<ArticleDto[]>([])
     const [posts, setPosts] = useState<ArticleDto[]>([])
@@ -36,10 +38,34 @@ export default function ArticlesList() {
         } else {
             articles = await bookmark(id, false)
         }
+        if (!articles) return undefined
         setBookmarkPosts(articles)
-        if (query.tab === 'bookmarks') setList(articles)
+        if (query.tab === 'bookmarks') setList(articles.map(
+            (el) =>
+                likedPosts.find(el2 => el2.id === el.id) ?
+                    ({...el, liked: true}) : el
+        ))
         else setList(list.map((el) => {
-            return articles.find(el2 => el2.id === el.id) ? {...el, bookmarked: true} : {...el, bookmarked: false}
+            return articles?.find(el2 => el2.id === el.id) ? {...el, bookmarked: true} : {...el, bookmarked: false}
+        }))
+    }
+
+    const handleOnLike = async (id: number, isLiked: boolean = false) => {
+        let articles: ArticleDto[] = []
+        if (isLiked) {
+            articles = await like(id, true)
+        } else {
+            articles = await like(id, false)
+        }
+        if (!articles) return undefined
+        setLikedPosts(articles)
+        if (query.tab === 'likes') setList(articles.map(
+            (el) =>
+                bookmarkPosts.find(el2 => el2.id === el.id) ?
+                    ({...el, bookmarked: true}) : el
+        ))
+        else setList(list.map((el) => {
+            return articles?.find(el2 => el2.id === el.id) ? {...el, liked: true} : {...el, liked: false}
         }))
     }
 
@@ -80,28 +106,41 @@ export default function ArticlesList() {
     useEffect(() => {
         if (!loading) {
             if (!query?.tab) {
-                setList([...posts].map(
-                    (el) => bookmarkPosts.find(el2 => el2.id === el.id) ?
-                        ({...el, bookmarked: true}) : el)
-                )
+                setList([...posts].map((el) => {
+                    const bookmarkedTarget: ArticleDto | undefined = bookmarkPosts.find(el2 => el2.id === el.id)
+                    const likedTarget: ArticleDto | undefined = likedPosts.find(el2 => el2.id === el.id)
+                    return {...el, liked: !!likedTarget, bookmarked: !!bookmarkedTarget}
+                }));
                 setNoContentTitle('شما هنوز پستی ننوشته اید')
                 setNoContentBtnText('ایجاد پست جدید')
                 setIsBookmarked(false)
                 setIsLiked(false)
             } else if (query.tab === 'unpublished') {
-                setList([...unpublished])
+                setList([...unpublished].map((el) => {
+                    const bookmarkedTarget: ArticleDto | undefined = bookmarkPosts.find(el2 => el2.id === el.id)
+                    const likedTarget: ArticleDto | undefined = likedPosts.find(el2 => el2.id === el.id)
+                    return {...el, liked: !!likedTarget, bookmarked: !!bookmarkedTarget}
+                }));
                 setNoContentTitle('هیچ پیش نویسی وجود ندارد')
                 setNoContentBtnText('ایجاد پست جدید')
                 setIsBookmarked(false)
                 setIsLiked(false)
             } else if (query.tab === 'likes') {
-                setList([...likedPosts])
+                setList([...likedPosts].map(
+                        (el) => bookmarkPosts.find(el2 => el2.id === el.id) ?
+                            ({...el, bookmarked: true}) : el
+                    )
+                )
                 setNoContentTitle('شما هنوز هیچ پستی را لایک نکرده اید')
                 setNoContentBtnText('')
                 setIsBookmarked(false)
                 setIsLiked(true)
             } else if (query.tab === 'bookmarks') {
-                setList([...bookmarkPosts])
+                setList([...bookmarkPosts].map(
+                        (el) => likedPosts.find(el2 => el2.id === el.id) ?
+                            ({...el, liked: true}) : el
+                    )
+                )
                 setNoContentTitle('شما هنوز هیچ پستی را ذخیره نکرده اید')
                 setNoContentBtnText('')
                 setIsBookmarked(true)
@@ -130,12 +169,19 @@ export default function ArticlesList() {
                                 name: el.owner?.displayName || el.owner?.username || "",
                                 image: !!el.owner?.avatar ? changeUrlToServerRequest(el.owner?.avatar) : '',
                             }}
-                            liked={isLiked}
+                            liked={isLiked || Boolean(el?.liked)}
+                            userProfileLink={!!el.owner?.username ? `/user/${el.owner?.username}` : undefined}
                             bookmarked={isBookmarked || Boolean(el?.bookmarked)}
                             bookmarkFunction={
                                 handleOnBookmark.bind({},
                                     el.id as number,
                                     isBookmarked || Boolean(el?.bookmarked)
+                                )
+                            }
+                            likeFunction={
+                                handleOnLike.bind({},
+                                    el.id as number,
+                                    isLiked || Boolean(el?.liked)
                                 )
                             }
                         />

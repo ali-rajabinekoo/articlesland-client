@@ -29,9 +29,12 @@ const PostComments = ({articleId}: PostCommentsProps): JSX.Element => {
         }
     }, [defaultComments])
     return (
-        <Box className={classes.wrapper} pb={"xl"} pt={'md'}>
+        <Box 
+            className={comments?.length !== 0 ? classes.wrapper : undefined} 
+            pb={comments?.length !== 0 ? "xl" : 0} pt={'md'}
+        >
             <Container size={'sm'} pb={"xl"}>
-                <Paper withBorder={true}>
+                <Paper withBorder={true} sx={{display: !!userInfo ? 'block' : 'none'}}>
                     <Accordion onChange={onChangeAccordion} classNames={{item: classes.commentWrapper}}
                                defaultValue={isOpen}>
                         <Accordion.Item value="commenting">

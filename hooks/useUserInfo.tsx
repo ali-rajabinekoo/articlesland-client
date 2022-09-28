@@ -19,10 +19,10 @@ export const logout = (props: logoutProps | undefined): void => {
     window.localStorage.removeItem(refreshTokenKey as string)
     window.localStorage.removeItem(accessTokenKey as string)
     window.localStorage.removeItem(userKey as string)
-    if (props?.disableRedirect === false) setTimeout(() => {
+    if (props?.disableRedirect !== false) setTimeout(() => {
         window.location.href = "/login";
     }, 2000)
-    if (props?.disableMessage === false) showNotification({
+    if (props?.disableMessage !== false) showNotification({
         message: appMessages.loggedOut,
         autoClose: 2000,
         color: 'green',

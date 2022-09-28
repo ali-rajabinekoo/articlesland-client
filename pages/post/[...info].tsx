@@ -102,17 +102,23 @@ const ShowPost: NextPage = ({articles}: ShowPostProps): JSX.Element => {
             setIsBookmarked(true)
         }
     }
-    
+
     useEffect(() => {
         if (!!articles) {
             setArticle(articles)
             dispatch(initComments(articles.comments as CommentDto[]))
-            fetchUserInfo().catch()
         } else if (articles === null) {
             push('/404').catch()
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [articles])
+    
+    useEffect(() => {
+        if (!!userInfo) {
+            fetchUserInfo().catch()
+        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [userInfo])
 
     useEffect(() => {
         if (!!userInfo) {
@@ -149,6 +155,7 @@ const ShowPost: NextPage = ({articles}: ShowPostProps): JSX.Element => {
                 onClickBookmark={handleOnBookmark} 
                 article={article as ArticleDto}
                 bookmarked={isBookmarked}
+                disableUserPanel={!userInfo}
             />
             <PostComments articleId={article?.id as number}/>
         </Box>

@@ -13,6 +13,7 @@ import {
     Stack,
 } from '@mantine/core';
 import {MouseEventHandler} from "react";
+import {NextRouter, useRouter} from "next/router";
 
 const useStyles = createStyles((theme) => ({
     card: {
@@ -52,6 +53,7 @@ const useStyles = createStyles((theme) => ({
 interface ArticleCardProps {
     image: string | undefined;
     link: string;
+    userProfileLink?: string;
     title: string;
     description: string;
     category: string;
@@ -63,12 +65,14 @@ interface ArticleCardProps {
     };
     bookmarkFunction?: Function | undefined;
     likeFunction?: Function | undefined;
+    disableCardPanel?: boolean;
 }
 
 export function ArticleCard({
     className,
     image,
     link,
+    userProfileLink,
     title,
     description,
     author,
@@ -77,10 +81,12 @@ export function ArticleCard({
     likeFunction,
     liked = false,
     bookmarked = false,
+    disableCardPanel = false,
     ...others
 }: ArticleCardProps & Omit<React.ComponentPropsWithoutRef<'div'>, keyof ArticleCardProps>) {
     const {classes, cx, theme} = useStyles();
     const linkProps = {href: link, target: '_blank', rel: 'noopener noreferrer'};
+    const {push}:NextRouter = useRouter()
 
     return (
         <Card dir={'rtl'} withBorder radius="md" p={0} className={cx(classes.card, className)} {...others}>
@@ -109,14 +115,14 @@ export function ArticleCard({
             <Divider m={0}/>
 
             <Group position="apart" p={'xs'} spacing={'xs'}>
-                <Center>
-                    <Avatar src={author.image} size={24} radius="xl" mr="xs"/>
-                    <Text size="sm" inline>
-                        {author.name}
-                    </Text>
+                <Center sx={{cursor: 'pointer'}} onClick={!!userProfileLink ? () => push(userProfileLink) : undefined}>
+                        <Avatar src={author.image || undefined} size={24} radius="xl" mr="xs"/>
+                        <Text size="sm" inline>
+                            {author.name}
+                        </Text>
                 </Center>
 
-                <Group spacing={8} mr={0}>
+                <Group spacing={8} mr={0} sx={{display: disableCardPanel ? 'none' : 'flex'}}>
                     {/*<Badge size="sm" radius="xs" className={classes.action} py={3.5} sx={{height: "100%"}}>*/}
                     {/*    <Box sx={{display: 'flex', alignItems: 'center'}}>*/}
                     {/*        <IconEye size={16} color={theme.colors.grey[4]}/>*/}

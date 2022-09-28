@@ -5,12 +5,13 @@ import {ArticleDto} from "../../utils/types";
 import {useInfoBarBottomStyle} from "./InfoBarBottom.styles";
 
 class InfoBarBottomProps {
-    article?: ArticleDto | undefined
-    bookmarked?: boolean | undefined
-    onClickBookmark?: Function | undefined
+    article?: ArticleDto | undefined;
+    bookmarked?: boolean | undefined;
+    onClickBookmark?: Function | undefined;
+    disableUserPanel?: boolean;
 }
 
-const InfoBarBottom = ({article, bookmarked, onClickBookmark}: InfoBarBottomProps) => {
+const InfoBarBottom = ({article, bookmarked, onClickBookmark, disableUserPanel}: InfoBarBottomProps) => {
     const {classes, theme} = useInfoBarBottomStyle()
 
     return (
@@ -21,7 +22,7 @@ const InfoBarBottom = ({article, bookmarked, onClickBookmark}: InfoBarBottomProp
                         {article?.category?.displayTitle}
                     </Chip>}
                 </Box>
-                <Group spacing={8} m={0}>
+                <Group spacing={8} m={0} sx={{display: disableUserPanel ? 'none' : 'flex'}}>
                     {/*<Badge size="sm" radius="xs" className={classes.action} py={3.5} sx={{height: "100%"}}>*/}
                     {/*    <Box sx={{display: 'flex', alignItems: 'center'}}>*/}
                     {/*        <IconEye size={16} color={theme.colors.grey[4]}/>*/}
