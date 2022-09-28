@@ -6,6 +6,7 @@ import React, {useEffect, useState} from "react";
 import {IconChevronLeft} from "@tabler/icons";
 import ReadArticleBanner from "../../component/wrappers/readArticleBanner";
 import {useReadArticleBannerStyle} from "./readArticle.styles";
+import Link from "next/link";
 
 class ReadArticleProps {
     user!: UserDto
@@ -29,16 +30,23 @@ const ReadArticle = ({user, article, onBack, bannerFile, action}: ReadArticlePro
         <Container size={'md'}>
             <Stack align={'stretch'}>
                 <Group position={'apart'} noWrap={true}>
-                    <Group position={'left'}>
-                        <Avatar
-                            size={60} className={classes.avatar} radius="xl"
-                            src={!!user?.avatar ? changeUrlToServerRequest(user?.avatar as string) : ''}
-                        />
-                        <Stack spacing={'xs'}>
-                            <Text color={'grey.4'} weight={700} size={'md'}>{user?.displayName || user?.username}</Text>
-                            <Text color={'grey.4'}>{fromNowDate}</Text>
-                        </Stack>
-                    </Group>
+                    <Box sx={{cursor: 'pointer'}}>
+                        <Group position={'left'}>
+                            <Link href={`/user/${user?.username}`}>
+                                <Avatar
+                                    size={60} className={classes.avatar} radius="xl"
+                                    src={!!user?.avatar ? changeUrlToServerRequest(user?.avatar as string) : ''}
+                                />
+                            </Link>
+                            <Link href={`/user/${user?.username}`}>
+                                <Stack spacing={'xs'}>
+                                    <Text color={'grey.4'} weight={700}
+                                          size={'md'}>{user?.displayName || user?.username}</Text>
+                                    <Text color={'grey.4'}>{fromNowDate}</Text>
+                                </Stack>
+                            </Link>
+                        </Group>
+                    </Box>
                     {!!onBack && <div>
                         <ActionIcon variant="transparent" onClick={() => onBack()}>
                             <IconChevronLeft size={25} color={'black'}/>

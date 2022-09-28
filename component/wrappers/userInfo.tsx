@@ -27,7 +27,10 @@ export const UserInfoWrapper = ({
     return (
         <Stack sx={{display: 'flex', flexDirection: 'column', alignItems: 'center'}} spacing={'sm'}>
             {user?.avatar &&
-                <Avatar radius={50} size={75} src={changeUrlToServerRequest(user?.avatar as string)}/>}
+                <Avatar 
+                    radius={50} size={75} 
+                    src={!user?.avatar ? undefined : changeUrlToServerRequest(user?.avatar as string)}
+                />}
             {!user?.avatar && <IconUserCircle size={75} color={theme.colors.grey[4]}/>}
             <Text size={'lg'} color={'grey.4'} weight={700} className={classes.textEllipsis}>
                 {user?.displayName || user?.username}

@@ -29,7 +29,10 @@ export default function NavbarNotificationTable({data = []}: NavbarNotificationT
             <tr key={index}>
                 <td>
                     <Group spacing="sm" noWrap={true}>
-                        <Avatar size={26} src={changeUrlToServerRequest(item.user?.avatar as string)} radius={26}/>
+                        <Avatar
+                            size={26} radius={26}
+                            src={!item?.user?.avatar ? undefined : changeUrlToServerRequest(item.user?.avatar as string)}
+                        />
                         <Text size="sm" weight={500}>
                             <Text color={'grey.4'} className={classes.title}>
                                 {convertNotificationTypeToMessage(

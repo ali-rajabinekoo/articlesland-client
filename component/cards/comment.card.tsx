@@ -91,7 +91,7 @@ const CommentCardContent = ({
         <Card p={isChild ? 'xs' : 0} withBorder={!!isChild}>
             <Stack spacing={'md'}>
                 <Group>
-                    <Avatar src={changeUrlToServerRequest(user.avatar as string)} alt={user.username as string}
+                    <Avatar src={!user?.avatar ? undefined : changeUrlToServerRequest(user.avatar as string)} alt={user.username as string}
                             radius="xl"/>
                     <div>
                         <Text size="sm">{user.displayName}</Text>

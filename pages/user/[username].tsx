@@ -45,9 +45,8 @@ const UserPage = ({user: defaultUser}: UserPageProps) => {
     const {userInfo} = useUserInfo()
     const [user, setUser] = useState<UserDto>()
     useEffect(() => {
-        if (!userInfo) return undefined;
         if (!!defaultUser) {
-            if (defaultUser.id === userInfo.id) {
+            if (!!userInfo && defaultUser.id === userInfo.id) {
                 push(`/dashboard`).catch()
                 return undefined
             }

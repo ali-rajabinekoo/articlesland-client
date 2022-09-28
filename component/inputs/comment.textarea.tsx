@@ -17,7 +17,10 @@ const CommentTextarea = ({user, onChange, handleOnModal, handleOnClose, loading 
     const theme = useMantineTheme()
     return (<Stack spacing={'md'} pt={'sm'}>
         <Group>
-            <Avatar src={changeUrlToServerRequest(user.avatar as string)} alt={user.username as string} radius="xl"/>
+            <Avatar 
+                src={!user?.avatar ? undefined : changeUrlToServerRequest(user.avatar as string)}
+                alt={user.username as string} radius="xl"
+            />
             <div>
                 <Text size="sm">{user.displayName}</Text>
             </div>

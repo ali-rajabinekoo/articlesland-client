@@ -36,8 +36,8 @@ export const validationMessages = {
 };
 
 export const appMessages = {
-    followed: 'کاربر فالو شد',
-    unfollowed: 'کاربر از لیست فالو شوندگان حذف شد',
+    followed: 'کاربر به لیست دنبال شوندگان اضافه شد',
+    unfollowed: 'کاربر از لیست دنبال شوندگان حذف شد',
     unauthorized: 'نشست از بین رفته است لطفا مجدد لاگین کنید',
     somethingWentWrong: 'خطایی در سامانه رخ داده است',
     codeSent: 'کد تایید برای شماره موبایل مورد نظر ارسال گردید',
@@ -48,4 +48,6 @@ export const appMessages = {
     updatedSuccessfully: 'تغییرات با موفقیت اعمال شد',
     bookmarked: 'مقاله مورد نظر با موفقیت ذخیره شد',
     removeBookmarked: 'مقاله ذخیره شده با موفقیت حذف شد',
+    liked: 'به لیست علاقه مندی ها افزوده شد',
+    removeLiked: 'از لیست علاقه مندی ها حذف شد',
 }
