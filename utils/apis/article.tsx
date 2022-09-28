@@ -77,4 +77,18 @@ export class Article {
         }, this.accessToken as string)
         return responseHandler(result, this.onRefreshToken)
     }
+    
+    async addBookmark(articleId: number): Promise<AxiosResponse | undefined> {
+        const result = await this.request.sendRequest({
+            method: 'POST', url: `/article/bookmark/${articleId}`
+        }, this.accessToken as string)
+        return responseHandler(result, this.onRefreshToken)
+    }
+
+    async removeBookmark(articleId: number): Promise<AxiosResponse | undefined> {
+        const result = await this.request.sendRequest({
+            method: 'DELETE', url: `/article/bookmark/${articleId}`
+        }, this.accessToken as string)
+        return responseHandler(result, this.onRefreshToken)
+    }
 }

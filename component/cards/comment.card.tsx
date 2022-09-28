@@ -25,12 +25,14 @@ class CommentCardProps {
     user!: UserDto;
     comment!: CommentDto;
     articleId!: number | string;
+    isChild?: boolean | undefined;
 }
 
 const CommentCardContent = ({
     user,
     articleId,
     comment: defaultComment,
+    isChild = false,
 }: CommentCardProps) => {
     const theme = useMantineTheme()
     const {userInfo}: UseUserInfoResult = useUserInfo()
@@ -77,8 +79,16 @@ const CommentCardContent = ({
         if (!!targetComment) setComment(targetComment)
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [comments])
+    useEffect(() => {
+        const children = comments?.filter(el => el?.parent?.id === defaultComment?.id)
+        if (!!defaultComment) setComment({
+            ...defaultComment,
+            children,
+        })
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [defaultComment])
     return (
-        <Card p={'xs'} withBorder={true}>
+        <Card p={isChild ? 'xs' : 0} withBorder={!!isChild}>
             <Stack spacing={'md'}>
                 <Group>
                     <Avatar src={changeUrlToServerRequest(user.avatar as string)} alt={user.username as string}
@@ -165,6 +175,7 @@ const CommentCardContent = ({
                                     key={index} comment={comment}
                                     user={comment.owner as UserDto}
                                     articleId={articleId}
+                                    isChild={true}
                                 />
                             )
                         })}

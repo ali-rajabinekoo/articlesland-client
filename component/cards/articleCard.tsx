@@ -12,6 +12,7 @@ import {
     Divider,
     Stack,
 } from '@mantine/core';
+import {MouseEventHandler} from "react";
 
 const useStyles = createStyles((theme) => ({
     card: {
@@ -40,6 +41,7 @@ const useStyles = createStyles((theme) => ({
         WebkitLineClamp: 3,
         WebkitBoxOrient: 'vertical',
         overflow: 'hidden',
+        minHeight: 75, 
     },
 
     footer: {
@@ -59,6 +61,8 @@ interface ArticleCardProps {
         name: string;
         image: string;
     };
+    bookmarkFunction?: Function | undefined;
+    likeFunction?: Function | undefined;
 }
 
 export function ArticleCard({
@@ -69,6 +73,8 @@ export function ArticleCard({
     description,
     author,
     category,
+    bookmarkFunction,
+    likeFunction,
     liked = false,
     bookmarked = false,
     ...others
@@ -120,14 +126,14 @@ export function ArticleCard({
                     {/*        </Text>*/}
                     {/*    </Box>*/}
                     {/*</Badge>*/}
-                    <ActionIcon className={classes.action}>
+                    <ActionIcon className={classes.action} onClick={likeFunction as MouseEventHandler}>
                         {
                             liked ?
                                 <IconHeart size={16} color={theme.colors.red[6]} fill={theme.colors.red[6]}/> :
                                 <IconHeart size={16} color={theme.colors.red[6]}/>
                         }
                     </ActionIcon>
-                    <ActionIcon className={classes.action}>
+                    <ActionIcon className={classes.action} onClick={bookmarkFunction as MouseEventHandler}>
                         {
                             bookmarked ?
                                 <IconBookmark size={16} color={theme.colors.yellow[7]} fill={theme.colors.yellow[7]}/>:

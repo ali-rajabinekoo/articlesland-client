@@ -48,9 +48,10 @@ export class ArticleDto {
     owner: UserDto | undefined | null;
     category: CategoryDto | undefined | null;
     comments: CommentDto[] | undefined | null;
+    // client fields
+    bookmarked: boolean | undefined | null;
     // reports: Relation<Report[]>;
     // likes: Relation<Like[]>;
-    // bookmarks: Relation<Bookmark[]>;
 }
 
 export class GetArticleResponseDto extends ArticleDto{
@@ -120,6 +121,14 @@ export class UseFetchCategoriesResult {
 export class UseFetchSelectedCategoriesResult {
     selectedCategories!: CategoryDto[]
     error?: AxiosError | true | null | undefined
+}
+
+export class UseBookmark {
+    bookmark!: Function
+}
+
+export class UseFollow {
+    follow!: Function
 }
 
 // components

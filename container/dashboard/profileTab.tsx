@@ -99,7 +99,6 @@ export default function ProfileTab({user}: ProfileProps) {
                 username: el.username,
                 id: el.id,
             })) as FollowedUserDto[])
-            console.log(user)
         } catch (e) {
             errorHandler(e)
         }
