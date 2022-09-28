@@ -1,23 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e06adea9-5fca-4f6c-9da5-80729234fd31" name="Changes" comment="AL-48 &lt;Comment creation and listing them with replies&gt;">
+    <list default="true" id="e06adea9-5fca-4f6c-9da5-80729234fd31" name="Changes" comment="AL-49 &lt;Followings and followers list and apis implemented&gt;">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/component/countDown.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/component/wrappers/countDown.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/component/iframe.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/component/wrappers/iframe.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/component/loadingOverlay.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/component/wrappers/loadingOverlay.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/component/readArticleBanner.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/component/wrappers/readArticleBanner.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/component/cards/articleCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/component/cards/articleCard.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/container/dashboard/articlesList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/container/dashboard/articlesList.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/container/dashboard/profileTab.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/container/dashboard/profileTab.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/container/edit/drafts.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/container/edit/drafts.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/container/errors/empty.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/container/errors/empty.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/container/layout/readArticle.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/container/layout/readArticle.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/container/login/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/container/login/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/container/profile/verification.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/container/profile/verification.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/container/registration/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/container/registration/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/container/verification/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/container/verification/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hooks/useRequest.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/hooks/useRequest.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/apis/user.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/utils/apis/user.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/axios.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/utils/axios.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/container/post/InfoBarBottom.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/container/post/InfoBarBottom.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/container/user/userPageArticlesList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/container/user/userPageArticlesList.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/container/user/userPageTabs.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/container/user/userPageTabs.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/post/[...info].tsx" beforeDir="false" afterPath="$PROJECT_DIR$/pages/post/[...info].tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/apis/article.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/utils/apis/article.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/utils/messages.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/utils/messages.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/utils/types.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/utils/types.tsx" afterDir="false" />
     </list>
@@ -53,25 +46,25 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;Git.Branch.Popup.ShowAllRemotes&quot;: &quot;true&quot;,
-    &quot;Project.color&quot;: &quot;2d1438&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/rajabinekoo/Workspace/ArticlesLand/articlesland-server&quot;,
-    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settingsdialog.IDE.editor.colors.TypeScript&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;/home/rajabinekoo/Workspace/ArticlesLand/articlesland-client/node_modules/typescript/lib&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "Git.Branch.Popup.ShowAllRemotes": "true",
+    "Project.color": "2d1438",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "/home/rajabinekoo/Workspace/ArticlesLand/articlesland-client",
+    "list.type.of.created.stylesheet": "CSS",
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "reference.settingsdialog.IDE.editor.colors.TypeScript",
+    "ts.external.directory.path": "/home/rajabinekoo/Workspace/ArticlesLand/articlesland-client/node_modules/typescript/lib",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/public/scripts" />
@@ -154,7 +147,14 @@
       <workItem from="1664021340734" duration="2665000" />
       <workItem from="1664024385814" duration="5767000" />
       <workItem from="1664089585717" duration="1292000" />
-      <workItem from="1664275674413" duration="4546000" />
+      <workItem from="1664275674413" duration="4672000" />
+      <workItem from="1664281754869" duration="27000" />
+      <workItem from="1664291024259" duration="116000" />
+      <workItem from="1664293234012" duration="134000" />
+      <workItem from="1664293455513" duration="2737000" />
+      <workItem from="1664296309122" duration="160000" />
+      <workItem from="1664296544021" duration="5127000" />
+      <workItem from="1664305645139" duration="1223000" />
     </task>
     <task id="LOCAL-00001" summary="AL-14 &lt;Start project and fix basic configs&gt;">
       <created>1660924360896</created>
@@ -324,7 +324,14 @@
       <option name="project" value="LOCAL" />
       <updated>1663965906571</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="AL-49 &lt;Followings and followers list and apis implemented&gt;">
+      <created>1664281643210</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1664281643210</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -342,7 +349,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="AL-14 &lt;Start project and fix basic configs&gt;" />
     <MESSAGE value="AL-12 &lt;Start project and fix basic configs&gt;" />
     <MESSAGE value="AL-12 &lt;Connect APIs and verification code&gt;" />
     <MESSAGE value="AL-13 &lt;Login page implementation&gt;" />
@@ -367,6 +373,7 @@
     <MESSAGE value="AL-50 &lt;Stats table implemented&gt;" />
     <MESSAGE value="AL-48 &lt;Comment deletion logic&gt;" />
     <MESSAGE value="AL-48 &lt;Comment creation and listing them with replies&gt;" />
-    <option name="LAST_COMMIT_MESSAGE" value="AL-48 &lt;Comment creation and listing them with replies&gt;" />
+    <MESSAGE value="AL-49 &lt;Followings and followers list and apis implemented&gt;" />
+    <option name="LAST_COMMIT_MESSAGE" value="AL-49 &lt;Followings and followers list and apis implemented&gt;" />
   </component>
 </project>

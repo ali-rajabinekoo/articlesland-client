@@ -46,4 +46,6 @@ export const appMessages = {
     loggedIn: 'با موفقیت وارد سامانه شدید',
     loggedOut: 'از حساب خود خارج شدید',
     updatedSuccessfully: 'تغییرات با موفقیت اعمال شد',
+    bookmarked: 'مقاله مورد نظر با موفقیت ذخیره شد',
+    removeBookmarked: 'مقاله ذخیره شده با موفقیت حذف شد',
 }

@@ -2,7 +2,7 @@ import {ArticleCard} from "../../component/cards/articleCard";
 import {changeUrlToServerRequest, errorHandler} from "../../utils/helpers";
 import {Container, Grid} from "@mantine/core";
 import useRequest from "../../hooks/useRequest";
-import {APIS, ArticleDto, UserDto, UseRequestResult} from "../../utils/types";
+import {APIS, ArticleDto, UseBookmark, UserDto, UseRequestResult} from "../../utils/types";
 import {AxiosResponse} from "axios";
 import React, {useEffect, useState} from "react";
 import {showNotification} from "@mantine/notifications";
@@ -10,19 +10,38 @@ import {appMessages} from "../../utils/messages";
 import {IconAlertCircle} from "@tabler/icons";
 import {EmptyContent} from "../errors/empty";
 import {NextRouter, useRouter} from "next/router";
+import useBookmark from "../../hooks/useBookmark";
+import useUserInfo from "../../hooks/useUserInfo";
 
 export default function ArticlesList() {
     const {getApis}: UseRequestResult = useRequest()
+    const {userInfo} = useUserInfo()
     const {query}: NextRouter = useRouter()
+    const {bookmark}: UseBookmark = useBookmark()
     const [loading, setLoading] = useState<boolean>(true)
     const [list, setList] = useState<ArticleDto[]>([])
     const [posts, setPosts] = useState<ArticleDto[]>([])
     const [unpublished, setUnpublished] = useState<ArticleDto[]>([])
     const [likedPosts, setLikedPosts] = useState<ArticleDto[]>([])
     const [bookmarkPosts, setBookmarkPosts] = useState<ArticleDto[]>([])
-    const [owner, setOwner] = useState<UserDto>()
     const [noContentTitle, setNoContentTitle] = useState<string>('');
     const [noContentBtnText, setNoContentBtnText] = useState<string>('');
+    const [isBookmarked, setIsBookmarked] = useState<boolean>(false);
+    const [isLiked, setIsLiked] = useState<boolean>(false);
+
+    const handleOnBookmark = async (id: number, isBookmarked: boolean = false) => {
+        let articles: ArticleDto[] = []
+        if (isBookmarked) {
+            articles = await bookmark(id, true)
+        } else {
+            articles = await bookmark(id, false)
+        }
+        setBookmarkPosts(articles)
+        if (query.tab === 'bookmarks') setList(articles)
+        else setList(list.map((el) => {
+            return articles.find(el2 => el2.id === el.id) ? {...el, bookmarked: true} : {...el, bookmarked: false}
+        }))
+    }
 
     const fetchUserInfo = async () => {
         try {
@@ -30,7 +49,6 @@ export default function ArticlesList() {
             const response: AxiosResponse | undefined = await apis.user.userInfo()
             const user: UserDto = response?.data as UserDto
             if (!!user) {
-                setOwner(user)
                 setPosts((user.articles as ArticleDto[]).filter((el) => el.published))
                 setUnpublished(
                     (user.articles as ArticleDto[]).filter((el) => !el.published)
@@ -62,21 +80,32 @@ export default function ArticlesList() {
     useEffect(() => {
         if (!loading) {
             if (!query?.tab) {
-                setList([...posts])
+                setList([...posts].map(
+                    (el) => bookmarkPosts.find(el2 => el2.id === el.id) ?
+                        ({...el, bookmarked: true}) : el)
+                )
                 setNoContentTitle('شما هنوز پستی ننوشته اید')
                 setNoContentBtnText('ایجاد پست جدید')
+                setIsBookmarked(false)
+                setIsLiked(false)
             } else if (query.tab === 'unpublished') {
                 setList([...unpublished])
                 setNoContentTitle('هیچ پیش نویسی وجود ندارد')
                 setNoContentBtnText('ایجاد پست جدید')
+                setIsBookmarked(false)
+                setIsLiked(false)
             } else if (query.tab === 'likes') {
                 setList([...likedPosts])
                 setNoContentTitle('شما هنوز هیچ پستی را لایک نکرده اید')
                 setNoContentBtnText('')
+                setIsBookmarked(false)
+                setIsLiked(true)
             } else if (query.tab === 'bookmarks') {
                 setList([...bookmarkPosts])
                 setNoContentTitle('شما هنوز هیچ پستی را ذخیره نکرده اید')
                 setNoContentBtnText('')
+                setIsBookmarked(true)
+                setIsLiked(false)
             }
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -91,14 +120,24 @@ export default function ArticlesList() {
                         <ArticleCard
                             image={!!el?.bannerUrl ? changeUrlToServerRequest(el?.bannerUrl) : undefined}
                             title={el?.title as string || ""}
-                            link={el.published ? `/post/${owner?.username}/${el.id}` : `/edit/${el.id}`}
+                            link={el.owner?.id === userInfo?.id ?
+                                el.published ? `/post/${el.owner?.username}/${el.id}` : `/edit/${el.id}` :
+                                `/post/${el.owner?.username}/${el.id}`
+                            }
                             description={el?.description as string || ""}
                             category={el?.category?.displayTitle as string || ""}
                             author={{
-                                name: owner?.displayName || owner?.username || "",
-                                image: !!owner?.avatar ? changeUrlToServerRequest(owner?.avatar) : '',
+                                name: el.owner?.displayName || el.owner?.username || "",
+                                image: !!el.owner?.avatar ? changeUrlToServerRequest(el.owner?.avatar) : '',
                             }}
-                            liked={true}
+                            liked={isLiked}
+                            bookmarked={isBookmarked || Boolean(el?.bookmarked)}
+                            bookmarkFunction={
+                                handleOnBookmark.bind({},
+                                    el.id as number,
+                                    isBookmarked || Boolean(el?.bookmarked)
+                                )
+                            }
                         />
                     </Grid.Col>
                 ))}

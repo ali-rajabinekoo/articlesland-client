@@ -1,47 +1,25 @@
 import React, {useEffect, useState} from "react";
 import {Group, Stack} from "@mantine/core";
-import {IconAlertCircle, IconCheck, IconForbid, IconPlus} from "@tabler/icons";
+import {IconForbid, IconPlus} from "@tabler/icons";
 import {PrimaryOutlineBtn, SecondaryBtn, SecondaryOutlineBtn} from "../../component/buttons";
-import {APIS, FollowBody, UserDto} from "../../utils/types";
+import {UserDto} from "../../utils/types";
 import {UserInfoWrapper} from "../../component/wrappers/userInfo";
 import {errorHandler} from "../../utils/helpers";
 import useUserInfo from "../../hooks/useUserInfo";
-import useRequest from "../../hooks/useRequest";
-import {AxiosResponse} from "axios";
-import {appMessages} from "../../utils/messages";
-import {showNotification} from "@mantine/notifications";
+import useFollow from "../../hooks/useFollow";
 
 interface UserPageTabsProps {
     user: UserDto
 }
 
 export default function UserPageTabs({user}: UserPageTabsProps) {
-    const {userInfo, setNewUser} = useUserInfo()
+    const {userInfo} = useUserInfo()
     const [followed, setFollowed] = useState<boolean>(false)
-    const {getApis} = useRequest()
+    const {follow: mainFollowFunction} = useFollow()
     const follow = async (unfollow: boolean | undefined = false) => {
         try {
-            const body: FollowBody = new FollowBody()
-            body.newFollowingUserId = Number(user.id);
-            const apis: APIS = getApis()
-            const response: AxiosResponse | undefined = unfollow ?
-                await apis.user.unfollow(body) :
-                await apis.user.follow(body);
-            if (!response) return showNotification({
-                message: appMessages.somethingWentWrong,
-                title: 'خطا',
-                autoClose: 3000,
-                color: 'red',
-                icon: <IconAlertCircle size={20}/>
-            })
-            setNewUser(response.data as UserDto)
+            mainFollowFunction(user.id, unfollow)
             setFollowed(!unfollow)
-            showNotification({
-                message: unfollow ? appMessages.unfollowed : appMessages.followed,
-                autoClose: 2000,
-                color: 'green',
-                icon: <IconCheck size={20}/>
-            })
         } catch (e) {
             errorHandler(e)
         }
