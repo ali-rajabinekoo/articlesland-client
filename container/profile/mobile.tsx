@@ -19,6 +19,9 @@ import {IconAlertCircle, IconCheck} from "@tabler/icons";
 import {errorHandler} from "../../utils/helpers";
 import {PrimaryOutlineBtn, SecondaryBtn} from "../../component/buttons";
 import ProfileVerification from "./verification";
+import {AppDispatch} from "../../utils/app.store";
+import {useAppDispatch} from "../../hooks/redux";
+import {setUserInfo} from "../../reducers/userInfo";
 
 const ProfileMobile = (): JSX.Element => {
     const theme = useMantineTheme()
@@ -30,6 +33,7 @@ const ProfileMobile = (): JSX.Element => {
     const [codeSent, setCodeSent] = useState<true | false>(false)
     const [isActiveResend, setIsActiveResend] = useState<boolean>(false)
     const [timer, setTimer] = useState<number>()
+    const dispatch: AppDispatch = useAppDispatch()
 
     const editMobileForm = useFormik({
         initialValues: {phoneNumber: ""} as SendLoginCodeValues,
@@ -78,7 +82,8 @@ const ProfileMobile = (): JSX.Element => {
                 })
             }
             editMobileForm.resetForm()
-            setNewUser(response.data as UserDto)
+            setNewUser({...response.data as UserDto}, true)
+            dispatch(setUserInfo({...response.data} as UserDto))
             showNotification({
                 message: appMessages.updatedSuccessfully,
                 autoClose: 2000,

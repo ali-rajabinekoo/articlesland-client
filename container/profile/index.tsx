@@ -16,7 +16,7 @@ const ProfileContainer = () => {
             <Text mt={'xs'} color={'grey.4'}>
                 شما می توانید از این طریق، اطلاعات خود را تایید و یا تغییر دهید.
             </Text>
-            <Accordion chevronPosition="right" variant="contained" mt={'md'}>
+            <Accordion chevronPosition="right" variant="contained" mt={'md'} mb={'md'}>
                 <Accordion.Item value="avatar">
                     <Accordion.Control>
                         <Text color={'grey.4'} weight={500}>عکس پروفایل</Text>

@@ -1,14 +1,13 @@
 import React, {useEffect, useState} from "react";
 import {
-    APIS,
     ArticleDto,
     CommentDto,
     GetArticleResponseDto,
     PublicAPIS,
-    UserDto, UseRequestResult,
+    UserDto,
 } from "../../utils/types";
 import {DashboardHeader} from "../../container/layout/dashboard";
-import useRequest, {publicApis} from "../../hooks/useRequest";
+import {publicApis} from "../../hooks/useRequest";
 import ReadArticle from "../../container/layout/readArticle";
 import {Box} from "@mantine/core";
 import InfoBarBottom from "../../container/post/InfoBarBottom";
@@ -24,6 +23,8 @@ import {initComments} from "../../reducers/comments";
 import {errorHandler} from "../../utils/helpers";
 import useFollow from "../../hooks/useFollow";
 import useBookmark from "../../hooks/useBookmark";
+import useUserInfo from "../../hooks/useUserInfo";
+import useLike from "../../hooks/useLike";
 
 export async function getStaticProps({params}: any) {
     try {
@@ -60,14 +61,15 @@ class ShowPostProps {
 
 const ShowPost: NextPage = ({articles}: ShowPostProps): JSX.Element => {
     const dispatch: AppDispatch = useAppDispatch()
-    const {getApis}: UseRequestResult = useRequest(false)
-    const [userInfo, setUserInfo] = useState<UserDto>()
+    const {userInfo, setNewUser} = useUserInfo()
     const [isBookmarked, setIsBookmarked] = useState<boolean>(false)
+    const [isLiked, setIsLiked] = useState<boolean>(false)
     const [isFollowed, setIsFollowed] = useState<boolean>(false)
     const [article, setArticle] = useState<ArticleDto>()
     const {push}: NextRouter = useRouter()
     const {follow: mainFollowFunction} = useFollow()
     const {bookmark} = useBookmark()
+    const {like} = useLike()
 
     const follow = async () => {
         try {
@@ -80,27 +82,32 @@ const ShowPost: NextPage = ({articles}: ShowPostProps): JSX.Element => {
         }
     }
 
-    const fetchUserInfo = async () => {
-        try {
-            const apis: APIS = getApis()
-            const response: AxiosResponse | undefined = await apis.user.userInfo()
-            const user: UserDto = response?.data as UserDto
-            if (!!user) {
-                setUserInfo(user)
-            }
-        } catch (e) {
-            errorHandler(e)
-        }
-    }
-
     const handleOnBookmark = async () => {
+        let newBookmarks;
         if (isBookmarked && !!article?.id) {
-            await bookmark(article?.id, true)
+            newBookmarks = await bookmark(article?.id, true)
             setIsBookmarked(false)
         } else {
-            await bookmark(article?.id, false)
+            newBookmarks = await bookmark(article?.id, false)
             setIsBookmarked(true)
         }
+        const newUserInfo = {...userInfo}
+        newUserInfo.bookmarks = [...newBookmarks]
+        setNewUser(newUserInfo)
+    }
+
+    const handleOnLike = async () => {
+        let newLikes;
+        if (isLiked && !!article?.id) {
+            newLikes = await like(article?.id, true)
+            setIsLiked(false)
+        } else {
+            newLikes = await like(article?.id, false)
+            setIsLiked(true)
+        }
+        const newUserInfo = {...userInfo}
+        newUserInfo.likes = [...newLikes]
+        setNewUser(newUserInfo)
     }
 
     useEffect(() => {
@@ -112,27 +119,24 @@ const ShowPost: NextPage = ({articles}: ShowPostProps): JSX.Element => {
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [articles])
-    
-    useEffect(() => {
-        if (!!userInfo) {
-            fetchUserInfo().catch()
-        }
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [userInfo])
 
     useEffect(() => {
         if (!!userInfo) {
-            const article: ArticleDto | undefined = userInfo.bookmarks?.find((el) => el.id === articles?.id)
-            if (!!article) {
+            const bookmark: ArticleDto | undefined = userInfo.bookmarks?.find((el) => el.id === articles?.id)
+            if (!!bookmark) {
                 setIsBookmarked(true)
             }
             const targetUser: UserDto | undefined = userInfo?.followings?.find((el) => el.id === articles?.owner?.id)
             if (!!targetUser) {
                 setIsFollowed(true)
             }
+            const like: ArticleDto | undefined = userInfo.likes?.find((el) => el.id === articles?.id)
+            if (!!like) {
+                setIsLiked(true)
+            }
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [userInfo])
+    }, [userInfo, articles])
 
     return (
         <Box>
@@ -153,8 +157,10 @@ const ShowPost: NextPage = ({articles}: ShowPostProps): JSX.Element => {
             />
             <InfoBarBottom 
                 onClickBookmark={handleOnBookmark} 
+                onClickLike={handleOnLike}
                 article={article as ArticleDto}
                 bookmarked={isBookmarked}
+                liked={isLiked}
                 disableUserPanel={!userInfo}
             />
             <PostComments articleId={article?.id as number}/>

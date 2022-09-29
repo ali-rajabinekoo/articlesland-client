@@ -14,6 +14,7 @@ import {
 } from '@mantine/core';
 import {MouseEventHandler} from "react";
 import {NextRouter, useRouter} from "next/router";
+import Link from "next/link";
 
 const useStyles = createStyles((theme) => ({
     card: {
@@ -42,7 +43,7 @@ const useStyles = createStyles((theme) => ({
         WebkitLineClamp: 3,
         WebkitBoxOrient: 'vertical',
         overflow: 'hidden',
-        minHeight: 75, 
+        minHeight: 75,
     },
 
     footer: {
@@ -85,16 +86,15 @@ export function ArticleCard({
     ...others
 }: ArticleCardProps & Omit<React.ComponentPropsWithoutRef<'div'>, keyof ArticleCardProps>) {
     const {classes, cx, theme} = useStyles();
-    const linkProps = {href: link, target: '_blank', rel: 'noopener noreferrer'};
-    const {push}:NextRouter = useRouter()
+    const {push}: NextRouter = useRouter()
 
     return (
         <Card dir={'rtl'} withBorder radius="md" p={0} className={cx(classes.card, className)} {...others}>
-            <Card.Section>
-                <a {...linkProps}>
+            <Card.Section sx={{cursor: 'pointer'}}>
+                <Link href={link}>
                     {/* eslint-disable-next-line jsx-a11y/alt-text */}
-                    <Image src={!!image ? image: '/assets/images/bannerless.png'} height={180}/>
-                </a>
+                    <Image src={!!image ? image : '/assets/images/bannerless.png'} height={180}/>
+                </Link>
             </Card.Section>
             <Stack p={'sm'} spacing={'xs'}>
                 {!!category && <Group position={"right"}>
@@ -103,9 +103,11 @@ export function ArticleCard({
                     </Badge>
                 </Group>}
 
-                <Text className={classes.title} component="a" {...linkProps}>
-                    {title}
-                </Text>
+                <Link href={link}>
+                    <Text className={classes.title} sx={{cursor: 'pointer'}}>
+                        {title}
+                    </Text>
+                </Link>
 
                 <Text className={classes.body} size="sm" weight={400} color="grey.3" lineClamp={4}>
                     {description}
@@ -116,10 +118,10 @@ export function ArticleCard({
 
             <Group position="apart" p={'xs'} spacing={'xs'}>
                 <Center sx={{cursor: 'pointer'}} onClick={!!userProfileLink ? () => push(userProfileLink) : undefined}>
-                        <Avatar src={author.image || undefined} size={24} radius="xl" mr="xs"/>
-                        <Text size="sm" inline>
-                            {author.name}
-                        </Text>
+                    <Avatar src={author.image || undefined} size={24} radius="xl" mr="xs"/>
+                    <Text size="sm" inline>
+                        {author.name}
+                    </Text>
                 </Center>
 
                 <Group spacing={8} mr={0} sx={{display: disableCardPanel ? 'none' : 'flex'}}>
@@ -142,7 +144,7 @@ export function ArticleCard({
                     <ActionIcon className={classes.action} onClick={bookmarkFunction as MouseEventHandler}>
                         {
                             bookmarked ?
-                                <IconBookmark size={16} color={theme.colors.yellow[7]} fill={theme.colors.yellow[7]}/>:
+                                <IconBookmark size={16} color={theme.colors.yellow[7]} fill={theme.colors.yellow[7]}/> :
                                 <IconBookmark size={16} color={theme.colors.yellow[7]}/>
                         }
                     </ActionIcon>

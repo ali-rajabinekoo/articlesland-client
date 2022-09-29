@@ -22,6 +22,9 @@ import {CountDown} from "../../component/wrappers/countDown";
 import {LoadingOverlay} from "../../component/wrappers/loadingOverlay";
 import {useFormik} from "formik";
 import {SendLoginCodeSchema} from "../../utils/validators";
+import {AppDispatch} from "../../utils/app.store";
+import {useAppDispatch} from "../../hooks/redux";
+import {setUserInfo} from "../../reducers/userInfo";
 
 class VerificationFormTitleProps {
     back?: Function | undefined
@@ -72,6 +75,7 @@ export function VerificationForm({
     const [isActiveResend, setIsActiveResend] = useState<boolean>(false)
     const {getApis}: UseRequestResult = useRequest()
     const {setNewUser, setNewAccessToken, setNewRefreshToken}: UseUserInfoResult = useUserInfo()
+    const dispatch: AppDispatch = useAppDispatch()
 
     const onChange = (newCode: string) => {
         setCode(newCode)
@@ -111,7 +115,8 @@ export function VerificationForm({
                     icon: <IconAlertCircle size={20}/>
                 })
             }
-            setNewUser(responseBody.user)
+            setNewUser({...responseBody.user}, true)
+            dispatch(setUserInfo({...responseBody.user} as UserDto))
             setNewAccessToken(responseBody.token)
             setNewRefreshToken((responseBody.user as UserDto).refreshToken)
             showNotification({

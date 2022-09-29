@@ -1,11 +1,9 @@
 import {ArticleCard} from "../../component/cards/articleCard";
 import {changeUrlToServerRequest} from "../../utils/helpers";
 import {Container, Grid} from "@mantine/core";
-import {APIS, ArticleDto, UseBookmark, UseLike, UserDto, UseRequestResult} from "../../utils/types";
+import {ArticleDto, UseBookmark, UseLike, UserDto} from "../../utils/types";
 import React, {useEffect, useState} from "react";
 import {EmptyContent} from "../errors/empty";
-import {AxiosResponse} from "axios";
-import useRequest from "../../hooks/useRequest";
 import useBookmark from "../../hooks/useBookmark";
 import useLike from "../../hooks/useLike";
 import useUserInfo from "../../hooks/useUserInfo";
@@ -18,59 +16,51 @@ class UserPageArticlesListProps {
 export default function UserPageArticlesList({list = [], owner}: UserPageArticlesListProps) {
     const [noContentTitle, setNoContentTitle] = useState<string>('');
     const [data, setData] = useState<ArticleDto[]>([]);
-    const {getApis}: UseRequestResult = useRequest(false)
-    const {userInfo} = useUserInfo()
+    const {userInfo, setNewUser} = useUserInfo()
     const {bookmark}: UseBookmark = useBookmark()
     const {like}: UseLike = useLike()
 
-    const fetchUserInfo = async (): Promise<ArticleDto[]> => {
-        try {
-            const apis: APIS = getApis()
-            const response: AxiosResponse | undefined = await apis.user.userInfo()
-            const user: UserDto = response?.data as UserDto
-            if (!!user) {
-                return list?.map((el) => {
-                    const bookmarked = user.bookmarks?.find((el2) => el2.id === el?.id)
-                    const liked = user.likes?.find((el2) => el2.id === el?.id)
-                    return {...el, bookmarked: !!bookmarked, liked: !!liked}
-                }) as ArticleDto[]
-            }
-            return list as ArticleDto[]
-        } catch (e) {
-            return list as ArticleDto[]
-        }
-    }
-
     const handleOnBookmark = async (id: number, bookmarked: boolean) => {
+        let newBookmarks;
         if (bookmarked) {
-            await bookmark(id, true)
+            newBookmarks = await bookmark(id, true)
             setData(data.map(el => el.id === id ? {...el, bookmarked: false} : el))
         } else {
-            await bookmark(id, false)
+            newBookmarks = await bookmark(id, false)
             setData(data.map(el => el.id === id ? {...el, bookmarked: true} : el))
         }
+        const newUserInfo = {...userInfo}
+        newUserInfo.bookmarks = [...newBookmarks]
+        setNewUser(newUserInfo)
     }
 
     const handleOnLike = async (id: number, liked: boolean) => {
+        let newLikes;
         if (liked) {
-            await like(id, true)
+            newLikes = await like(id, true)
             setData(data.map(el => el.id === id ? {...el, liked: false} : el))
         } else {
-            await like(id, false)
+            newLikes = await like(id, false)
             setData(data.map(el => el.id === id ? {...el, liked: true} : el))
         }
+        const newUserInfo = {...userInfo}
+        newUserInfo.likes = [...newLikes]
+        setNewUser(newUserInfo)
     }
 
     useEffect(() => {
         if (!!userInfo) {
-            fetchUserInfo().then((result) => {
-                if (!result || result.length === 0) {
-                    setNoContentTitle('هیچ پستی برای نمایش وجود ندارد')
-                } else {
-                    setData(result)
-                    setNoContentTitle('')
-                }
-            })
+            const result = list?.map((el) => {
+                const bookmarked = userInfo.bookmarks?.find((el2) => el2.id === el?.id)
+                const liked = userInfo.likes?.find((el2) => el2.id === el?.id)
+                return {...el, bookmarked: !!bookmarked, liked: !!liked}
+            }) as ArticleDto[]
+            if (!result || result.length === 0) {
+                setNoContentTitle('هیچ پستی برای نمایش وجود ندارد')
+            } else {
+                setData(result)
+                setNoContentTitle('')
+            }
         } else {
             if (!list || list.length === 0) {
                 setNoContentTitle('هیچ پستی برای نمایش وجود ندارد')

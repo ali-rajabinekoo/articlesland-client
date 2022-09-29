@@ -3,6 +3,11 @@ import {RefreshTokenResponse, RequestParams, UserAndTokenResponse, UserDto} from
 import axios, {AxiosError, AxiosRequestConfig, AxiosResponse} from "axios";
 import {getRefreshToken, logout, setAccessToken, setUserInfo} from "../hooks/useUserInfo";
 
+export const fetcher = (url: string) => {
+    const domain: string | undefined = process.env.SERVER_DOMAIN
+    return axios.get(domain + url).then(res => res.data)
+}
+
 export class Request {
     controller: AbortController | undefined
     requiredToken: boolean = true

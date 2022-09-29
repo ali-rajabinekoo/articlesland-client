@@ -5,6 +5,9 @@ import {isJson} from "../utils/helpers";
 import {showNotification} from "@mantine/notifications";
 import {appMessages} from "../utils/messages";
 import {IconCheck} from "@tabler/icons";
+import {useAppDispatch, useAppSelector} from "./redux";
+import {AppDispatch, RootState} from "../utils/app.store";
+import {setUserInfo} from "../reducers/userInfo";
 
 const userKey: string | undefined = process.env.LOCAL_STORAGE_USER
 const accessTokenKey: string | undefined = process.env.LOCAL_STORAGE_ACCESS_TOKEN
@@ -41,14 +44,40 @@ export const setAccessToken = (newAccessToken: string | null): void => {
     }
 }
 
-export const setUserInfo = (user: UserDto | undefined): void => {
+const formatUserBodyLocalStorage = (newUser: UserDto) => {
+    const validFields = [
+        'id',
+        'username',
+        'displayName',
+        'phoneNumber',
+        'email',
+        'avatar',
+        'bio',
+        'refreshToken',
+        'created_at',
+        'updated_at',
+    ];
+    for (const newUserKey in newUser) {
+        if (!validFields.includes(newUserKey)) {
+            // @ts-ignore
+            delete newUser[newUserKey];
+        }
+    }
+    return newUser
+}
+
+const setMainUserInfo = (user: UserDto | undefined): void => {
     if (!!UserDto && !!userKey) {
         window.localStorage.setItem(userKey as string, JSON.stringify(user) as string)
     }
 }
 
+export {setMainUserInfo as setUserInfo}
+
 export default function useUserInfo(): UseUserInfoResult {
-    const [userInfo, setUserInfo] = useLocalStorage<UserDto | null>({
+    const userInfo: UserDto | null = useAppSelector((state: RootState) => state.userInfo.data)
+    const dispatch: AppDispatch = useAppDispatch()
+    const [mainUserInfo, setMainUserInfo] = useLocalStorage<UserDto | null>({
         key: userKey as string, serialize: JSON.stringify,
         deserialize: (str) => (str === undefined ? null : JSON.parse(str)),
     });
@@ -59,9 +88,10 @@ export default function useUserInfo(): UseUserInfoResult {
         key: refreshTokenKey as string
     });
 
-    const setNewUser = (newUser: UserDto | null): void => {
+    const setNewUser = (newUser: UserDto | null, authMode?: boolean): void => {
         if (!!newUser && !!userKey) {
-            setUserInfo(newUser)
+            if (!authMode) dispatch(setUserInfo({...newUser} as UserDto))
+            setMainUserInfo(formatUserBodyLocalStorage(newUser))
         }
     }
 
@@ -84,6 +114,7 @@ export default function useUserInfo(): UseUserInfoResult {
 
     return {
         userInfo,
+        mainUserInfo,
         accessToken,
         refreshToken,
         setNewUser,
