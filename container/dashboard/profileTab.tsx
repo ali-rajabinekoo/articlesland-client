@@ -32,7 +32,7 @@ export default function ProfileTab({user}: ProfileProps) {
     const {classes} = useCategoriesList();
     const {query}: NextRouter = useRouter();
     const {getApis}: UseRequestResult = useRequest()
-    const {setNewUser}: UseUserInfoResult = useUserInfo()
+    const {setNewUser, userInfo}: UseUserInfoResult = useUserInfo()
     const [followers, setFollowers] = useState<FollowedUserDto[]>([])
     const [followings, setFollowings] = useState<FollowedUserDto[]>([])
     const [openedModalFollowings, setOpenedModalFollowings] = useState<boolean>(false);
@@ -73,18 +73,8 @@ export default function ProfileTab({user}: ProfileProps) {
         }
     }
     const fetchFollowersAndFollowings = async () => {
-        const apis: APIS = getApis()
         try {
-            const response: AxiosResponse | undefined =
-                await apis.user.userInfo();
-            if (!response) return showNotification({
-                message: appMessages.somethingWentWrong,
-                title: 'خطا',
-                autoClose: 3000,
-                color: 'red',
-                icon: <IconAlertCircle size={20}/>
-            })
-            const user: UserDto = response.data as UserDto
+            const user: UserDto = userInfo as UserDto
             const tempFollowers = [...(user.followers as UserDto[] || [])]
             const tempFollowings = [...(user.followings as UserDto[] || [])]
             setFollowers(tempFollowers.map(el => ({
@@ -104,9 +94,9 @@ export default function ProfileTab({user}: ProfileProps) {
         }
     }
     useEffect(() => {
-        fetchFollowersAndFollowings().catch()
+        if (!!userInfo) fetchFollowersAndFollowings().catch()
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [])
+    }, [userInfo])
     return (
         <div>
             <Group position={'center'} style={!!user ? {} : {display: 'none'}} mb={'sm'} mt={'lg'}>

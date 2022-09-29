@@ -21,6 +21,9 @@ import {IconCheck, IconChevronLeft} from "@tabler/icons";
 import {appMessages} from "../../utils/messages";
 import {CountDown} from "../../component/wrappers/countDown";
 import useUserInfo from "../../hooks/useUserInfo";
+import {useAppDispatch} from "../../hooks/redux";
+import {AppDispatch} from "../../utils/app.store";
+import {setUserInfo} from "../../reducers/userInfo";
 
 export const LoginFormTitle = () => {
     const {classes} = useLoginFormStyle()
@@ -58,6 +61,7 @@ export const LoginForm = ({showLoginByCodeForm}: LoginFormProps) => {
     const {getApis}: UseRequestResult = useRequest()
     const {setNewAccessToken, setNewRefreshToken, setNewUser}: UseUserInfoResult = useUserInfo()
     const [visible, setVisible] = useState<boolean>(false);
+    const dispatch: AppDispatch = useAppDispatch()
 
     const loginForm = useFormik({
         initialValues: {
@@ -73,7 +77,8 @@ export const LoginForm = ({showLoginByCodeForm}: LoginFormProps) => {
                 const data: UserAndTokenResponse = response?.data
                 if (!data?.user) return setVisible(false)
                 if (!data?.token) return setVisible(false)
-                setNewUser(data.user as UserDto)
+                setNewUser({...data.user} as UserDto, true)
+                dispatch(setUserInfo({...data.user} as UserDto))
                 setNewAccessToken(data.token as string)
                 setNewRefreshToken((data.user as UserDto).refreshToken)
                 showNotification({

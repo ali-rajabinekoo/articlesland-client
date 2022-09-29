@@ -42,7 +42,8 @@ export default function UserPageTabs({user}: UserPageTabsProps) {
             const me: UserDto | undefined = userInfo.followings?.find((el) => el.id === user.id)
             if (!!me) setFollowed(true)
             else setFollowed(false)
-        } else if (!!user) {
+        }
+        if (!!user) {
             setFollowings((user.followings || []).map((el) => {
                 return {
                     avatar: changeUrlToServerRequest(el.avatar as string),

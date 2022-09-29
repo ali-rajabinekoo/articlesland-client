@@ -1,9 +1,7 @@
 import {ArticleCard} from "../../component/cards/articleCard";
 import {changeUrlToServerRequest, errorHandler} from "../../utils/helpers";
 import {Container, Grid} from "@mantine/core";
-import useRequest from "../../hooks/useRequest";
-import {APIS, ArticleDto, UseBookmark, UseLike, UserDto, UseRequestResult} from "../../utils/types";
-import {AxiosResponse} from "axios";
+import {ArticleDto, UseBookmark, UseLike, UserDto} from "../../utils/types";
 import React, {useEffect, useState} from "react";
 import {showNotification} from "@mantine/notifications";
 import {appMessages} from "../../utils/messages";
@@ -15,8 +13,7 @@ import useUserInfo from "../../hooks/useUserInfo";
 import useLike from "../../hooks/useLike";
 
 export default function ArticlesList() {
-    const {getApis}: UseRequestResult = useRequest()
-    const {userInfo} = useUserInfo()
+    const {userInfo, setNewUser} = useUserInfo()
     const {query}: NextRouter = useRouter()
     const {bookmark}: UseBookmark = useBookmark()
     const {like}: UseLike = useLike()
@@ -32,48 +29,52 @@ export default function ArticlesList() {
     const [isLiked, setIsLiked] = useState<boolean>(false);
 
     const handleOnBookmark = async (id: number, isBookmarked: boolean = false) => {
-        let articles: ArticleDto[] = []
+        let newBookmarks: ArticleDto[];
         if (isBookmarked) {
-            articles = await bookmark(id, true)
+            newBookmarks = await bookmark(id, true)
         } else {
-            articles = await bookmark(id, false)
+            newBookmarks = await bookmark(id, false)
         }
-        if (!articles) return undefined
-        setBookmarkPosts(articles)
-        if (query.tab === 'bookmarks') setList(articles.map(
+        if (!newBookmarks) return undefined
+        const newUserInfo = {...userInfo}
+        newUserInfo.bookmarks = [...newBookmarks]
+        setNewUser(newUserInfo)
+        setBookmarkPosts(newBookmarks)
+        if (query.tab === 'bookmarks') setList(newBookmarks.map(
             (el) =>
                 likedPosts.find(el2 => el2.id === el.id) ?
                     ({...el, liked: true}) : el
         ))
         else setList(list.map((el) => {
-            return articles?.find(el2 => el2.id === el.id) ? {...el, bookmarked: true} : {...el, bookmarked: false}
+            return newBookmarks?.find(el2 => el2.id === el.id) ? {...el, bookmarked: true} : {...el, bookmarked: false}
         }))
     }
 
     const handleOnLike = async (id: number, isLiked: boolean = false) => {
-        let articles: ArticleDto[] = []
+        let newLikes: ArticleDto[];
         if (isLiked) {
-            articles = await like(id, true)
+            newLikes = await like(id, true)
         } else {
-            articles = await like(id, false)
+            newLikes = await like(id, false)
         }
-        if (!articles) return undefined
-        setLikedPosts(articles)
-        if (query.tab === 'likes') setList(articles.map(
+        if (!newLikes) return undefined
+        const newUserInfo = {...userInfo}
+        newUserInfo.likes = [...newLikes]
+        setNewUser(newUserInfo)
+        setLikedPosts(newLikes)
+        if (query.tab === 'likes') setList(newLikes.map(
             (el) =>
                 bookmarkPosts.find(el2 => el2.id === el.id) ?
                     ({...el, bookmarked: true}) : el
         ))
         else setList(list.map((el) => {
-            return articles?.find(el2 => el2.id === el.id) ? {...el, liked: true} : {...el, liked: false}
+            return newLikes?.find(el2 => el2.id === el.id) ? {...el, liked: true} : {...el, liked: false}
         }))
     }
 
-    const fetchUserInfo = async () => {
+    const formatData = () => {
         try {
-            const apis: APIS = getApis()
-            const response: AxiosResponse | undefined = await apis.user.userInfo()
-            const user: UserDto = response?.data as UserDto
+            const user: UserDto = userInfo as UserDto
             if (!!user) {
                 setPosts((user.articles as ArticleDto[]).filter((el) => el.published))
                 setUnpublished(
@@ -99,9 +100,9 @@ export default function ArticlesList() {
     }
 
     useEffect(() => {
-        fetchUserInfo().catch()
+        if (!!userInfo) formatData()
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [])
+    }, [userInfo])
 
     useEffect(() => {
         if (!loading) {

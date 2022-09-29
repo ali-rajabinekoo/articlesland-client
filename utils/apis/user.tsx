@@ -115,7 +115,6 @@ export class PublicUserApi {
         const result = await this.request.sendRequest({
             method: 'GET', url: `/user/${username}`
         })
-        console.log(result)
         return result as AxiosResponse | undefined
     }
 }

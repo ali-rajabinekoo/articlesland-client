@@ -7,20 +7,30 @@ import {useInfoBarBottomStyle} from "./InfoBarBottom.styles";
 class InfoBarBottomProps {
     article?: ArticleDto | undefined;
     bookmarked?: boolean | undefined;
+    liked?: boolean | undefined;
     onClickBookmark?: Function | undefined;
+    onClickLike?: Function | undefined;
     disableUserPanel?: boolean;
 }
 
-const InfoBarBottom = ({article, bookmarked, onClickBookmark, disableUserPanel}: InfoBarBottomProps) => {
+const InfoBarBottom = ({
+    article,
+    bookmarked,
+    liked,
+    onClickBookmark,
+    onClickLike,
+    disableUserPanel
+}: InfoBarBottomProps) => {
     const {classes, theme} = useInfoBarBottomStyle()
 
     return (
         <Container size={'md'} my={'md'} px={0}>
             <Group position={'apart'} className={classes.articleInfoFooter}>
                 <Box>
-                    {!!article?.category?.displayTitle && <Chip variant="filled" radius="sm" size={'sm'} color={'grey.0'} checked={false}>
-                        {article?.category?.displayTitle}
-                    </Chip>}
+                    {!!article?.category?.displayTitle &&
+                        <Chip variant="filled" radius="sm" size={'sm'} color={'grey.0'} checked={false}>
+                            {article?.category?.displayTitle}
+                        </Chip>}
                 </Box>
                 <Group spacing={8} m={0} sx={{display: disableUserPanel ? 'none' : 'flex'}}>
                     {/*<Badge size="sm" radius="xs" className={classes.action} py={3.5} sx={{height: "100%"}}>*/}
@@ -39,13 +49,17 @@ const InfoBarBottom = ({article, bookmarked, onClickBookmark, disableUserPanel}:
                     {/*            <IconHeart size={16} color={theme.colors.red[6]}/>*/}
                     {/*    }*/}
                     {/*</ActionIcon>*/}
-                    <ActionIcon className={classes.action}>
-                        <IconHeart size={16} color={theme.colors.red[6]}/>
+                    <ActionIcon onClick={onClickLike as MouseEventHandler} className={classes.action}>
+                        {
+                            liked ?
+                                <IconHeart size={16} color={theme.colors.red[6]} fill={theme.colors.red[6]}/> :
+                                <IconHeart size={16} color={theme.colors.red[6]}/>
+                        }
                     </ActionIcon>
                     <ActionIcon onClick={onClickBookmark as MouseEventHandler} className={classes.action}>
                         {
                             bookmarked ?
-                                <IconBookmark size={16} color={theme.colors.yellow[7]} fill={theme.colors.yellow[7]}/>:
+                                <IconBookmark size={16} color={theme.colors.yellow[7]} fill={theme.colors.yellow[7]}/> :
                                 <IconBookmark size={16} color={theme.colors.yellow[7]}/>
                         }
                     </ActionIcon>

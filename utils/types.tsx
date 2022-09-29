@@ -96,6 +96,7 @@ export class CommentDto {
 
 export class UseUserInfoResult {
     userInfo!: UserDto | null
+    mainUserInfo!: UserDto | null
     accessToken!: string
     refreshToken!: string
     setNewAccessToken!: Function
