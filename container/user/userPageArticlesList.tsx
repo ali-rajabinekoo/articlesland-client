@@ -13,7 +13,7 @@ class UserPageArticlesListProps {
     owner?: UserDto | undefined
 }
 
-export default function UserPageArticlesList({list = [], owner}: UserPageArticlesListProps) {
+export default function UserPageArticlesList({list = []}: UserPageArticlesListProps) {
     const [noContentTitle, setNoContentTitle] = useState<string>('');
     const [data, setData] = useState<ArticleDto[]>([]);
     const {userInfo, setNewUser} = useUserInfo()
@@ -81,7 +81,7 @@ export default function UserPageArticlesList({list = [], owner}: UserPageArticle
                         <ArticleCard
                             image={!!el?.bannerUrl ? changeUrlToServerRequest(el?.bannerUrl) : undefined}
                             title={el?.title as string || ""}
-                            link={el.published ? `/post/${owner?.username}/${el.id}` : `/edit/${el.id}`}
+                            link={el.published ? `/post/${el?.owner?.username}/${el.id}` : `/edit/${el.id}`}
                             description={el?.description as string || ""}
                             category={el?.category?.displayTitle as string || ""}
                             author={{

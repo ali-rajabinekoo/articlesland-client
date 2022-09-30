@@ -105,4 +105,11 @@ export class Article {
         }, this.accessToken as string)
         return responseHandler(result, this.onRefreshToken)
     }
+
+    async getArticlesByCategory(page?: number, categories?: number[]): Promise<AxiosResponse | undefined> {
+        const result = await this.request.sendRequest({
+            method: 'GET', url: `/article/category?categories=${categories?.join(',') || ''}&page=${page || 1}`
+        }, this.accessToken as string)
+        return responseHandler(result, this.onRefreshToken)
+    }
 }

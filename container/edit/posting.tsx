@@ -15,9 +15,11 @@ import {DropzoneButton} from "../../component/buttons/upload";
 import {SelectInput} from "../../component/inputs";
 import {
     APIS,
+    ArticleDto,
     GetArticleResponseDto,
     UseFetchCategoriesResult,
     UseRequestResult,
+    UseUpdateArticle,
     UseUserInfoResult
 } from "../../utils/types";
 import useFetchCategories from "../../hooks/fetchCategories";
@@ -30,6 +32,8 @@ import {NextRouter, useRouter} from "next/router";
 import {showNotification} from "@mantine/notifications";
 import {errorHandler} from "../../utils/helpers";
 import useRequest from "../../hooks/useRequest";
+import {AxiosResponse} from "axios";
+import useUpdateArticle from "../../hooks/useUpdateArticle";
 
 class PostingProps {
     article!: GetArticleResponseDto
@@ -38,7 +42,7 @@ class PostingProps {
 const Posting = ({article}: PostingProps) => {
     const {push}: NextRouter = useRouter()
     const {getApis}: UseRequestResult = useRequest()
-    const {userInfo}: UseUserInfoResult = useUserInfo()
+    const {userInfo}: UseUserInfoResult = useUserInfo();
     const {categories}: UseFetchCategoriesResult = useFetchCategories();
     const {colors}: MantineTheme = useMantineTheme()
     const [openedModal, setOpenedModal] = useState<boolean>(false);
@@ -47,6 +51,7 @@ const Posting = ({article}: PostingProps) => {
     const [isAgree, setIsAgree] = useState<boolean>(false);
     const [banner, setBanner] = useState<File>();
     const [categoryId, setCategoryId] = useState<string>()
+    const {updateArticle}:UseUpdateArticle = useUpdateArticle()
 
     const onChangeBanner = (file: File) => {
         setBanner(file)
@@ -89,13 +94,23 @@ const Posting = ({article}: PostingProps) => {
         const apis: APIS = getApis()
         try {
             setLoading(true)
-            await apis.article.saveAndPublishArticle(article.id as number, formData)
+            const response: AxiosResponse | undefined =
+                await apis.article.saveAndPublishArticle(article.id as number, formData)
+            if (!response) return showNotification({
+                message: 'عنوان پست الزامیست',
+                title: 'خطا',
+                autoClose: 3000,
+                color: 'red',
+                icon: <IconAlertCircle size={20}/>
+            })
             showNotification({
                 message: 'پست شما با موفقیت منتشر شد',
                 autoClose: 2000,
                 color: 'green',
                 icon: <IconCheck size={20}/>
-            });
+            })
+            const newArticle: ArticleDto = response.data as ArticleDto
+            updateArticle(article?.id, newArticle)
             setTimeout(async () => {
                 await push('/dashboard')
             }, 2050)
@@ -109,7 +124,7 @@ const Posting = ({article}: PostingProps) => {
         if (!!article?.category?.id) {
             setCategoryId(String(article.category.id) as string)
         }
-    } , [article])
+    }, [article])
 
     return (
         <div>

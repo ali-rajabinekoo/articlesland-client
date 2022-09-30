@@ -6,6 +6,7 @@ import {CategoryDto, UseFetchSelectedCategoriesResult, UseUserInfoResult} from "
 import React, {useEffect, useState} from "react";
 import useFetchSelectedCategories from "../hooks/useFetchSelectedCategories";
 import {CategoriesTab as CategoriesTabType} from '../utils/types'
+import HomeArticlesList from "../container/home/homeArticlesList";
 
 const Home: NextPage = () => {
     const {selectedCategories}: UseFetchSelectedCategoriesResult = useFetchSelectedCategories(false)
@@ -18,6 +19,7 @@ const Home: NextPage = () => {
                 return {
                     displayValue: category.displayTitle,
                     value: category.title,
+                    id: category.id,
                 } as CategoriesTabType
             }))
         }
@@ -28,6 +30,7 @@ const Home: NextPage = () => {
             <DashboardHeader headerTabs={
                 !!userInfo && tabs?.length !== 0 ? <CategoriesTab tabs={tabs}/> : undefined
             }/>
+            <HomeArticlesList/>
         </div>
     )
 }

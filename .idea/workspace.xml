@@ -2,31 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e06adea9-5fca-4f6c-9da5-80729234fd31" name="Changes" comment="AL-61 &lt;Fix userInfo logic with redux, fix categories list with swr&gt;">
-      <change afterPath="$PROJECT_DIR$/reducers/userInfo.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/component/cards/articleCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/component/cards/articleCard.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/container/dashboard/articlesList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/container/dashboard/articlesList.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/container/dashboard/profileTab.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/container/dashboard/profileTab.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/container/login/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/container/login/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/container/post/InfoBarBottom.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/container/post/InfoBarBottom.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/container/profile/email.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/container/profile/email.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/container/profile/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/container/profile/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/container/profile/mobile.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/container/profile/mobile.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/container/dashboard/categoriesTab.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/container/dashboard/categoriesTab.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/container/user/userPageArticlesList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/container/user/userPageArticlesList.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/container/user/userPageTabs.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/container/user/userPageTabs.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/container/verification/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/container/verification/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hooks/useFetchSelectedCategories.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/hooks/useFetchSelectedCategories.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hooks/useUserInfo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/hooks/useUserInfo.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/next.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/next.config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/post/[...info].tsx" beforeDir="false" afterPath="$PROJECT_DIR$/pages/post/[...info].tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/providers/fetchReduxInitState.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/providers/fetchReduxInitState.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/apis/user.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/utils/apis/user.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/app.store.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/utils/app.store.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/axios.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/utils/axios.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/initStore.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/utils/initStore.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/pages/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/apis/article.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/utils/apis/article.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/utils/types.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/utils/types.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,7 +27,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="AL-51-bookmarking-and-list-of-bookmarks" />
+        <entry key="$PROJECT_DIR$" value="AL-61-fix-user-info-logic-with-redux-fix-categories-list-with-swr" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -60,25 +41,25 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;Git.Branch.Popup.ShowAllRemotes&quot;: &quot;true&quot;,
-    &quot;Project.color&quot;: &quot;2d1438&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/rajabinekoo/Workspace/ArticlesLand/articlesland-server&quot;,
-    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settingsdialog.IDE.editor.colors.TypeScript&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;/home/rajabinekoo/Workspace/ArticlesLand/articlesland-client/node_modules/typescript/lib&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "Git.Branch.Popup.ShowAllRemotes": "true",
+    "Project.color": "2d1438",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "/home/rajabinekoo/Workspace/ArticlesLand/articlesland-server",
+    "list.type.of.created.stylesheet": "CSS",
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "reference.settingsdialog.IDE.editor.colors.TypeScript",
+    "ts.external.directory.path": "/home/rajabinekoo/Workspace/ArticlesLand/articlesland-client/node_modules/typescript/lib",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/public/scripts" />
@@ -174,7 +155,9 @@
       <workItem from="1664366398963" duration="3967000" />
       <workItem from="1664375488699" duration="981000" />
       <workItem from="1664449668272" duration="2840000" />
-      <workItem from="1664460657223" duration="4855000" />
+      <workItem from="1664460657223" duration="5485000" />
+      <workItem from="1664474687116" duration="1742000" />
+      <workItem from="1664533740444" duration="3878000" />
     </task>
     <task id="LOCAL-00001" summary="AL-14 &lt;Start project and fix basic configs&gt;">
       <created>1660924360896</created>
@@ -358,7 +341,14 @@
       <option name="project" value="LOCAL" />
       <updated>1664348729160</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="AL-61 &lt;Fix userInfo logic with redux, fix categories list with swr&gt;">
+      <created>1664465836150</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1664465836150</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

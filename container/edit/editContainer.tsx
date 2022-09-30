@@ -14,16 +14,19 @@ import {showNotification} from "@mantine/notifications";
 import useRequest from "../../hooks/useRequest";
 import {
     APIS,
+    ArticleDto,
     CreateArticleValues,
     DraftResponseDto,
     GetArticleResponseDto,
-    UseRequestResult
+    UseRequestResult,
+    UseUpdateArticle,
 } from "../../utils/types";
 import {NextRouter, useRouter} from "next/router";
 import {appMessages} from "../../utils/messages";
 import {IconAlertCircle} from "@tabler/icons";
 import DraftProvider from "../../providers/draftProvider";
 import Drafts from "./drafts";
+import useUpdateArticle from "../../hooks/useUpdateArticle";
 
 class EditContainerProps {
     article?: GetArticleResponseDto
@@ -75,6 +78,7 @@ const EditContainer = ({article, onUpdateArticle, titleRef, drafts = []}: EditCo
     const [loading, setLoading] = useState<boolean>(false);
     const {getApis}: UseRequestResult = useRequest();
     const {push}: NextRouter = useRouter()
+    const {updateArticle, removeArticle}:UseUpdateArticle = useUpdateArticle()
 
     const onChangeTitle = (e: any): void => {
         setTitle(e.target.value)
@@ -121,6 +125,7 @@ const EditContainer = ({article, onUpdateArticle, titleRef, drafts = []}: EditCo
             const id = response?.data?.id
             const updatedArticle: GetArticleResponseDto = response?.data as GetArticleResponseDto
             if (!!onUpdateArticle) onUpdateArticle(updatedArticle)
+            updateArticle(updatedArticle)
             await push(`/edit/${id}${posting ? "?posting=true" : ""}`)
         } else {
             showNotification({
@@ -133,7 +138,7 @@ const EditContainer = ({article, onUpdateArticle, titleRef, drafts = []}: EditCo
         }
     }
 
-    const updateArticle: postingFunctionType = async (posting: boolean = false): Promise<void> => {
+    const mainUpdateArticle: postingFunctionType = async (posting: boolean = false): Promise<void> => {
         const data: CheckDataResult | null = checkData()
         if (!data) throw undefined
         const apis: APIS = getApis()
@@ -162,7 +167,7 @@ const EditContainer = ({article, onUpdateArticle, titleRef, drafts = []}: EditCo
         try {
             setLoading(true)
             if (!article) await createArticle(posting)
-            else await updateArticle(posting)
+            else await mainUpdateArticle(posting)
             setLoading(false)
             if (!posting) showNotification({
                 message: 'پست مورد نظر با موفقیت ذخیره شد',
@@ -189,6 +194,7 @@ const EditContainer = ({article, onUpdateArticle, titleRef, drafts = []}: EditCo
                 autoClose: 2000,
                 color: 'green',
             })
+            if (!!article?.id) removeArticle(article.id)
             setTimeout(() => {
                 push('/dashboard')
             }, 2100)
@@ -202,14 +208,24 @@ const EditContainer = ({article, onUpdateArticle, titleRef, drafts = []}: EditCo
         try {
             setLoading(true)
             const apis: APIS = getApis()
-            await apis.article.dropArticle(article?.id as number)
+            const response: AxiosResponse | undefined =
+                await apis.article.dropArticle(article?.id as number)
             setLoading(false)
+            if (!response) return showNotification({
+                message: 'عنوان پست الزامیست',
+                title: 'خطا',
+                autoClose: 3000,
+                color: 'red',
+                icon: <IconAlertCircle size={20}/>
+            })
             showNotification({
                 message: 'پست مورد نظر با موفقیت لغو شد',
                 title: 'عملیات موفقیت آمیز بود',
                 autoClose: 2000,
                 color: 'green',
             })
+            const newArticle: ArticleDto = response.data as ArticleDto
+            updateArticle(article?.id, newArticle)
             setTimeout(() => {
                 push('/dashboard?tab=unpublished')
             }, 2100)
