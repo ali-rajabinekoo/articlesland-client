@@ -9,27 +9,27 @@ import {Comment} from "./apis/comment";
 // DTOs
 
 export class UserDto {
-    id: number | undefined | null
-    username: string | undefined | null
-    displayName?: string | undefined | null
-    phoneNumber: string | undefined | null
-    refreshToken: string | undefined | null
-    email?: string | undefined | null
-    avatar?: string | undefined | null
-    bio?: string | undefined | null
-    created_at: string | undefined | null
-    updated_at: string | undefined | null
-    articles?: ArticleDto[] | undefined | null
-    likes?: ArticleDto[] | undefined | null
-    bookmarks?: ArticleDto[] | undefined | null
-    selectedCategories?: CategoryDto[] | undefined | null
-    followers?: UserDto[] | undefined | null
-    followings?: UserDto[] | undefined | null
+    id: number | undefined | null;
+    username: string | undefined | null;
+    displayName?: string | undefined | null;
+    phoneNumber: string | undefined | null;
+    refreshToken: string | undefined | null;
+    email?: string | undefined | null;
+    avatar?: string | undefined | null;
+    bio?: string | undefined | null;
+    created_at: string | undefined | null;
+    updated_at: string | undefined | null;
+    articles?: ArticleDto[] | undefined | null;
+    likes?: ArticleDto[] | undefined | null;
+    bookmarks?: ArticleDto[] | undefined | null;
+    selectedCategories?: CategoryDto[] | undefined | null;
+    followers?: UserDto[] | undefined | null;
+    followings?: UserDto[] | undefined | null;
 }
 
 export class CategoryDto {
-    id: number | undefined | null
-    title: string | undefined | null
+    id: number | undefined | null;
+    title: string | undefined | null;
     displayTitle: string | undefined | null;
     avatar: string | undefined | null;
     articles: ArticleDto[] | undefined | null;
@@ -95,58 +95,64 @@ export class CommentDto {
 // hooks
 
 export class UseUserInfoResult {
-    userInfo!: UserDto | null
-    mainUserInfo!: UserDto | null
-    accessToken!: string
-    refreshToken!: string
-    setNewAccessToken!: Function
-    setNewRefreshToken!: Function
-    setNewUser!: Function
-    getAccessToken!: Function
-    logout!: Function
+    userInfo!: UserDto | null;
+    mainUserInfo!: UserDto | null;
+    accessToken!: string;
+    refreshToken!: string;
+    setNewAccessToken!: Function;
+    setNewRefreshToken!: Function;
+    setNewUser!: Function;
+    getAccessToken!: Function;
+    logout!: Function;
 }
 
 export class UseRequestResult {
-    getApis!: Function
+    getApis!: Function;
 }
 
 export class UseArticlesLandEditorDirectionResult {
-    init!: Function
-    check!: Function
-    direction!: 'rtl' | 'ltr'
+    init!: Function;
+    check!: Function;
+    direction!: 'rtl' | 'ltr';
 }
 
 export class UseFetchCategoriesResult {
-    categories!: SelectInputItem[]
+    categories!: SelectInputItem[];
 }
 
 export class UseFetchSelectedCategoriesResult {
-    selectedCategories!: CategoryDto[]
-    error?: AxiosError | true | null | undefined
+    selectedCategories!: CategoryDto[];
+    error?: AxiosError | true | null | undefined;
 }
 
 export class UseBookmark {
-    bookmark!: Function
+    bookmark!: Function;
 }
 
 export class UseFollow {
-    follow!: Function
+    follow!: Function;
 }
 
 export class UseLike {
-    like!: Function
+    like!: Function;
+}
+
+export class UseUpdateArticle {
+    updateArticle!: Function
+    removeArticle!: Function
 }
 
 // components
 
 export class SelectInputItem {
-    value!: string | number
-    label!: string
+    value!: string | number;
+    label!: string;
 }
 
 export class CategoriesTab {
-    displayValue!: string
-    value!: string
+    displayValue!: string;
+    value!: string;
+    id!: number;
 }
 
 export class LinkedItemDto {
@@ -203,8 +209,8 @@ export class ProfileInfoFormValues {
 // apis
 
 export class RefreshTokenResponse {
-    response: AxiosResponse | undefined
-    refreshTokenResponse: UserAndTokenResponse | undefined
+    response: AxiosResponse | undefined;
+    refreshTokenResponse: UserAndTokenResponse | undefined;
 }
 
 export class APIS {
@@ -217,42 +223,44 @@ export class APIS {
 }
 
 export class PublicAPIS {
-    auth!: Authentication
-    category!: Category
-    article!: Article
-    user!: PublicUserApi
+    auth!: Authentication;
+    category!: Category;
+    article!: Article;
+    user!: PublicUserApi;
 }
 
 export class RequestParams {
-    method!: string
-    url!: string
-    data?: object
-    externalUrl?: boolean
+    method!: string;
+    url!: string;
+    data?: object;
+    externalUrl?: boolean;
 }
 
 export class VerificationResponse {
-    key: string | undefined
+    key: string | undefined;
 }
 
 export class VerificationBody {
-    key: string | undefined
-    code: string | undefined
+    key: string | undefined;
+    code: string | undefined;
 }
 
 export class PureVerificationBody {
-    code: string | undefined
+    code: string | undefined;
 }
 
 export class UserAndTokenResponse {
-    user: object | undefined
-    token: string | undefined
+    user: object | undefined;
+    token: string | undefined;
 }
 
 export class FollowBody {
-    newFollowingUserId!: number
+    newFollowingUserId!: number;
 }
 
-export type refreshTokenHandler = (data: UserAndTokenResponse) => void
+export type refreshTokenHandler = (data: UserAndTokenResponse) => void;
+
+export type LikesAndBookmarksObject = { [key: string]: boolean };
 
 // APIS body
 
@@ -267,7 +275,7 @@ export class SaveDraftValues {
 }
 
 export class SetSelectedCategories {
-    list!: string[] | number[]
+    list!: string[] | number[];
 }
 
 export class NewCommentBody {
@@ -278,5 +286,5 @@ export class NewCommentBody {
 // styles
 
 export class ReadArticleBannerProps {
-    src?: string | undefined
+    src?: string | undefined;
 }
