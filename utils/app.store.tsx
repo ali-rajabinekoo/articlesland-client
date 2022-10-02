@@ -1,14 +1,16 @@
-import userCategoriesReducer from '../reducers/userCategories'
 import {configureStore} from '@reduxjs/toolkit'
-import categoriesReducer from '../reducers/categories'
 import commentsReducer from '../reducers/comments'
 import userInfoReducer from '../reducers/userInfo'
+import categoriesReducer from '../reducers/categories'
+import searchInputReducer from '../reducers/searchInput'
+import userCategoriesReducer from '../reducers/userCategories'
 
 const store = configureStore({
     reducer: {
         userInfo: userInfoReducer,
         comments: commentsReducer,
         categories: categoriesReducer,
+        searchInput: searchInputReducer,
         userCategories: userCategoriesReducer,
     }
 })

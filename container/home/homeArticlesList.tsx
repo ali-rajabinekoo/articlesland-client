@@ -1,5 +1,5 @@
-import {Container, Grid, Pagination, Center} from "@mantine/core";
 import React, {useEffect, useState} from "react";
+import {Container, Grid, Pagination, Center} from "@mantine/core";
 import {APIS, ArticleDto, LikesAndBookmarksObject, UseBookmark, UseLike} from "../../utils/types";
 import useRequest from "../../hooks/useRequest";
 import {AxiosResponse} from "axios";
@@ -7,13 +7,19 @@ import {showNotification} from "@mantine/notifications";
 import {IconAlertCircle} from "@tabler/icons";
 import {EmptyContent} from "../errors/empty";
 import {ArticleCard} from "../../component/cards/articleCard";
-import {changeUrlToServerRequest, errorHandler} from "../../utils/helpers";
+import {changeUrlToServerRequest, errorHandler, validFeaturesFilter} from "../../utils/helpers";
 import useUserInfo from "../../hooks/useUserInfo";
 import useBookmark from "../../hooks/useBookmark";
 import useLike from "../../hooks/useLike";
 import {NextRouter, useRouter} from "next/router";
+import FiltersDrawer from "../explore/filtersDrawer";
 
-const HomeArticlesList = () => {
+class HomeArticlesListProps {
+    searchValue?: string | undefined;
+    isExplorePage?: boolean | undefined;
+}
+
+const HomeArticlesList = (props: HomeArticlesListProps) => {
     const {getApis} = useRequest(false)
     const {userInfo, setNewUser} = useUserInfo()
     const [noContentTitle, setNoContentTitle] = useState<string>('');
@@ -85,14 +91,25 @@ const HomeArticlesList = () => {
         }))
     }
 
-    const fetchArticles = async (categories?: Array<number> | undefined) => {
+    const fetchArticles = async (
+        categories?: string | undefined,
+        features?: { [key: string]: boolean },
+        users?: string | undefined,
+    ) => {
         const apis: APIS = getApis()
+        const searchValue: string | undefined = props.searchValue?.trim();
+        let userSelectedCategories: undefined | string = undefined;
+        if (
+            !!userInfo &&
+            Array.isArray(userInfo?.selectedCategories) &&
+            props.isExplorePage
+        ) {
+            userSelectedCategories = userInfo.selectedCategories?.map((el => el.id as number)).join(',')
+        }
         try {
-            const response: AxiosResponse | undefined = Array.isArray(categories) ?
-                await apis.article.getArticlesByCategory(page, categories) :
-                !!userInfo && Array.isArray(userInfo?.selectedCategories) ?
-                    await apis.article.getArticlesByCategory(page, userInfo.selectedCategories?.map((el => el.id as number))) :
-                    await apis.article.getArticlesByCategory(page);
+            const response: AxiosResponse | undefined = await apis.article.getArticlesByCategory(
+                page, categories || userSelectedCategories, searchValue, features, users,
+            );
             if (!response) return showNotification({
                 message: 'عنوان پست الزامیست',
                 title: 'خطا',
@@ -117,20 +134,65 @@ const HomeArticlesList = () => {
         }
     }
 
+    // Home page queries
     useEffect(() => {
-        if (!!selectedCategory) fetchArticles([selectedCategory]).catch();
+        if (!!selectedCategory) fetchArticles([selectedCategory].join(',')).catch();
         else fetchArticles().catch();
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [userInfo, page, selectedCategory])
-
+    }, [userInfo, page, selectedCategory, props.searchValue])
     useEffect(() => {
+        if (props.isExplorePage) return undefined;
         if (!!query?.categoryId) setSelectedCategory(Number(query?.categoryId))
+        else setSelectedCategory(undefined)
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [query?.categoryId])
 
+    // Explore page queries
+    useEffect(() => {
+        if (!props.isExplorePage) return undefined;
+        let categories: string | undefined;
+        let users: string | undefined;
+        let features: { [key: string]: boolean } | undefined;
+        if (
+            typeof (query?.categories) === 'string' &&
+            query.categories.trim().length !== 0
+        ) {
+            categories = query.categories
+        }
+        if (
+            typeof (query?.features) === 'string' &&
+            query.features.trim().length !== 0
+        ) {
+            const featuresArray = query.features.split(',')
+            const featuresObject: { [key: string]: boolean } = {}
+            for (const feature of featuresArray) {
+                if (validFeaturesFilter.includes(feature)) {
+                    featuresObject[feature] = true;
+                }
+            }
+            features = featuresObject;
+        }
+        if (
+            typeof (query?.users) === 'string' &&
+            query.users.trim().length !== 0
+        ) {
+            users = query.users
+        }
+        fetchArticles(categories, features, users).catch()
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [query?.features, query?.users, query?.categories])
+
     return (
         <Container size={'xl'} mb={150}>
-            <Grid>
+            {/*<Box mt={'md'} mb={'xl'} sx={{display: !!props.searchValue ? 'block' : 'none'}}>*/}
+            {/*    <Box sx={{display: 'flex', alignItems: 'center'}}>*/}
+            {/*        <Text component={'span'} color={'grey.4'} mr={'xs'} weight={500}>کلیدواژه جستجو شده:</Text>*/}
+            {/*        <Text component={'span'} color={'grey.4'} mr={'xs'} weight={400}>{props.searchValue}</Text>*/}
+            {/*        <UnstyledButton mt={4}><IconCircleX/></UnstyledButton>*/}
+            {/*    </Box>*/}
+            {/*</Box>*/}
+            {props.isExplorePage && <FiltersDrawer/>}
+            <Grid mt={props.isExplorePage ? 90 : 0}>
                 {!!noContentTitle && <EmptyContent title={noContentTitle} disableBtn={true}/>}
                 {(articles || []).map((el: ArticleDto, index: number) => (
                     <Grid.Col xs={12} sm={6} md={6} lg={4} key={index}>
