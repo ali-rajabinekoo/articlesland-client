@@ -111,3 +111,18 @@ export const SecondaryOutlineBtn = (props: PrimaryBtnProps) => {
         </Button>
     </Container>)
 }
+
+export const FilterBtn = (props: PrimaryBtnProps) => {
+    const {classes} = useSecondaryOutlineBtnStyle()
+    return (<Container sx={props.containersx || {}} capsule={props.capsule}>
+        <Button
+            fullWidth color={'secondary.1'} type={props.type} variant={"outline"}
+            className={classes.btn} size="md" radius={props.capsule === 'true' ? 22 : 8}
+            {...props} sx={{borderTopLeftRadius: 0, borderBottomLeftRadius: 0}}
+        >
+            <Text mr={props.loading ? 10 : 0} size={'sm'} weight={600}>
+                {props.text}
+            </Text>
+        </Button>
+    </Container>)
+}

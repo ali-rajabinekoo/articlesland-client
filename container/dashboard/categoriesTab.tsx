@@ -21,18 +21,23 @@ export default function CategoriesTab({tabs}: CategoriesListProps) {
     
     useEffect(() => {
         if (!!query?.categoryId) setTab(String(query?.categoryId))
+        else setTab(undefined)
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [query?.categoryId])
     
     const items = useMemo(() => {
-        return !!tabs ? tabs.map((tab, index) => (
-            <Link href={`/?categoryId=${tab.id}`} key={index} >
-                <Tabs.Tab value={String(tab.id)} className={classes.tab}>
-                    <Text size={'sm'} weight={400}>{tab.displayValue}</Text>
+        return !!tabs ? tabs.map((tabItem, index) => (
+            <Link href={
+                Number(tab) === tabItem.id ?
+                    `/` :
+                    `/?categoryId=${tabItem.id}`
+            } key={index} >
+                <Tabs.Tab value={String(tabItem.id)} className={classes.tab}>
+                    <Text size={'sm'} weight={400}>{tabItem.displayValue}</Text>
                 </Tabs.Tab>
             </Link>
         )) : [];
-    }, [tabs, classes.tab])
+    }, [tabs, classes.tab, tab])
     
     return (
         <Box className={classes.wrapper}>

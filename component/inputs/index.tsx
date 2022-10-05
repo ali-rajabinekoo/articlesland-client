@@ -8,7 +8,7 @@ import {
     SelectProps,
     useMantineTheme,
     Textarea,
-    TextareaProps,
+    TextareaProps, UnstyledButton,
 } from "@mantine/core";
 import React, {ReactNode, RefObject, useEffect, useState} from "react";
 import {Sx} from "@mantine/styles/lib/theme/types/DefaultProps";
@@ -24,6 +24,7 @@ import useArticleLandEditorDirection from "../../hooks/editorDirection";
 import {GetArticleResponseDto} from "../../utils/types";
 import {v4 as uuidV4} from 'uuid';
 import {IconSearch} from "@tabler/icons";
+import {useRouter} from "next/router";
 
 const renderLabel = (props: TextInputProps | PasswordInputProps | TextAreaInputProps): ReactNode => {
     let sx: Sx = {}
@@ -42,13 +43,14 @@ const renderLabel = (props: TextInputProps | PasswordInputProps | TextAreaInputP
 }
 
 interface TextInputProps extends BasicTextInputProps {
-    labeltitle?: string
-    labelsx?: Sx
-    labelweight?: React.CSSProperties['fontWeight']
-    weight?: React.CSSProperties['fontWeight']
-    customref?: RefObject<any>
-    darker?: true | false
-    textcolor?: string | undefined
+    labeltitle?: string;
+    labelsx?: Sx;
+    labelweight?: React.CSSProperties['fontWeight'];
+    weight?: React.CSSProperties['fontWeight'];
+    customref?: RefObject<any>;
+    darker?: true | false;
+    textcolor?: string | undefined;
+    onClickBtn?: Function | undefined;
 }
 
 export const TextInput = (props: TextInputProps): JSX.Element => {
@@ -258,16 +260,36 @@ export function SelectInput(props: SelectProps) {
 
 export function SearchInput(props: TextInputProps) {
     const theme = useMantineTheme();
+    const [value, setValue] = useState<string>(props.defaultValue as string | undefined || '')
+    const {push, pathname} = useRouter()
+    
+    useEffect(() => {
+        setValue(props.defaultValue as string)
+    }, [props.defaultValue])
 
     return (
-        <TextInput
-            rightSection={<IconSearch color={theme.colors.grey[4]} size={24} stroke={1.5}/>}
-            radius="sm"
-            size="md"
-            placeholder="در بین مقالات جستجو کنید"
-            rightSectionWidth={42}
-            {...props}
-        />
+        <form onSubmit={async (e) => {
+            e.preventDefault()
+            if (!!props.onClickBtn) props.onClickBtn(value)
+            const regex = new RegExp('/explore')
+            if (!regex.test(pathname)) {
+                await push('/explore')
+            }
+        }}>
+            <TextInput
+                rightSection={<UnstyledButton type={'submit'}>
+                    <IconSearch color={theme.colors.grey[4]} size={24} stroke={1.5}/>
+                </UnstyledButton>}
+                radius="sm"
+                size="md"
+                placeholder="در بین مقالات جستجو کنید"
+                rightSectionWidth={42}
+                value={value}
+                onChange={(e) => setValue(e.target.value)}
+                darker={true}
+                {...props}
+            />
+        </form>
     );
 }
 

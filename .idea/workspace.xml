@@ -1,13 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e06adea9-5fca-4f6c-9da5-80729234fd31" name="Changes" comment="AL-61 &lt;Fix userInfo logic with redux, fix categories list with swr&gt;">
+    <list default="true" id="e06adea9-5fca-4f6c-9da5-80729234fd31" name="Changes" comment="AL-57 &lt;Explore page with searching and free category filtering logic&gt;">
+      <change afterPath="$PROJECT_DIR$/component/tables/categoriesFilter.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/component/tables/filterTable.styles.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/component/tables/otherFeaturesFilter.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/component/tables/usersFilter.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/container/explore/filtersDrawer.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pages/explore/index.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/reducers/searchInput.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/component/buttons/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/component/buttons/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/component/inputs/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/component/inputs/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/component/navbar/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/component/navbar/index.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/container/dashboard/categoriesTab.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/container/dashboard/categoriesTab.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/container/user/userPageArticlesList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/container/user/userPageArticlesList.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/pages/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/container/home/homeArticlesList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/container/home/homeArticlesList.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/utils/apis/article.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/utils/apis/article.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/types.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/utils/types.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/apis/user.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/utils/apis/user.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/app.store.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/utils/app.store.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/helpers.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/utils/helpers.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,7 +40,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="AL-61-fix-user-info-logic-with-redux-fix-categories-list-with-swr" />
+        <entry key="$PROJECT_DIR$" value="AL-56-home-page-with-selected-category-filtering-logic" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -41,25 +54,25 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "Git.Branch.Popup.ShowAllRemotes": "true",
-    "Project.color": "2d1438",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "/home/rajabinekoo/Workspace/ArticlesLand/articlesland-server",
-    "list.type.of.created.stylesheet": "CSS",
-    "node.js.detected.package.eslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "reference.settingsdialog.IDE.editor.colors.TypeScript",
-    "ts.external.directory.path": "/home/rajabinekoo/Workspace/ArticlesLand/articlesland-client/node_modules/typescript/lib",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;Git.Branch.Popup.ShowAllRemotes&quot;: &quot;true&quot;,
+    &quot;Project.color&quot;: &quot;2d1438&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/rajabinekoo/Workspace/ArticlesLand/articlesland-client&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settingsdialog.IDE.editor.colors.TypeScript&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;/home/rajabinekoo/Workspace/ArticlesLand/articlesland-client/node_modules/typescript/lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/public/scripts" />
@@ -157,7 +170,11 @@
       <workItem from="1664449668272" duration="2840000" />
       <workItem from="1664460657223" duration="5485000" />
       <workItem from="1664474687116" duration="1742000" />
-      <workItem from="1664533740444" duration="3878000" />
+      <workItem from="1664533740444" duration="7640000" />
+      <workItem from="1664635688702" duration="6492000" />
+      <workItem from="1664695418259" duration="13225000" />
+      <workItem from="1664721610992" duration="7830000" />
+      <workItem from="1664735322654" duration="734000" />
     </task>
     <task id="LOCAL-00001" summary="AL-14 &lt;Start project and fix basic configs&gt;">
       <created>1660924360896</created>
@@ -348,7 +365,14 @@
       <option name="project" value="LOCAL" />
       <updated>1664465836150</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="AL-56 &lt;Home page with selected category filtering logic&gt;">
+      <created>1664540861431</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1664540861431</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -369,8 +393,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="AL-13 &lt;Login page implementation&gt;" />
-    <MESSAGE value="AL-27 &lt;Add articles card and list&gt;" />
     <MESSAGE value="AL-31 &lt;CKEditor Configured&gt;" />
     <MESSAGE value="AL-31 &lt;CKEditor directions fixed&gt;" />
     <MESSAGE value="AL-31 &lt;Fix save and create new article logic&gt;" />
@@ -394,6 +416,8 @@
     <MESSAGE value="AL-49 &lt;Followings and followers list and apis implemented&gt;" />
     <MESSAGE value="AL-51 &lt;Bookmarking and list of Bookmarks, fixed comments bugs&gt;" />
     <MESSAGE value="AL-61 &lt;Fix userInfo logic with redux, fix categories list with swr&gt;" />
-    <option name="LAST_COMMIT_MESSAGE" value="AL-61 &lt;Fix userInfo logic with redux, fix categories list with swr&gt;" />
+    <MESSAGE value="AL-56 &lt;Home page with selected category filtering logic&gt;" />
+    <MESSAGE value="AL-57 &lt;Explore page with searching and free category filtering logic&gt;" />
+    <option name="LAST_COMMIT_MESSAGE" value="AL-57 &lt;Explore page with searching and free category filtering logic&gt;" />
   </component>
 </project>

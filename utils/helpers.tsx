@@ -128,3 +128,5 @@ export const formatFullDate = (date: string): string => {
 export const formatDateFromNow = (date: string): string => {
     return moment((new Date(date)).toISOString()).fromNow()
 }
+
+export const validFeaturesFilter = ['mostPopular'];

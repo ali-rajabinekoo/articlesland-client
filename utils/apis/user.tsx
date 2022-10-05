@@ -36,6 +36,13 @@ export class User {
         return responseHandler(result, this.onRefreshToken)
     }
 
+    async usersList(): Promise<AxiosResponse | undefined> {
+        const result = await this.request.sendRequest({
+            method: 'GET', url: `/user/list`
+        }, this.accessToken as string)
+        return responseHandler(result, this.onRefreshToken)
+    }
+
     async userInfo(): Promise<AxiosResponse | undefined> {
         const result = await this.request.sendRequest({
             method: 'GET', url: `/user`
@@ -114,6 +121,23 @@ export class PublicUserApi {
     async getUserInfo(username: string): Promise<AxiosResponse | undefined> {
         const result = await this.request.sendRequest({
             method: 'GET', url: `/user/${username}`
+        })
+        return result as AxiosResponse | undefined
+    }
+
+    async usersList(
+        keyword?: string | undefined, 
+        page?: number | undefined
+    ): Promise<AxiosResponse | undefined> {
+        let url = '/user/list';
+        if (!!keyword?.trim()) {
+            url += `?keyword=${keyword?.trim()}&`
+        }
+        if (!!page) {
+            url += `?page=${page}`
+        }
+        const result = await this.request.sendRequest({
+            method: 'GET', url,
         })
         return result as AxiosResponse | undefined
     }

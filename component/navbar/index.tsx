@@ -22,10 +22,11 @@ import {NavbarNotificationDropDown} from "./navbar.notificationDropDown";
 import {NavbarProfileDropdown} from "./navbar.profileDropdown";
 import {PrimaryBtn, PrimaryOutlineBtn} from "../buttons";
 import Link from "next/link";
-import {useAppSelector} from "../../hooks/redux";
-import {RootState} from "../../utils/app.store";
+import {useAppDispatch, useAppSelector} from "../../hooks/redux";
+import {AppDispatch, RootState} from "../../utils/app.store";
 import {NextRouter, useRouter} from "next/router";
 import NavbarListItems from "./navbar.list";
+import {setSearchInput} from "../../reducers/searchInput";
 
 const useStyles = createStyles((theme) => ({
     header: {
@@ -101,6 +102,7 @@ const useStyles = createStyles((theme) => ({
 
 const Navbar = () => {
     const userCategories: CategoryDto[] = useAppSelector((state: RootState) => state.userCategories.list)
+    const searchInputValue: string = useAppSelector((state: RootState) => state.searchInput.value)
     const {userInfo: user}: UseUserInfoResult = useUserInfo()
     const {classes, cx, theme} = useStyles()
     const [userCategoryItem, setUserCategoryItems] = useState<LinkedItemDto[]>([]);
@@ -109,6 +111,11 @@ const Navbar = () => {
     const [userMenuOpened, setUserMenuOpened] = useState<boolean>(false);
     const [notificationOpened, setNotificationOpened] = useState<boolean>(false);
     const {pathname}: NextRouter = useRouter()
+    const dispatch: AppDispatch = useAppDispatch()
+    
+    const onChangeInput = (value: string) => {
+        dispatch(setSearchInput(value))
+    }
 
     useEffect(() => {
         if (!!pathname) {
@@ -146,7 +153,7 @@ const Navbar = () => {
 
 
             <Box className={classes.desktopSize} sx={{width: '500px'}} dir={'rtl'}>
-                <SearchInput sx={{color: theme.colors.grey[4]}}/>
+                <SearchInput sx={{color: theme.colors.grey[4]}} onClickBtn={onChangeInput} defaultValue={searchInputValue} />
             </Box>
 
             <Box className={classes.desktopSize} sx={!!user ? {display: "none !important"} : {}}>
@@ -244,7 +251,7 @@ const Navbar = () => {
                 >
                     <Box>
                         <Box dir={'rtl'} px={'md'}>
-                            <SearchInput/>
+                            <SearchInput onClickBtn={onChangeInput} value={searchInputValue} defaultValue={searchInputValue}/>
                         </Box>
                         <Divider mt={'sm'}/>
                         <Box p={'md'} sx={!!user ? {display: "none !important"} : {}}>

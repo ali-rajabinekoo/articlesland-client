@@ -77,7 +77,7 @@ export class Article {
         }, this.accessToken as string)
         return responseHandler(result, this.onRefreshToken)
     }
-    
+
     async addBookmark(articleId: number): Promise<AxiosResponse | undefined> {
         const result = await this.request.sendRequest({
             method: 'POST', url: `/article/bookmark/${articleId}`
@@ -106,9 +106,29 @@ export class Article {
         return responseHandler(result, this.onRefreshToken)
     }
 
-    async getArticlesByCategory(page?: number, categories?: number[]): Promise<AxiosResponse | undefined> {
+    async getArticlesByCategory(
+        page?: number, 
+        categories?: string, 
+        keyword?: string, 
+        features?: { [key: string]: boolean },
+        users?: string | undefined,
+    ): Promise<AxiosResponse | undefined> {
+        let url = '/article/explore?';
+        if (!!page) url += `page=${page}&`
+        if (!!categories) url += `categories=${categories || ''}&`
+        if (!!keyword?.trim()) url += `keyword=${keyword}&`
+        if (!!features) {
+            let featuresString = '';
+            for (const key in features) {
+                if (features[key]) {
+                    featuresString += `${key}=1&`
+                }
+            }
+            url += featuresString;
+        }
+        if (!!users?.trim()) url += `users=${users}&`
         const result = await this.request.sendRequest({
-            method: 'GET', url: `/article/category?categories=${categories?.join(',') || ''}&page=${page || 1}`
+            method: 'GET', url,
         }, this.accessToken as string)
         return responseHandler(result, this.onRefreshToken)
     }
