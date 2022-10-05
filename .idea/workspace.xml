@@ -2,25 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e06adea9-5fca-4f6c-9da5-80729234fd31" name="Changes" comment="AL-57 &lt;Explore page with searching and free category filtering logic&gt;">
-      <change afterPath="$PROJECT_DIR$/component/tables/categoriesFilter.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/component/tables/filterTable.styles.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/component/tables/otherFeaturesFilter.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/component/tables/usersFilter.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/container/explore/filtersDrawer.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pages/explore/index.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/reducers/searchInput.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/component/buttons/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/component/buttons/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/component/inputs/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/component/inputs/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/component/navbar/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/component/navbar/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/container/dashboard/categoriesTab.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/container/dashboard/categoriesTab.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/container/home/homeArticlesList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/container/home/homeArticlesList.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/apis/article.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/utils/apis/article.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/apis/user.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/utils/apis/user.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/app.store.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/utils/app.store.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/component/navbar/navbar.notificationDropDown.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/component/navbar/navbar.notificationDropDown.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/component/navbar/navbar.notificationTable.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/component/navbar/navbar.notificationTable.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/component/wrappers/iframe.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/component/wrappers/iframe.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/providers/fetchReduxInitState.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/providers/fetchReduxInitState.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/utils/helpers.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/utils/helpers.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/types.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/utils/types.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,6 +33,14 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
@@ -54,25 +50,18 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;Git.Branch.Popup.ShowAllRemotes&quot;: &quot;true&quot;,
-    &quot;Project.color&quot;: &quot;2d1438&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/rajabinekoo/Workspace/ArticlesLand/articlesland-client&quot;,
-    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settingsdialog.IDE.editor.colors.TypeScript&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;/home/rajabinekoo/Workspace/ArticlesLand/articlesland-client/node_modules/typescript/lib&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
-  }
-}</component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../articlesland-server" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="nodejs_package_manager_path" value="yarn" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
+    <property name="ts.external.directory.path" value="$PROJECT_DIR$/node_modules/typescript/lib" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/public/scripts" />
@@ -175,6 +164,10 @@
       <workItem from="1664695418259" duration="13225000" />
       <workItem from="1664721610992" duration="7830000" />
       <workItem from="1664735322654" duration="734000" />
+      <workItem from="1664968247162" duration="300000" />
+      <workItem from="1664974231520" duration="18000" />
+      <workItem from="1664980491959" duration="198000" />
+      <workItem from="1664980695238" duration="7088000" />
     </task>
     <task id="LOCAL-00001" summary="AL-14 &lt;Start project and fix basic configs&gt;">
       <created>1660924360896</created>

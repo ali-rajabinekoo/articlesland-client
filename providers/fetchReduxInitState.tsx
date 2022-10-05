@@ -68,6 +68,7 @@ export default function FetchReduxInitStates({children}: useFetchReduxInitStates
         if (!!mainUserInfo) {
             fetchUserInfo(getApis()).then((values: UserDto | null) => {
                 if (!values) return null
+                console.log(values)
                 dispatch(setUserInfo({...values}))
                 setUserLoaded(true)
             }).catch((e) => {

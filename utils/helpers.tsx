@@ -66,12 +66,12 @@ export function isJson(str: string) {
     return true;
 }
 
-export type notificationValidTypes = 'liked' | 'comment' | 'followed'
+export type notificationValidTypes = 'like' | 'comment' | 'follow'
 
 const notificationMessages = {
-    'liked': (name: string) => `${name} پست شما را لایک کرد`,
+    'like': (name: string) => `${name} پست شما را لایک کرد:`,
     'comment': (name: string) => `${name} برای شما کامنت گذاشت:`,
-    'followed': (name: string) => `${name} پست شما را دنبال کرد`,
+    'follow': (name: string) => `${name} شما را دنبال کرد`,
 }
 
 export const convertNotificationTypeToMessage = (type: notificationValidTypes, name: string) => {

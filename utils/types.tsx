@@ -25,6 +25,7 @@ export class UserDto {
     selectedCategories?: CategoryDto[] | undefined | null;
     followers?: UserDto[] | undefined | null;
     followings?: UserDto[] | undefined | null;
+    notifications?: NotificationDto[] | undefined | null;
 }
 
 export class CategoryDto {
@@ -64,9 +65,11 @@ export class ViewedArticleResponseDto extends ArticleDto{
 }
 
 export class NotificationDto {
-    user: UserDto | undefined | null;
-    type: 'liked' | 'comment' | 'followed' | string | undefined | null;
-    message?: string | undefined | null;
+    creator: UserDto | undefined | null;
+    owner: UserDto | undefined | null;
+    article?: ArticleDto | undefined | null;
+    type: 'like' | 'comment' | 'follow' | undefined | null;
+    content?: string | undefined | null;
     created_at: string | undefined | null;
 }
 
