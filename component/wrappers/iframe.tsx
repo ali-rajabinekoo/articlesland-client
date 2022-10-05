@@ -6,10 +6,9 @@ class IFrameProps {
 }
 
 const IFrame = ({srcDoc}: IFrameProps) => {
-
     return (
-        <Box my={'lg'} px={'sm'} sx={{boxSizing: 'content-box'}}>
-            <div style={{boxSizing: 'content-box'}} dangerouslySetInnerHTML={{__html: `${srcDoc}`}}></div>
+        <Box my={'lg'} px={'sm'} sx={{boxSizing: 'content-box', maxWidth: '100%'}}>
+            <div style={{boxSizing: 'content-box'}} dangerouslySetInnerHTML={{__html: `${srcDoc}`}}/>
         </Box>
     )
 }

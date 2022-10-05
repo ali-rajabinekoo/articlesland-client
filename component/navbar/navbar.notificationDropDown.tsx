@@ -1,8 +1,9 @@
 import {Menu} from "@mantine/core";
-import moment from "moment-jalaali";
 import React from "react";
 import NavbarNotificationTable from "./navbar.notificationTable";
 import {NotificationDto} from "../../utils/types";
+import {useAppSelector} from "../../hooks/redux";
+import {RootState} from "../../utils/app.store";
 
 interface NavbarNotificationDropDownProps {
     isMenu?: true | false
@@ -19,33 +20,13 @@ const NavbarNotificationDropDownHOC = ({isMenu = false, children}: NavbarNotific
 }
 
 export const NavbarNotificationDropDown = ({isMenu = false}: NavbarNotificationDropDownProps) => {
+    const notifications: NotificationDto[] = useAppSelector(
+        (state: RootState) => state?.userInfo?.data?.notifications || []
+    )
+
     return (
         <NavbarNotificationDropDownHOC isMenu={isMenu}>
-            <NavbarNotificationTable data={[
-                {
-                    user: {
-                        avatar: '/statics/assets/avatars/e15e10bb17b9bab39faa9fc941e01180',
-                        displayName: 'علی'
-                    },
-                    created_at: moment((new Date()).toISOString()).fromNow(),
-                    type: "liked"
-                }, {
-                    user: {
-                        avatar: '/statics/assets/avatars/e15e10bb17b9bab39faa9fc941e01180',
-                        displayName: 'علی'
-                    },
-                    created_at: moment((new Date()).toISOString()).fromNow(),
-                    type: 'comment',
-                    message: "ممنون از پست خوبتون"
-                }, {
-                    user: {
-                        avatar: '/statics/assets/avatars/e15e10bb17b9bab39faa9fc941e01180',
-                        displayName: 'علی'
-                    },
-                    created_at: moment((new Date()).toISOString()).fromNow(),
-                    type: 'followed',
-                },
-            ] as NotificationDto[]}/>
+            <NavbarNotificationTable data={notifications}/>
         </NavbarNotificationDropDownHOC>
     )
 }
