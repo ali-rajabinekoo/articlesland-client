@@ -4,7 +4,6 @@ import React, {useEffect, useState} from "react";
 import {useCategoriesList} from "./tabs.style";
 import {
     APIS,
-    FollowBody,
     FollowedUserDto,
     LinkedItemDto,
     UserDto,
@@ -48,10 +47,8 @@ export default function ProfileTab({user}: ProfileProps) {
     const handleUnfollowing = async (id: number) => {
         const apis: APIS = getApis()
         try {
-            const body: FollowBody = new FollowBody()
-            body.newFollowingUserId = id
             const response: AxiosResponse | undefined =
-                await apis.user.unfollow(body);
+                await apis.user.unfollow(Number(id));
             if (!response) return showNotification({
                 message: appMessages.somethingWentWrong,
                 title: 'خطا',

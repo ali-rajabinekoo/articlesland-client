@@ -74,7 +74,7 @@ const ShowPost: NextPage = ({articles}: ShowPostProps): JSX.Element => {
     const follow = async () => {
         try {
             if (!!article?.owner?.id) {
-                mainFollowFunction(article?.owner?.id, isFollowed)
+                await mainFollowFunction(article?.owner?.id, isFollowed)
                 setIsFollowed(!isFollowed)
             }
         } catch (e) {
@@ -83,31 +83,39 @@ const ShowPost: NextPage = ({articles}: ShowPostProps): JSX.Element => {
     }
 
     const handleOnBookmark = async () => {
-        let newBookmarks;
-        if (isBookmarked && !!article?.id) {
-            newBookmarks = await bookmark(article?.id, true)
-            setIsBookmarked(false)
-        } else {
-            newBookmarks = await bookmark(article?.id, false)
-            setIsBookmarked(true)
+        try {
+            let newBookmarks;
+            if (isBookmarked && !!article?.id) {
+                newBookmarks = await bookmark(article?.id, true)
+                setIsBookmarked(false)
+            } else {
+                newBookmarks = await bookmark(article?.id, false)
+                setIsBookmarked(true)
+            }
+            const newUserInfo = {...userInfo}
+            newUserInfo.bookmarks = [...newBookmarks]
+            setNewUser(newUserInfo)
+        } catch (e) {
+            errorHandler(e)
         }
-        const newUserInfo = {...userInfo}
-        newUserInfo.bookmarks = [...newBookmarks]
-        setNewUser(newUserInfo)
     }
 
     const handleOnLike = async () => {
-        let newLikes;
-        if (isLiked && !!article?.id) {
-            newLikes = await like(article?.id, true)
-            setIsLiked(false)
-        } else {
-            newLikes = await like(article?.id, false)
-            setIsLiked(true)
+        try {
+            let newLikes;
+            if (isLiked && !!article?.id) {
+                newLikes = await like(article?.id, true)
+                setIsLiked(false)
+            } else {
+                newLikes = await like(article?.id, false)
+                setIsLiked(true)
+            }
+            const newUserInfo = {...userInfo}
+            newUserInfo.likes = [...newLikes]
+            setNewUser(newUserInfo)
+        } catch (e) {
+            errorHandler(e)
         }
-        const newUserInfo = {...userInfo}
-        newUserInfo.likes = [...newLikes]
-        setNewUser(newUserInfo)
     }
 
     useEffect(() => {

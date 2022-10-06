@@ -25,6 +25,7 @@ export class UserDto {
     selectedCategories?: CategoryDto[] | undefined | null;
     followers?: UserDto[] | undefined | null;
     followings?: UserDto[] | undefined | null;
+    blockedUsers?: UserDto[] | undefined | null;
     notifications?: NotificationDto[] | undefined | null;
 }
 
@@ -134,6 +135,10 @@ export class UseBookmark {
 
 export class UseFollow {
     follow!: Function;
+}
+
+export class UseBlockingUser {
+    block!: Function;
 }
 
 export class UseLike {
@@ -255,10 +260,6 @@ export class PureVerificationBody {
 export class UserAndTokenResponse {
     user: object | undefined;
     token: string | undefined;
-}
-
-export class FollowBody {
-    newFollowingUserId!: number;
 }
 
 export type refreshTokenHandler = (data: UserAndTokenResponse) => void;

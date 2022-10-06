@@ -1,13 +1,14 @@
 import React, {useEffect, useState} from "react";
 import {Group, Modal, Stack} from "@mantine/core";
 import {IconForbid, IconPlus} from "@tabler/icons";
-import {PrimaryOutlineBtn, SecondaryBtn, SecondaryOutlineBtn} from "../../component/buttons";
+import {PrimaryBtn, PrimaryOutlineBtn, SecondaryBtn, SecondaryOutlineBtn} from "../../component/buttons";
 import {FollowedUserDto, UserDto} from "../../utils/types";
 import {UserInfoWrapper} from "../../component/wrappers/userInfo";
 import {changeUrlToServerRequest, errorHandler} from "../../utils/helpers";
 import useUserInfo from "../../hooks/useUserInfo";
 import useFollow from "../../hooks/useFollow";
 import FollowedUser from "../../component/tables/followedUsers";
+import useBlockingUser from "../../hooks/useBlockingUser";
 
 interface UserPageTabsProps {
     user: UserDto
@@ -16,7 +17,9 @@ interface UserPageTabsProps {
 export default function UserPageTabs({user}: UserPageTabsProps) {
     const {userInfo} = useUserInfo()
     const [followed, setFollowed] = useState<boolean>(false)
+    const [blocked, setBlocked] = useState<boolean>(false)
     const {follow: mainFollowFunction} = useFollow()
+    const {block: mainBlockingFunction} = useBlockingUser()
     const [followers, setFollowers] = useState<FollowedUserDto[]>([])
     const [followings, setFollowings] = useState<FollowedUserDto[]>([])
     const [openedModalFollowings, setOpenedModalFollowings] = useState<boolean>(false);
@@ -31,17 +34,28 @@ export default function UserPageTabs({user}: UserPageTabsProps) {
     }
     const follow = async (unfollow: boolean | undefined = false) => {
         try {
-            mainFollowFunction(user.id, unfollow)
+            await mainFollowFunction(user.id, unfollow)
             setFollowed(!unfollow)
+        } catch (e) {
+            errorHandler(e)
+        }
+    }
+    const block = async (unblock: boolean | undefined = false) => {
+        try {
+            await mainBlockingFunction(user.id, unblock)
+            setBlocked(!unblock)
         } catch (e) {
             errorHandler(e)
         }
     }
     useEffect(() => {
         if (!!userInfo && !!user) {
-            const me: UserDto | undefined = userInfo.followings?.find((el) => el.id === user.id)
-            if (!!me) setFollowed(true)
+            const targetFollower: UserDto | undefined = userInfo.followings?.find((el) => el.id === user.id)
+            if (!!targetFollower) setFollowed(true)
             else setFollowed(false)
+            const targetBlockedUser: UserDto | undefined = userInfo.blockedUsers?.find((el) => el.id === user.id)
+            if (!!targetBlockedUser) setBlocked(true)
+            else setBlocked(false)
         }
         if (!!user) {
             setFollowings((user.followings || []).map((el) => {
@@ -73,7 +87,21 @@ export default function UserPageTabs({user}: UserPageTabsProps) {
                         onClickFollowings={onClickFollowings}
                     />
                     {!!userInfo && <Group position={'center'} spacing={'sm'} mt={"sm"}>
-                        <PrimaryOutlineBtn leftIcon={<IconForbid/>} text={'بلاک کاربر'} capsule={"true"}/>
+                        {
+                            !blocked ?
+                                <PrimaryOutlineBtn
+                                    onClick={block.bind({}, false) as any}
+                                    leftIcon={<IconForbid/>}
+                                    text={'مسدود کردن'}
+                                    capsule={"true"}
+                                /> :
+                                <PrimaryBtn
+                                    onClick={block.bind({}, true) as any}
+                                    leftIcon={<IconForbid/>}
+                                    text={'مسدود'}
+                                    capsule={"true"}
+                                />
+                        }
                         {
                             !followed ?
                                 <SecondaryBtn

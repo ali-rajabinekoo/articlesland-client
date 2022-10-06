@@ -1,7 +1,6 @@
 import {Request} from "../axios";
 import {AxiosResponse} from "axios";
 import {
-    FollowBody,
     ProfileInfoFormValues,
     PureVerificationBody,
     refreshTokenHandler,
@@ -92,16 +91,30 @@ export class User {
         return responseHandler(result, this.onRefreshToken)
     }
 
-    async follow(body: FollowBody): Promise<AxiosResponse | undefined> {
+    async follow(userId: number): Promise<AxiosResponse | undefined> {
         const result = await this.request.sendRequest({
-            method: 'POST', url: `/user/follow`, data: body,
+            method: 'POST', url: `/user/follow/${userId}`,
         }, this.accessToken as string)
         return responseHandler(result, this.onRefreshToken)
     }
 
-    async unfollow(body: FollowBody): Promise<AxiosResponse | undefined> {
+    async unfollow(userId: number): Promise<AxiosResponse | undefined> {
         const result = await this.request.sendRequest({
-            method: 'POST', url: `/user/unfollow`, data: body,
+            method: 'POST', url: `/user/unfollow/${userId}`,
+        }, this.accessToken as string)
+        return responseHandler(result, this.onRefreshToken)
+    }
+
+    async block(userId: number): Promise<AxiosResponse | undefined> {
+        const result = await this.request.sendRequest({
+            method: 'POST', url: `/user/block/${userId}`,
+        }, this.accessToken as string)
+        return responseHandler(result, this.onRefreshToken)
+    }
+
+    async unblock(userId: number): Promise<AxiosResponse | undefined> {
+        const result = await this.request.sendRequest({
+            method: 'POST', url: `/user/unblock/${userId}`,
         }, this.accessToken as string)
         return responseHandler(result, this.onRefreshToken)
     }

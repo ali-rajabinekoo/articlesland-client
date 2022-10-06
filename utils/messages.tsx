@@ -38,6 +38,8 @@ export const validationMessages = {
 export const appMessages = {
     followed: 'کاربر به لیست دنبال شوندگان اضافه شد',
     unfollowed: 'کاربر از لیست دنبال شوندگان حذف شد',
+    blocked: 'کاربر به لیست مسدود شدگان اضافه شد',
+    unblocked: 'کاربر از لیست مسدود شدگان حذف شد',
     unauthorized: 'نشست از بین رفته است لطفا مجدد لاگین کنید',
     somethingWentWrong: 'خطایی در سامانه رخ داده است',
     codeSent: 'کد تایید برای شماره موبایل مورد نظر ارسال گردید',

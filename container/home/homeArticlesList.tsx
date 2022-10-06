@@ -36,47 +36,55 @@ const HomeArticlesList = (props: HomeArticlesListProps) => {
     }
 
     const handleOnBookmark = async (articleId: number, isBookmarked: boolean) => {
-        if (!userInfo) return undefined;
-        let newBookmarks: ArticleDto[];
-        if (isBookmarked) {
-            newBookmarks = await bookmark(articleId, true)
-        } else {
-            newBookmarks = await bookmark(articleId, false)
+        try {
+            if (!userInfo) return undefined;
+            let newBookmarks: ArticleDto[];
+            if (isBookmarked) {
+                newBookmarks = await bookmark(articleId, true)
+            } else {
+                newBookmarks = await bookmark(articleId, false)
+            }
+            const newUserInfo = {...userInfo}
+            newUserInfo.bookmarks = [...newBookmarks]
+            setNewUser(newUserInfo)
+            let fetchedBookmarks: LikesAndBookmarksObject = {};
+            for (const bookmark of newBookmarks) {
+                fetchedBookmarks[String(bookmark.id)] = true
+            }
+            formatArticles(
+                undefined,
+                undefined,
+                Object.keys(fetchedBookmarks).length !== 0 ? fetchedBookmarks : undefined,
+            );
+        } catch (e) {
+            errorHandler(e)
         }
-        const newUserInfo = {...userInfo}
-        newUserInfo.bookmarks = [...newBookmarks]
-        setNewUser(newUserInfo)
-        let fetchedBookmarks: LikesAndBookmarksObject = {};
-        for (const bookmark of newBookmarks) {
-            fetchedBookmarks[String(bookmark.id)] = true
-        }
-        formatArticles(
-            undefined,
-            undefined,
-            Object.keys(fetchedBookmarks).length !== 0 ? fetchedBookmarks : undefined,
-        );
     }
 
     const handleOnLike = async (articleId: number, isLiked: boolean) => {
-        if (!userInfo) return undefined;
-        let newLikes: ArticleDto[];
-        if (isLiked) {
-            newLikes = await like(articleId, true)
-        } else {
-            newLikes = await like(articleId, false)
+        try {
+            if (!userInfo) return undefined;
+            let newLikes: ArticleDto[];
+            if (isLiked) {
+                newLikes = await like(articleId, true)
+            } else {
+                newLikes = await like(articleId, false)
+            }
+            const newUserInfo = {...userInfo}
+            newUserInfo.likes = [...newLikes]
+            setNewUser(newUserInfo)
+            let fetchedLikes: LikesAndBookmarksObject = {};
+            for (const like of newLikes) {
+                fetchedLikes[String(like.id)] = true
+            }
+            formatArticles(
+                undefined,
+                Object.keys(fetchedLikes).length !== 0 ? fetchedLikes : undefined,
+                undefined,
+            );
+        } catch (e) {
+            errorHandler(e)
         }
-        const newUserInfo = {...userInfo}
-        newUserInfo.likes = [...newLikes]
-        setNewUser(newUserInfo)
-        let fetchedLikes: LikesAndBookmarksObject = {};
-        for (const like of newLikes) {
-            fetchedLikes[String(like.id)] = true
-        }
-        formatArticles(
-            undefined,
-            Object.keys(fetchedLikes).length !== 0 ? fetchedLikes : undefined,
-            undefined,
-        );
     }
 
     const formatArticles = (

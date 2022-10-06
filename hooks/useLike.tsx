@@ -3,7 +3,6 @@ import {AxiosResponse} from "axios";
 import {showNotification} from "@mantine/notifications";
 import {appMessages} from "../utils/messages";
 import {IconAlertCircle, IconCheck} from "@tabler/icons";
-import {errorHandler} from "../utils/helpers";
 import React from "react";
 import useRequest from "./useRequest";
 
@@ -34,8 +33,7 @@ const useLike = (): UseLike => {
             })
             return [...articles]
         } catch (e) {
-            errorHandler(e)
-            return null
+            throw (e)
         }
     }
 
