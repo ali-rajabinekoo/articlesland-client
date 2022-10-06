@@ -1,44 +1,48 @@
-import React from "react";
 import useRequest from "./useRequest";
 import useUserInfo from "./useUserInfo";
-import {APIS, UseFollow, UserDto} from "../utils/types";
+import {APIS, UseBlockingUser, UserDto} from "../utils/types";
 import {AxiosResponse} from "axios";
 import {showNotification} from "@mantine/notifications";
 import {appMessages} from "../utils/messages";
 import {IconAlertCircle, IconCheck} from "@tabler/icons";
+import {errorHandler} from "../utils/helpers";
+import React from "react";
 
-const useFollow = (): UseFollow => {
+const useBlockingUser = (): UseBlockingUser => {
     const {getApis} = useRequest()
     const {setNewUser} = useUserInfo()
 
-    const follow = async (userId: number, unfollow: boolean | undefined = false) => {
+    const block = async (userId: number, unblock: boolean | undefined = false): Promise<boolean> => {
         const apis: APIS = getApis()
         try {
-            const response: AxiosResponse | undefined = unfollow ?
-                await apis.user.unfollow(userId) :
-                await apis.user.follow(userId);
+            const response: AxiosResponse | undefined = unblock ?
+                await apis.user.unblock(userId) :
+                await apis.user.block(userId);
             if (!response) {
-                return showNotification({
+                showNotification({
                     message: appMessages.somethingWentWrong,
                     title: 'خطا',
                     autoClose: 3000,
                     color: 'red',
                     icon: <IconAlertCircle size={20}/>
                 })
+                return false
             }
             setNewUser(response.data as UserDto)
             showNotification({
-                message: unfollow ? appMessages.unfollowed : appMessages.followed,
+                message: unblock ? appMessages.unblocked : appMessages.blocked,
                 autoClose: 2000,
                 color: 'green',
                 icon: <IconCheck size={20}/>
             })
+            return true
         } catch (e) {
-            throw (e)
+            errorHandler(e)
+            return false
         }
     }
 
-    return {follow}
+    return {block}
 }
 
-export default useFollow
+export default useBlockingUser

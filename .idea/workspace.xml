@@ -1,14 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e06adea9-5fca-4f6c-9da5-80729234fd31" name="Changes" comment="AL-57 &lt;Explore page with searching and free category filtering logic&gt;">
+    <list default="true" id="e06adea9-5fca-4f6c-9da5-80729234fd31" name="Changes" comment="AL-58 &lt;Notifications implemented&gt;">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/component/navbar/navbar.notificationDropDown.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/component/navbar/navbar.notificationDropDown.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/component/navbar/navbar.notificationTable.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/component/navbar/navbar.notificationTable.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/component/wrappers/iframe.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/component/wrappers/iframe.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/providers/fetchReduxInitState.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/providers/fetchReduxInitState.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/helpers.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/utils/helpers.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/types.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/utils/types.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -167,7 +161,7 @@
       <workItem from="1664968247162" duration="300000" />
       <workItem from="1664974231520" duration="18000" />
       <workItem from="1664980491959" duration="198000" />
-      <workItem from="1664980695238" duration="7088000" />
+      <workItem from="1664980695238" duration="7445000" />
     </task>
     <task id="LOCAL-00001" summary="AL-14 &lt;Start project and fix basic configs&gt;">
       <created>1660924360896</created>
@@ -365,7 +359,14 @@
       <option name="project" value="LOCAL" />
       <updated>1664540861431</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="AL-58 &lt;Notifications implemented&gt;">
+      <created>1664999833742</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1664999833742</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -386,7 +387,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="AL-31 &lt;CKEditor Configured&gt;" />
     <MESSAGE value="AL-31 &lt;CKEditor directions fixed&gt;" />
     <MESSAGE value="AL-31 &lt;Fix save and create new article logic&gt;" />
     <MESSAGE value="AL-31 &lt;Article creation implemented with publishing and preview post logic&gt;" />
@@ -411,6 +411,7 @@
     <MESSAGE value="AL-61 &lt;Fix userInfo logic with redux, fix categories list with swr&gt;" />
     <MESSAGE value="AL-56 &lt;Home page with selected category filtering logic&gt;" />
     <MESSAGE value="AL-57 &lt;Explore page with searching and free category filtering logic&gt;" />
-    <option name="LAST_COMMIT_MESSAGE" value="AL-57 &lt;Explore page with searching and free category filtering logic&gt;" />
+    <MESSAGE value="AL-58 &lt;Notifications implemented&gt;" />
+    <option name="LAST_COMMIT_MESSAGE" value="AL-58 &lt;Notifications implemented&gt;" />
   </component>
 </project>

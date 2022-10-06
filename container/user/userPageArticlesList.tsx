@@ -1,5 +1,5 @@
 import {ArticleCard} from "../../component/cards/articleCard";
-import {changeUrlToServerRequest} from "../../utils/helpers";
+import {changeUrlToServerRequest, errorHandler} from "../../utils/helpers";
 import {Container, Grid} from "@mantine/core";
 import {ArticleDto, UseBookmark, UseLike, UserDto} from "../../utils/types";
 import React, {useEffect, useState} from "react";
@@ -21,31 +21,39 @@ export default function UserPageArticlesList({list = []}: UserPageArticlesListPr
     const {like}: UseLike = useLike()
 
     const handleOnBookmark = async (id: number, bookmarked: boolean) => {
-        let newBookmarks;
-        if (bookmarked) {
-            newBookmarks = await bookmark(id, true)
-            setData(data.map(el => el.id === id ? {...el, bookmarked: false} : el))
-        } else {
-            newBookmarks = await bookmark(id, false)
-            setData(data.map(el => el.id === id ? {...el, bookmarked: true} : el))
+        try {
+            let newBookmarks;
+            if (bookmarked) {
+                newBookmarks = await bookmark(id, true)
+                setData(data.map(el => el.id === id ? {...el, bookmarked: false} : el))
+            } else {
+                newBookmarks = await bookmark(id, false)
+                setData(data.map(el => el.id === id ? {...el, bookmarked: true} : el))
+            }
+            const newUserInfo = {...userInfo}
+            newUserInfo.bookmarks = [...newBookmarks]
+            setNewUser(newUserInfo)
+        } catch (e) {
+            errorHandler(e)
         }
-        const newUserInfo = {...userInfo}
-        newUserInfo.bookmarks = [...newBookmarks]
-        setNewUser(newUserInfo)
     }
 
     const handleOnLike = async (id: number, liked: boolean) => {
-        let newLikes;
-        if (liked) {
-            newLikes = await like(id, true)
-            setData(data.map(el => el.id === id ? {...el, liked: false} : el))
-        } else {
-            newLikes = await like(id, false)
-            setData(data.map(el => el.id === id ? {...el, liked: true} : el))
+        try {
+            let newLikes;
+            if (liked) {
+                newLikes = await like(id, true)
+                setData(data.map(el => el.id === id ? {...el, liked: false} : el))
+            } else {
+                newLikes = await like(id, false)
+                setData(data.map(el => el.id === id ? {...el, liked: true} : el))
+            }
+            const newUserInfo = {...userInfo}
+            newUserInfo.likes = [...newLikes]
+            setNewUser(newUserInfo)
+        } catch (e) {
+            errorHandler(e)
         }
-        const newUserInfo = {...userInfo}
-        newUserInfo.likes = [...newLikes]
-        setNewUser(newUserInfo)
     }
 
     useEffect(() => {
