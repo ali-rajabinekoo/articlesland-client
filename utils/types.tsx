@@ -5,6 +5,7 @@ import {PublicUserApi, User} from "./apis/user";
 import {Draft} from "./apis/draft";
 import {AxiosError, AxiosResponse} from "axios";
 import {Comment} from "./apis/comment";
+import {Report} from "./apis/report";
 
 // DTOs
 
@@ -214,6 +215,8 @@ export class ProfileInfoFormValues {
     repeatPassword?: string | undefined;
 }
 
+export type ReportTypes = 'spam' | 'immoral' | 'abusive' | 'illegal' | 'aggressive' | 'other'
+
 // apis
 
 export class RefreshTokenResponse {
@@ -228,6 +231,7 @@ export class APIS {
     article!: Article;
     draft!: Draft;
     user!: User;
+    report!: Report;
 }
 
 export class PublicAPIS {
@@ -285,6 +289,13 @@ export class SetSelectedCategories {
 export class NewCommentBody {
     body!: string;
     parentId?: number | undefined;
+}
+
+export class NewReportBody {
+    type!: ReportTypes;
+    content?: string;
+    articleId?: number;
+    commentId?: number;
 }
 
 // styles
