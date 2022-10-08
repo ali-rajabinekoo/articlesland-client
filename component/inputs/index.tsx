@@ -8,9 +8,10 @@ import {
     SelectProps,
     useMantineTheme,
     Textarea,
-    TextareaProps, UnstyledButton,
+    TextareaProps,
+    UnstyledButton,
 } from "@mantine/core";
-import React, {ReactNode, RefObject, useEffect, useState} from "react";
+import React, {MouseEventHandler, ReactNode, RefObject, useEffect, useState} from "react";
 import {Sx} from "@mantine/styles/lib/theme/types/DefaultProps";
 import {
     useFloatingLabelInputStyle,
@@ -23,8 +24,9 @@ import {useMutex} from "react-context-mutex";
 import useArticleLandEditorDirection from "../../hooks/editorDirection";
 import {GetArticleResponseDto} from "../../utils/types";
 import {v4 as uuidV4} from 'uuid';
-import {IconSearch} from "@tabler/icons";
+import {IconCheck, IconSearch} from "@tabler/icons";
 import {useRouter} from "next/router";
+import styled from "@emotion/styled";
 
 const renderLabel = (props: TextInputProps | PasswordInputProps | TextAreaInputProps): ReactNode => {
     let sx: Sx = {}
@@ -200,7 +202,7 @@ export const ArticlesLandEditor = ({className, data}: ArticlesLandEditorProps): 
 
     return (
         <div dir={"ltr"} className={`articles-land-editor-container ${direction} ${className ? className : ''}`}>
-            <div className={`articles-land-editor`}></div>
+            <div className={`articles-land-editor`}/>
         </div>
     );
 }
@@ -262,7 +264,7 @@ export function SearchInput(props: TextInputProps) {
     const theme = useMantineTheme();
     const [value, setValue] = useState<string>(props.defaultValue as string | undefined || '')
     const {push, pathname} = useRouter()
-    
+
     useEffect(() => {
         setValue(props.defaultValue as string)
     }, [props.defaultValue])
@@ -322,5 +324,57 @@ export function TextAreaInput(props: TextAreaInputProps) {
                 {...props}
             />
         </>
+    )
+}
+
+const MainCheckBox = styled.div`
+  border: 1px solid #7B7B7B;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 4px;
+`;
+
+const MainCheckBoxChecked = styled.div`
+  border: 1px solid #0021FF;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 4px;
+  background-color: #0021FF;
+`;
+
+class CheckBoxProps {
+    checked?: boolean;
+    onChange?: Function | undefined;
+    name?: string;
+}
+
+export function CheckBox({checked: defaultChecked = false, onChange = () => null, name}: CheckBoxProps) {
+    const [checked, setChecked] = useState<boolean>()
+
+    const handleOnChange: MouseEventHandler = () => {
+        setChecked(!checked)
+        onChange(!checked, name)
+    }
+
+    useEffect(() => {
+        setChecked(defaultChecked)
+    }, [defaultChecked])
+
+    return (
+        <UnstyledButton onClick={handleOnChange}>
+            {
+                checked ?
+                    <MainCheckBoxChecked>
+                        <IconCheck color={"white"}/>
+                    </MainCheckBoxChecked> :
+                    <MainCheckBox/>
+            }
+        </UnstyledButton>
     )
 }

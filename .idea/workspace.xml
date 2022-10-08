@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e06adea9-5fca-4f6c-9da5-80729234fd31" name="Changes" comment="AL-58 &lt;Notifications implemented&gt;">
+    <list default="true" id="e06adea9-5fca-4f6c-9da5-80729234fd31" name="Changes" comment="AL-59 &lt;Blocking user logic&gt;">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -22,7 +22,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="AL-56-home-page-with-selected-category-filtering-logic" />
+        <entry key="$PROJECT_DIR$" value="AL-59-blocking-user-logic" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -48,7 +48,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../articlesland-server" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="yarn" />
@@ -162,6 +162,8 @@
       <workItem from="1664974231520" duration="18000" />
       <workItem from="1664980491959" duration="198000" />
       <workItem from="1664980695238" duration="7445000" />
+      <workItem from="1665036843586" duration="10000000" />
+      <workItem from="1665242830558" duration="156000" />
     </task>
     <task id="LOCAL-00001" summary="AL-14 &lt;Start project and fix basic configs&gt;">
       <created>1660924360896</created>
@@ -366,7 +368,14 @@
       <option name="project" value="LOCAL" />
       <updated>1664999833742</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="AL-59 &lt;Blocking user logic&gt;">
+      <created>1665054317452</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1665054317452</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -387,7 +396,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="AL-31 &lt;CKEditor directions fixed&gt;" />
     <MESSAGE value="AL-31 &lt;Fix save and create new article logic&gt;" />
     <MESSAGE value="AL-31 &lt;Article creation implemented with publishing and preview post logic&gt;" />
     <MESSAGE value="AL-29 &lt;Read and List Article&gt;" />
@@ -412,6 +420,7 @@
     <MESSAGE value="AL-56 &lt;Home page with selected category filtering logic&gt;" />
     <MESSAGE value="AL-57 &lt;Explore page with searching and free category filtering logic&gt;" />
     <MESSAGE value="AL-58 &lt;Notifications implemented&gt;" />
-    <option name="LAST_COMMIT_MESSAGE" value="AL-58 &lt;Notifications implemented&gt;" />
+    <MESSAGE value="AL-59 &lt;Blocking user logic&gt;" />
+    <option name="LAST_COMMIT_MESSAGE" value="AL-59 &lt;Blocking user logic&gt;" />
   </component>
 </project>

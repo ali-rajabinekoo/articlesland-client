@@ -5,8 +5,15 @@ import {Comment} from "../utils/apis/comment";
 import {Article} from "../utils/apis/article";
 import {Category} from "../utils/apis/category";
 import {Authentication} from "../utils/apis/authentication";
+import {Report} from "../utils/apis/report";
 import useUserInfo from "./useUserInfo";
-import {APIS, PublicAPIS, UserAndTokenResponse, UseRequestResult, UseUserInfoResult} from "../utils/types";
+import {
+    APIS, 
+    PublicAPIS, 
+    UserAndTokenResponse, 
+    UseRequestResult, 
+    UseUserInfoResult
+} from "../utils/types";
 
 export default function useRequest(requiredToken?: boolean | undefined): UseRequestResult {
     const {getAccessToken, setNewAccessToken, setNewUser}: UseUserInfoResult = useUserInfo()
@@ -22,8 +29,9 @@ export default function useRequest(requiredToken?: boolean | undefined): UseRequ
             category: new Category(getAccessToken() as string, handleOnRefreshToken, requiredToken),
             comment: new Comment(getAccessToken() as string, handleOnRefreshToken, requiredToken),
             article: new Article(getAccessToken() as string, handleOnRefreshToken, requiredToken),
+            report: new Report(getAccessToken() as string, handleOnRefreshToken, requiredToken),
             draft: new Draft(getAccessToken() as string, handleOnRefreshToken, requiredToken),
-            user: new User(getAccessToken() as string, handleOnRefreshToken, requiredToken),
+            user: new User(getAccessToken() as string, handleOnRefreshToken, requiredToken)
         }
     }
 

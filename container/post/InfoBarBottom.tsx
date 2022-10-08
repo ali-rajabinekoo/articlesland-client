@@ -1,8 +1,9 @@
-import React, {MouseEventHandler} from "react";
+import React, {MouseEventHandler, useState} from "react";
 import {ActionIcon, Box, Chip, Container, Group, Menu, Text} from "@mantine/core";
 import {IconBookmark, IconDotsVertical, IconHeart, IconMessageReport, IconShare} from "@tabler/icons";
 import {ArticleDto} from "../../utils/types";
 import {useInfoBarBottomStyle} from "./InfoBarBottom.styles";
+import ReportBadContentModal from "../../component/wrappers/reportBadContentModal";
 
 class InfoBarBottomProps {
     article?: ArticleDto | undefined;
@@ -22,6 +23,7 @@ const InfoBarBottom = ({
     disableUserPanel
 }: InfoBarBottomProps) => {
     const {classes, theme} = useInfoBarBottomStyle()
+    const [opened, setOpened] = useState(false);
 
     return (
         <Container size={'md'} my={'md'} px={0}>
@@ -74,13 +76,21 @@ const InfoBarBottom = ({
                         </Menu.Target>
 
                         <Menu.Dropdown>
-                            <Menu.Item icon={<IconMessageReport color={theme.colors.grey[4]} size={18}/>}>
+                            <Menu.Item 
+                                icon={<IconMessageReport color={theme.colors.grey[4]} size={18}/>}
+                                onClick={() => setOpened(true)}
+                            >
                                 <Text size={'xs'} color={'grey.4'}>گزارش تخلف</Text>
                             </Menu.Item>
                         </Menu.Dropdown>
                     </Menu>
                 </Group>
             </Group>
+            <ReportBadContentModal 
+                articleId={article?.id}
+                setOpened={setOpened}
+                opened={opened}
+            />
         </Container>
     )
 }
