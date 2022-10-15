@@ -17,6 +17,7 @@ export class UserDto {
     refreshToken: string | undefined | null;
     email?: string | undefined | null;
     avatar?: string | undefined | null;
+    role: 'admin' | 'user' | undefined | null;
     bio?: string | undefined | null;
     created_at: string | undefined | null;
     updated_at: string | undefined | null;

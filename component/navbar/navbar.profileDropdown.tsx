@@ -6,18 +6,41 @@ import {
     IconUser,
     IconPencil,
     IconChartLine,
-    IconBookmarks, IconList
+    IconBookmarks, IconList, IconUsers
 } from "@tabler/icons";
 import React from "react";
 import Link from "next/link";
 import useUserInfo from "../../hooks/useUserInfo";
 import {UseUserInfoResult} from "../../utils/types";
 
-export const NavbarProfileDropdown = () => {
+const AdminNavbarProfileDropdown = () => {
+    const theme = useMantineTheme();
+    return (
+        <>
+            <Menu.Label>
+                <Text color={'grey.4'} size={'xs'}>مدیریت سامانه</Text>
+            </Menu.Label>
+            <Link href={'/admin/users'}>
+                <Menu.Item icon={<IconUsers color={theme.colors.grey[4]} size={20} stroke={1.5}/>}>
+                    <Text color={'grey.4'}>مدیریت کاربران</Text>
+                </Menu.Item>
+            </Link>
+        </>
+    )
+}
+
+class NavbarProfileDropdownProps {
+    isAdmin?: boolean;
+}
+
+export const NavbarProfileDropdown = ({isAdmin}: NavbarProfileDropdownProps) => {
     const {logout}: UseUserInfoResult = useUserInfo()
     const theme = useMantineTheme();
     return (
         <Menu.Dropdown dir={'rtl'}>
+            
+            {isAdmin && <AdminNavbarProfileDropdown/>}
+            
             <Menu.Label>
                 <Text color={'grey.4'} size={'xs'}>مدیریت پست ها</Text>
             </Menu.Label>

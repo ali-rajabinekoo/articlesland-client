@@ -213,7 +213,7 @@ const Navbar = () => {
                             </UnstyledButton>
                         </Menu.Target>
 
-                        <NavbarProfileDropdown/>
+                        <NavbarProfileDropdown isAdmin={user?.role === 'admin'}/>
                     </Menu>
                 </Group>
             </Box>
@@ -276,13 +276,13 @@ const Navbar = () => {
                                             <Group spacing={'xs'}>
                                                 <IconUserCircle size={18} color={theme.colors.grey[4]}/>
                                                 <Text size={'sm'} color={'grey.4'} weight={600}>
-                                                    اطلاعات حساب کاربری
+                                                    حساب کاربری
                                                 </Text>
                                             </Group>
                                         </Accordion.Control>
                                         <Accordion.Panel>
                                             <Box mb={'xs'} mt={'sm'}>
-                                                <NavbarProfileItems/>
+                                                <NavbarProfileItems isAdmin={user?.role === 'admin'}/>
                                             </Box>
                                         </Accordion.Panel>
                                     </Accordion.Item>

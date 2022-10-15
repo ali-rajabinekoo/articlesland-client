@@ -1,4 +1,4 @@
-import {Box, Group, UnstyledButton, Text, createStyles} from "@mantine/core";
+import {Box, Group, UnstyledButton, Text, createStyles, useMantineTheme} from "@mantine/core";
 import React from "react";
 import {
     IconBookmarks,
@@ -8,7 +8,7 @@ import {
     IconLogout,
     IconPencil,
     IconSettings,
-    IconUser
+    IconUser, IconUsers
 } from "@tabler/icons";
 import Link from "next/link";
 import {LinkedItemDto, UseUserInfoResult} from "../../utils/types";
@@ -41,12 +41,28 @@ const Item = ({label, icon, href}: LinkedItemDto) => {
     )
 }
 
+const AdminNavbarProfileItems = () => {
+    const theme = useMantineTheme()
+    return <>
+        <Text color={'grey.4'} size={'xs'} px={'xs'} py={'4px'}>مدیریت سامانه</Text>
+        <Item
+            label={'مدیریت کاربران'} href={'/admin/users'}
+            icon={<IconUsers color={theme.colors.grey[4]} size={20} stroke={1.5}/>}
+        />
+    </>
+}
+
+class NavbarProfileItemsProps {
+    isAdmin? :boolean;
+}
+
 // this component is same with headerProfileDropdown but this component does not have menu component
-const NavbarProfileItems = () => {
+const NavbarProfileItems = ({isAdmin}: NavbarProfileItemsProps) => {
     const {logout}: UseUserInfoResult = useUserInfo()
     const {classes, theme} = useStyles()
     return (
         <Box>
+            {isAdmin && <AdminNavbarProfileItems/>}
             <Text color={'grey.4'} size={'xs'} px={'xs'} py={'4px'}>مدیریت پست ها</Text>
             <Item
                 label={'نوشتن پست جدید'} href={'/edit'}
