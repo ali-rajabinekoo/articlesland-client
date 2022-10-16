@@ -61,11 +61,11 @@ export class ArticleDto {
     // likes: Relation<Like[]>;
 }
 
-export class GetArticleResponseDto extends ArticleDto{
+export class GetArticleResponseDto extends ArticleDto {
     body: string | undefined | null;
 }
 
-export class ViewedArticleResponseDto extends ArticleDto{
+export class ViewedArticleResponseDto extends ArticleDto {
     todayViews: number | undefined | null;
 }
 
@@ -94,10 +94,18 @@ export class CommentDto {
     created_at: string | undefined | null;
     childNumber: number | undefined | null;
     owner: UserDto | undefined | null;
-    parent: CommentDto  | undefined | null;
-    children: CommentDto[]  | undefined | null;
-    article?: ArticleDto  | undefined | null;
-    // reports: Relation<Report[]>;
+    parent: CommentDto | undefined | null;
+    children: CommentDto[] | undefined | null;
+    article?: ArticleDto | undefined | null;
+}
+
+export class ReportDto {
+    id: number | undefined | null;
+    owner: UserDto | undefined | null;
+    content: string | undefined | null;
+    type: ReportTypes | undefined | null;
+    comment: CommentDto | undefined | null;
+    article?: ArticleDto | undefined | null;
 }
 
 // hooks
@@ -183,8 +191,8 @@ export interface StatsTableRowData {
 
 export interface FollowedUserDto {
     id: number;
-    avatar: string; 
-    displayName: string; 
+    avatar: string;
+    displayName: string;
     username: string;
 }
 
@@ -219,6 +227,7 @@ export class ProfileInfoFormValues {
 }
 
 export type ReportTypes = 'spam' | 'immoral' | 'abusive' | 'illegal' | 'aggressive' | 'other'
+export const ReportTypesArray = ['spam', 'immoral', 'abusive', 'illegal', 'aggressive', 'other']
 
 // apis
 

@@ -1,6 +1,6 @@
 import {Request} from "../axios";
 import {AxiosResponse} from "axios";
-import {refreshTokenHandler} from "../types";
+import {refreshTokenHandler, ReportTypes} from "../types";
 import {responseHandler} from "../helpers";
 
 export class Admin {
@@ -46,6 +46,32 @@ export class Admin {
     async removeUserByAdmin(userId: number): Promise<AxiosResponse | undefined> {
         const result = await this.request.sendRequest({
             method: 'DELETE', url: `/admin/${userId}`
+        }, this.accessToken)
+        return responseHandler(result, this.onRefreshToken)
+    }
+
+    //  reports
+
+    async getAllReports(
+        page?: number,
+        keyword?: string,
+        reportType?: ReportTypes | null | undefined,
+        reportContentType?: 'comment' | 'post' | null | undefined,
+    ): Promise<AxiosResponse | undefined> {
+        let url = `/report?`;
+        if (!!page) url += `page=${page || 1}&`;
+        if (!!keyword) url += `keyword=${keyword?.trim()}&`;
+        if (!!reportType) url += `reportType=${reportType}&`;
+        if (!!reportContentType) url += `reportContentType=${reportContentType}&`;
+        const result = await this.request.sendRequest({
+            method: 'GET', url,
+        }, this.accessToken);
+        return responseHandler(result, this.onRefreshToken);
+    }
+
+    async removeReportById(reportId: number): Promise<AxiosResponse | undefined> {
+        const result = await this.request.sendRequest({
+            method: 'DELETE', url: `/report/${reportId}`
         }, this.accessToken)
         return responseHandler(result, this.onRefreshToken)
     }
