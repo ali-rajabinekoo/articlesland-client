@@ -11,7 +11,7 @@ import {
     Center,
     useMantineTheme, Grid
 } from '@mantine/core';
-import {IconTrash, IconDots, IconForbid, IconAlertCircle, IconSearch} from '@tabler/icons';
+import {IconTrash, IconDots, IconForbid, IconAlertCircle, IconSearch, IconCheck} from '@tabler/icons';
 import React, {useEffect, useMemo, useState} from "react";
 import {DangerBtn, PrimaryBtn, PrimaryOutlineBtn, SecondaryOutlineBtn} from "../../component/buttons";
 import useRequest from "../../hooks/useRequest";
@@ -28,8 +28,10 @@ export function UsersListAdminPage() {
     const [page, setPage] = useState<number>(1);
     const [search, setSearch] = useState<string>('');
     const [totalPages, setTotalsPage] = useState<number>();
+    const [selectedUser, setSelectedUser] = useState<number>();
     const [users, setUsers] = useState<UserDto[]>([]);
     const [disableBtn, setDisableBtn] = useState<boolean>(false);
+    const [blockingMode, setBlockingMode] = useState<'block' | 'unblock'>('block');
     const [userDeletionOpened, setUserDeletionOpened] = useState<boolean>(false);
     const [userBlockingOpened, setUserBlockingOpened] = useState<boolean>(false);
 
@@ -70,6 +72,66 @@ export function UsersListAdminPage() {
         setSearch(value);
     };
 
+    const openRemoveModal = (userId: number) => {
+        setSelectedUser(userId)
+        setUserDeletionOpened(true)
+    }
+
+    const openBlockingModal = (userId: number, mode: 'block' | 'unblock') => {
+        setBlockingMode(mode)
+        setSelectedUser(userId)
+        setUserBlockingOpened(true)
+    }
+
+    const removeUser = async () => {
+        if (!selectedUser) return null
+        const apis: APIS = getApis()
+        try {
+            await apis.admin.removeUserByAdmin(selectedUser as number);
+            setUsers(users.filter((el) => el.id !== selectedUser))
+            setSelectedUser(undefined)
+            setUserDeletionOpened(false)
+            showNotification({
+                message: 'کاربر مورد نظر حذف شد',
+                autoClose: 3000,
+                color: 'green',
+                icon: <IconCheck size={20}/>
+            })
+        } catch (e) {
+            errorHandler(e)
+        }
+    }
+
+    const blockOrUnblockUser = async () => {
+        if (!selectedUser) return null
+        const apis: APIS = getApis()
+        try {
+            switch (blockingMode) {
+                case "block":
+                    await apis.admin.blockUserByAdmin(selectedUser);
+                    break;
+                case "unblock":
+                    await apis.admin.unblockUserByAdmin(selectedUser);
+                    break;
+            }
+            setUsers(users.map((el) => {
+                const newEl = {...el};
+                if (newEl.id === selectedUser) newEl.isBlocked = blockingMode === "block";
+                return newEl;
+            }))
+            setUserBlockingOpened(false)
+            showNotification({
+                message: blockingMode === 'block' ? appMessages.blocked : appMessages.unblocked,
+                autoClose: 3000,
+                color: 'green',
+                icon: <IconCheck size={20}/>
+            })
+            setSelectedUser(undefined)
+        } catch (e) {
+            errorHandler(e)
+        }
+    }
+
     const rows = useMemo(() => {
         return users.filter((el) => {
             if (!!search) {
@@ -102,13 +164,13 @@ export function UsersListAdminPage() {
                     <Group spacing={0} position="center">
                         {!item?.isBlocked ? (
                             <Badge sx={{width: 150, padding: '12px 0px'}}>
-                                <Text size={'xs'} color={'black'}>
+                                <Text color={'grey.4'} size={'xs'}>
                                     فعال
                                 </Text>
                             </Badge>
                         ) : (
                             <Badge color="gray" sx={{width: 150, padding: '12px 0px'}}>
-                                <Text size={'xs'} color={'black'}>
+                                <Text color={'grey.4'} size={'xs'}>
                                     غیر فعال
                                 </Text>
                             </Badge>
@@ -126,13 +188,16 @@ export function UsersListAdminPage() {
                             <Menu.Dropdown>
                                 <Menu.Item
                                     icon={<IconForbid size={16} stroke={1.5}/>} color="grey.4"
-                                    onClick={() => setUserBlockingOpened(true)}
+                                    onClick={openBlockingModal.bind(
+                                        {}, item.id as number,
+                                        item.isBlocked ? 'unblock' : 'block'
+                                    )}
                                 >
-                                    مسدود کردن کاربر
+                                    {!item.isBlocked ? 'مسدود کردن کاربر' : 'رفع مسدودی کاربر'}
                                 </Menu.Item>
                                 <Menu.Item
                                     icon={<IconTrash size={16} stroke={1.5}/>} color="red"
-                                    onClick={() => setUserDeletionOpened(true)}
+                                    onClick={openRemoveModal.bind({}, item.id as number)}
                                 >
                                     حذف کاربر
                                 </Menu.Item>
@@ -200,7 +265,7 @@ export function UsersListAdminPage() {
                         آیا مطمئن هستید که می خواهید کاربر مورد نظر را حذف کنید؟
                     </Text>
                     <Group mt={'sm'} spacing={'xs'} position={'apart'}>
-                        <DangerBtn capsule={'true'} text={'حذف'}/>
+                        <DangerBtn onClick={removeUser} capsule={'true'} text={'حذف'}/>
                         <SecondaryOutlineBtn
                             capsule={'true'} text={'انصراف'}
                             onClick={() => setUserDeletionOpened(false)}
@@ -210,13 +275,21 @@ export function UsersListAdminPage() {
                 <Modal
                     opened={userBlockingOpened}
                     onClose={() => setUserBlockingOpened(false)}
-                    title="مسدود کردن کاربر"
+                    title={blockingMode === 'block' ? "مسدود کردن کاربر" : "رفع مسدودی کاربر"}
                 >
                     <Text sx={{lineHeight: '1.8rem'}} color={'grey.4'} size={'sm'}>
-                        آیا مطمئن هستید که می خواهید کاربر مورد نظر را مسدود کنید؟
+                        {
+                            blockingMode === 'block' ?
+                                'آیا مطمئن هستید که می خواهید کاربر مورد نظر را مسدود کنید؟' :
+                                'آیا مطمئن هستید که می خواهید کاربر مورد نظر را از مسدودی خارج کنید؟'
+                        }
                     </Text>
                     <Group mt={'sm'} spacing={'xs'} position={'apart'}>
-                        <PrimaryBtn capsule={'true'} text={'مسدود کردن'}/>
+                        <PrimaryBtn
+                            onClick={blockOrUnblockUser as any}
+                            capsule={'true'}
+                            text={blockingMode === 'block' ? 'مسدود کردن' : 'رفع مسدودی'}
+                        />
                         <SecondaryOutlineBtn
                             capsule={'true'} text={'انصراف'}
                             onClick={() => setUserBlockingOpened(false)}

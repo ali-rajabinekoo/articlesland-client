@@ -28,4 +28,25 @@ export class Admin {
         }, this.accessToken)
         return responseHandler(result, this.onRefreshToken)
     }
+
+    async blockUserByAdmin(userId: number): Promise<AxiosResponse | undefined> {
+        const result = await this.request.sendRequest({
+            method: 'POST', url: `/admin/block/${userId}`
+        }, this.accessToken)
+        return responseHandler(result, this.onRefreshToken)
+    }
+
+    async unblockUserByAdmin(userId: number): Promise<AxiosResponse | undefined> {
+        const result = await this.request.sendRequest({
+            method: 'POST', url: `/admin/unblock/${userId}`
+        }, this.accessToken)
+        return responseHandler(result, this.onRefreshToken)
+    }
+
+    async removeUserByAdmin(userId: number): Promise<AxiosResponse | undefined> {
+        const result = await this.request.sendRequest({
+            method: 'DELETE', url: `/admin/${userId}`
+        }, this.accessToken)
+        return responseHandler(result, this.onRefreshToken)
+    }
 }

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e06adea9-5fca-4f6c-9da5-80729234fd31" name="Changes" comment="AL-63 &lt;User table UI and Admin guard implemented&gt;" />
+    <list default="true" id="e06adea9-5fca-4f6c-9da5-80729234fd31" name="Changes" comment="AL-63 &lt;Fetching data and searching implemented&gt;" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -47,7 +47,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "/home/rajabi/Workspace/ArticlesLand/articlesland-server",
+    "last_opened_file_path": "/home/rajabi/Workspace/ArticlesLand/articlesland-client",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "nodejs_package_manager_path": "yarn",
@@ -167,6 +167,7 @@
       <workItem from="1665772312293" duration="52000" />
       <workItem from="1665780303017" duration="2655000" />
       <workItem from="1665813697091" duration="5559000" />
+      <workItem from="1665851380538" duration="5540000" />
     </task>
     <task id="LOCAL-00001" summary="AL-14 &lt;Start project and fix basic configs&gt;">
       <created>1660924360896</created>
@@ -385,7 +386,14 @@
       <option name="project" value="LOCAL" />
       <updated>1665820940022</updated>
     </task>
-    <option name="localTasksCounter" value="32" />
+    <task id="LOCAL-00032" summary="AL-63 &lt;Fetching data and searching implemented&gt;">
+      <created>1665859557207</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1665859557207</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -406,7 +414,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="AL-31 &lt;Article creation implemented with publishing and preview post logic&gt;" />
     <MESSAGE value="AL-29 &lt;Read and List Article&gt;" />
     <MESSAGE value="AL-bug-issue &lt;Remove Mantine-rte for quill fixing CSR bug&gt;" />
     <MESSAGE value="AL-28 &lt;Categories list Implemented&gt;" />
@@ -431,6 +438,7 @@
     <MESSAGE value="AL-58 &lt;Notifications implemented&gt;" />
     <MESSAGE value="AL-59 &lt;Blocking user logic&gt;" />
     <MESSAGE value="AL-63 &lt;User table UI and Admin guard implemented&gt;" />
-    <option name="LAST_COMMIT_MESSAGE" value="AL-63 &lt;User table UI and Admin guard implemented&gt;" />
+    <MESSAGE value="AL-63 &lt;Fetching data and searching implemented&gt;" />
+    <option name="LAST_COMMIT_MESSAGE" value="AL-63 &lt;Fetching data and searching implemented&gt;" />
   </component>
 </project>
