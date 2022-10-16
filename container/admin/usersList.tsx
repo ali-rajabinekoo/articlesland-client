@@ -216,7 +216,7 @@ export function UsersListAdminPage() {
     }, [])
 
     return (
-        <Grid sx={{height: '85vh', overflowY: 'hidden'}} justify={'center'} align={'flex-start'}>
+        <Grid mt={80} justify={'center'} align={'flex-start'}>
             <Grid.Col lg={6} md={7} sm={8} xs={12}>
                 <TextInput
                     placeholder="جستجو"
@@ -253,7 +253,10 @@ export function UsersListAdminPage() {
                         <tbody>{rows}</tbody>
                     </Table>
                     <Center my={'lg'}>
-                        <PrimaryOutlineBtn onClick={loadMore} text={'بیشتر'} disabled={disableBtn}/>
+                        <PrimaryOutlineBtn
+                            onClick={loadMore} text={'بیشتر'}
+                            sx={{display: disableBtn ? 'none' : 'block'}}
+                        />
                     </Center>
                 </ScrollArea>
                 <Modal
@@ -265,9 +268,9 @@ export function UsersListAdminPage() {
                         آیا مطمئن هستید که می خواهید کاربر مورد نظر را حذف کنید؟
                     </Text>
                     <Group mt={'sm'} spacing={'xs'} position={'apart'}>
-                        <DangerBtn onClick={removeUser} capsule={'true'} text={'حذف'}/>
+                        <DangerBtn size={'sm'} onClick={removeUser} capsule={'true'} text={'حذف'}/>
                         <SecondaryOutlineBtn
-                            capsule={'true'} text={'انصراف'}
+                            capsule={'true'} text={'انصراف'} size={'sm'}
                             onClick={() => setUserDeletionOpened(false)}
                         />
                     </Group>
@@ -287,11 +290,11 @@ export function UsersListAdminPage() {
                     <Group mt={'sm'} spacing={'xs'} position={'apart'}>
                         <PrimaryBtn
                             onClick={blockOrUnblockUser as any}
-                            capsule={'true'}
+                            capsule={'true'} size={'sm'}
                             text={blockingMode === 'block' ? 'مسدود کردن' : 'رفع مسدودی'}
                         />
                         <SecondaryOutlineBtn
-                            capsule={'true'} text={'انصراف'}
+                            capsule={'true'} text={'انصراف'} size={'sm'}
                             onClick={() => setUserBlockingOpened(false)}
                         />
                     </Group>
