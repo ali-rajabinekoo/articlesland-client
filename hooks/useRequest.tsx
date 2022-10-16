@@ -14,6 +14,7 @@ import {
     UseRequestResult, 
     UseUserInfoResult
 } from "../utils/types";
+import {Admin} from "../utils/apis/admin";
 
 export default function useRequest(requiredToken?: boolean | undefined): UseRequestResult {
     const {getAccessToken, setNewAccessToken, setNewUser}: UseUserInfoResult = useUserInfo()
@@ -31,7 +32,8 @@ export default function useRequest(requiredToken?: boolean | undefined): UseRequ
             article: new Article(getAccessToken() as string, handleOnRefreshToken, requiredToken),
             report: new Report(getAccessToken() as string, handleOnRefreshToken, requiredToken),
             draft: new Draft(getAccessToken() as string, handleOnRefreshToken, requiredToken),
-            user: new User(getAccessToken() as string, handleOnRefreshToken, requiredToken)
+            admin: new Admin(getAccessToken() as string, handleOnRefreshToken, requiredToken),
+            user: new User(getAccessToken() as string, handleOnRefreshToken, requiredToken),
         }
     }
 

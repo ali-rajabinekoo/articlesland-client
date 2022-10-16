@@ -6,6 +6,7 @@ import {Draft} from "./apis/draft";
 import {AxiosError, AxiosResponse} from "axios";
 import {Comment} from "./apis/comment";
 import {Report} from "./apis/report";
+import {Admin} from "./apis/admin";
 
 // DTOs
 
@@ -17,7 +18,9 @@ export class UserDto {
     refreshToken: string | undefined | null;
     email?: string | undefined | null;
     avatar?: string | undefined | null;
+    role: 'admin' | 'user' | undefined | null;
     bio?: string | undefined | null;
+    isBlocked?: boolean | undefined | null;
     created_at: string | undefined | null;
     updated_at: string | undefined | null;
     articles?: ArticleDto[] | undefined | null;
@@ -229,9 +232,10 @@ export class APIS {
     category!: Category;
     comment!: Comment;
     article!: Article;
+    report!: Report;
+    admin!: Admin;
     draft!: Draft;
     user!: User;
-    report!: Report;
 }
 
 export class PublicAPIS {
