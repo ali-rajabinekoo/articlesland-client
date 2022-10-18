@@ -130,3 +130,12 @@ export const formatDateFromNow = (date: string): string => {
 }
 
 export const validFeaturesFilter = ['mostPopular'];
+
+export const reportObject = {
+    spam: 'اسپم',
+    immoral: 'مغایرت اخلاقی',
+    abusive: 'نوشته توهین آمیز',
+    illegal: 'مغایرت با قوانین وبسایت',
+    aggressive: 'استفاده از تصاویر یا نوشته هایی که دارای خشونت عیان باشد',
+    other: 'دلایل دیگر',
+}

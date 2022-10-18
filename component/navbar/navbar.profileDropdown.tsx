@@ -6,7 +6,7 @@ import {
     IconUser,
     IconPencil,
     IconChartLine,
-    IconBookmarks, IconList, IconUsers
+    IconBookmarks, IconList, IconUsers, IconMessageReport
 } from "@tabler/icons";
 import React from "react";
 import Link from "next/link";
@@ -23,6 +23,11 @@ const AdminNavbarProfileDropdown = () => {
             <Link href={'/admin/users'}>
                 <Menu.Item icon={<IconUsers color={theme.colors.grey[4]} size={20} stroke={1.5}/>}>
                     <Text color={'grey.4'}>مدیریت کاربران</Text>
+                </Menu.Item>
+            </Link>
+            <Link href={'/admin/reports'}>
+                <Menu.Item icon={<IconMessageReport color={theme.colors.grey[4]} size={20} stroke={1.5}/>}>
+                    <Text color={'grey.4'}>لیست گزارشات</Text>
                 </Menu.Item>
             </Link>
         </>

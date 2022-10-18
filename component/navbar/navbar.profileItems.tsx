@@ -5,7 +5,7 @@ import {
     IconChartLine,
     IconHeart,
     IconList,
-    IconLogout,
+    IconLogout, IconMessageReport,
     IconPencil,
     IconSettings,
     IconUser, IconUsers
@@ -48,6 +48,10 @@ const AdminNavbarProfileItems = () => {
         <Item
             label={'مدیریت کاربران'} href={'/admin/users'}
             icon={<IconUsers color={theme.colors.grey[4]} size={20} stroke={1.5}/>}
+        />
+        <Item
+            label={'لیست گزارشات'} href={'/admin/reports'}
+            icon={<IconMessageReport color={theme.colors.grey[4]} size={20} stroke={1.5}/>}
         />
     </>
 }

@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e06adea9-5fca-4f6c-9da5-80729234fd31" name="Changes" comment="AL-63 &lt;Fetching data and searching implemented&gt;" />
+    <list default="true" id="e06adea9-5fca-4f6c-9da5-80729234fd31" name="Changes" comment="AL-issue &lt;Mantine packages updated&gt;">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/container/admin/reportsList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/container/admin/reportsList.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/container/admin/usersList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/container/admin/usersList.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/apis/admin.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/utils/apis/admin.tsx" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -20,7 +26,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="AL-59-blocking-user-logic" />
+        <entry key="$PROJECT_DIR$" value="AL-64-admin-dashboard-bad-content-report-lists-management-" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -42,19 +48,19 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "/home/rajabi/Workspace/ArticlesLand/articlesland-client",
-    "node.js.detected.package.eslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "nodejs_package_manager_path": "yarn",
-    "ts.external.directory.path": "/home/rajabi/Workspace/ArticlesLand/articlesland-client/node_modules/typescript/lib",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/rajabi/Workspace/ArticlesLand/articlesland-server&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;yarn&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;/home/rajabi/Workspace/ArticlesLand/articlesland-client/node_modules/typescript/lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/public/scripts" />
@@ -168,6 +174,8 @@
       <workItem from="1665780303017" duration="2655000" />
       <workItem from="1665813697091" duration="5559000" />
       <workItem from="1665851380538" duration="5540000" />
+      <workItem from="1665924145605" duration="9649000" />
+      <workItem from="1665936219987" duration="780000" />
     </task>
     <task id="LOCAL-00001" summary="AL-14 &lt;Start project and fix basic configs&gt;">
       <created>1660924360896</created>
@@ -393,7 +401,21 @@
       <option name="project" value="LOCAL" />
       <updated>1665859557207</updated>
     </task>
-    <option name="localTasksCounter" value="33" />
+    <task id="LOCAL-00033" summary="AL-64 &lt;Admin reports management page&gt;">
+      <created>1665930667815</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1665930667815</updated>
+    </task>
+    <task id="LOCAL-00034" summary="AL-issue &lt;Mantine packages updated&gt;">
+      <created>1665931146002</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1665931146002</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -414,8 +436,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="AL-29 &lt;Read and List Article&gt;" />
-    <MESSAGE value="AL-bug-issue &lt;Remove Mantine-rte for quill fixing CSR bug&gt;" />
     <MESSAGE value="AL-28 &lt;Categories list Implemented&gt;" />
     <MESSAGE value="AL-21 &lt;Fix login and registration&gt;" />
     <MESSAGE value="AL-35 &lt;Header refactoring&gt;" />
@@ -439,6 +459,8 @@
     <MESSAGE value="AL-59 &lt;Blocking user logic&gt;" />
     <MESSAGE value="AL-63 &lt;User table UI and Admin guard implemented&gt;" />
     <MESSAGE value="AL-63 &lt;Fetching data and searching implemented&gt;" />
-    <option name="LAST_COMMIT_MESSAGE" value="AL-63 &lt;Fetching data and searching implemented&gt;" />
+    <MESSAGE value="AL-64 &lt;Admin reports management page&gt;" />
+    <MESSAGE value="AL-issue &lt;Mantine packages updated&gt;" />
+    <option name="LAST_COMMIT_MESSAGE" value="AL-issue &lt;Mantine packages updated&gt;" />
   </component>
 </project>
