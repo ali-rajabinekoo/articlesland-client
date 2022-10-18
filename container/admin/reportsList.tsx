@@ -12,7 +12,8 @@ import {
     useMantineTheme, 
     Grid, 
     Affix, 
-    Stack
+    Stack,
+    Box
 } from '@mantine/core';
 import {IconTrash, IconDots, IconAlertCircle, IconSearch, IconCheck, IconExternalLink} from '@tabler/icons';
 import React, {useEffect, useMemo, useState} from "react";
@@ -24,6 +25,7 @@ import {AxiosResponse} from "axios";
 import {showNotification} from "@mantine/notifications";
 import {appMessages} from "../../utils/messages";
 import {SelectInput, TextInput} from "../../component/inputs";
+import {EmptyContent} from "../errors/empty";
 
 export function ReportsListAdminPage() {
     const {getApis} = useRequest()
@@ -221,40 +223,44 @@ export function ReportsListAdminPage() {
     }, [])
 
     return (
-        <Grid mt={80} justify={'center'} align={'flex-start'}>
-            <Grid.Col xs={12} sx={{overflowY: 'hidden', height: '100%'}}>
-                <ScrollArea>
-                    <Table sx={{minWidth: 800}} verticalSpacing="md">
-                        <thead>
-                        <tr>
-                            <th>
-                                <Text size={'sm'} color={'grey,4'}>کاربرها</Text>
-                            </th>
-                            <th>
-                                <Text size={'sm'} color={'grey,4'}>نوع گزارش تخلف</Text>
-                            </th>
-                            <th>
-                                <Group spacing={0} position="center">
-                                    <Text size={'sm'} color={'grey,4'}>نوع محتوا</Text>
-                                </Group>
-                            </th>
-                            <th>
-                                <Group spacing={0} position="right">
-                                    <Text size={'sm'} color={'grey,4'}>گزینه‌ها</Text>
-                                </Group>
-                            </th>
-                        </tr>
-                        </thead>
-                        <tbody>{rows}</tbody>
-                    </Table>
-                    <Center my={'lg'}>
-                        <PrimaryOutlineBtn
-                            onClick={loadMore} text={'بیشتر'}
-                            sx={{display: disableBtn ? 'none' : 'block'}}
-                        />
-                    </Center>
-                </ScrollArea>
-            </Grid.Col>
+        <Box mt={90}>
+            <ScrollArea>
+                <Table sx={{minWidth: 800}} verticalSpacing="md">
+                    <thead>
+                    <tr>
+                        <th>
+                            <Text size={'sm'} color={'grey,4'}>کاربرها</Text>
+                        </th>
+                        <th>
+                            <Text size={'sm'} color={'grey,4'}>نوع گزارش تخلف</Text>
+                        </th>
+                        <th>
+                            <Group spacing={0} position="center">
+                                <Text size={'sm'} color={'grey,4'}>نوع محتوا</Text>
+                            </Group>
+                        </th>
+                        <th>
+                            <Group spacing={0} position="right">
+                                <Text size={'sm'} color={'grey,4'}>گزینه‌ها</Text>
+                            </Group>
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody>{rows}</tbody>
+                </Table>
+                <Center>
+                    {rows.length === 0 && <EmptyContent disableBtn={true} picWidth={'300px'} title={
+                        'هیچ گزارشی وجود ندارد'
+                    }/>}
+                </Center>
+                <Center my={'lg'}>
+                    <PrimaryOutlineBtn
+                        onClick={loadMore} text={'بیشتر'}
+                        sx={{display: disableBtn || rows.length === 0 ? 'none' : 'block'}}
+                    />
+                </Center>
+            </ScrollArea>
+            
             <Modal
                 opened={reportDeletionOpened}
                 onClose={() => setReportDeletionOpened(false)}
@@ -333,6 +339,6 @@ export function ReportsListAdminPage() {
                     onClick={() => setFilterIsOpened(true)}
                 />
             </Affix>
-        </Grid>
+        </Box>
     );
 }

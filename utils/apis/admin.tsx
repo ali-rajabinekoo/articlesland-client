@@ -22,9 +22,17 @@ export class Admin {
         }
     }
 
-    async getAllUsers(page: number): Promise<AxiosResponse | undefined> {
+    async getAllUsers(
+        page?: number,
+        keyword?: string,
+        status?: 'blocked' | 'notBlocked' | null,
+    ): Promise<AxiosResponse | undefined> {
+        let url = `/admin/users?`;
+        if (!!page) url += `page=${page || 1}&`;
+        if (!!keyword) url += `keyword=${keyword?.trim()}&`;
+        if (!!status) url += `status=${status}&`;
         const result = await this.request.sendRequest({
-            method: 'GET', url: `/admin/users?page=${page || 1}`
+            method: 'GET', url,
         }, this.accessToken)
         return responseHandler(result, this.onRefreshToken)
     }
