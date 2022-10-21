@@ -158,6 +158,7 @@ export class UseLike {
 }
 
 export class UseUpdateArticle {
+    addArticle!: Function
     updateArticle!: Function
     removeArticle!: Function
 }
