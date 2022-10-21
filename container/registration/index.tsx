@@ -95,7 +95,7 @@ export const RegistrationForm = ({onSubmitted}:RegistrationFormProps) => {
     const onClickLoginPage = async (): Promise<void> => {
         await push("/login")
     }
-
+    
     return (
         <form onSubmit={signupForm.handleSubmit}>
             <Stack align={"stretch"} justify={"center"} spacing={"sm"} mt={-30} p={10}>
@@ -106,9 +106,9 @@ export const RegistrationForm = ({onSubmitted}:RegistrationFormProps) => {
                     labelweight={700} size="md" name="username"
                     onChange={signupForm.handleChange}
                     value={signupForm.values.username}
-                    error={<Text size={"xs"} weight={500} color={"danger.3"}>
+                    error={!!signupForm?.errors?.username ? <Text size={"xs"} weight={500} color={"danger.3"}>
                         {signupForm.errors.username}
-                    </Text>}
+                    </Text> : undefined}
                     disabled={visible}
                     withAsterisk={true}
                 />
@@ -118,9 +118,9 @@ export const RegistrationForm = ({onSubmitted}:RegistrationFormProps) => {
                     labelweight={700} size="md" name="phoneNumber"
                     onChange={signupForm.handleChange}
                     value={signupForm.values.phoneNumber}
-                    error={<Text size={"xs"} weight={500} color={"danger.3"}>
+                    error={!!signupForm?.errors?.phoneNumber ? <Text size={"xs"} weight={500} color={"danger.3"}>
                         {signupForm.errors.phoneNumber}
-                    </Text>}
+                    </Text> : undefined}
                     disabled={visible}
                     withAsterisk={true}
                 />
@@ -130,9 +130,9 @@ export const RegistrationForm = ({onSubmitted}:RegistrationFormProps) => {
                     labelweight={700} size="md" name="password"
                     onChange={signupForm.handleChange}
                     value={signupForm.values.password}
-                    error={<Text size={"xs"} weight={500} color={"danger.3"}>
+                    error={!!signupForm?.errors?.password ? <Text size={"xs"} weight={500} color={"danger.3"}>
                         {signupForm.errors.password}
-                    </Text>}
+                    </Text> : undefined}
                     disabled={visible}
                     withAsterisk={true}
                 />
@@ -142,9 +142,9 @@ export const RegistrationForm = ({onSubmitted}:RegistrationFormProps) => {
                     labelweight={700} size="md" name="repeatPassword"
                     onChange={signupForm.handleChange}
                     value={signupForm.values.repeatPassword}
-                    error={<Text size={"xs"} weight={500} color={"danger.3"}>
+                    error={!!signupForm?.errors?.repeatPassword ? <Text size={"xs"} weight={500} color={"danger.3"}>
                         {signupForm.errors.repeatPassword}
-                    </Text>}
+                    </Text> : undefined}
                     disabled={visible}
                     withAsterisk={true}
                 />

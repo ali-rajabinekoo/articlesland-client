@@ -45,8 +45,7 @@ export const SendLoginCodeSchema = Yup.object().shape({
 
 export const SendEmailCodeSchema = Yup.object().shape({
     email: Yup.string()
-        .email(validationMessages.invalid.email)
-        .required(validationMessages.empty.email),
+        .email(validationMessages.invalid.email),
 });
 
 export const profileInformationValidationForm = (values: ProfileInfoFormValues) => {

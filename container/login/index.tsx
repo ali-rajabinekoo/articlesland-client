@@ -114,9 +114,9 @@ export const LoginForm = ({showLoginByCodeForm}: LoginFormProps) => {
                     labelweight={700} size="md" name="username"
                     onChange={loginForm.handleChange}
                     value={loginForm.values.username}
-                    error={<Text size={"xs"} weight={500} color={"danger.3"}>
+                    error={!!loginForm?.errors?.username ? <Text size={"xs"} weight={500} color={"danger.3"}>
                         {loginForm.errors.username}
-                    </Text>}
+                    </Text> : undefined}
                     disabled={visible}
                     withAsterisk={true}
                 />
@@ -126,9 +126,9 @@ export const LoginForm = ({showLoginByCodeForm}: LoginFormProps) => {
                     labelweight={700} size="md" name="password"
                     onChange={loginForm.handleChange}
                     value={loginForm.values.password}
-                    error={<Text size={"xs"} weight={500} color={"danger.3"}>
+                    error={!!loginForm?.errors?.password ? <Text size={"xs"} weight={500} color={"danger.3"}>
                         {loginForm.errors.password}
-                    </Text>}
+                    </Text> : undefined}
                     disabled={visible}
                     withAsterisk={true}
                 />
