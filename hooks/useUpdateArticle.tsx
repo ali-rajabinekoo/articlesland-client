@@ -3,6 +3,16 @@ import useUserInfo from "./useUserInfo";
 
 const useUpdateArticle = (): UseUpdateArticle => {
     const {userInfo, setNewUser}: UseUserInfoResult = useUserInfo();
+
+    const addArticle = (newArticle: ArticleDto) => {
+        let newUserInfo: UserDto = {...userInfo} as UserDto
+        if (Array.isArray(newUserInfo?.articles)) {
+            newUserInfo.articles = [...newUserInfo.articles, newArticle];
+        } else {
+            newUserInfo.articles = [newArticle];
+        }
+        setNewUser(newUserInfo)
+    }
     
     const updateArticle = (articleId: number, newArticle: ArticleDto) => {
         let newUserInfo: UserDto = {...userInfo} as UserDto
@@ -47,7 +57,7 @@ const useUpdateArticle = (): UseUpdateArticle => {
         setNewUser(newUserInfo)
     }
     
-    return { updateArticle, removeArticle }
+    return { updateArticle, removeArticle, addArticle }
 }
 
 export default useUpdateArticle

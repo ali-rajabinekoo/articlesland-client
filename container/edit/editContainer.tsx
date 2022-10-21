@@ -125,7 +125,7 @@ const EditContainer = ({article, onUpdateArticle, titleRef, drafts = []}: EditCo
             const id = response?.data?.id
             const updatedArticle: GetArticleResponseDto = response?.data as GetArticleResponseDto
             if (!!onUpdateArticle) onUpdateArticle(updatedArticle)
-            updateArticle(updatedArticle)
+            updateArticle(id, updatedArticle)
             await push(`/edit/${id}${posting ? "?posting=true" : ""}`)
         } else {
             showNotification({

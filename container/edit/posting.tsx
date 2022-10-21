@@ -51,7 +51,7 @@ const Posting = ({article}: PostingProps) => {
     const [isAgree, setIsAgree] = useState<boolean>(false);
     const [banner, setBanner] = useState<File>();
     const [categoryId, setCategoryId] = useState<string>()
-    const {updateArticle}:UseUpdateArticle = useUpdateArticle()
+    const {addArticle}:UseUpdateArticle = useUpdateArticle()
 
     const onChangeBanner = (file: File) => {
         setBanner(file)
@@ -110,7 +110,7 @@ const Posting = ({article}: PostingProps) => {
                 icon: <IconCheck size={20}/>
             })
             const newArticle: ArticleDto = response.data as ArticleDto
-            updateArticle(article?.id, newArticle)
+            addArticle(newArticle)
             setTimeout(async () => {
                 await push('/dashboard')
             }, 2050)

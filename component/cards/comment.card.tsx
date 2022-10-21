@@ -147,7 +147,7 @@ const CommentCardContent = ({
                                     <Text color={'grey.4'} size={'xs'} weight={500}>پاسخ</Text>
                                 </Menu.Item>
                                 {
-                                    userInfo?.id === user.id ?
+                                    userInfo?.id === user.id || userInfo?.role === 'admin' ?
                                         <Menu.Item onClick={onRemove}
                                                    icon={<IconTrash color={theme.colors.grey[4]} size={16}/>}>
                                             <Text color={'grey.4'} size={'xs'} weight={500}>حذف</Text>
