@@ -175,12 +175,12 @@ const Navbar = () => {
                         position="bottom-start"
                         transition="pop-top-right"
                         onClose={() => setNotificationOpened(false)}
-                        onOpen={() => setNotificationOpened(true)}
                     >
 
                         <Menu.Target>
                             <UnstyledButton
                                 className={cx(classes.user, {[classes.userActive]: notificationOpened})}
+                                onClick={() => setNotificationOpened(true)}
                             >
                                 <Group align={'center'}>
                                     <IconBell color={theme.colors.grey[4]} size={22}/>
@@ -195,12 +195,12 @@ const Navbar = () => {
                         position="bottom-start"
                         transition="pop-top-right"
                         onClose={() => setUserMenuOpened(false)}
-                        onOpen={() => setUserMenuOpened(true)}
                     >
 
                         <Menu.Target>
                             <UnstyledButton
                                 className={cx(classes.user, {[classes.userActive]: userMenuOpened})}
+                                onClick={() => setUserMenuOpened(true)}
                             >
                                 <Group spacing={7} dir={'rtl'} align={'center'}>
                                     {

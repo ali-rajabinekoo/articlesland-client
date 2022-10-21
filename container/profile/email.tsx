@@ -150,9 +150,9 @@ const ProfileEmail = (): JSX.Element => {
                 labelsx={{fontWeight: 500}}
                 onChange={editEmailForm.handleChange}
                 value={editEmailForm.values.email}
-                error={<Text size={"xs"} weight={500} color={"danger.3"}>
+                error={!!editEmailForm?.errors?.email ? <Text size={"xs"} weight={500} color={"danger.3"}>
                     {editEmailForm.errors.email}
-                </Text>}
+                </Text> : undefined}
                 disabled={loading || codeSent}
             />
 

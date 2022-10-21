@@ -149,9 +149,9 @@ const ProfileMobile = (): JSX.Element => {
                 labelsx={{fontWeight: 500}}
                 onChange={editMobileForm.handleChange}
                 value={editMobileForm.values.phoneNumber}
-                error={<Text size={"xs"} weight={500} color={"danger.3"}>
+                error={!!editMobileForm?.errors?.phoneNumber ? <Text size={"xs"} weight={500} color={"danger.3"}>
                     {editMobileForm.errors.phoneNumber}
-                </Text>}
+                </Text> : undefined}
                 disabled={loading || codeSent}
             />
 

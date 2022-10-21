@@ -111,9 +111,9 @@ const ProfileInformation = (): JSX.Element => {
                     labelsx={{fontWeight: 500}}
                     onChange={profileInfoForm.handleChange}
                     value={profileInfoForm.values.username}
-                    error={<Text size={"xs"} weight={500} color={"danger.3"}>
+                    error={!!profileInfoForm?.errors?.username ? <Text size={"xs"} weight={500} color={"danger.3"}>
                         {profileInfoForm.errors.username}
-                    </Text>}
+                    </Text> : undefined}
                     disabled={loading}
                 />
                 <TextInput
@@ -124,9 +124,9 @@ const ProfileInformation = (): JSX.Element => {
                     labelsx={{fontWeight: 500}}
                     onChange={profileInfoForm.handleChange}
                     value={profileInfoForm.values.displayName}
-                    error={<Text size={"xs"} weight={500} color={"danger.3"}>
+                    error={!!profileInfoForm?.errors?.displayName ? <Text size={"xs"} weight={500} color={"danger.3"}>
                         {profileInfoForm.errors.displayName}
-                    </Text>}
+                    </Text> : undefined}
                     disabled={loading}
                 />
                 <TextAreaInput
@@ -151,9 +151,9 @@ const ProfileInformation = (): JSX.Element => {
                     labelsx={{fontWeight: 500}}
                     onChange={profileInfoForm.handleChange}
                     value={profileInfoForm.values.password}
-                    error={<Text size={"xs"} weight={500} color={"danger.3"}>
+                    error={!!profileInfoForm?.errors?.password ? <Text size={"xs"} weight={500} color={"danger.3"}>
                         {profileInfoForm.errors.password}
-                    </Text>}
+                    </Text> : undefined}
                     disabled={loading}
                 />
                 <PasswordInput
@@ -164,9 +164,9 @@ const ProfileInformation = (): JSX.Element => {
                     labelsx={{fontWeight: 500}}
                     onChange={profileInfoForm.handleChange}
                     value={profileInfoForm.values.repeatPassword}
-                    error={<Text size={"xs"} weight={500} color={"danger.3"}>
+                    error={!!profileInfoForm?.errors?.repeatPassword ? <Text size={"xs"} weight={500} color={"danger.3"}>
                         {profileInfoForm.errors.repeatPassword}
-                    </Text>}
+                    </Text> : undefined}
                     disabled={loading}
                 />
                 <Group position={'center'} mt={'md'}>

@@ -182,9 +182,9 @@ export function VerificationForm({
                     labeltitle="شماره موبایل" color={"grey.3"} disabled={!!defaultMobile}
                     value={!!defaultMobile ? normalizePhoneNumber(defaultMobile) : sendCodeForm.values.phoneNumber}
                     onChange={sendCodeForm.handleChange}
-                    error={<Text size={"xs"} weight={500} color={"danger.3"}>
+                    error={!!sendCodeForm?.errors?.phoneNumber ? <Text size={"xs"} weight={500} color={"danger.3"}>
                         {sendCodeForm.errors.phoneNumber}
-                    </Text>}
+                    </Text> : undefined}
                 />
                 <Box sx={{display: !!defaultMobile || codeSent ? "block" : "none"}}>
                     <Text weight={700} sx={{width: '100%'}} size={'sm'} mb={'xs'} color={'grey.3'}>
