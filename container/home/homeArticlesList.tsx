@@ -205,6 +205,7 @@ const HomeArticlesList = (props: HomeArticlesListProps) => {
                 {(articles || []).map((el: ArticleDto, index: number) => (
                     <Grid.Col xs={12} sm={6} md={6} lg={4} key={index}>
                         <ArticleCard
+                            id={el.id as number}
                             image={!!el?.bannerUrl ? changeUrlToServerRequest(el?.bannerUrl) : undefined}
                             title={el?.title as string || ""}
                             link={el.published ? `/post/${el?.owner?.username}/${el.id}` : `/edit/${el.id}`}
