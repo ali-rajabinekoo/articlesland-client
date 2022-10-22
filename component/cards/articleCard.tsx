@@ -15,6 +15,7 @@ import {
 import {MouseEventHandler} from "react";
 import {NextRouter, useRouter} from "next/router";
 import Link from "next/link";
+import useSettingLink from "../../hooks/useSettingLink";
 
 const useStyles = createStyles((theme) => ({
     card: {
@@ -55,6 +56,7 @@ interface ArticleCardProps {
     image: string | undefined;
     link: string;
     userProfileLink?: string;
+    id: number;
     title: string;
     description: string;
     category: string;
@@ -83,10 +85,12 @@ export function ArticleCard({
     liked = false,
     bookmarked = false,
     disableCardPanel = false,
+    id,
     ...others
 }: ArticleCardProps & Omit<React.ComponentPropsWithoutRef<'div'>, keyof ArticleCardProps>) {
     const {classes, cx, theme} = useStyles();
     const {push}: NextRouter = useRouter()
+    const {generateNewLink} = useSettingLink()
 
     return (
         <Card dir={'rtl'} withBorder radius="md" p={0} className={cx(classes.card, className)} {...others}>
@@ -148,7 +152,10 @@ export function ArticleCard({
                                 <IconBookmark size={16} color={theme.colors.yellow[7]}/>
                         }
                     </ActionIcon>
-                    <ActionIcon className={classes.action}>
+                    <ActionIcon
+                        className={classes.action}
+                        onClick={generateNewLink.bind({}, id)}
+                    >
                         <IconShare size={16} color={theme.colors.grey[4]}/>
                     </ActionIcon>
                 </Group>

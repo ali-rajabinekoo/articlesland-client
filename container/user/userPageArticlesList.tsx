@@ -89,6 +89,7 @@ export default function UserPageArticlesList({list = []}: UserPageArticlesListPr
                         <ArticleCard
                             image={!!el?.bannerUrl ? changeUrlToServerRequest(el?.bannerUrl) : undefined}
                             title={el?.title as string || ""}
+                            id={el.id as number}
                             link={el.published ? `/post/${el?.owner?.username}/${el.id}` : `/edit/${el.id}`}
                             description={el?.description as string || ""}
                             category={el?.category?.displayTitle as string || ""}

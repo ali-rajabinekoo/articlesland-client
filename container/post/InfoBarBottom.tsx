@@ -10,6 +10,7 @@ import useRequest from "../../hooks/useRequest";
 import {showNotification} from "@mantine/notifications";
 import {useRouter} from "next/router";
 import useUpdateArticle from "../../hooks/useUpdateArticle";
+import useSettingLink from "../../hooks/useSettingLink";
 
 class InfoBarBottomProps {
     article?: ArticleDto | undefined;
@@ -34,6 +35,7 @@ const InfoBarBottom = ({
     const {getApis} = useRequest()
     const {push} = useRouter()
     const {removeArticle}: UseUpdateArticle = useUpdateArticle()
+    const {generateNewLink} = useSettingLink()
 
     const handleOnRemoveByAdmin = async () => {
         const apis: APIS = getApis()
@@ -95,7 +97,12 @@ const InfoBarBottom = ({
                                 <IconBookmark size={16} color={theme.colors.yellow[7]}/>
                         }
                     </ActionIcon>
-                    <ActionIcon className={classes.action}>
+                    <ActionIcon
+                        onClick={
+                            !!article?.id ? generateNewLink.bind({}, article.id) as MouseEventHandler : undefined
+                        }
+                        className={classes.action}
+                    >
                         <IconShare size={16} color={theme.colors.grey[4]}/>
                     </ActionIcon>
                     <Menu shadow="md" width={200}>

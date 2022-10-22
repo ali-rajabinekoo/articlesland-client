@@ -7,6 +7,7 @@ import {AxiosError, AxiosResponse} from "axios";
 import {Comment} from "./apis/comment";
 import {Report} from "./apis/report";
 import {Admin} from "./apis/admin";
+import {Link} from "./apis/link";
 
 // DTOs
 
@@ -157,6 +158,10 @@ export class UseLike {
     like!: Function;
 }
 
+export class UseSettingLink {
+    generateNewLink!: Function;
+}
+
 export class UseUpdateArticle {
     addArticle!: Function
     updateArticle!: Function
@@ -253,6 +258,7 @@ export class PublicAPIS {
     category!: Category;
     article!: Article;
     user!: PublicUserApi;
+    link!: Link;
 }
 
 export class RequestParams {
@@ -278,6 +284,11 @@ export class PureVerificationBody {
 export class UserAndTokenResponse {
     user: object | undefined;
     token: string | undefined;
+}
+
+export class LinkResDto {
+    username!: string;
+    id!: string | number;
 }
 
 export type refreshTokenHandler = (data: UserAndTokenResponse) => void;

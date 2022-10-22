@@ -1,16 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e06adea9-5fca-4f6c-9da5-80729234fd31" name="Changes" comment="AL-issue &lt;Mantine packages updated&gt;">
+    <list default="true" id="e06adea9-5fca-4f6c-9da5-80729234fd31" name="Changes" comment="AL-70 &lt;Fix mantine new version errors&gt;">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/component/navbar/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/component/navbar/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/container/login/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/container/login/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/container/profile/email.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/container/profile/email.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/container/profile/information.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/container/profile/information.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/container/profile/mobile.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/container/profile/mobile.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/container/registration/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/container/registration/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/container/verification/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/container/verification/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/validators.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/utils/validators.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,20 +44,20 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/rajabi/Workspace/articlesland/articlesland-client&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;yarn&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.sourceCode.TypeScript&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;/home/rajabi/Workspace/articlesland/articlesland-client/node_modules/typescript/lib&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "/home/rajabi/Workspace/articlesland/articlesland-server",
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "nodejs_package_manager_path": "yarn",
+    "settings.editor.selected.configurable": "preferences.sourceCode.TypeScript",
+    "ts.external.directory.path": "/home/rajabi/Workspace/articlesland/articlesland-client/node_modules/typescript/lib",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/public/scripts" />
@@ -182,7 +174,8 @@
       <workItem from="1665924145605" duration="9649000" />
       <workItem from="1665936219987" duration="780000" />
       <workItem from="1666352829708" duration="9520000" />
-      <workItem from="1666369675379" duration="1960000" />
+      <workItem from="1666369675379" duration="2283000" />
+      <workItem from="1666417624846" duration="611000" />
     </task>
     <task id="LOCAL-00001" summary="AL-14 &lt;Start project and fix basic configs&gt;">
       <created>1660924360896</created>
@@ -422,7 +415,14 @@
       <option name="project" value="LOCAL" />
       <updated>1665931146002</updated>
     </task>
-    <option name="localTasksCounter" value="35" />
+    <task id="LOCAL-00035" summary="AL-70 &lt;Fix mantine new version errors&gt;">
+      <created>1666373907538</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1666373907538</updated>
+    </task>
+    <option name="localTasksCounter" value="36" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -443,7 +443,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="AL-28 &lt;Categories list Implemented&gt;" />
     <MESSAGE value="AL-21 &lt;Fix login and registration&gt;" />
     <MESSAGE value="AL-35 &lt;Header refactoring&gt;" />
     <MESSAGE value="AL-36 &lt;Fix something in header&gt;" />
@@ -468,6 +467,7 @@
     <MESSAGE value="AL-63 &lt;Fetching data and searching implemented&gt;" />
     <MESSAGE value="AL-64 &lt;Admin reports management page&gt;" />
     <MESSAGE value="AL-issue &lt;Mantine packages updated&gt;" />
-    <option name="LAST_COMMIT_MESSAGE" value="AL-issue &lt;Mantine packages updated&gt;" />
+    <MESSAGE value="AL-70 &lt;Fix mantine new version errors&gt;" />
+    <option name="LAST_COMMIT_MESSAGE" value="AL-70 &lt;Fix mantine new version errors&gt;" />
   </component>
 </project>

@@ -15,6 +15,7 @@ import {
     UseUserInfoResult
 } from "../utils/types";
 import {Admin} from "../utils/apis/admin";
+import {Link} from "../utils/apis/link";
 
 export default function useRequest(requiredToken?: boolean | undefined): UseRequestResult {
     const {getAccessToken, setNewAccessToken, setNewUser}: UseUserInfoResult = useUserInfo()
@@ -46,5 +47,6 @@ export const publicApis = (): PublicAPIS => {
         category: new Category(),
         article: new Article(),
         user: new PublicUserApi(),
+        link: new Link(),
     }
 }
