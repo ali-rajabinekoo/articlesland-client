@@ -1,68 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e06adea9-5fca-4f6c-9da5-80729234fd31" name="Changes" comment="AL-14 &lt;Start project and fix basic configs&gt;">
-      <change afterPath="$PROJECT_DIR$/.eslintrc.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/articlesland-client.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/container/layout/authLayout.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/next.config.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pages/_app.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pages/_document.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pages/index.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pages/registration/index.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/images/icon.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/images/icon.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/images/mountains.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/favicon.ico" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/vercel.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/styles/fonts/IranSansX/IranSansX.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/styles/fonts/IranSansX/woff/IRANSansX-Black.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/styles/fonts/IranSansX/woff/IRANSansX-Bold.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/styles/fonts/IranSansX/woff/IRANSansX-DemiBold.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/styles/fonts/IranSansX/woff/IRANSansX-ExtraBold.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/styles/fonts/IranSansX/woff/IRANSansX-Light.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/styles/fonts/IranSansX/woff/IRANSansX-Medium.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/styles/fonts/IranSansX/woff/IRANSansX-Regular.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/styles/fonts/IranSansX/woff/IRANSansX-Thin.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/styles/fonts/IranSansX/woff/IRANSansX-UltraLight.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/styles/fonts/IranSansX/woff2/IRANSansX-Black.woff2" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/styles/fonts/IranSansX/woff2/IRANSansX-Bold.woff2" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/styles/fonts/IranSansX/woff2/IRANSansX-DemiBold.woff2" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/styles/fonts/IranSansX/woff2/IRANSansX-ExtraBold.woff2" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/styles/fonts/IranSansX/woff2/IRANSansX-Light.woff2" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/styles/fonts/IranSansX/woff2/IRANSansX-Medium.woff2" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/styles/fonts/IranSansX/woff2/IRANSansX-Regular.woff2" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/styles/fonts/IranSansX/woff2/IRANSansX-Thin.woff2" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/styles/fonts/IranSansX/woff2/IRANSansX-UltraLight.woff2" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/styles/fonts/Poppins/Poppins-Black.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/styles/fonts/Poppins/Poppins-BlackItalic.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/styles/fonts/Poppins/Poppins-Bold.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/styles/fonts/Poppins/Poppins-BoldItalic.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/styles/fonts/Poppins/Poppins-ExtraBold.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/styles/fonts/Poppins/Poppins-ExtraBoldItalic.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/styles/fonts/Poppins/Poppins-ExtraLight.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/styles/fonts/Poppins/Poppins-ExtraLightItalic.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/styles/fonts/Poppins/Poppins-Italic.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/styles/fonts/Poppins/Poppins-Light.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/styles/fonts/Poppins/Poppins-LightItalic.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/styles/fonts/Poppins/Poppins-Medium.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/styles/fonts/Poppins/Poppins-MediumItalic.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/styles/fonts/Poppins/Poppins-Regular.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/styles/fonts/Poppins/Poppins-SemiBold.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/styles/fonts/Poppins/Poppins-SemiBoldItalic.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/styles/fonts/Poppins/Poppins-Thin.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/styles/fonts/Poppins/Poppins-ThinItalic.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/styles/fonts/Poppins/Poppins.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/styles/globals.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tsconfig.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
+    <list default="true" id="e06adea9-5fca-4f6c-9da5-80729234fd31" name="Changes" comment="AL-70 &lt;Fix mantine new version errors&gt;">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -73,13 +13,27 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="JavaScript File" />
-        <option value="TypeScript JSX File" />
         <option value="CSS File" />
+        <option value="TypeScript File" />
+        <option value="TypeScript JSX File" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="AL-64-admin-dashboard-bad-content-report-lists-management-" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -92,28 +46,41 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "Project.color": "2d1438",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "/home/rajabi/Projects/articlesland/articlesland-client",
-    "list.type.of.created.stylesheet": "CSS",
+    "last_opened_file_path": "/home/rajabi/Workspace/articlesland/articlesland-server",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "ts.external.directory.path": "/home/rajabi/Projects/articlesland/articlesland-client/node_modules/typescript/lib",
+    "nodejs_package_manager_path": "yarn",
+    "settings.editor.selected.configurable": "preferences.sourceCode.TypeScript",
+    "ts.external.directory.path": "/home/rajabi/Workspace/articlesland/articlesland-client/node_modules/typescript/lib",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$" />
-      <recent name="$PROJECT_DIR$/pages/styles" />
-      <recent name="$PROJECT_DIR$/public/assets/images" />
-      <recent name="$PROJECT_DIR$/pages" />
-      <recent name="$PROJECT_DIR$/public" />
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/public/scripts" />
     </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/component/wrappers" />
+      <recent name="$PROJECT_DIR$/providers" />
+      <recent name="$PROJECT_DIR$/container/profile" />
+      <recent name="$PROJECT_DIR$/component/navbar" />
+      <recent name="$PROJECT_DIR$/component/lists" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="dev" type="js.build_tools.npm" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="dev" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -124,12 +91,345 @@
       <option name="presentableId" value="Default" />
       <updated>1660897416608</updated>
       <workItem from="1660897417729" duration="8397000" />
-      <workItem from="1660914663962" duration="7846000" />
+      <workItem from="1660914663962" duration="15367000" />
+      <workItem from="1660972906209" duration="1968000" />
+      <workItem from="1661011704625" duration="7760000" />
+      <workItem from="1661094070603" duration="4990000" />
+      <workItem from="1661145440690" duration="41552000" />
+      <workItem from="1661326270907" duration="902000" />
+      <workItem from="1661329004332" duration="703000" />
+      <workItem from="1661343285731" duration="631000" />
+      <workItem from="1661785680335" duration="87000" />
+      <workItem from="1661863519042" duration="1775000" />
+      <workItem from="1661928553110" duration="3104000" />
+      <workItem from="1661931663821" duration="119000" />
+      <workItem from="1661931788948" duration="1842000" />
+      <workItem from="1661933784070" duration="9176000" />
+      <workItem from="1661943996083" duration="710000" />
+      <workItem from="1662017786757" duration="1488000" />
+      <workItem from="1662303897427" duration="1338000" />
+      <workItem from="1662442477528" duration="9491000" />
+      <workItem from="1662475840484" duration="8278000" />
+      <workItem from="1662528512906" duration="10416000" />
+      <workItem from="1662539932451" duration="28303000" />
+      <workItem from="1662615264318" duration="12803000" />
+      <workItem from="1662706247044" duration="19503000" />
+      <workItem from="1662796798900" duration="32751000" />
+      <workItem from="1662875634658" duration="5394000" />
+      <workItem from="1663146271287" duration="11488000" />
+      <workItem from="1663175831578" duration="8284000" />
+      <workItem from="1663222712313" duration="5673000" />
+      <workItem from="1663242329131" duration="181000" />
+      <workItem from="1663242516679" duration="666000" />
+      <workItem from="1663243199996" duration="12000" />
+      <workItem from="1663481278270" duration="3777000" />
+      <workItem from="1663566416360" duration="10962000" />
+      <workItem from="1663675991302" duration="494000" />
+      <workItem from="1663739773935" duration="16881000" />
+      <workItem from="1663826188500" duration="1198000" />
+      <workItem from="1663838952838" duration="7235000" />
+      <workItem from="1663875953897" duration="1970000" />
+      <workItem from="1663878793134" duration="3606000" />
+      <workItem from="1663917535773" duration="599000" />
+      <workItem from="1663965899240" duration="139000" />
+      <workItem from="1664000765935" duration="599000" />
+      <workItem from="1664019903918" duration="268000" />
+      <workItem from="1664020286684" duration="173000" />
+      <workItem from="1664020860106" duration="236000" />
+      <workItem from="1664021097361" duration="10000" />
+      <workItem from="1664021340734" duration="2665000" />
+      <workItem from="1664024385814" duration="5767000" />
+      <workItem from="1664089585717" duration="1292000" />
+      <workItem from="1664275674413" duration="4672000" />
+      <workItem from="1664281754869" duration="27000" />
+      <workItem from="1664291024259" duration="116000" />
+      <workItem from="1664293234012" duration="134000" />
+      <workItem from="1664293455513" duration="2737000" />
+      <workItem from="1664296309122" duration="160000" />
+      <workItem from="1664296544021" duration="5127000" />
+      <workItem from="1664305645139" duration="1223000" />
+      <workItem from="1664346636087" duration="2497000" />
+      <workItem from="1664362899740" duration="105000" />
+      <workItem from="1664366398963" duration="3967000" />
+      <workItem from="1664375488699" duration="981000" />
+      <workItem from="1664449668272" duration="2840000" />
+      <workItem from="1664460657223" duration="5485000" />
+      <workItem from="1664474687116" duration="1742000" />
+      <workItem from="1664533740444" duration="7640000" />
+      <workItem from="1664635688702" duration="6492000" />
+      <workItem from="1664695418259" duration="13225000" />
+      <workItem from="1664721610992" duration="7830000" />
+      <workItem from="1664735322654" duration="734000" />
+      <workItem from="1664968247162" duration="300000" />
+      <workItem from="1664974231520" duration="18000" />
+      <workItem from="1664980491959" duration="198000" />
+      <workItem from="1664980695238" duration="7445000" />
+      <workItem from="1665036843586" duration="10000000" />
+      <workItem from="1665242830558" duration="156000" />
+      <workItem from="1665756750321" duration="2073000" />
+      <workItem from="1665772312293" duration="52000" />
+      <workItem from="1665780303017" duration="2655000" />
+      <workItem from="1665813697091" duration="5559000" />
+      <workItem from="1665851380538" duration="5540000" />
+      <workItem from="1665924145605" duration="9649000" />
+      <workItem from="1665936219987" duration="780000" />
+      <workItem from="1666352829708" duration="9520000" />
+      <workItem from="1666369675379" duration="2283000" />
+      <workItem from="1666417624846" duration="611000" />
     </task>
+    <task id="LOCAL-00001" summary="AL-14 &lt;Start project and fix basic configs&gt;">
+      <created>1660924360896</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1660924360896</updated>
+    </task>
+    <task id="LOCAL-00002" summary="AL-12 &lt;Start project and fix basic configs&gt;">
+      <created>1661095161051</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1661095161051</updated>
+    </task>
+    <task id="LOCAL-00003" summary="AL-12 &lt;Connect APIs and verification code&gt;">
+      <created>1661178590264</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1661178590265</updated>
+    </task>
+    <task id="LOCAL-00004" summary="AL-13 &lt;Login page implementation&gt;">
+      <created>1661192038441</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1661192038441</updated>
+    </task>
+    <task id="LOCAL-00005" summary="AL-27 &lt;Add articles card and list&gt;">
+      <created>1661944101160</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1661944101160</updated>
+    </task>
+    <task id="LOCAL-00006" summary="AL-31 &lt;CKEditor Configured&gt;">
+      <created>1662017886234</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1662017886234</updated>
+    </task>
+    <task id="LOCAL-00007" summary="AL-31 &lt;CKEditor directions fixed&gt;">
+      <created>1662487991153</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1662487991153</updated>
+    </task>
+    <task id="LOCAL-00008" summary="AL-31 &lt;Fix save and create new article logic&gt;">
+      <created>1662540419195</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1662540419195</updated>
+    </task>
+    <task id="LOCAL-00009" summary="AL-31 &lt;Article creation implemented with publishing and preview post logic&gt;">
+      <created>1662574904703</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1662574904703</updated>
+    </task>
+    <task id="LOCAL-00010" summary="AL-29 &lt;Read and List Article&gt;">
+      <created>1662627772127</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1662627772128</updated>
+    </task>
+    <task id="LOCAL-00011" summary="AL-bug-issue &lt;Remove Mantine-rte for quill fixing CSR bug&gt;">
+      <created>1662628034211</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1662628034211</updated>
+    </task>
+    <task id="LOCAL-00012" summary="AL-28 &lt;Categories list Implemented&gt;">
+      <created>1662713653414</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1662713653414</updated>
+    </task>
+    <task id="LOCAL-00013" summary="AL-21 &lt;Fix login and registration&gt;">
+      <created>1662718836659</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1662718836659</updated>
+    </task>
+    <task id="LOCAL-00014" summary="AL-35 &lt;Header refactoring&gt;">
+      <created>1662809428091</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1662809428091</updated>
+    </task>
+    <task id="LOCAL-00015" summary="AL-36 &lt;Fix something in header&gt;">
+      <created>1662812292693</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1662812292693</updated>
+    </task>
+    <task id="LOCAL-00016" summary="AL-36 &lt;Update profile information and avatar implemented&gt;">
+      <created>1662824409520</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1662824409520</updated>
+    </task>
+    <task id="LOCAL-00017" summary="AL-36 &lt;Fix containers&gt;">
+      <created>1662824551674</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1662824551674</updated>
+    </task>
+    <task id="LOCAL-00018" summary="AL-36 &lt;Email and mobile updating implemented&gt;">
+      <created>1662879515563</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1662879515563</updated>
+    </task>
+    <task id="LOCAL-00019" summary="AL-43 &lt;Draft provider implemented and apis connected&gt;">
+      <created>1663179975545</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1663179975545</updated>
+    </task>
+    <task id="LOCAL-00020" summary="AL-43 &lt;Draft provider implemented and apis connected&gt;">
+      <created>1663180124385</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1663180124385</updated>
+    </task>
+    <task id="LOCAL-00021" summary="AL-37 &lt;Unpublished and published posts list rendering&gt;">
+      <created>1663238572338</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1663238572338</updated>
+    </task>
+    <task id="LOCAL-00022" summary="AL-46 &lt;Refactoring get article API and frontend permission&gt;">
+      <created>1663582968621</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1663582968622</updated>
+    </task>
+    <task id="LOCAL-00023" summary="AL-48 &lt;Comment deletion logic&gt;">
+      <created>1663936576693</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1663936576693</updated>
+    </task>
+    <task id="LOCAL-00024" summary="AL-48 &lt;Comment creation and listing them with replies&gt;">
+      <created>1663965906571</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1663965906571</updated>
+    </task>
+    <task id="LOCAL-00025" summary="AL-49 &lt;Followings and followers list and apis implemented&gt;">
+      <created>1664281643210</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1664281643210</updated>
+    </task>
+    <task id="LOCAL-00026" summary="AL-51 &lt;Bookmarking and list of Bookmarks, fixed comments bugs&gt;">
+      <created>1664348729160</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1664348729160</updated>
+    </task>
+    <task id="LOCAL-00027" summary="AL-61 &lt;Fix userInfo logic with redux, fix categories list with swr&gt;">
+      <created>1664465836150</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1664465836150</updated>
+    </task>
+    <task id="LOCAL-00028" summary="AL-56 &lt;Home page with selected category filtering logic&gt;">
+      <created>1664540861431</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1664540861431</updated>
+    </task>
+    <task id="LOCAL-00029" summary="AL-58 &lt;Notifications implemented&gt;">
+      <created>1664999833742</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1664999833742</updated>
+    </task>
+    <task id="LOCAL-00030" summary="AL-59 &lt;Blocking user logic&gt;">
+      <created>1665054317452</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1665054317452</updated>
+    </task>
+    <task id="LOCAL-00031" summary="AL-63 &lt;User table UI and Admin guard implemented&gt;">
+      <created>1665820940022</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1665820940022</updated>
+    </task>
+    <task id="LOCAL-00032" summary="AL-63 &lt;Fetching data and searching implemented&gt;">
+      <created>1665859557207</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1665859557207</updated>
+    </task>
+    <task id="LOCAL-00033" summary="AL-64 &lt;Admin reports management page&gt;">
+      <created>1665930667815</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1665930667815</updated>
+    </task>
+    <task id="LOCAL-00034" summary="AL-issue &lt;Mantine packages updated&gt;">
+      <created>1665931146002</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1665931146002</updated>
+    </task>
+    <task id="LOCAL-00035" summary="AL-70 &lt;Fix mantine new version errors&gt;">
+      <created>1666373907538</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1666373907538</updated>
+    </task>
+    <option name="localTasksCounter" value="36" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="UnknownFeatures">
+    <option featureType="com.intellij.fileTypeFactory" implementationName="next.config.js" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -143,7 +443,31 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="AL-14 &lt;Start project and fix basic configs&gt;" />
-    <option name="LAST_COMMIT_MESSAGE" value="AL-14 &lt;Start project and fix basic configs&gt;" />
+    <MESSAGE value="AL-21 &lt;Fix login and registration&gt;" />
+    <MESSAGE value="AL-35 &lt;Header refactoring&gt;" />
+    <MESSAGE value="AL-36 &lt;Fix something in header&gt;" />
+    <MESSAGE value="AL-36 &lt;Update profile information and avatar implemented&gt;" />
+    <MESSAGE value="AL-36 &lt;Fix containers&gt;" />
+    <MESSAGE value="AL-36 &lt;Email and mobile updating implemented&gt;" />
+    <MESSAGE value="AL-43 &lt;Draft provider implemented and apis connected&gt;" />
+    <MESSAGE value="AL-37 &lt;Unpublished and published posts list rendering&gt;" />
+    <MESSAGE value="AL-bug-issue &lt;Fix&gt;" />
+    <MESSAGE value="AL-46 &lt;Refactoring get article API and frontend permission&gt;" />
+    <MESSAGE value="AL-50 &lt;Stats table implemented&gt;" />
+    <MESSAGE value="AL-48 &lt;Comment deletion logic&gt;" />
+    <MESSAGE value="AL-48 &lt;Comment creation and listing them with replies&gt;" />
+    <MESSAGE value="AL-49 &lt;Followings and followers list and apis implemented&gt;" />
+    <MESSAGE value="AL-51 &lt;Bookmarking and list of Bookmarks, fixed comments bugs&gt;" />
+    <MESSAGE value="AL-61 &lt;Fix userInfo logic with redux, fix categories list with swr&gt;" />
+    <MESSAGE value="AL-56 &lt;Home page with selected category filtering logic&gt;" />
+    <MESSAGE value="AL-57 &lt;Explore page with searching and free category filtering logic&gt;" />
+    <MESSAGE value="AL-58 &lt;Notifications implemented&gt;" />
+    <MESSAGE value="AL-59 &lt;Blocking user logic&gt;" />
+    <MESSAGE value="AL-63 &lt;User table UI and Admin guard implemented&gt;" />
+    <MESSAGE value="AL-63 &lt;Fetching data and searching implemented&gt;" />
+    <MESSAGE value="AL-64 &lt;Admin reports management page&gt;" />
+    <MESSAGE value="AL-issue &lt;Mantine packages updated&gt;" />
+    <MESSAGE value="AL-70 &lt;Fix mantine new version errors&gt;" />
+    <option name="LAST_COMMIT_MESSAGE" value="AL-70 &lt;Fix mantine new version errors&gt;" />
   </component>
 </project>

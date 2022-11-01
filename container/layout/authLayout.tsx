@@ -2,23 +2,16 @@ import React, {ReactNode} from "react";
 import {
     Paper,
     createStyles,
-    TextInput,
-    PasswordInput,
-    Checkbox,
-    Button,
     Title,
     Text,
-    Anchor,
-    Box
+    Box,
+    Grid
 } from '@mantine/core';
-
-interface Props {
-    children?: ReactNode
-}
 
 const useStyles = createStyles((theme) => ({
     wrapper: {
         height: '100vh',
+        overflow: "hidden",
         backgroundSize: 'cover',
         backgroundPosition: "bottom",
         backgroundImage:
@@ -36,9 +29,11 @@ const useStyles = createStyles((theme) => ({
         borderBottomRightRadius: 0,
         borderTopLeftRadius: 8,
         borderBottomLeftRadius: 8,
-        
+
         [`@media (max-width: ${theme.breakpoints.sm}px)`]: {
             maxWidth: '100%',
+            borderTopLeftRadius: 0,
+            borderBottomLeftRadius: 0,
         },
     },
 
@@ -56,29 +51,39 @@ const useStyles = createStyles((theme) => ({
     },
 }));
 
-export function AuthLayout({children}: Props) {
+interface AuthLayoutProps {
+    title?: ReactNode
+    children?: ReactNode
+}
+
+export function AuthLayout({children, title}: AuthLayoutProps) {
     const {classes} = useStyles();
     return <Box dir={"ltr"}>
         <Box className={classes.wrapper}>
-            <Paper className={classes.formPaper} p={30} dir={"rtl"}>
-                <Title order={2} className={classes.title} align="center" mt="md" mb={50}>
-                    {children}
-                </Title>
-
-                <TextInput label="Email address" placeholder="hello@gmail.com" size="md"/>
-                <PasswordInput label="Password" placeholder="Your password" mt="md" size="md"/>
-                <Checkbox label="Keep me logged in" mt="xl" size="md"/>
-                <Button fullWidth mt="xl" size="md">
-                    Login
-                </Button>
-
-                <Text align="center" mt="md">
-                    Don&apos;t have an account?{' '}
-                    <Anchor<'a'> href="#" weight={700} onClick={(event) => event.preventDefault()}>
-                        Register
-                    </Anchor>
-                </Text>
-            </Paper>
+            <Grid>
+                <Grid.Col lg={5.8} xl={3.8}>
+                    <Paper className={classes.formPaper} p={30} dir={"rtl"} sx={{overflowY: 'auto', overflowX: "hidden"}}>
+                        <Title order={2} className={classes.title} align="center" mt="md" mb={50}>
+                            {title}
+                        </Title>
+                        {children}
+                    </Paper>
+                </Grid.Col>
+                <Grid.Col lg={7.2} xl={8.2}>
+                    <Box sx={{
+                        display: "flex",
+                        justifyContent: "center",
+                        alignItems: "center",
+                        height: "100vh",
+                        paddingBottom: 420,
+                        marginRight: -100
+                    }}>
+                        <Text color={"secondary.3"} sx={{
+                            fontFamily: "Poppins", fontWeight: 600, fontSize: 96, lineHeight: "130%", letterSpacing: 5
+                        }}>ArticleLand</Text>
+                    </Box>
+                </Grid.Col>
+            </Grid>
         </Box>
     </Box>
 }
