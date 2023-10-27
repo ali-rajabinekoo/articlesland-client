@@ -33,7 +33,7 @@
     "@types/html-to-text": "^8.1.1",
     "@types/moment": "^2.13.0",
     "@types/moment-jalaali": "^0.7.5",
-    "axios": "^0.27.2",
+    "axios": "^1.6.0",
     "dayjs": "^1.11.5",
     "embla-carousel-react": "^7.0.1",
     "formik": "^2.2.9",
