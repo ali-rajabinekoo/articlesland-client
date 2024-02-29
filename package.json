@@ -37,7 +37,7 @@
     "dayjs": "^1.11.5",
     "embla-carousel-react": "^7.0.1",
     "formik": "^2.2.9",
-    "html-to-text": "^8.2.1",
+    "html-to-text": "^9.0.0",
     "moment": "^2.29.4",
     "moment-jalaali": "^0.9.6",
     "next": "12.2.5",
