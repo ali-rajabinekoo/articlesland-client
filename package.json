@@ -39,7 +39,7 @@
     "formik": "^2.2.9",
     "html-to-text": "^8.2.1",
     "moment": "^2.29.4",
-    "moment-jalaali": "^0.9.6",
+    "moment-jalaali": "^0.10.2",
     "next": "12.2.5",
     "query-string": "^7.1.1",
     "react": "18.2.0",

@@ -1959,10 +1959,10 @@ isexe@^2.0.0:
   resolved "https://registry.npmjs.org/isexe/-/isexe-2.0.0.tgz"
   integrity sha512-RHxMLp9lnKHGHRng9QFhRCMbYAcVpn69smSGcq3f36xjgVVWThj4qqLbTLlq7Ssj8B+fIQ1EuCEGI2lKsyQeIw==
 
-jalaali-js@^1.1.0:
-  version "1.2.6"
-  resolved "https://registry.yarnpkg.com/jalaali-js/-/jalaali-js-1.2.6.tgz#f4ee4bf686ed32bb9656f101225be4b7a1c3fd21"
-  integrity sha512-io974va+Qyu+UfuVX3UIAgJlxLhAMx9Y8VMfh+IG00Js7hXQo1qNQuwSiSa0xxco0SVgx5HWNkaiCcV+aZ8WPw==
+jalaali-js@^1.2.7:
+  version "1.2.7"
+  resolved "https://registry.yarnpkg.com/jalaali-js/-/jalaali-js-1.2.7.tgz#7694cab2d0ca21830766faf08278e71c204cc4fe"
+  integrity sha512-gE+YHWSbygYAoJa+Xg8LWxGILqFOxZSBQQw39ghel01fVFUxV7bjL0x1JFsHcLQ3uPjvn81HQMa+kxwyPWnxGQ==
 
 "js-tokens@^3.0.0 || ^4.0.0", js-tokens@^4.0.0:
   version "4.0.0"
@@ -2109,24 +2109,23 @@ minimist@^1.2.0, minimist@^1.2.6, minimist@~1.2.5:
   resolved "https://registry.npmjs.org/minimist/-/minimist-1.2.6.tgz"
   integrity sha512-Jsjnk4bw3YJqYzbdyBiNsPWHPfO++UGG749Cxs6peCu5Xg4nrena6OVxOYxrQTqww0Jmwt+Ref8rggumkTLz9Q==
 
-moment-jalaali@^0.9.6:
-  version "0.9.6"
-  resolved "https://registry.yarnpkg.com/moment-jalaali/-/moment-jalaali-0.9.6.tgz#6c460aedee08a1e45d3f658c7cffd66cd4dca24c"
-  integrity sha512-v8wXjQplvk5ez+sUqgsWIrafwIf1BEXXvzTYwsg1wHcqh27nSgKPCJ6FnZRrCz03MoNyB9N31L0oms+vE8Rq7g==
+moment-jalaali@^0.10.2:
+  version "0.10.4"
+  resolved "https://registry.yarnpkg.com/moment-jalaali/-/moment-jalaali-0.10.4.tgz#8ca2c1651e3310be947049a1013acf9025cecfd6"
+  integrity sha512-/eD0HeyvATznb5iE0G1BHjKRZAFEpJ9ZNUkcHwXhNgt1WJJVVzHD7+uDmqzZWVFLdbGme2gvIXKb3ezDYOXcZA==
   dependencies:
-    jalaali-js "^1.1.0"
-    moment "^2.22.2"
-    moment-timezone "^0.5.21"
-    rimraf "^3.0.2"
+    jalaali-js "^1.2.7"
+    moment "^2.29.4"
+    moment-timezone "^0.5.46"
 
-moment-timezone@^0.5.21:
-  version "0.5.37"
-  resolved "https://registry.yarnpkg.com/moment-timezone/-/moment-timezone-0.5.37.tgz#adf97f719c4e458fdb12e2b4e87b8bec9f4eef1e"
-  integrity sha512-uEDzDNFhfaywRl+vwXxffjjq1q0Vzr+fcQpQ1bU0kbzorfS7zVtZnCnGc8mhWmF39d4g4YriF6kwA75mJKE/Zg==
+moment-timezone@^0.5.46:
+  version "0.5.46"
+  resolved "https://registry.yarnpkg.com/moment-timezone/-/moment-timezone-0.5.46.tgz#a21aa6392b3c6b3ed916cd5e95858a28d893704a"
+  integrity sha512-ZXm9b36esbe7OmdABqIWJuBBiLLwAjrN7CE+7sYdCCx82Nabt1wHDj8TVseS59QIlfFPbOoiBPm6ca9BioG4hw==
   dependencies:
-    moment ">= 2.9.0"
+    moment "^2.29.4"
 
-moment@*, "moment@>= 2.9.0", moment@>=2.14.0, moment@^2.22.2, moment@^2.29.4:
+moment@*, moment@>=2.14.0, moment@^2.29.4:
   version "2.29.4"
   resolved "https://registry.yarnpkg.com/moment/-/moment-2.29.4.tgz#3dbe052889fe7c1b2ed966fcb3a77328964ef108"
   integrity sha512-5LC9SOxjSc2HF6vO2CyuTDNivEdoz2IvyJJGj6X8DJ0eFyfszE0QiEd+iXmBvUP3WHxSjFH/vIsA0EN00cgr8w==
